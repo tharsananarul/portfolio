@@ -3,19 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projets — Tharsanan</title>
+  <title>Sans Bavures — Tharsanan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .project-card { cursor: pointer; }
-    .project-link-hint {
-      font-size: 0.78rem; color: #7a90b8;
-      font-style: italic; margin-top: 8px; display: block;
-      transition: color 0.3s;
-    }
-    .project-card:hover .project-link-hint { color: #BCD9F5; }
+    .projet-hero{width:100%;height:55vh;overflow:hidden;position:relative;background:#080e1a;}
+    .projet-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
+    .projet-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,14,26,0.95) 100%);}
+    .projet-hero-title{position:absolute;bottom:48px;left:6vw;font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;}
+    .projet-intro{max-width:1200px;margin:0 auto;padding:80px 6vw;display:grid;grid-template-columns:1.2fr 0.8fr;gap:80px;align-items:start;}
+    .projet-intro-left h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:20px;color:var(--text);}
+    .projet-intro-left p{color:var(--text-muted);font-size:1.1rem;line-height:2;}
+    .projet-intro-right{display:flex;flex-direction:column;gap:28px;padding-top:8px;}
+    .projet-meta-block{display:flex;flex-direction:column;gap:6px;padding-bottom:24px;border-bottom:1px solid rgba(188,217,245,0.08);}
+    .projet-meta-block:last-child{border-bottom:none;padding-bottom:0;}
+    .projet-meta-block span{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#BCD9F5;font-weight:600;}
+    .projet-meta-block p{font-size:1rem;color:var(--text-muted);}
+    .projet-deliverables{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+    .deliverable-tag{background:rgba(188,217,245,0.06);border:1px solid rgba(188,217,245,0.15);border-radius:100px;padding:8px 18px;font-size:0.85rem;color:#BCD9F5;}
+    .projet-images{width:100%;background:#080e1a;padding:8px 0;}
+    .projet-img-full{width:100%;display:flex;justify-content:center;align-items:center;padding:8px 5vw;background:#080e1a;}
+    .projet-img-full img{width:100%;max-width:1100px;height:auto;display:block;object-fit:contain;border-radius:16px;box-shadow:0 16px 60px rgba(0,0,0,0.6);transition:transform 0.6s ease;}
+    .projet-img-full:hover img{transform:scale(1.01);}
+    .projet-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:1116px;margin:0 auto;padding:0 5vw 8px;}
+    .projet-img-grid .projet-img-full{padding:0;}
+    .projet-img-grid .projet-img-full img{border-radius:12px;max-width:100%;}
+    .projet-next{padding:80px 6vw;border-top:1px solid rgba(188,217,245,0.08);max-width:1200px;margin:0 auto;}
+    .projet-next > p{font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:#BCD9F5;margin-bottom:24px;}
+    .projet-next-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    .projet-next-card{display:block;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/9;cursor:pointer;text-decoration:none;}
+    .projet-next-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+    .projet-next-card:hover img{transform:scale(1.05);}
+    .projet-next-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(8,14,26,0.9),transparent);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;}
+    @media(max-width:900px){.projet-intro{grid-template-columns:1fr;gap:48px;}.projet-img-grid{grid-template-columns:1fr;padding:0 4vw 4px;}.projet-img-full{padding:4px 4vw;}.projet-next-cards{grid-template-columns:1fr;}.projet-hero{height:45vh;}}
   </style>
 </head>
 <body>
@@ -31,118 +53,77 @@
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
-  <section class="page-hero">
-    <div class="hero-bg"><div class="blob blob-1"></div><div class="grid-overlay"></div></div>
-    <div class="page-hero-content">
-      <p class="section-tag fade-in delay-1">Mon travail</p>
-      <h1 class="page-hero-title fade-in delay-2">Mes <span class="highlight">projets</span></h1>
-      <p class="page-hero-desc fade-in delay-3">Double-clique sur un projet pour découvrir tous les détails et les photos.</p>
-    </div>
-  </section>
+  <!-- ── HERO ── -->
+  <div class="projet-hero">
+    <img src="images/couvertures/sansbavures.png" alt="Sans Bavures" />
+    <div class="projet-hero-overlay"></div>
+    <h1 class="projet-hero-title">Sans Bavures</h1>
+  </div>
 
-  <section class="section projets-page">
-
-    <!-- ── FUTSAL DRANCY ── -->
-    <div class="projets-categorie reveal">
-      <p class="section-tag">Expérience professionnelle</p>
-      <h2 class="section-title">Futsal <span class="highlight">Drancy</span></h2>
-    </div>
-    <div class="projects-grid" style="max-width:1200px;margin:0 auto 80px;">
-      <div class="project-card large reveal" onclick="window.location='projet-futsal.html'">
-        <div class="project-img">
-          <img src="images/couvertures/futsal-drancy.png" alt="Futsal Drancy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="img-placeholder p1" style="display:none"><span>Futsal Drancy</span></div>
-        </div>
-        <div class="project-info">
-          <span class="project-tag">Communication · Bénévole · Service Civique · Stage </span>
-          <h3>Futsal Drancy</h3>
-          <p>Création de supports visuels, gestion des réseaux sociaux et communication événementielle.</p>
-          
-        </div>
+  <!-- ── INTRO ── -->
+  <div class="projet-intro">
+    <div class="projet-intro-left">
+      <h2>Intro</h2>
+      <p>Au premier semestre de mon BUT, nous avons créé une association fictive pour lutter contre les abus policiers. Notre objectif était de partager des informations, organiser des événements et sensibiliser le public. Nous avons élaboré une stratégie de communication complète, créé une identité visuelle avec logo, typographies et couleurs, et conçu des supports pour les réseaux sociaux et des affiches de promotion. Sans Bavures dénonce et condamne les actes répréhensibles des forces de l'ordre, en garantissant le droit de chacun à la sécurité, indépendamment de son origine.</p>
+      <br /><h2>Livrables</h2>
+      <div class="projet-deliverables">
+        <span class="deliverable-tag">Identité visuelle</span>
+        <span class="deliverable-tag">Logo</span>
+        <span class="deliverable-tag">Stratégie communication</span>
+        <span class="deliverable-tag">Affiches</span>
+        <span class="deliverable-tag">Brochure</span>
+        <span class="deliverable-tag">Publications réseaux sociaux</span>
+        <span class="deliverable-tag">Vidéo animée</span>
       </div>
     </div>
-
-    <!-- ── PROJETS BTS ── -->
-    <div class="projets-categorie reveal">
-      <p class="section-tag">Formation</p>
-      <h2 class="section-title">Projets <span class="highlight">BTS Communication</span></h2>
+    <div class="projet-intro-right">
+      <div class="projet-meta-block"><span>Période</span><p>Septembre 2022 — Janvier 2023</p></div>
+      <div class="projet-meta-block"><span>Formation</span><p>BUT MMI</p></div>
+      <div class="projet-meta-block"><span>École</span><p>IUT de Sénart-Fontainebleau</p></div>
+      <div class="projet-meta-block"><span>Type</span><p>Association fictive</p></div>
+      <div class="projet-meta-block"><span>Outils</span><p>Illustrator, Photoshop, After Effects</p></div>
     </div>
-    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto 80px;">
-      <div class="project-card reveal" onclick="window.location='projet-btscom.html'">
-        <div class="project-img">
-          <img src="images/couvertures/bts-com.png" alt="BTS Com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="img-placeholder p2" style="display:none"><span>BTS Com</span></div>
-        </div>
-        <div class="project-info">
-          <span class="project-tag">BTS Communication</span>
-          <h3>BTS Communication</h3>
-          <p>Affiches et mockups conçus avec Illustrator et Photoshop au Lycée Jacques Brel.</p>
-          
-        </div>
-      </div>
+  </div>
+
+  <!-- ── IMAGES ── -->
+  <div class="projet-images">
+
+    <div class="projet-img-full">
+      <img src="images/sans-bavures/logo.png" alt="Logo Sans Bavures" />
     </div>
 
-    <!-- ── PROJETS UNIVERSITAIRES ── -->
-    <div class="projets-categorie reveal">
-      <p class="section-tag">BUT MMI · IUT Sénart-Fontainebleau</p>
-      <h2 class="section-title">Projets <span class="highlight">universitaires</span></h2>
-    </div>
-    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto 80px;">
-      <div class="project-card reveal" onclick="window.location='projet-alda.html'">
-        <div class="project-img">
-          <img src="images/couvertures/alda.png" alt="Alda" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="img-placeholder p3" style="display:none"><span>Alda</span></div>
-        </div>
-        <div class="project-info">
-          <span class="project-tag">Projet universitaire · Marque de bière</span>
-          <h3>Alda</h3>
-          <p>Création d'une marque de bière artisanale — identité visuelle, site web et animations.</p>
-          
-        </div>
-      </div>
-      <div class="project-card reveal delay-1" onclick="window.location='projet-sansbavure.html'">
-        <div class="project-img">
-          <img src="images/couvertures/sansbavures.png" alt="Sans Bavure" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="img-placeholder p4" style="display:none"><span>Sans Bavure</span></div>
-        </div>
-        <div class="project-info">
-          <span class="project-tag">Projet universitaire · Association fictive</span>
-          <h3>Sans Bavure</h3>
-          <p>Association fictive contre les abus policiers — identité visuelle et stratégie de communication.</p>
-          
-        </div>
-      </div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/sans-bavures/affiche.png" alt="Affiche Sans Bavures" /></div>
+      <div class="projet-img-full"><img src="images/sans-bavures/brochure.png" alt="Brochure" /></div>
     </div>
 
-    <!-- ── CRÉATIONS PERSO ── -->
-    <div class="projets-categorie reveal">
-      <p class="section-tag">Hors cursus</p>
-      <h2 class="section-title">Créations <span class="highlight">personnelles</span></h2>
+    <div class="projet-img-full">
+      <img src="images/sans-bavures/post insta.png" alt="Post Instagram" />
     </div>
-    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto;">
-      <div class="project-card reveal" onclick="window.location='projet-perso.html'">
-        <div class="project-img">
-          <img src="images/couvertures/projets-crea.png" alt="Créations personnelles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="img-placeholder p1" style="display:none"><span>Créations</span></div>
-        </div>
-        <div class="project-info">
-          <span class="project-tag">Illustrations · Posters · Vidéo</span>
-          <h3>Projets créatifs personnels</h3>
-          <p>Posters cinéma sud-indien, illustrations et vidéo Terra Scientifica réalisés avec Photoshop.</p>
-          
-        </div>
-      </div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/sans-bavures/post.png" alt="Post 1" /></div>
+      <div class="projet-img-full"><img src="images/sans-bavures/post2.png" alt="Post 2" /></div>
+    </div>
+    <div class="projet-img-full">
+      <img src="images/sans-bavures/post3.png" alt="Post 3" />
     </div>
 
-  </section>
+  </div>
 
-  <section class="section cta-section">
-    <div class="cta-box reveal">
-      <p class="section-tag">Tu as un projet ?</p>
-      <h2 class="section-title">Travaillons <span class="highlight">ensemble</span></h2>
-      <a href="contact.html" class="btn-primary">Me contacter</a>
+  <!-- ── NEXT PROJECT ── -->
+  <div class="projet-next">
+    <p>Projet suivant</p>
+    <div class="projet-next-cards">
+      <a href="projet-perso.html" class="projet-next-card">
+        <img src="images/couvertures/projets-crea.png" alt="Créations personnelles" />
+        <div class="projet-next-card-info">Créations personnelles →</div>
+      </a>
+      <a href="projets.html" class="projet-next-card">
+        <img src="images/couvertures/futsal-drancy.png" alt="Tous les projets" />
+        <div class="projet-next-card-info">Tous les projets →</div>
+      </a>
     </div>
-  </section>
+  </div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -154,7 +135,6 @@
       </div>
     </div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

@@ -176,11 +176,18 @@
 
 /* ── LIGHTBOX ─────────────────────────────────────── */
 .lightbox {
-  position: fixed; inset: 0; z-index: 9999;
-  background: rgba(5,10,20,0.96);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgba(5, 10, 20, 0.98);
   backdrop-filter: blur(16px);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 .lightbox.active { opacity: 1; pointer-events: all; }
@@ -229,10 +236,13 @@
 }
 
 /* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .mosaic-grid { grid-template-columns: repeat(2, 1fr); padding: 0 4vw; }
+}
 @media (max-width: 700px) {
   .mosaic-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 8px; padding: 0 5vw;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; padding: 0 4vw;
   }
   .mosaic-item.wide { grid-column: span 2; aspect-ratio: 16/8; }
   .lightbox-prev { left: 8px; }
@@ -241,6 +251,8 @@
   .projet-img-grid .projet-img-full img { max-height: 260px !important; }
   .projet-img-grid { grid-template-columns: 1fr !important; }
 }
-@media (max-width: 400px) {
-  .mosaic-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 480px) {
+  .mosaic-grid { grid-template-columns: 1fr; }
+  .lightbox-close { top: 16px; right: 16px; width: 36px; height: 36px; }
+  .lightbox-prev, .lightbox-next { width: 40px; height: 40px; }
 }

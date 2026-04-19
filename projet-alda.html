@@ -8,16 +8,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="premium.css" />
   <style>
-    .projet-hero{width:100%;height:55vh;overflow:hidden;position:relative;background:#080e1a;}
+    .projet-hero{width:100%;height:40vh;overflow:hidden;position:relative;background:#080e1a;}
     .projet-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
     .projet-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,14,26,0.95) 100%);}
-    .projet-hero-title{position:absolute;bottom:48px;left:6vw;font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;}
-    .projet-intro{max-width:1200px;margin:0 auto;padding:80px 6vw;display:grid;grid-template-columns:1.2fr 0.8fr;gap:80px;align-items:start;}
+    .projet-hero-title{position:absolute;bottom:32px;left:6vw;font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;}
+    .projet-intro{max-width:1200px;margin:0 auto;padding:48px 6vw;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start;}
     .projet-intro-left h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:20px;color:var(--text);}
     .projet-intro-left p{color:var(--text-muted);font-size:1.1rem;line-height:2;}
-    .projet-intro-right{display:flex;flex-direction:column;gap:28px;padding-top:8px;}
-    .projet-meta-block{display:flex;flex-direction:column;gap:6px;padding-bottom:24px;border-bottom:1px solid rgba(188,217,245,0.08);}
+    .projet-intro-right{display:flex;flex-direction:column;gap:20px;padding-top:8px;}
+    .projet-meta-block{display:flex;flex-direction:column;gap:4px;padding-bottom:16px;border-bottom:1px solid rgba(188,217,245,0.08);}
     .projet-meta-block:last-child{border-bottom:none;padding-bottom:0;}
     .projet-meta-block span{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#BCD9F5;font-weight:600;}
     .projet-meta-block p{font-size:1rem;color:var(--text-muted);}
@@ -40,7 +41,6 @@
     @media(max-width:900px){.projet-intro{grid-template-columns:1fr;gap:48px;}.projet-img-grid{grid-template-columns:1fr;padding:0 4vw 4px;}.projet-img-full{padding:4px 4vw;}.projet-next-cards{grid-template-columns:1fr;}.projet-hero{height:45vh;}}
 .projet-img-center img { max-width: 600px !important; }
 </style>
-  </style>
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -81,36 +81,25 @@
       <div class="projet-meta-block"><span>Outils</span><p>Illustrator, Photoshop, After Effects, HTML/CSS/PHP</p></div>
     </div>
   </div>
-  <div class="projet-img-full projet-img-center">
-  <img src="images/alda/affichemockup.jpg" alt="Affiche mockup" />
-</div>
-    <div class="projet-img-full"><img src="images/alda/bouteille1.jpg" alt="Bouteille Alda" /></div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/bouteille2.jpg" alt="Bouteille 2" /></div>
-      <div class="projet-img-full"><img src="images/alda/bouteille3.jpg" alt="Bouteille 3" /></div>
-    </div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/bouteille4.jpg" alt="Bouteille 4" /></div>
-      <div class="projet-img-full"><img src="images/alda/bouteille5.jpg" alt="Bouteille 5" /></div>
-    </div>
-    <div class="projet-img-full"><img src="images/alda/bouteille6.jpg" alt="Bouteille 6" /></div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/etiquettechataignier.jpg" alt="Étiquette châtaignier" /></div>
-      <div class="projet-img-full"><img src="images/alda/etiquettelavande.jpg" alt="Étiquette lavande" /></div>
-    </div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/etiquetteoranger.jpg" alt="Étiquette oranger" /></div>
-      <div class="projet-img-full"><img src="images/alda/etiquettetilleul.jpg" alt="Étiquette tilleul" /></div>
-    </div>
-    <div class="projet-img-full"><img src="images/alda/etiquettetrefle.jpg" alt="Étiquette trèfle" /></div>
-    <div class="projet-img-full"><img src="images/alda/site-mockup.png" alt="Site mockup" /></div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/aldaaccueil.png" alt="Page accueil" /></div>
-      <div class="projet-img-full"><img src="images/alda/aldalandingpage.jpg" alt="Landing page" /></div>
-    </div>
-    <div class="projet-img-grid">
-      <div class="projet-img-full"><img src="images/alda/pagebouteille.jpg" alt="Page bouteille" /></div>
-      <div class="projet-img-full"><img src="images/alda/pageproduit.jpg" alt="Page produit" /></div>
+  <div class="projet-images">
+    <div class="mosaic-grid">
+      <div class="mosaic-item tall" data-src="images/alda/affichemockup.jpg"><img src="images/alda/affichemockup.jpg" alt="Affiche mockup" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille1.jpg"><img src="images/alda/bouteille1.jpg" alt="Bouteille Alda" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille2.jpg"><img src="images/alda/bouteille2.jpg" alt="Bouteille 2" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille3.jpg"><img src="images/alda/bouteille3.jpg" alt="Bouteille 3" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille4.jpg"><img src="images/alda/bouteille4.jpg" alt="Bouteille 4" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille5.jpg"><img src="images/alda/bouteille5.jpg" alt="Bouteille 5" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/bouteille6.jpg"><img src="images/alda/bouteille6.jpg" alt="Bouteille 6" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/etiquettechataignier.jpg"><img src="images/alda/etiquettechataignier.jpg" alt="Étiquette châtaignier" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/etiquettelavande.jpg"><img src="images/alda/etiquettelavande.jpg" alt="Étiquette lavande" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/etiquetteoranger.jpg"><img src="images/alda/etiquetteoranger.jpg" alt="Étiquette oranger" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/etiquettetilleul.jpg"><img src="images/alda/etiquettetilleul.jpg" alt="Étiquette tilleul" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/etiquettetrefle.jpg"><img src="images/alda/etiquettetrefle.jpg" alt="Étiquette trèfle" loading="lazy" /></div>
+      <div class="mosaic-item wide" data-src="images/alda/site-mockup.png"><img src="images/alda/site-mockup.png" alt="Site mockup" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/aldaaccueil.png"><img src="images/alda/aldaaccueil.png" alt="Page accueil" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/aldalandingpage.jpg"><img src="images/alda/aldalandingpage.jpg" alt="Landing page" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/pagebouteille.jpg"><img src="images/alda/pagebouteille.jpg" alt="Page bouteille" loading="lazy" /></div>
+      <div class="mosaic-item" data-src="images/alda/pageproduit.jpg"><img src="images/alda/pageproduit.jpg" alt="Page produit" loading="lazy" /></div>
     </div>
   </div>
   <div class="projet-next">
@@ -130,6 +119,76 @@
       </div>
     </div>
   </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lbClose" aria-label="Fermer">✕</button>
+    <button class="lightbox-prev" id=" lbPrev" aria-label="Précédent">&#8592;</button>
+    <button class="lightbox-next" id="lbNext" aria-label="Suivant">&#8594;</button>
+    <div class="lightbox-img-wrap">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="animations.js"></script>
+  <script>
+    /* ── Lazy-load fade-in ── */
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (img.complete) img.classList.add('img-loaded');
+      else img.addEventListener('load', () => img.classList.add('img-loaded'));
+    });
+
+    /* ── Mosaic lightbox ── */
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+    const lbClose  = document.getElementById('lbClose');
+    const lbPrev   = document.getElementById('lbPrev');
+    const lbNext   = document.getElementById('lbNext');
+    const lbCount  = document.getElementById('lbCounter');
+
+    let items = [], current = 0;
+
+    function openLightbox(list, idx) {
+      items = list; current = idx;
+      lbImg.src = items[current].dataset.src;
+      lbCount.textContent = (current + 1) + ' / ' + items.length;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+    function navigate(dir) {
+      current = (current + dir + items.length) % items.length;
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src = items[current].dataset.src;
+        lbCount.textContent = (current + 1) + ' / ' + items.length;
+        lbImg.style.opacity = '1';
+      }, 150);
+    }
+
+    document.querySelectorAll('.mosaic-grid').forEach(grid => {
+      const list = [...grid.querySelectorAll('.mosaic-item')];
+      list.forEach((item, idx) => {
+        item.addEventListener('click', () => openLightbox(list, idx));
+      });
+    });
+
+    lbClose?.addEventListener('click', closeLightbox);
+    lbPrev?.addEventListener('click', () => navigate(-1));
+    lbNext?.addEventListener('click', () => navigate(1));
+    lb?.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lb?.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI/UX Works — Tharsanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="premium.css" />
+  <style>
+    .projet-hero{width:100%;height:40vh;overflow:hidden;position:relative;background:#080e1a;}
+    .projet-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
+    .projet-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,14,26,0.95) 100%);}
+    .projet-hero-title{position:absolute;bottom:32px;left:6vw;font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;}
+    .projet-intro{max-width:1200px;margin:0 auto;padding:48px 6vw;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start;}
+    .projet-intro-left h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:20px;color:var(--text);}
+    .projet-intro-left p{color:var(--text-muted);font-size:1.1rem;line-height:2;}
+    .projet-intro-right{display:flex;flex-direction:column;gap:20px;padding-top:8px;}
+    .projet-meta-block{display:flex;flex-direction:column;gap:4px;padding-bottom:16px;border-bottom:1px solid rgba(188,217,245,0.08);}
+    .projet-meta-block:last-child{border-bottom:none;padding-bottom:0;}
+    .projet-meta-block span{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#BCD9F5;font-weight:600;}
+    .projet-meta-block p{font-size:1rem;color:var(--text-muted);}
+    .projet-images{width:100%;background:#080e1a;padding:8px 0;}
+    .projet-img-full{width:100%;display:flex;justify-content:center;align-items:center;padding:8px 5vw;background:#080e1a;}
+    .projet-img-full img{width:100%;max-width:1100px;height:auto;display:block;object-fit:contain;border-radius:16px;box-shadow:0 16px 60px rgba(0,0,0,0.6);}
+    /* ── SECTIONS ── */
+    .site-section { max-width: 1200px; margin: 40px auto 100px; padding: 0 6vw; }
+    .site-header { margin-bottom: 40px; }
+    .site-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 15px; }
+    .site-desc { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin-bottom: 30px; line-height: 1.8; }
+    .mosaic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px; }
+    .mosaic-item img { width: 100%; border-radius: 12px; border: 1px solid rgba(188,217,245,0.1); transition: transform 0.3s; cursor: pointer; }
+    .mosaic-item img:hover { transform: scale(1.02); }
+    @media(max-width:900px){ .mosaic-grid { grid-template-columns: 1fr; } .projet-intro { grid-template-columns: 1fr; gap: 32px; padding: 32px 6vw; } .projet-hero { height: 30vh; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">T<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="projets.html" class="active">Projets</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="projet-hero">
+    <img src="images/couvertures/ui-ux-designs.png" alt="UI/UX Works" />
+    <div class="projet-hero-overlay"></div>
+    <h1 class="projet-hero-title">UI/UX Works</h1>
+  </div>
+
+  <div class="projet-intro">
+    <div class="projet-intro-left">
+      <h2>Intro</h2>
+      <p>Cette section regroupe mes travaux de conception d'interfaces et de développement web. Passionné par l'expérience utilisateur, j'ai réalisé ces projets en mettant l'accent sur l'ergonomie, l'accessibilité et une identité visuelle forte. Vous y trouverez ma plateforme de révision développée pour le BTS ainsi que mes maquettes de design d'interfaces modernes.</p>
+    </div>
+    <div class="projet-intro-right">
+      <div class="projet-meta-block"><span>Domaine</span><p>UI Design, UX Research, Web Dev</p></div>
+      <div class="projet-meta-block"><span>Outils</span><p>Figma, HTML, CSS, Javascript</p></div>
+      <div class="projet-meta-block"><span>Projets</span><p>2 plateformes interactives</p></div>
+    </div>
+  </div>
+
+  <div class="projet-images">
+    
+    <!-- ── Section 1 : BTS REVISIONS ── -->
+    <div class="site-section">
+      <div class="site-header">
+        <span class="project-tag">Développement Web Site</span>
+        <h3 class="site-title">Plateforme de Révision BTS Communication</h3>
+        <p class="site-desc">Un outil complet conçu pour centraliser toutes les ressources de révision. L'architecture a été pensée pour une navigation fluide sur mobile et desktop.</p>
+        <a href="https://tharsananarul.github.io/fdr-bts-com/" target="_blank" class="btn-primary">Voir le site en direct →</a>
+      </div>
+      <div class="mosaic-grid">
+        <div class="mosaic-item" data-src="images/site/bts-fdr/1.png"><img src="images/site/bts-fdr/1.png" alt="BTS REVISIONS 1" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/bts-fdr/2.png"><img src="images/site/bts-fdr/2.png" alt="BTS REVISIONS 2" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/bts-fdr/3.png"><img src="images/site/bts-fdr/3.png" alt="BTS REVISIONS 3" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/bts-fdr/4.png"><img src="images/site/bts-fdr/4.png" alt="BTS REVISIONS 4" loading="lazy" /></div>
+      </div>
+    </div>
+
+    <!-- ── Section 2 : HOPEPOWER ── -->
+    <div class="site-section">
+      <div class="site-header">
+        <span class="project-tag">UI Design · Maquette</span>
+        <h3 class="site-title">HopePower</h3>
+        <p class="site-desc">Conception d'une interface pour une application axée sur l'énergie durable. Focus sur les contrastes, la lisibilité et l'aspect premium de l'interface.</p>
+        <a href="https://tharsananarul.github.io/hopepower/" target="_blank" class="btn-primary">Voir la maquette →</a>
+      </div>
+      <div class="mosaic-grid">
+        <div class="mosaic-item" data-src="images/site/hope-power/1.png"><img src="images/site/hope-power/1.png" alt="HopePower 1" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/hope-power/2.png"><img src="images/site/hope-power/2.png" alt="HopePower 2" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/hope-power/3.png"><img src="images/site/hope-power/3.png" alt="HopePower 3" loading="lazy" /></div>
+        <div class="mosaic-item" data-src="images/site/hope-power/4.png"><img src="images/site/hope-power/4.png" alt="HopePower 4" loading="lazy" /></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo">T<span>.</span></a>
+      <p class="footer-text">© 2026 Tharsanan Arulananthaselvam — BTS Communication</p>
+      <div class="footer-links">
+        <a href="projets.html">Projets</a><a href="cv.html">CV</a>
+        <a href="competences.html">Compétences</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lbClose" aria-label="Fermer">✕</button>
+    <button class="lightbox-prev" id="lbPrev" aria-label="Précédent">&#8592;</button>
+    <button class="lightbox-next" id="lbNext" aria-label="Suivant">&#8594;</button>
+    <div class="lightbox-img-wrap">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="animations.js"></script>
+  <script>
+    /* ── Lazy-load fade-in ── */
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (img.complete) img.classList.add('img-loaded');
+      else img.addEventListener('load', () => img.classList.add('img-loaded'));
+    });
+
+    /* ── Mosaic lightbox ── */
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+    const lbClose  = document.getElementById('lbClose');
+    const lbPrev   = document.getElementById('lbPrev');
+    const lbNext   = document.getElementById('lbNext');
+    const lbCount  = document.getElementById('lbCounter');
+
+    let items = [], current = 0;
+
+    function openLightbox(list, idx) {
+      items = list; current = idx;
+      lbImg.src = items[current].dataset.src;
+      lbCount.textContent = (current + 1) + ' / ' + items.length;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+    function navigate(dir) {
+      current = (current + dir + items.length) % items.length;
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src = items[current].dataset.src;
+        lbCount.textContent = (current + 1) + ' / ' + items.length;
+        lbImg.style.opacity = '1';
+      }, 150);
+    }
+
+    document.querySelectorAll('.mosaic-grid').forEach(grid => {
+      const list = [...grid.querySelectorAll('.mosaic-item')];
+      list.forEach((item, idx) => {
+        item.addEventListener('click', () => openLightbox(list, idx));
+      });
+    });
+
+    lbClose?.addEventListener('click', closeLightbox);
+    lbPrev?.addEventListener('click', () => navigate(-1));
+    lbNext?.addEventListener('click', () => navigate(1));
+    lb?.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lb?.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+  </script>
+</body>
+</html>

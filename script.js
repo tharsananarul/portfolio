@@ -25,7 +25,8 @@
   function animateRing() {
     ringX += (mouseX - ringX) * 0.12;
     ringY += (mouseY - ringY) * 0.12;
-    cursor.querySelector('.cursor-ring').style.transform =
+    const ring = cursor.querySelector('.cursor-ring');
+    ring.style.transform =
       `translate(${ringX}px, ${ringY}px) translate(-50%, -50%) scale(${isHovering ? 1.7 : 1})`;
     requestAnimationFrame(animateRing);
   }

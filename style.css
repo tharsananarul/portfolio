@@ -1034,7 +1034,7 @@ body.page-exit {
   overflow: hidden;
 }
 .project-link::after {
-  content: 'ÔåÆ';
+  content: '\2192';
   position: absolute;
   right: -20px;
   transition: right 0.3s cubic-bezier(0.16,1,0.3,1);

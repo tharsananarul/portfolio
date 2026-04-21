@@ -222,7 +222,7 @@ ul { list-style: none; }
 /* ── CV PAGE ── */
 .cv-page { background: var(--bg); }
 .cv-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.cv-col {}
+
 .cv-section-title { margin-bottom: 40px; }
 .timeline { display: flex; flex-direction: column; gap: 0; }
 .timeline-item { display: grid; grid-template-columns: 20px 1fr; gap: 24px; padding-bottom: 48px; }

@@ -141,6 +141,9 @@ export default function Home() {
                 identités de marque, contenus digitaux et communication visuelle. 🚀
               </p>
             </Reveal>
+          </div>
+
+          <div className="hero-cta-wrap">
             <Reveal delay={0.4}>
               <div className="hero-cta">
                 <Link to="/projets" className="btn-primary">Voir mes projets</Link>

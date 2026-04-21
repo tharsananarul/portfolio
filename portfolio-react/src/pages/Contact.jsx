@@ -48,21 +48,6 @@ export default function Contact() {
 
       <section className="section contact-page">
         <div className="contact-inner">
-          <div className="contact-text reveal">
-            <p className="section-tag">Mes coordonnées</p>
-            <p className="apropos-desc" style={{ marginBottom: 36 }}>
-              Motivé et créatif, je souhaite mettre mes compétences au service de projets innovants.
-              N'hésite pas à me contacter !
-            </p>
-            <div className="contact-links">
-              <a href="mailto:tharsananarul@gmail.com" className="contact-link"><span className="link-icon">✉</span>tharsananarul@gmail.com</a>
-              <a href="tel:0749878775" className="contact-link"><span className="link-icon">📞</span>07 49 87 87 75</a>
-              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="contact-link"><span className="link-icon">in</span>LinkedIn</a>
-              <a href="https://www.instagram.com/thithu.arl/" target="_blank" rel="noreferrer" className="contact-link"><span className="link-icon">ig</span>@thithu.arl</a>
-            </div>
-            <div className="disponibilite"><span className="badge-dot"></span>Disponible pour alternance &amp; collaborations</div>
-          </div>
-
           <form className="contact-form reveal delay-1" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
@@ -91,6 +76,21 @@ export default function Contact() {
             </button>
             {sent && <p className="form-success show">✓ Message envoyé ! Je te réponds très vite.</p>}
           </form>
+
+          <div className="contact-text reveal">
+            <p className="section-tag">Mes coordonnées</p>
+            <p className="apropos-desc" style={{ marginBottom: 36 }}>
+              Motivé et créatif, je souhaite mettre mes compétences au service de projets innovants.
+              N'hésite pas à me contacter !
+            </p>
+            <div className="contact-links">
+              <a href="mailto:tharsananarul@gmail.com" className="contact-link"><span className="link-icon">✉</span>tharsananarul@gmail.com</a>
+              <a href="tel:0749878775" className="contact-link"><span className="link-icon">📞</span>07 49 87 87 75</a>
+              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="contact-link"><span className="link-icon">in</span>LinkedIn</a>
+              <a href="https://www.instagram.com/thithu.arl/" target="_blank" rel="noreferrer" className="contact-link"><span className="link-icon">ig</span>@thithu.arl</a>
+            </div>
+            <div className="disponibilite"><span className="badge-dot"></span>Disponible pour alternance &amp; collaborations</div>
+          </div>
         </div>
       </section>
     </PageWrapper>

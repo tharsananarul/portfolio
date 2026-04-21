@@ -69,62 +69,57 @@ export default function Competences() {
         </div>
 
         {/* SAVOIR-ÊTRE */}
-        <div className="comp-block reveal" style={{ marginTop: 100, paddingTop: 80, borderTop: '1px solid var(--border)' }}>
-          <p className="section-tag">Soft skills</p>
-          <h2 className="section-title">Savoir-être <span className="highlight">&amp; faire</span></h2>
+        <div className="comp-block" style={{ marginTop: 100, paddingTop: 80, borderTop: '1px solid var(--border)' }}>
+          <Reveal>
+            <p className="section-tag">Soft skills</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="section-title">Savoir-être <span className="highlight">&amp; faire</span></h2>
+          </Reveal>
           <div className="savoir-grid">
             {[
               { icon: '🔍', name: 'Veille & curiosité', desc: "Toujours à l'affût des dernières tendances créatives et digitales." },
               { icon: '🤝', name: 'Travail en équipe', desc: 'Expérience en projets collectifs, coordination et collaboration active.' },
               { icon: '📊', name: 'Analyse digitale', desc: "Suivi des performances, analyse d'engagement sur les réseaux sociaux." },
               { icon: '🛠️', name: 'Maîtrise des outils', desc: 'À l\'aise avec les logiciels de création, de communication et de gestion.' },
-            ].map((s) => (
-              <div className="savoir-card reveal" key={s.name}>
-                <div className="savoir-icon">{s.icon}</div>
-                <h3>{s.name}</h3>
-                <p>{s.desc}</p>
-              </div>
+            ].map((s, i) => (
+              <Reveal key={s.name} delay={0.2 + i * 0.05} y={20}>
+                <div className="savoir-card">
+                  <div className="savoir-icon">{s.icon}</div>
+                  <h3>{s.name}</h3>
+                  <p>{s.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* LANGUES */}
-        <div className="comp-block reveal" style={{ marginTop: 100, paddingTop: 80, borderTop: '1px solid var(--border)' }}>
-          <p className="section-tag">Communication internationale</p>
-          <h2 className="section-title">Langues <span className="highlight">parlées</span></h2>
+        <div className="comp-block" style={{ marginTop: 100, paddingTop: 80, borderTop: '1px solid var(--border)' }}>
+          <Reveal>
+            <p className="section-tag">Communication internationale</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="section-title">Langues <span className="highlight">parlées</span></h2>
+          </Reveal>
           <div className="langues-grid">
-            <div className="langue-card reveal">
-              <div className="langue-flag"><img src="https://flagcdn.com/w40/fr.png" alt="France" /></div>
-              <div className="langue-info">
-                <h3>Français</h3>
-                <span className="langue-niveau">Bilingue — C2</span>
-                <div className="skill-bar"><div className="skill-bar-fill" style={{ width: '100%' }}></div></div>
-              </div>
-            </div>
-            <div className="langue-card reveal delay-1">
-              <div className="langue-flag"><img src="https://flagcdn.com/w40/gb.png" alt="Royaume-Uni" /></div>
-              <div className="langue-info">
-                <h3>Anglais</h3>
-                <span className="langue-niveau">Intermédiaire — B2</span>
-                <div className="skill-bar"><div className="skill-bar-fill" style={{ width: '70%' }}></div></div>
-              </div>
-            </div>
-            <div className="langue-card reveal delay-2">
-              <div className="langue-flag"><img src="images/te-flag/tamil-eelam.png" alt="Tamoul" style={{ width: 42, height: 28, objectFit: 'cover', borderRadius: 4 }} /></div>
-              <div className="langue-info">
-                <h3>Tamoul</h3>
-                <span className="langue-niveau">Langue maternelle — C2</span>
-                <div className="skill-bar"><div className="skill-bar-fill" style={{ width: '100%' }}></div></div>
-              </div>
-            </div>
-            <div className="langue-card reveal">
-              <div className="langue-flag"><img src="https://flagcdn.com/w40/de.png" alt="Allemagne" /></div>
-              <div className="langue-info">
-                <h3>Allemand</h3>
-                <span className="langue-niveau">Débutant — A1</span>
-                <div className="skill-bar"><div className="skill-bar-fill" style={{ width: '15%' }}></div></div>
-              </div>
-            </div>
+            {[
+              { flag: 'https://flagcdn.com/w40/fr.png', name: 'Français', level: 'Bilingue — C2', pct: '100%' },
+              { flag: 'https://flagcdn.com/w40/gb.png', name: 'Anglais', level: 'Intermédiaire — B2', pct: '70%', delay: 0.1 },
+              { flag: 'images/te-flag/tamil-eelam.png', name: 'Tamoul', level: 'Langue maternelle — C2', pct: '100%', delay: 0.2 },
+              { flag: 'https://flagcdn.com/w40/de.png', name: 'Allemand', level: 'Débutant — A1', pct: '15%', delay: 0.3 }
+            ].map((l, i) => (
+              <Reveal key={l.name} delay={0.2 + (l.delay || 0)} y={20}>
+                <div className="langue-card">
+                  <div className="langue-flag"><img src={l.flag} alt={l.name} /></div>
+                  <div className="langue-info">
+                    <h3>{l.name}</h3>
+                    <span className="langue-niveau">{l.level}</span>
+                    <div className="skill-bar"><div className="skill-bar-fill" style={{ width: l.pct }}></div></div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

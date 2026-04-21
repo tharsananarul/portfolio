@@ -21,7 +21,7 @@ export default function ProjetBtsCom() {
       { src: 'images/bts-com/expo-com.png', alt: 'Expo communication', wide: true },
       { src: 'images/bts-com/expocompost.png', alt: 'Expo com post' },
       { src: 'images/bts-com/newsletter.png', alt: 'Newsletter' },
-      { src: 'images/bts-com/flyer-bmw.png', alt: 'Flyer BMW' },
+
     ]
   }]
 

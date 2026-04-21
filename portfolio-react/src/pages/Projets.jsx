@@ -40,7 +40,7 @@ export default function Projets() {
           <Reveal delay={0.2} y={50}>
             <Link to="/projets/ux" className="project-card large">
               <div className="project-img">
-                <img src="images/couvertures/projets-ux.png" alt="UI/UX Designs" onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'}} />
+                <img src="images/couvertures/ui-ux-designs.png" alt="UI/UX Designs" onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'}} />
                 <div className="img-placeholder" style={{ display:'none' }}><span>UI/UX WORKS</span></div>
               </div>
               <div className="project-info">

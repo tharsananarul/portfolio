@@ -197,7 +197,7 @@ export default function Home() {
 
         <div className="projects-grid">
           {[
-            { id: 'ux', title: 'Design UI/UX', tag: 'Web & Mobile', img: 'images/couvertures/projets-ux.png', class: 'large', desc: 'Conception de plateformes éducatives et interfaces solidaires.' },
+            { id: 'ux', title: 'Design UI/UX', tag: 'Web & Mobile', img: 'images/couvertures/ui-ux-designs.png', class: 'large', desc: 'Conception de plateformes éducatives et interfaces solidaires.' },
             { id: 'futsal', title: 'Futsal Drancy', tag: 'Branding & Social', img: 'images/couvertures/futsal-drancy.png', class: 'large', desc: 'Identité visuelle et gestion de la communication pour un club de sport.' },
             { id: 'alda', title: 'Identité Alda', tag: 'Branding', img: 'images/couvertures/alda.png', desc: 'Marque de bière artisanale — Logo & Packagings.' },
             { id: 'perso', title: 'Créas Perso', tag: 'Illustration', img: 'images/couvertures/projets-crea.png', desc: 'Explorations graphiques et posters cinéma.' }

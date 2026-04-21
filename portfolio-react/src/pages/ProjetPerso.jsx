@@ -30,7 +30,7 @@ export default function ProjetPerso() {
       <div style={{ background: '#080e1a', paddingBottom: 32 }}>
         <p className="section-label">Posters &amp; Illustrations</p>
         <div className="projet-img-full">
-          <img src="images/projets-crea/Captain Miller - Designed By Tharsh.png" alt="Captain Miller" />
+          <img src="images/projets-crea/captain-miller.png" alt="Captain Miller" />
         </div>
         <div className="projet-img-grid">
           <div className="projet-img-full"><img src="images/projets-crea/kok-poster.jpg" alt="KOK Poster" /></div>

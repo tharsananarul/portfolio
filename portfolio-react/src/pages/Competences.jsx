@@ -1,68 +1,69 @@
 import PageWrapper from '../components/PageWrapper'
-import useReveal from '../hooks/useReveal'
-import { useEffect } from 'react'
+import Reveal from '../components/Reveal'
+import { motion } from 'framer-motion'
 
 export default function Competences() {
-  useReveal()
 
-  useEffect(() => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
-            const w = bar.style.width
-            bar.style.width = '0'
-            setTimeout(() => {
-              bar.style.transition = `width 1.1s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`
-              bar.style.width = w
-            }, 150)
-          })
-          obs.unobserve(entry.target)
-        }
-      })
-    }, { threshold: 0.3 })
-    document.querySelectorAll('.logiciel-card, .langue-card').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+
 
   return (
     <PageWrapper>
       <section className="page-hero">
         <div className="hero-bg"><div className="blob blob-1"></div><div className="grid-overlay"></div></div>
         <div className="page-hero-content">
-          <p className="section-tag fade-in delay-1">Ce que je sais faire</p>
-          <h1 className="page-hero-title fade-in delay-2">Mes <span className="highlight">compétences</span></h1>
+          <Reveal delay={0.1}>
+            <p className="section-tag">Ce que je sais faire</p>
+          </Reveal>
+          <Reveal delay={0.2} y={50}>
+            <h1 className="page-hero-title">Mes <span className="highlight">compétences</span></h1>
+          </Reveal>
         </div>
       </section>
 
       <section className="section competences-page">
         {/* LOGICIELS */}
-        <div className="comp-block reveal">
-          <p className="section-tag">Outils &amp; Logiciels</p>
-          <h2 className="section-title">Logiciels <span className="highlight">maîtrisés</span></h2>
-          <p className="apropos-desc" style={{ maxWidth: 700, marginBottom: 48 }}>
-            Maîtrise des logiciels de création (Photoshop, Illustrator, InDesign, Canva) et compétences en montage vidéo
-            (Premiere Pro, After Effects), animation (Animate) ainsi que des connaissances en rédaction pour WordPress.
-            Compétences en développement web avec HTML et CSS.
-          </p>
+        <div className="comp-block">
+          <Reveal>
+            <p className="section-tag">Outils &amp; Logiciels</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="section-title">Logiciels <span className="highlight">maîtrisés</span></h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="apropos-desc" style={{ maxWidth: 700, marginBottom: 48 }}>
+              Maîtrise des logiciels de création (Photoshop, Illustrator, InDesign, Canva) et compétences en montage vidéo
+              (Premiere Pro, After Effects), animation (Animate) ainsi que des connaissances en rédaction pour WordPress.
+              Compétences en développement web avec HTML et CSS.
+            </p>
+          </Reveal>
           <div className="logiciels-grid">
             {[
-              { icon: 'Ps', cls: 'ps', name: 'Photoshop', desc: 'Retouche photo, montage, création visuelle', pct: 70 },
-              { icon: 'Ai', cls: 'ai', name: 'Illustrator', desc: 'Création vectorielle, logos, affiches', pct: 60 },
-              { icon: 'Id', cls: 'id', name: 'InDesign', desc: 'Mise en page, supports print', pct: 40 },
+              { icon: 'Ps', cls: 'ps', name: 'Photoshop', desc: 'Retouche photo, montage, création visuelle', pct: 85 },
+              { icon: 'Ai', cls: 'ai', name: 'Illustrator', desc: 'Création vectorielle, logos, affiches', pct: 80 },
+              { icon: 'Id', cls: 'id', name: 'InDesign', desc: 'Mise en page, supports print', pct: 60 },
               { icon: 'Ca', cls: 'canva', name: 'Canva', desc: 'Création rapide de visuels digitaux', pct: 100 },
-              { icon: 'Pr', cls: 'pr', name: 'Premiere Pro', desc: 'Montage vidéo, édition', pct: 70 },
-              { icon: 'Ae', cls: 'ae', name: 'After Effects', desc: 'Motion design, animations', pct: 60 },
-              { icon: 'An', cls: 'an', name: 'Animate', desc: 'Animation 2D', pct: 40 },
-              { icon: 'WP', cls: 'wp', name: 'WordPress', desc: 'Rédaction et gestion de contenu', pct: 50 },
+              { icon: 'Pr', cls: 'pr', name: 'Premiere Pro', desc: 'Montage vidéo, édition', pct: 75 },
+              { icon: 'Ae', cls: 'ae', name: 'After Effects', desc: 'Motion design, animations', pct: 65 },
+              { icon: 'An', cls: 'an', name: 'Animate', desc: 'Animation 2D', pct: 50 },
+              { icon: 'WP', cls: 'wp', name: 'WordPress', desc: 'Rédaction et gestion de contenu', pct: 55 },
               { icon: '</>', cls: 'html', name: 'HTML & CSS', desc: 'Développement web front-end', pct: 70 },
-            ].map((s) => (
-              <div className="logiciel-card reveal" key={s.name}>
-                <div className={`logiciel-icon ${s.cls}`}>{s.icon}</div>
-                <h3>{s.name}</h3>
-                <p>{s.desc}</p>
-                <div className="skill-bar"><div className="skill-bar-fill" style={{ width: `${s.pct}%` }}></div></div>
-              </div>
+            ].map((s, i) => (
+              <Reveal key={s.name} delay={i * 0.05} y={30}>
+                <div className="logiciel-card">
+                  <div className={`logiciel-icon ${s.cls}`}>{s.icon}</div>
+                  <h3>{s.name}</h3>
+                  <p>{s.desc}</p>
+                  <div className="skill-bar">
+                    <motion.div 
+                      className="skill-bar-fill" 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${s.pct}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.05 }}
+                    />
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

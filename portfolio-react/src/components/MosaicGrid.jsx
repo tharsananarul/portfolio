@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 export default function MosaicGrid({ sections, animate = true }) {
@@ -6,6 +6,14 @@ export default function MosaicGrid({ sections, animate = true }) {
   const [lbImages, setLbImages] = useState([])
   const [lbIndex, setLbIndex] = useState(0)
   const [lbOpacity, setLbOpacity] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const openLb = (images, idx) => {
     setLbImages(images)
@@ -38,7 +46,7 @@ export default function MosaicGrid({ sections, animate = true }) {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9, rotate: -2 },
+    hidden: { opacity: 0, y: isMobile ? 30 : 60, scale: isMobile ? 0.95 : 0.9, rotate: isMobile ? 0 : -2 },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -46,11 +54,11 @@ export default function MosaicGrid({ sections, animate = true }) {
       rotate: 0,
       transition: {
         type: "spring",
-        stiffness: 60,
+        stiffness: isMobile ? 80 : 60,
         damping: 15,
         mass: 1,
-        bounce: 0.3,
-        duration: 1
+        bounce: 0.2,
+        duration: 0.8
       }
     }
   }

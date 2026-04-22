@@ -1,321 +1,389 @@
-import { useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import PageWrapper from '../components/PageWrapper'
-import Reveal from '../components/Reveal'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import Magnetic from '../components/Magnetic'
 
-class TextScramble {
-  constructor(el) {
-    this.el = el
-    this.chars = '!<>-_\\/[]{}—=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    this.update = this.update.bind(this)
-  }
-  setText(newText) {
-    const length = newText.length
-    const promise = new Promise(r => this.resolve = r)
-    this.queue = Array.from({ length }, (_, i) => ({
-      to: newText[i],
-      start: Math.floor(Math.random() * 15),
-      end: Math.floor(Math.random() * 15) + 15,
+// --- Components ---
+
+const TextScramble = ({ text }) => {
+  const [displayText, setDisplayText] = useState('')
+  const chars = '!<>-_\\/[]{}—=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  
+  useEffect(() => {
+    let frame = 0
+    const queue = text.split('').map((char, i) => ({
+      to: char,
+      start: Math.floor(Math.random() * 20),
+      end: Math.floor(Math.random() * 20) + 20
     }))
-    cancelAnimationFrame(this.frameRequest)
-    this.frame = 0
-    this.update()
-    return promise
-  }
-  update() {
-    let out = '', done = 0
-    for (const q of this.queue) {
-      if (this.frame >= q.end) { done++; out += q.to }
-      else if (this.frame >= q.start) {
-        out += `<span class="scramble-char">${this.chars[Math.floor(Math.random() * this.chars.length)]}</span>`
-      } else out += q.to
+    
+    let timer
+    const update = () => {
+      let out = ''
+      let done = 0
+      for (let i = 0; i < queue.length; i++) {
+        let { to, start, end } = queue[i]
+        if (frame >= end) {
+          done++
+          out += to
+        } else if (frame >= start) {
+          out += chars[Math.floor(Math.random() * chars.length)]
+        } else {
+          out += to
+        }
+      }
+      setDisplayText(out)
+      if (done < queue.length) {
+        frame++
+        timer = requestAnimationFrame(update)
+      }
     }
-    this.el.innerHTML = out
-    if (done === this.queue.length) this.resolve()
-    else { this.frameRequest = requestAnimationFrame(this.update); this.frame++ }
-  }
+    update()
+    return () => cancelAnimationFrame(timer)
+  }, [text])
+
+  return <span>{displayText || text}</span>
 }
 
-export default function Home() {
-  const highlightRef = useRef(null)
-  const descRef = useRef(null)
-  const containerRef = useRef(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+const StatCard = ({ number, label, suffix = "+", delay = 0 }) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (highlightRef.current) {
-      const orig = highlightRef.current.textContent
-      setTimeout(() => new TextScramble(highlightRef.current).setText(orig), 900)
-    }
-    
-    // Magnetic buttons
-    document.querySelectorAll('.btn-primary, .btn-ghost, .project-link').forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect()
-        const x = e.clientX - rect.left - rect.width / 2
-        const y = e.clientY - rect.top - rect.height / 2
-        btn.style.transition = 'none'
-        btn.style.transform = `translate(${x * 0.28}px, ${y * 0.28}px)`
-      })
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-        btn.style.transform = ''
-      })
-    })
-
-    // Tilt effects
-    document.querySelectorAll('.project-card, .stat-card').forEach(card => {
-      let shine = null
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect()
-        const x = (e.clientX - rect.left) / rect.width - 0.5
-        const y = (e.clientY - rect.top) / rect.height - 0.5
-        card.style.transition = 'none'
-        card.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) translateY(-5px) scale(1.02)`
-        if (!shine) { shine = document.createElement('div'); shine.className = 'card-shine'; card.appendChild(shine) }
-        shine.style.background = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(188,217,245,0.1) 0%, transparent 65%)`
-      })
-      card.addEventListener('mouseleave', () => {
-        card.style.transition = 'transform 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-        card.style.transform = ''
-        if (shine) shine.style.background = 'none'
-      })
-    })
-
-    // Counter
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.stat-number').forEach(el => {
-            const innerVal = el.textContent.replace(/\D/g, '')
-            const target = parseInt(innerVal)
-            if (!target) return
-            let start = null
-            const step = (ts) => {
-              if (!start) start = ts
-              const progress = Math.min((ts - start) / 1200, 1)
-              const ease = 1 - Math.pow(1 - progress, 3)
-              if (el.childNodes[0]) el.childNodes[0].nodeValue = Math.floor(ease * target)
-              if (progress < 1) requestAnimationFrame(step)
-            }
-            requestAnimationFrame(step)
-          })
-          counterObs.unobserve(entry.target)
+    if (isInView) {
+      let start = 0
+      const end = parseInt(number)
+      const duration = 2000
+      const increment = end / (duration / 16)
+      
+      const timer = setInterval(() => {
+        start += increment
+        if (start >= end) {
+          setCount(end)
+          clearInterval(timer)
+        } else {
+          setCount(Math.floor(start))
         }
-      })
-    }, { threshold: 0.5 })
-    document.querySelectorAll('.apropos-home-stats').forEach(el => counterObs.observe(el))
-  }, [])
+      }, 16)
+      return () => clearInterval(timer)
+    }
+  }, [isInView, number])
 
   return (
-    <PageWrapper>
-      {/* HERO */}
-      <section className="hero" ref={containerRef}>
-        <motion.div className="hero-bg" style={{ y: heroY, opacity: heroOpacity }}>
-          <div className="blob blob-1"></div>
-          <div className="blob blob-2"></div>
-          <div className="grid-overlay"></div>
-        </motion.div>
-        
-        <div className="hero-content">
-          <div className="hero-text">
-            <Reveal delay={0.1}>
-              <p className="hero-tag">BTS Communication · Design Graphique</p>
-            </Reveal>
-            <Reveal delay={0.2} y={50}>
-              <h1 className="hero-title">
-                Bonjour,<br />je suis<br /><span className="highlight" ref={highlightRef}>Tharsanan</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <p className="hero-desc" ref={descRef}>
-                Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel.
-                Je transforme les idées en expériences visuelles mémorables —
-                identités de marque, contenus digitaux et communication visuelle. 🚀
-              </p>
-            </Reveal>
-          </div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -10, transition: { duration: 0.4 } }}
+      className="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-center text-center group"
+    >
+      <span className="text-4xl md:text-5xl font-extrabold text-accent-light mb-2 tracking-tighter">
+        {count}{suffix}
+      </span>
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-text-muted group-hover:text-white transition-colors">
+        {label}
+      </span>
+    </motion.div>
+  )
+}
 
-          <div className="hero-cta-wrap">
-            <Reveal delay={0.4}>
-              <div className="hero-cta">
-                <Link to="/projets" className="btn-primary">Voir mes projets</Link>
-                <Link to="/contact" className="btn-ghost">Me contacter</Link>
-              </div>
-            </Reveal>
-          </div>
+const featuredProjects = [
+  {
+    title: "Futsal Drancy",
+    category: "Web Dev & Communication",
+    desc: "Conception intégrale du site web et gestion de l'image de marque du club. Un projet alliant design moderne et performance.",
+    img: "images/couvertures/futsal-drancy.png",
+    path: "/projets/futsal"
+  },
+  {
+    title: "UI/UX Works",
+    category: "Design & Développement",
+    desc: "Plateforme de révisions BTS Com & Projet HopePower. Une exploration de l'ergonomie et de l'interactivité.",
+    img: "images/couvertures/ui-ux-designs.png",
+    path: "/projets/ux"
+  }
+]
 
-          <div className="hero-image">
-            <Reveal delay={0.3} y={60}>
-              <div className="image-frame">
-                <img src="images/ma-photo/photo-cv.png" alt="Tharsanan" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }} />
-                <div className="photo-placeholder" style={{ display: 'none' }}>
-                  <span>TA</span>
-                </div>
-                <div className="image-border"></div>
-              </div>
-            </Reveal>
-            <Reveal delay={0.5}>
-              <div className="hero-badge">
-                <div className="badge-dot"></div>
-                Disponible pour projets
-              </div>
-            </Reveal>
-          </div>
-        </div>
-        
-        <div className="scroll-hint">
-          <div className="scroll-line"></div>
-          Scroll
-        </div>
-      </section>
+export default function Home() {
+  const heroRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  })
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const baseUrl = import.meta.env.BASE_URL
 
-      {/* MARQUEE */}
-      <div className="marquee-wrapper">
-        <div className="marquee-track">
-          {['Communication Visuelle','Design Graphique','Motion Design','Photoshop','Illustrator','UI/UX Design','Photographie','Storytelling'].map((t, i) => (
-            <span key={i} className="marquee-item">{t}</span>
-          ))}
-          {['Communication Visuelle','Design Graphique','Motion Design','Photoshop','Illustrator','UI/UX Design','Photographie','Storytelling'].map((t, i) => (
-            <span key={i + '2'} className="marquee-item">{t}</span>
-          ))}
-        </div>
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e
+    const { innerWidth, innerHeight } = window
+    const x = (clientX / innerWidth - 0.5) * 20
+    const y = (clientY / innerHeight - 0.5) * 20
+    setMousePos({ x, y })
+  }
+
+  return (
+    <main className="relative overflow-hidden bg-primary" onMouseMove={handleMouseMove}>
+      {/* Background blobs with floating animation */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="grid-overlay" />
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <div className="blob blob-3" />
       </div>
 
-      {/* PROJETS SELECTION */}
-      <section className="section">
-        <Reveal>
-          <div className="section-tag">Travaux récents</div>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="section-title">Projets sélectionnés</h2>
-        </Reveal>
+      {/* HERO SECTION */}
+      <section ref={heroRef} className="min-h-screen flex items-center pt-32 pb-16 md:pt-0 md:pb-0 relative">
+        <div className="section-container grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center relative z-10">
+          <motion.div
+            style={{ opacity, scale }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              <p className="text-accent-light font-bold tracking-[0.3em] uppercase mb-6 md:mb-8 text-[10px] md:text-sm flex items-center gap-3">
+                <span className="w-8 h-px bg-accent-light/60" />
+                BTS Communication · Design Graphique
+              </p>
+            </motion.div>
 
-        <div className="projects-grid">
-          {[
-            { id: 'ux', title: 'Design UI/UX', tag: 'Web & Mobile', img: 'images/couvertures/ui-ux-designs.png', class: 'large', desc: 'Conception de plateformes éducatives et interfaces solidaires.' },
-            { id: 'futsal', title: 'Futsal Drancy', tag: 'Branding & Social', img: 'images/couvertures/futsal-drancy.png', class: 'large', desc: 'Identité visuelle et gestion de la communication pour un club de sport.' },
-            { id: 'alda', title: 'Identité Alda', tag: 'Branding', img: 'images/couvertures/alda.png', desc: 'Marque de bière artisanale — Logo & Packagings.' },
-            { id: 'perso', title: 'Créas Perso', tag: 'Illustration', img: 'images/couvertures/projets-crea.png', desc: 'Explorations graphiques et posters cinéma.' }
-          ].map((p, i) => (
-            <Reveal key={p.id} delay={i * 0.1} y={40}>
-              <Link to={`/projets/${p.id}`} className={`project-card ${p.class || ''}`}>
-                <div className="project-img">
-                  <img src={p.img} alt={p.title} loading="lazy" />
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-6 md:mb-8 tracking-tighter text-white">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Bonjour,<br />je suis<br />
+              </motion.div>
+              <motion.span 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="highlight block mt-2"
+              >
+                <TextScramble text="Tharsanan" />
+              </motion.span>
+            </h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+              className="text-sm md:text-xl text-text-muted mb-8 md:mb-10 max-w-lg leading-relaxed font-medium"
+            >
+              Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel. 
+              Je transforme les idées en expériences visuelles mémorables. 🚀
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 md:gap-5"
+            >
+              <Magnetic>
+                <Link to="/projets" className="btn-premium gap-3 group w-full sm:w-auto">
+                  Voir mes projets
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link to="/contact" className="btn-outline w-full sm:w-auto">
+                  Me contacter
+                </Link>
+              </Magnetic>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, rotate: 10, y: 100 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end"
+            style={{ 
+              x: mousePos.x * 0.5, 
+              y: mousePos.y * 0.5,
+              rotateX: mousePos.y * -0.1,
+              rotateY: mousePos.x * 0.1
+            }}
+          >
+            <div className="relative w-full max-w-[280px] sm:max-w-[360px] aspect-[3.4/4.1] group perspective-1000">
+              {/* Image Frame Border */}
+              <div className="absolute -inset-4 border border-accent-light/20 rounded-[2rem] -z-10 group-hover:border-accent-light/40 transition-colors duration-500" />
+              
+              <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative bg-card transform-gpu transition-transform duration-500 group-hover:scale-[1.02]">
+                <motion.img 
+                  src={`${baseUrl}images/ma-photo/photo-cv.png`} 
+                  alt="Tharsanan" 
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden absolute inset-0 items-center justify-center bg-card text-text-muted text-xs font-bold text-center p-4">
+                  Image non trouvée
                 </div>
-                <div className="project-info">
-                  <span className="project-tag">{p.tag}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                  <div className="project-link">Voir le projet →</div>
+              </div>
+
+              {/* Floating Badge */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-4 -right-4 sm:-right-6 glass-card px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-2xl flex items-center gap-2 sm:gap-3 z-20"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#00e676] shadow-[0_0_12px_#00e676] animate-pulse" />
+                <span className="text-[10px] sm:text-xs font-bold tracking-tight text-text-muted">Disponible pour alternance</span>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* QUICK ABOUT / STATS SECTION */}
+      <section className="bg-secondary relative py-20 md:py-32">
+        <div className="section-container grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="text-accent-light font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
+              <span className="w-6 h-px bg-accent-light/60" />
+              Qui suis-je ?
+            </p>
+            <h2 className="text-2xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tighter leading-tight">
+              Un parcours <br />
+              <span className="highlight italic">atypique & créatif</span>
+            </h2>
+            <div className="space-y-4 md:space-y-6 text-text-muted text-sm md:text-lg leading-relaxed max-w-xl">
+              <p>
+                Après avoir commencé un BUT Métiers du Multimédia et de l'Internet, 
+                je me suis réorienté vers la communication, un domaine qui me passionne.
+              </p>
+            </div>
+            <Link to="/cv" className="mt-8 md:mt-10 inline-flex items-center gap-2 font-bold text-accent-light hover:text-white transition-colors group">
+              Voir mon parcours complet 
+              <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <StatCard number="3" label="Ans d'expérience" delay={0.1} />
+            <StatCard number="2" label="Expériences pro" delay={0.2} />
+            <StatCard number="6" label="Logiciels maîtrisés" delay={0.3} />
+            <StatCard number="3" label="Langues" delay={0.4} />
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PROJECTS */}
+      <section className="section-container bg-primary">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-accent-light font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
+              <span className="w-6 h-px bg-accent-light/60" />
+              Portfolio
+            </p>
+            <h2 className="text-2xl md:text-6xl font-bold mb-4 md:mb-6 tracking-tighter">Projets <span className="highlight">Sélectionnés</span></h2>
+          </motion.div>
+          <Link to="/projets" className="btn-outline px-6 md:px-8 py-3 md:py-4 gap-2 text-sm group">
+            Voir tout le portfolio <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="grid gap-12 md:gap-24">
+          {featuredProjects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className={`flex flex-col ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-20 items-center group`}
+            >
+              <Link to={project.path} className="w-full lg:w-[55%] aspect-[16/9] rounded-2xl overflow-hidden glass-card relative block shadow-2xl">
+                <img 
+                  src={`${baseUrl}${project.img}`} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                  onError={(e) => { e.target.style.opacity = '0.2'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                  <span className="btn-premium scale-90 md:scale-100 backdrop-blur-md bg-accent/80">
+                    Découvrir le projet
+                  </span>
                 </div>
               </Link>
-            </Reveal>
+              <div className="w-full lg:w-[45%]">
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-accent-light font-bold text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 md:mb-4 block"
+                >
+                  {project.category}
+                </motion.span>
+                <h3 className="text-xl md:text-5xl font-bold mb-4 md:mb-6 tracking-tighter group-hover:text-accent-light transition-colors duration-500">
+                  {project.title}
+                </h3>
+                <p className="text-text-muted mb-6 md:mb-10 text-sm md:text-lg leading-relaxed max-w-lg">
+                  {project.desc}
+                </p>
+                <Link to={project.path} className="inline-flex items-center gap-3 font-bold text-accent-light hover:text-white transition-all group/link text-sm md:text-base">
+                  En savoir plus 
+                  <ArrowRight size={20} className="group-hover/link:translate-x-2 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        <div className="voir-tout">
-          <Reveal delay={0.2}>
-            <Link to="/projets" className="btn-ghost">Explorer tous les projets</Link>
-          </Reveal>
-        </div>
       </section>
 
-      {/* À PROPOS QUICK */}
-      <section className="section apropos-home">
-        <div className="apropos-home-inner">
-          <div className="apropos-home-stats">
-            <Reveal delay={0.1} y={30}>
-              <div className="stat-card">
-                <span className="stat-number">2<span className="stat-plus">+</span></span>
-                <span className="stat-label">Années d'études</span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2} y={30}>
-              <div className="stat-card">
-                <span className="stat-number">15<span className="stat-plus">+</span></span>
-                <span className="stat-label">Projets réalisés</span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.3} y={30}>
-              <div className="stat-card">
-                <span className="stat-number">6<span className="stat-plus">+</span></span>
-                <span className="stat-label">Outils Adobe</span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.4} y={30}>
-              <div className="stat-card">
-                <span className="stat-number">100<span className="stat-plus">%</span></span>
-                <span className="stat-label">Passionné</span>
-              </div>
-            </Reveal>
-          </div>
-          <div className="apropos-home-text">
-            <Reveal>
-              <div className="section-tag">Qui suis-je ?</div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="section-title">Un mélange de stratégie et de créativité.</h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="apropos-desc">
-                Mon parcours en BTS Communication m'a permis de développer une vision 360° du design. 
-                De la stratégie publicitaire à la réalisation technique sur la suite Adobe, j'accompagne mes projets 
-                avec rigueur et audace esthétique.
-              </p>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <Link to="/cv" className="btn-primary">Mon parcours détaillé</Link>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT CTA */}
-      <section className="section contact-home">
-        <div className="contact-home-inner">
-          <div className="contact-home-text">
-            <Reveal>
-              <div className="section-tag">Collaboration</div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="section-title">Prêt à donner vie à vos idées ?</h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="apropos-desc">
-                Je suis toujours ouvert à de nouvelles opportunités d'alternance, collaborations ou projets créatifs. 
-                N'hésitez pas à me contacter pour discuter de votre prochain défi !
-              </p>
-            </Reveal>
-            <div className="contact-home-links">
-              <Reveal delay={0.3}>
-                <a href="mailto:tharsanan.aru@gmail.com" className="contact-link">
-                  <div className="link-icon">✉</div>
-                  tharsanan.aru@gmail.com
-                </a>
-              </Reveal>
+      {/* CTA SECTION */}
+      <section className="bg-secondary py-32 md:py-48 relative">
+        <div className="section-container text-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-4xl mx-auto"
+          >
+            <p className="text-accent-light font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-8">Contact</p>
+            <h2 className="text-3xl md:text-8xl font-extrabold mb-8 md:mb-12 text-white tracking-tighter leading-[1.1] transition-all">
+              Un projet en tête ? <br />
+              <span className="highlight italic">Parlons-en.</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
+              <Link to="/contact" className="btn-premium px-12 py-6 w-full sm:w-auto text-lg shadow-accent/20">
+                Me contacter
+              </Link>
+              <a href="mailto:tharsananarul@gmail.com" className="text-text-muted font-bold hover:text-white transition-colors text-base md:text-xl flex items-center gap-2 group">
+                tharsananarul@gmail.com
+                <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
+              </a>
             </div>
-          </div>
-          <div className="contact-home-cta">
-            <Reveal delay={0.4} y={20}>
-              <div className="cta-box">
-                <Link to="/contact" className="btn-primary" style={{ padding: '24px 60px', fontSize: '1.1rem' }}>Me contacter maintenant</Link>
-                <div className="disponibilite">
-                  <div className="badge-dot"></div>
-                  Réponse sous 24h
-                </div>
-              </div>
-            </Reveal>
-          </div>
+          </motion.div>
         </div>
       </section>
-    </PageWrapper>
+    </main>
   )
 }

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import PageWrapper from '../components/PageWrapper'
-import MosaicGrid from '../components/MosaicGrid'
-import Reveal from '../components/Reveal'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, Palette, Layers, PenTool } from 'lucide-react'
+import MosaicGrid from '../components/MosaicGrid'
 
 export default function ProjetBtsCom() {
   const containerRef = useRef(null)
@@ -11,106 +10,118 @@ export default function ProjetBtsCom() {
     target: containerRef,
     offset: ["start start", "end start"]
   })
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  
-  const sections = [{
-    items: [
-      { src: 'images/bts-com/affichea0.jpg', alt: 'Affiche A0', tall: true },
-      { src: 'images/bts-com/affichea0mockup.jpg', alt: 'Affiche A0 mockup' },
-      { src: 'images/bts-com/affiche-inscription.jpg', alt: 'Affiche inscription' },
-      { src: 'images/bts-com/kakemono.jpg', alt: 'Kakémono', tall: true },
-      { src: 'images/bts-com/kakemono-mockup.jpg', alt: 'Kakémono mockup' },
-      { src: 'images/bts-com/rollup-mockup.jpg', alt: 'Roll-up mockup' },
-      { src: 'images/bts-com/mockuppull.jpg', alt: 'Mockup pull' },
-      { src: 'images/bts-com/instgram-mockup.jpg', alt: 'Instagram mockup' },
-      { src: 'images/bts-com/postscc01.jpg', alt: 'Post SCC 1' },
-      { src: 'images/bts-com/postscc02.jpg', alt: 'Post SCC 2' },
-      { src: 'images/bts-com/sdcipost.jpg', alt: 'Post SDCI' },
-      { src: 'images/bts-com/expo-com.jpg', alt: 'Expo communication', wide: true },
-      { src: 'images/bts-com/expocompost.jpg', alt: 'Expo com post' },
-      { src: 'images/bts-com/newsletter.jpg', alt: 'Newsletter' },
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"])
+  const baseUrl = import.meta.env.BASE_URL
 
-    ]
-  }]
+  const sections = [
+    {
+      tag: 'Print & Branding', title: 'Mockups & Com Visuelle',
+      items: [
+        { src: `${baseUrl}images/bts-com/1.png`, alt: 'Design 1' },
+        { src: `${baseUrl}images/bts-com/2.png`, alt: 'Design 2' },
+        { src: `${baseUrl}images/bts-com/3.png`, alt: 'Design 3' },
+        { src: `${baseUrl}images/bts-com/4.png`, alt: 'Design 4' },
+        { src: `${baseUrl}images/bts-com/5.png`, alt: 'Design 5' },
+        { src: `${baseUrl}images/bts-com/6.png`, alt: 'Design 6' },
+      ]
+    }
+  ]
 
   return (
-    <PageWrapper>
-      <div className="projet-hero-wrap" ref={containerRef}>
+    <main className="relative bg-primary">
+      {/* Background patterns */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="grid-overlay" />
+      </div>
+
+      {/* Hero Header */}
+      <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src="images/couvertures/bts-com.png" 
+          src={`${baseUrl}images/couvertures/bts-com.png`} 
           alt="BTS Communication" 
+          className="w-full h-full object-cover"
           style={{ y }}
         />
-        <div className="projet-hero-overlay"></div>
-        <Reveal y={50}>
-          <h1 className="projet-hero-title">BTS Communication</h1>
-        </Reveal>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end section-container pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Link to="/projets" className="inline-flex items-center gap-2 text-accent-light font-bold mb-6 hover:gap-4 transition-all">
+              <ArrowLeft size={20} /> Retour aux projets
+            </Link>
+            <h1 className="text-4xl md:text-8xl font-extrabold text-white tracking-tighter">
+              BTS <span className="highlight">Com.</span>
+            </h1>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="projet-intro">
-        <div className="projet-intro-left">
-          <Reveal delay={0.1}>
-            <h2>Intro</h2>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p>Voici quelques projets créatifs réalisés en BTS Communication, principalement des affiches et mockups conçus avec Illustrator et Photoshop. Ces réalisations illustrent mon sens du visuel et ma maîtrise des outils graphiques, développés tout au long de ma formation au Lycée Jacques Brel à La Courneuve.</p>
-          </Reveal>
-          
-          <Reveal delay={0.3} y={0}>
-            <div className="projet-rapports" style={{ padding: 0, marginTop: 32, marginBottom: 20 }}>
-              <span className="rapport-label">Documents</span>
-              <div className="rapport-card">
-                <div className="rapport-info">
-                  <span className="rapport-annee">BTS Communication</span>
-                  <h3>Fiches descriptives</h3>
-                  <p>Détail des projets et réalisations</p>
-                </div>
-                <a href="documents/fiches descriptives.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
-              </div>
-            </div>
-          </Reveal>
+      {/* Project Meta */}
+      <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Contexte</span>
+          <p className="font-bold">Lycée Jacques Brel</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Période</span>
+          <p className="font-bold">2024 — 2026</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Outils</span>
+          <p className="font-bold">Photoshop, Illustrator</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Type</span>
+          <p className="font-bold">Design Graphique</p>
+        </div>
+      </section>
 
-          <Reveal delay={0.4}>
-            <h2>Livrables</h2>
-          </Reveal>
-          <div className="projet-deliverables">
-            {['Affiches','Mockups','Flyers','Newsletter','Kakémono','Roll-up','Publications réseaux sociaux'].map((t, i) => (
-              <Reveal key={t} delay={0.5 + i * 0.05} width="auto">
-                <span className="deliverable-tag">{t}</span>
-              </Reveal>
-            ))}
+      {/* Content */}
+      <section className="section-container py-24">
+        <div className="grid lg:grid-cols-2 gap-20">
+          <div>
+            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Théorie et <span className="highlight">pratique créative</span>.</h2>
+            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+              <p>
+                Dans le cadre de mon BTS Communication, j'ai réalisé de nombreux supports visuels alliant réflexion stratégique et exécution graphique.
+              </p>
+              <p>
+                De la création d'affiches publicitaires à la conception de mockups pour diverses marques, ce parcours me permet de maîtriser l'ensemble de la chaîne graphique.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8">
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5">
+              <PenTool className="text-accent-light mb-4" size={32} />
+              <h3 className="text-xl font-bold mb-2">Conception Visuelle</h3>
+              <p className="text-text-muted text-sm">Maîtrise des outils de création vectorielle et de retouche d'image.</p>
+            </div>
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5">
+              <Layers className="text-accent-light mb-4" size={32} />
+              <h3 className="text-xl font-bold mb-2">Supports Print</h3>
+              <p className="text-text-muted text-sm">Réalisation de flyers, brochures et affiches conformes aux contraintes techniques.</p>
+            </div>
           </div>
         </div>
-        <div className="projet-intro-right">
-          {[
-            { label: 'Période', value: 'Janvier 2025 — En cours' },
-            { label: 'Formation', value: 'BTS Communication' },
-            { label: 'École', value: 'Lycée Jacques Brel, La Courneuve' },
-            { label: 'Outils', value: 'Illustrator, Photoshop, InDesign' }
-          ].map((item, i) => (
-            <Reveal key={item.label} delay={0.2 + i * 0.1}>
-              <div className="projet-meta-block">
-                <span>{item.label}</span>
-                <p>{item.value}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      </section>
+
+      {/* Gallery */}
       <MosaicGrid sections={sections} />
-      <div className="projet-next">
-        <p>Projet suivant</p>
-        <div className="projet-next-cards">
-          <Link to="/projets/alda" className="projet-next-card">
-            <img src="images/couvertures/alda.png" alt="Alda" />
-            <div className="projet-next-card-info">Alda →</div>
-          </Link>
-          <Link to="/projets/sans-bavures" className="projet-next-card">
-            <img src="images/couvertures/sansbavures.png" alt="Sans Bavures" />
-            <div className="projet-next-card-info">Sans Bavure →</div>
+
+      {/* Next Project */}
+      <section className="section-container py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Créations Perso</h2>
+          </div>
+          <Link to="/projets/perso" className="btn-premium gap-3 text-lg px-12 py-5">
+            Découvrir <ArrowRight size={20} />
           </Link>
         </div>
-      </div>
-    </PageWrapper>
+      </section>
+    </main>
   )
 }

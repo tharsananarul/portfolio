@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import PageWrapper from '../components/PageWrapper'
-import MosaicGrid from '../components/MosaicGrid'
-import Reveal from '../components/Reveal'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, Camera, Share2, Users, Palette, Globe, ExternalLink } from 'lucide-react'
+import MosaicGrid from '../components/MosaicGrid'
+import Magnetic from '../components/Magnetic'
 
 export default function ProjetFutsal() {
   const containerRef = useRef(null)
@@ -11,156 +11,177 @@ export default function ProjetFutsal() {
     target: containerRef,
     offset: ["start start", "end start"]
   })
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
+  const baseUrl = import.meta.env.BASE_URL
 
   const sections = [
     {
-      tag: 'Identité visuelle', title: 'Logos, Maillots & Gobelets',
+      tag: 'Identité visuelle', title: 'Branding & Équipements',
       items: [
-        { src: 'images/futsal-drancy/logofinal.png', alt: 'Logo final' },
-        { src: 'images/futsal-drancy/logodroite.png', alt: 'Logo droite' },
-        { src: 'images/futsal-drancy/planlogo.png', alt: 'Plan logo' },
-        { src: 'images/futsal-drancy/logomaillotblanc.png', alt: 'Logo maillot blanc' },
-        { src: 'images/futsal-drancy/logomaillotnoir.png', alt: 'Logo maillot noir' },
-        { src: 'images/futsal-drancy/maillotlogovert.png', alt: 'Maillot vert' },
-        { src: 'images/futsal-drancy/gobelet-01.png', alt: 'Gobelet 01' },
-        { src: 'images/futsal-drancy/gobelet-02.png', alt: 'Gobelet 02' },
-        { src: 'images/futsal-drancy/b2-club.png', alt: 'B2 Club' },
+        { src: `${baseUrl}images/futsal-drancy/logofinal.png`, alt: 'Logo final' },
+        { src: `${baseUrl}images/futsal-drancy/planlogo.png`, alt: 'Plan logo' },
+        { src: `${baseUrl}images/futsal-drancy/maillotlogovert.png`, alt: 'Maillot vert' },
+        { src: `${baseUrl}images/futsal-drancy/logomaillotblanc.png`, alt: 'Maillot blanc' },
+        { src: `${baseUrl}images/futsal-drancy/logomaillotnoir.png`, alt: 'Maillot noir' },
+        { src: `${baseUrl}images/futsal-drancy/gobelet-01.png`, alt: 'Gobelet design' },
+        { src: `${baseUrl}images/futsal-drancy/gobelet-02.png`, alt: 'Gobelet design 2' },
       ]
     },
     {
-      tag: 'Réseaux sociaux', title: 'Publications Instagram',
+      tag: 'Communication & Événements', title: 'Affiches & Campagnes',
       items: [
-        { src: 'images/futsal-drancy/1.png', alt: 'Post 1' },
-        { src: 'images/futsal-drancy/2.png', alt: 'Post 2' },
-        { src: 'images/futsal-drancy/3.png', alt: 'Post 3' },
-        { src: 'images/futsal-drancy/5.png', alt: 'Post 5' },
-        { src: 'images/futsal-drancy/7.png', alt: 'Post 7' },
-        { src: 'images/futsal-drancy/12.png', alt: 'Post 12' },
-        { src: 'images/futsal-drancy/13.png', alt: 'Post 13' },
-        { src: 'images/futsal-drancy/14.png', alt: 'Post 14' },
-        { src: 'images/futsal-drancy/16.png', alt: 'Post 16' },
-        { src: 'images/futsal-drancy/17.png', alt: 'Post 17' },
-        { src: 'images/futsal-drancy/18.png', alt: 'Post 18' },
-        { src: 'images/futsal-drancy/21.png', alt: 'Post 21' },
-        { src: 'images/futsal-drancy/22.png', alt: 'Post 22' },
-        { src: 'images/futsal-drancy/23.png', alt: 'Post 23' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-tournoi.png`, alt: 'Affiche Tournoi', tall: true },
+        { src: `${baseUrl}images/futsal-drancy/afficheldc.png`, alt: 'Affiche LDC' },
+        { src: `${baseUrl}images/futsal-drancy/affichelangevin.png`, alt: 'Affiche Langevin' },
+        { src: `${baseUrl}images/futsal-drancy/recutement-langevin.png`, alt: 'Recrutement Langevin' },
+        { src: `${baseUrl}images/futsal-drancy/recutement-langevin02.png`, alt: 'Recrutement Langevin 2' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-equipement.png`, alt: 'Affiche Équipement', tall: true },
+        { src: `${baseUrl}images/futsal-drancy/affiche-reunion.png`, alt: 'Affiche Réunion' },
+        { src: `${baseUrl}images/futsal-drancy/coursenor.png`, alt: 'Course Or' },
       ]
     },
     {
-      tag: 'Événements & Communication', title: 'Affiches',
+      tag: 'Vie du Club', title: 'Action Sociale & Festive',
       items: [
-        { src: 'images/futsal-drancy/affiche-equipement.png', alt: 'Affiche équipement', tall: true },
-        { src: 'images/futsal-drancy/affichereunion.png', alt: 'Affiche réunion', tall: true },
-        { src: 'images/futsal-drancy/affiche-reunion.png', alt: 'Affiche réunion 2', tall: true },
-        { src: 'images/futsal-drancy/affiche-telethon01.png', alt: 'Téléthon 1', tall: true },
-        { src: 'images/futsal-drancy/affiche-telethon02.png', alt: 'Téléthon 2', tall: true },
-        { src: 'images/futsal-drancy/affiche-tournoi.png', alt: 'Affiche tournoi', tall: true },
-        { src: 'images/futsal-drancy/afficheldc.png', alt: 'Affiche LDC', tall: true },
-        { src: 'images/futsal-drancy/affichelangevin.png', alt: 'Affiche Langevin', tall: true },
-        { src: 'images/futsal-drancy/recutement-langevin.png', alt: 'Recrutement 1', tall: true },
-        { src: 'images/futsal-drancy/recutement-langevin02.png', alt: 'Recrutement 2', tall: true },
-        { src: 'images/futsal-drancy/guiliascup.png', alt: "Giulia's Cup" },
-        { src: 'images/futsal-drancy/fete-de-la-ville.png', alt: 'Fête de la ville' },
-        { src: 'images/futsal-drancy/fetedenoel01.png', alt: 'Fête de Noël' },
-        { src: 'images/futsal-drancy/coursenor.png', alt: 'Course Nor', wide: true },
+        { src: `${baseUrl}images/futsal-drancy/fete-de-la-ville.png`, alt: 'Fête de la ville' },
+        { src: `${baseUrl}images/futsal-drancy/fetedenoel01.png`, alt: 'Fête de Noël' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-telethon01.png`, alt: 'Téléthon 1' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-telethon02.png`, alt: 'Téléthon 2' },
+        { src: `${baseUrl}images/futsal-drancy/guiliascup.png`, alt: 'Guilias Cup' },
+      ]
+    },
+    {
+      tag: 'Social Media', title: 'Réseaux Sociaux',
+      items: [
+        { src: `${baseUrl}images/futsal-drancy/1.png`, alt: 'Post 1' },
+        { src: `${baseUrl}images/futsal-drancy/2.png`, alt: 'Post 2' },
+        { src: `${baseUrl}images/futsal-drancy/3.png`, alt: 'Post 3' },
+        { src: `${baseUrl}images/futsal-drancy/5.png`, alt: 'Post 5' },
+        { src: `${baseUrl}images/futsal-drancy/7.png`, alt: 'Post 7' },
+        { src: `${baseUrl}images/futsal-drancy/12.png`, alt: 'Post 12' },
+        { src: `${baseUrl}images/futsal-drancy/13.png`, alt: 'Post 13' },
+        { src: `${baseUrl}images/futsal-drancy/14.png`, alt: 'Post 14' },
       ]
     }
   ]
 
   return (
-    <PageWrapper>
-      <div className="projet-hero-wrap" ref={containerRef}>
-        <motion.img 
-          src="images/couvertures/futsal-drancy.png" 
-          alt="Futsal Drancy" 
+    <main className="relative bg-primary">
+      {/* Background patterns */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="grid-overlay" />
+      </div>
+
+      {/* Optimized Hero Header */}
+      <div className="relative h-[40vh] md:h-[50vh] overflow-hidden" ref={containerRef}>
+        <motion.div 
           style={{ y }}
-        />
-        <div className="projet-hero-overlay"></div>
-        <Reveal y={50}>
-          <h1 className="projet-hero-title">Futsal Drancy</h1>
-        </Reveal>
+          className="absolute inset-0 bg-[#111d30]"
+        >
+          <img 
+            src={`${baseUrl}images/futsal-drancy/b2-club.png`} 
+            alt="Futsal Drancy" 
+            className="w-full h-full object-cover opacity-30"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end section-container pb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Magnetic>
+              <Link to="/projets" className="inline-flex items-center gap-2 text-accent-light font-bold mb-6 hover:gap-4 transition-all">
+                <ArrowLeft size={20} /> Retour aux projets
+              </Link>
+            </Magnetic>
+            <h1 className="text-3xl md:text-8xl font-extrabold text-white tracking-tighter leading-none">
+              Futsal <span className="highlight italic">Drancy.</span>
+            </h1>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="projet-intro">
-        <div className="projet-intro-left">
-          <Reveal delay={0.1}>
-            <h2>Intro</h2>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p>Dans le cadre de mon service civique en tant que chargé de communication, puis de mon alternance pour le Futsal Drancy, j'ai réalisé divers contenus visuels : affiches, publications et stories destinées aux réseaux sociaux du club. Ces créations visaient à valoriser les événements, les équipes et la vie du club au quotidien.</p>
-          </Reveal>
-          <br />
-          <Reveal delay={0.3}>
-            <h2>Livrables</h2>
-          </Reveal>
-          <div className="projet-deliverables">
-            {['Affiches','Publications Instagram','Stories','Flyers','Réseaux sociaux','Retouche photo','Logo'].map((t, i) => (
-              <Reveal key={t} delay={0.4 + i * 0.05} width="auto">
-                <span className="deliverable-tag">{t}</span>
-              </Reveal>
-            ))}
-          </div>
+      {/* Project Meta */}
+      <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-white/5">
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Rôle</span>
+          <p className="font-bold">Chargé de Communication</p>
         </div>
-        <div className="projet-intro-right">
-          {[
-            { label: 'Bénévole', value: 'Présent' },
-            { label: 'Service civique', value: 'Septembre 2024 — Mai 2025' },
-            { label: 'Stage', value: 'Mai–Juin 2025 & Nov–Déc 2025' },
-            { label: 'Lieu', value: 'Drancy' },
-            { label: 'Outils', value: 'Photoshop, Lightroom, Canva' }
-          ].map((item, i) => (
-            <Reveal key={item.label} delay={0.2 + i * 0.1}>
-              <div className="projet-meta-block">
-                <span>{item.label}</span>
-                <p>{item.value}</p>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Période</span>
+          <p className="font-bold">2024 — Présent</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Outils</span>
+          <p className="font-bold">Adobe Suite, React</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Contexte</span>
+          <p className="font-bold text-xs uppercase tracking-tight">Service Civique & CDD</p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section-container py-16 md:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
+            <div className="space-y-6 text-text-muted text-base md:text-lg leading-relaxed">
+              <p>
+                J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel.
+              </p>
+              <div className="pt-6">
+                <Magnetic>
+                  <a href="https://tharsananarul.github.io/futsal-drancy/#/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
+                    Découvrir le site web <ExternalLink size={20} />
+                  </a>
+                </Magnetic>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="glass-card p-6 md:p-8 rounded-3xl">
+              <Globe className="text-accent-light mb-4" size={28} />
+              <h3 className="text-sm md:text-lg font-bold mb-2">Web Design</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">Premier site officiel du club.</p>
+            </div>
+            <div className="glass-card p-6 md:p-8 rounded-3xl">
+              <Camera className="text-accent-light mb-4" size={28} />
+              <h3 className="text-sm md:text-lg font-bold mb-2">Contenu</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">Photos & Vidéos terrain.</p>
+            </div>
+            <div className="glass-card p-6 md:p-8 rounded-3xl">
+              <Users className="text-accent-light mb-4" size={28} />
+              <h3 className="text-sm md:text-lg font-bold mb-2">Événementiel</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">Téléthon & Fête de la ville.</p>
+            </div>
+            <div className="glass-card p-6 md:p-8 rounded-3xl">
+              <Palette className="text-accent-light mb-4" size={28} />
+              <h3 className="text-sm md:text-lg font-bold mb-2">Branding</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">Équipements & Logo.</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="projet-rapports">
-        <Reveal>
-          <span className="rapport-label">Rapports de stage</span>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="rapport-card">
-            <div className="rapport-info">
-              <span className="rapport-annee">Stage 1ère année · Mai — Juin 2025</span>
-              <h3>Rapport de stage — 1ère année BTS</h3>
-              <p>Chargé de communication — Futsal Drancy, Drancy</p>
-            </div>
-            <a href="documents/retex-2025.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
-          </div>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="rapport-card">
-            <div className="rapport-info">
-              <span className="rapport-annee">Stage 2ème année · Nov — Déc 2025</span>
-              <h3>Rapport de stage — 2ème année BTS</h3>
-              <p>Chargé de communication — Futsal Drancy, Drancy</p>
-            </div>
-            <a href="documents/retex-2026.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
-          </div>
-        </Reveal>
-      </div>
-
+      {/* Gallery */}
       <MosaicGrid sections={sections} />
 
-      <div className="projet-next">
-        <p>Projet suivant</p>
-        <div className="projet-next-cards">
-          <Link to="/projets/bts-com" className="projet-next-card">
-            <img src="images/couvertures/bts-com.png" alt="BTS Communication" />
-            <div className="projet-next-card-info">BTS Communication →</div>
-          </Link>
-          <Link to="/projets" className="projet-next-card">
-            <img src="images/couvertures/alda.png" alt="Tous les projets" />
-            <div className="projet-next-card-info">Tous les projets →</div>
-          </Link>
+      {/* Next Project */}
+      <section className="section-container py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Alda Bière</h2>
+          </div>
+          <Magnetic>
+            <Link to="/projets/alda" className="btn-premium gap-3 text-lg px-12 py-5">
+              Découvrir <ArrowRight size={20} />
+            </Link>
+          </Magnetic>
         </div>
-      </div>
-    </PageWrapper>
+      </section>
+    </main>
   )
 }

@@ -1,16 +1,23 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
+
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageLoader from './components/PageLoader'
 import ScrollProgress from './components/ScrollProgress'
 import CustomCursor from './components/CustomCursor'
+import SmoothScroll from './components/SmoothScroll'
+import Background3D from './components/Background3D'
+import PageTransition from './components/PageTransition'
+
 import Home from './pages/Home'
 import Projets from './pages/Projets'
 import CV from './pages/CV'
 import Competences from './pages/Competences'
 import Contact from './pages/Contact'
+
+// Project Case Studies
 import ProjetFutsal from './pages/ProjetFutsal'
 import ProjetAlda from './pages/ProjetAlda'
 import ProjetSansBavures from './pages/ProjetSansBavures'
@@ -18,36 +25,42 @@ import ProjetBtsCom from './pages/ProjetBtsCom'
 import ProjetPerso from './pages/ProjetPerso'
 import ProjetsUX from './pages/ProjetsUX'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
-  return null
-}
-
 export default function App() {
+  const location = useLocation()
+
   return (
-    <>
-      <PageLoader />
-      <ScrollProgress />
-      <CustomCursor />
-      <Navbar />
-      <ScrollToTop />
-      <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projets" element={<Projets />} />
-          <Route path="/cv" element={<CV />} />
-          <Route path="/competences" element={<Competences />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/projets/futsal" element={<ProjetFutsal />} />
-          <Route path="/projets/alda" element={<ProjetAlda />} />
-          <Route path="/projets/sans-bavures" element={<ProjetSansBavures />} />
-          <Route path="/projets/bts-com" element={<ProjetBtsCom />} />
-          <Route path="/projets/perso" element={<ProjetPerso />} />
-          <Route path="/projets/ux" element={<ProjetsUX />} />
-        </Routes>
-      </AnimatePresence>
-      <Footer />
-    </>
+    <div className="bg-primary text-slate-50 min-h-screen selection:bg-accent/30 selection:text-accent overflow-hidden">
+      <Background3D />
+      
+      {/* Noise Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+      <SmoothScroll>
+        <PageLoader />
+        <ScrollProgress />
+        <CustomCursor />
+        <Navbar />
+        
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/projets" element={<PageTransition><Projets /></PageTransition>} />
+            <Route path="/cv" element={<PageTransition><CV /></PageTransition>} />
+            <Route path="/competences" element={<PageTransition><Competences /></PageTransition>} />
+            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            
+            {/* Detailed Project Routes */}
+            <Route path="/projets/futsal" element={<PageTransition><ProjetFutsal /></PageTransition>} />
+            <Route path="/projets/alda" element={<PageTransition><ProjetAlda /></PageTransition>} />
+            <Route path="/projets/sans-bavures" element={<PageTransition><ProjetSansBavures /></PageTransition>} />
+            <Route path="/projets/bts-com" element={<PageTransition><ProjetBtsCom /></PageTransition>} />
+            <Route path="/projets/perso" element={<PageTransition><ProjetPerso /></PageTransition>} />
+            <Route path="/projets/ux" element={<PageTransition><ProjetsUX /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
+
+        <Footer />
+      </SmoothScroll>
+    </div>
   )
 }

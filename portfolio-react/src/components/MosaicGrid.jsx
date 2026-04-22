@@ -1,19 +1,11 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X, ChevronLeft, ChevronRight, Search, Maximize2 } from 'lucide-react'
 
 export default function MosaicGrid({ sections, animate = true }) {
   const [lbOpen, setLbOpen] = useState(false)
   const [lbImages, setLbImages] = useState([])
   const [lbIndex, setLbIndex] = useState(0)
-  const [lbOpacity, setLbOpacity] = useState(1)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   const openLb = (images, idx) => {
     setLbImages(images)
@@ -21,101 +13,150 @@ export default function MosaicGrid({ sections, animate = true }) {
     setLbOpen(true)
     document.body.style.overflow = 'hidden'
   }
+
   const closeLb = () => {
     setLbOpen(false)
     document.body.style.overflow = ''
   }
+
   const navigate = (dir) => {
-    setLbOpacity(0)
-    setTimeout(() => {
-      setLbIndex((i) => (i + dir + lbImages.length) % lbImages.length)
-      setLbOpacity(1)
-    }, 150)
+    setLbIndex((i) => (i + dir + lbImages.length) % lbImages.length)
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: isMobile ? 30 : 60, scale: isMobile ? 0.95 : 0.9, rotate: isMobile ? 0 : -2 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      rotate: 0,
-      transition: {
-        type: "spring",
-        stiffness: isMobile ? 80 : 60,
-        damping: 15,
-        mass: 1,
-        bounce: 0.2,
-        duration: 0.8
-      }
-    }
-  }
+  useEffect(() => {
+    const handleEsc = (e) => { if (e.key === 'Escape') closeLb() }
+    window.addEventListener('keydown', handleEsc)
+    return () => window.removeEventListener('keydown', handleEsc)
+  }, [])
 
   return (
     <>
       {sections.map((section, si) => (
-        <div className="mosaic-section" key={si}>
+        <div className="py-12" key={si}>
           {(section.tag || section.title) && (
-            <div className="mosaic-header">
-              {section.tag && <p className="section-tag">{section.tag}</p>}
-              {section.title && <h3 className="mosaic-title">{section.title}</h3>}
+            <div className="section-container pb-8">
+              {section.tag && (
+                <motion.span 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="text-xs font-bold uppercase tracking-widest text-accent-light mb-2 block"
+                >
+                  {section.tag}
+                </motion.span>
+              )}
+              {section.title && (
+                <motion.h3 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-2xl md:text-3xl font-bold tracking-tight"
+                >
+                  {section.title}
+                </motion.h3>
+              )}
             </div>
           )}
-          <motion.div 
-            className="mosaic-grid"
-            variants={animate ? containerVariants : {}}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            {section.items.map((item, idx) => (
-              <motion.div
-                key={idx}
-                className={`mosaic-item${item.tall ? ' tall' : ''}${item.wide ? ' wide' : ''}`}
-                variants={animate ? itemVariants : {}}
-                onClick={() => openLb(section.items, idx)}
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt || ''}
-                  loading="lazy"
-                  onLoad={(e) => e.target.classList.add('img-loaded')}
-                />
-                <div className="mosaic-overlay">🔍</div>
-              </motion.div>
-            ))}
-          </motion.div>
+          
+          <div className="section-container">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {section.items.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: idx * 0.05,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className={`relative group cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden glass-card aspect-square ${
+                    item.tall ? 'md:row-span-2 md:aspect-auto' : ''
+                  } ${item.wide ? 'md:col-span-2 md:aspect-auto' : ''}`}
+                  onClick={() => openLb(section.items, idx)}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt || ''}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transform scale-50 group-hover:scale-100 transition-transform duration-500">
+                      <Maximize2 className="text-white" size={24} />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       ))}
 
-      {lbOpen && (
-        <div className="lightbox active" onClick={(e) => { if (e.target.classList.contains('lightbox')) closeLb() }}>
-          <button className="lb-btn lb-close" onClick={closeLb}>✕</button>
-          <button className="lb-btn lb-prev" onClick={() => navigate(-1)}>←</button>
-          <button className="lb-btn lb-next" onClick={() => navigate(1)}>→</button>
-          <div className="lb-img-wrap">
-            <img
-              className="lb-img"
-              src={lbImages[lbIndex]?.src}
-              alt={lbImages[lbIndex]?.alt || ''}
-              style={{ opacity: lbOpacity, transition: 'opacity 0.15s ease' }}
-            />
-          </div>
-          <div className="lb-counter">{lbIndex + 1} / {lbImages.length}</div>
-        </div>
-      )}
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lbOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[200] bg-primary/95 backdrop-blur-2xl flex flex-col items-center justify-center p-4 md:p-12"
+            onClick={(e) => { if (e.target === e.currentTarget) closeLb() }}
+          >
+            <motion.button 
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute top-6 right-6 md:top-12 md:right-12 p-4 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white border border-white/10 z-[210]"
+              onClick={closeLb}
+            >
+              <X size={24} />
+            </motion.button>
+            
+            <div className="relative w-full h-full flex items-center justify-center">
+              <button 
+                className="absolute left-0 md:left-8 p-4 md:p-6 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5 hidden md:block"
+                onClick={() => navigate(-1)}
+              >
+                <ChevronLeft size={32} />
+              </button>
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={lbIndex}
+                  initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, x: -20 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img
+                    src={lbImages[lbIndex]?.src}
+                    alt={lbImages[lbIndex]?.alt || ''}
+                    className="max-w-full max-h-full object-contain rounded-xl md:rounded-3xl shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              <button 
+                className="absolute right-0 md:right-8 p-4 md:p-6 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5 hidden md:block"
+                onClick={() => navigate(1)}
+              >
+                <ChevronRight size={32} />
+              </button>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute bottom-8 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm font-bold backdrop-blur-md"
+            >
+              {lbIndex + 1} <span className="mx-2 text-white/20">/</span> {lbImages.length}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

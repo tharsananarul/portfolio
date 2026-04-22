@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import PageWrapper from '../components/PageWrapper'
-import MosaicGrid from '../components/MosaicGrid'
-import Reveal from '../components/Reveal'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, ExternalLink, Code2, Cpu, Globe, Layout } from 'lucide-react'
+import MosaicGrid from '../components/MosaicGrid'
 
 export default function ProjetsUX() {
   const containerRef = useRef(null)
@@ -12,99 +11,166 @@ export default function ProjetsUX() {
     offset: ["start start", "end start"]
   })
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const baseUrl = import.meta.env.BASE_URL
   
+  const futsalScreens = [
+    { src: `${baseUrl}images/site/futsal-drancy/1.png`, alt: 'Futsal Website 1' },
+    { src: `${baseUrl}images/site/futsal-drancy/2.png`, alt: 'Futsal Website 2' },
+    { src: `${baseUrl}images/site/futsal-drancy/3.png`, alt: 'Futsal Website 3' },
+    { src: `${baseUrl}images/site/futsal-drancy/4.png`, alt: 'Futsal Website 4' },
+    { src: `${baseUrl}images/site/futsal-drancy/5.png`, alt: 'Futsal Website 5' },
+    { src: `${baseUrl}images/site/futsal-drancy/6.png`, alt: 'Futsal Website 6' },
+  ]
   const btsRevision = [
-    { src: 'images/site/bts-fdr/1.png', alt: 'BTS REVISIONS 1' },
-    { src: 'images/site/bts-fdr/2.png', alt: 'BTS REVISIONS 2' },
-    { src: 'images/site/bts-fdr/3.png', alt: 'BTS REVISIONS 3' },
-    { src: 'images/site/bts-fdr/4.png', alt: 'BTS REVISIONS 4' },
+    { src: `${baseUrl}images/site/bts-fdr/1.png`, alt: 'BTS REVISIONS 1' },
+    { src: `${baseUrl}images/site/bts-fdr/2.png`, alt: 'BTS REVISIONS 2' },
+    { src: `${baseUrl}images/site/bts-fdr/3.png`, alt: 'BTS REVISIONS 3' },
+    { src: `${baseUrl}images/site/bts-fdr/4.png`, alt: 'BTS REVISIONS 4' },
   ]
   const hopePower = [
-    { src: 'images/site/hope-power/1.png', alt: 'HopePower 1' },
-    { src: 'images/site/hope-power/2.png', alt: 'HopePower 2' },
-    { src: 'images/site/hope-power/3.png', alt: 'HopePower 3' },
-    { src: 'images/site/hope-power/4.png', alt: 'HopePower 4' },
+    { src: `${baseUrl}images/site/hope-power/1.png`, alt: 'HopePower 1' },
+    { src: `${baseUrl}images/site/hope-power/2.png`, alt: 'HopePower 2' },
+    { src: `${baseUrl}images/site/hope-power/3.png`, alt: 'HopePower 3' },
+    { src: `${baseUrl}images/site/hope-power/4.png`, alt: 'HopePower 4' },
   ]
 
   return (
-    <PageWrapper>
-      <div className="projet-hero-wrap" ref={containerRef}>
+    <main className="relative bg-primary">
+      {/* Background patterns */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="grid-overlay" />
+      </div>
+
+      {/* Hero Header */}
+      <div className="relative h-[50vh] md:h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src="images/couvertures/projets-ux.png" 
+          src={`${baseUrl}images/couvertures/ui-ux-designs.png`} 
           alt="UI/UX Design" 
+          className="w-full h-full object-cover"
           style={{ y }}
+          onError={(e) => { e.target.src = "https://via.placeholder.com/1920x1080/111d30/7a90b8?text=UI/UX+Design"; }}
         />
-        <div className="projet-hero-overlay"></div>
-        <Reveal y={50}>
-          <h1 className="projet-hero-title">Projets UI/UX</h1>
-        </Reveal>
-      </div>
-      <div className="projet-intro">
-        <div className="projet-intro-left">
-          <h2>Intro</h2>
-          <p>Cette section regroupe mes travaux de conception d'interfaces et de développement web. Passionné par l'expérience utilisateur, j'ai réalisé ces projets en mettant l'accent sur l'ergonomie, l'accessibilité et une identité visuelle forte.</p>
-        </div>
-        <div className="projet-intro-right">
-          <div className="projet-meta-block"><span>Domaine</span><p>UI Design, UX Research, Web Dev</p></div>
-          <div className="projet-meta-block"><span>Outils</span><p>Figma, HTML, CSS, Javascript</p></div>
-          <div className="projet-meta-block"><span>Projets</span><p>2 plateformes interactives</p></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end section-container pb-12 md:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Link to="/projets" className="inline-flex items-center gap-2 text-accent-light font-bold mb-6 hover:gap-4 transition-all">
+              <ArrowLeft size={20} /> Retour aux projets
+            </Link>
+            <h1 className="text-4xl md:text-8xl font-extrabold text-white tracking-tighter">
+              UI/UX <span className="highlight">Works.</span>
+            </h1>
+          </motion.div>
         </div>
       </div>
 
-      <div className="site-section">
-        <div className="site-header">
-          <Reveal delay={0.1}>
-            <div className="section-tag">Projet Principal</div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <h2 className="site-title">BTS Révision — Plateforme Éducative</h2>
-          </Reveal>
-          <Reveal delay={0.3}>
-            <p className="site-desc">
-              Conception d'une plateforme de révision complète pour les étudiants en BTS Communication. 
-              Focus sur l'ergonomie (UX) pour faciliter l'apprentissage nomade et l'accessibilité des ressources.
+      {/* Project Meta */}
+      <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-white/5">
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Expertise</span>
+          <p className="font-bold">HTML, CSS, React</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Période</span>
+          <p className="font-bold">Temps Libre</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Outils</span>
+          <p className="font-bold">VS Code, Figma</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Type</span>
+          <p className="font-bold">Projets Personnels</p>
+        </div>
+      </section>
+
+      {/* Introduction */}
+      <section className="section-container py-16 md:py-24">
+        <div className="max-w-4xl">
+          <h2 className="text-2xl md:text-5xl font-bold mb-8 tracking-tight">Expérimentations et <span className="highlight">développement web</span>.</h2>
+          <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-12">
+            Réalisés durant mon temps libre, ces projets m'ont permis de perfectionner mes compétences techniques en développement front-end et en design d'interfaces interactives.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
+              <Code2 className="text-accent-light mb-4" size={32} />
+              <h3 className="text-xl font-bold mb-3">HTML & CSS</h3>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Maîtrise des structures sémantiques et des mises en page complexes (Flexbox, Grid) pour des interfaces fluides et responsives.
+              </p>
+            </div>
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
+              <Cpu className="text-accent-light mb-4" size={32} />
+              <h3 className="text-xl font-bold mb-3">React & JS</h3>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Développement d'applications web modernes utilisant React pour une gestion dynamique de l'état et des interactions fluides.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study: Futsal Website */}
+      <section className="section-container py-20 md:py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Développement & Design</span>
+            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">Site Web Futsal Drancy</h2>
+            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
+              Conception intégrale du premier site officiel du club. Utilisation de technologies modernes pour offrir une expérience fluide, de la présentation des équipes aux inscriptions en ligne.
             </p>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <a href="https://tharsananarul.github.io/bts-revision/" target="_blank" rel="noreferrer" className="btn-primary">
-              Visiter le site live →
+            <a href="https://tharsananarul.github.io/futsal-drancy/#/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
+              Voir le site live <ExternalLink size={20} />
             </a>
-          </Reveal>
+          </div>
         </div>
-        <MosaicGrid sections={[{ items: btsRevision }]} animate={true} />
-      </div>
+        <MosaicGrid sections={[{ items: futsalScreens }]} />
+      </section>
 
-      <div className="site-section" style={{ borderTop: '1px solid var(--border)', paddingTop: 80 }}>
-        <div className="site-header">
-          <Reveal delay={0.1}>
-            <div className="section-tag">Case Study</div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <h2 className="site-title">HopePower — Mockup Applicatif</h2>
-          </Reveal>
-          <Reveal delay={0.3}>
-            <p className="site-desc">
-              Prototype haute-fidélité pour une application mobile de mise en relation solidaire. 
-              Travail approfondi sur l'interface utilisateur (UI) et le parcours utilisateur.
+      {/* Case Studies */}
+      <section className="section-container py-20 md:py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Plateforme Web</span>
+            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">BTS Révision</h2>
+            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
+              Conception d'une plateforme de révision complète pour les étudiants. Focus sur l'organisation des ressources et la facilité de navigation sur mobile.
             </p>
-          </Reveal>
+            <a href="https://tharsananarul.github.io/bts-revision/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
+              Voir le site live <ExternalLink size={20} />
+            </a>
+          </div>
         </div>
-        <MosaicGrid sections={[{ items: hopePower }]} animate={true} />
-      </div>
+        <MosaicGrid sections={[{ items: btsRevision }]} />
+      </section>
 
-      <div className="projet-next">
-        <p>Projet suivant</p>
-        <div className="projet-next-cards">
-          <Link to="/projets/futsal" className="projet-next-card">
-            <img src="images/couvertures/futsal-drancy.png" alt="Futsal Drancy" />
-            <div className="projet-next-card-info">Futsal Drancy →</div>
-          </Link>
-          <Link to="/projets" className="projet-next-card">
-            <img src="images/couvertures/alda.png" alt="Tous les projets" />
-            <div className="projet-next-card-info">Tous les projets →</div>
+      <section className="section-container py-20 md:py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mobile Mockup</span>
+            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">HopePower</h2>
+            <p className="text-base md:text-xl text-text-muted leading-relaxed">
+              Prototype haute-fidélité réalisé dans le cadre de mon BTS Communication pour un projet d'études. Conception d'une interface mobile pour un site solidaire fictif, avec un focus sur le parcours utilisateur (UX flow) et la cohérence visuelle.
+            </p>
+          </div>
+        </div>
+        <MosaicGrid sections={[{ items: hopePower }]} />
+      </section>
+
+      {/* Next Project */}
+      <section className="section-container py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Futsal Drancy</h2>
+          </div>
+          <Link to="/projets/futsal" className="btn-premium gap-3 text-lg px-12 py-5">
+            Découvrir <ArrowRight size={20} />
           </Link>
         </div>
-      </div>
-    </PageWrapper>
+      </section>
+    </main>
   )
 }

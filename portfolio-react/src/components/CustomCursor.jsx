@@ -1,41 +1,71 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { motion, useSpring } from 'framer-motion'
 
 export default function CustomCursor() {
+  const [isHovering, setIsHovering] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const cursorX = useSpring(0, { damping: 20, stiffness: 300 })
+  const cursorY = useSpring(0, { damping: 20, stiffness: 300 })
+
   useEffect(() => {
     if ('ontouchstart' in window) return
-    const cursor = document.createElement('div')
-    cursor.id = 'cursor'
-    cursor.innerHTML = '<div class="cursor-dot"></div><div class="cursor-ring"></div>'
-    document.body.appendChild(cursor)
+    setIsVisible(true)
 
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, isHovering = false
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
-      cursor.querySelector('.cursor-dot').style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`
-    })
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12
-      ringY += (mouseY - ringY) * 0.12
-      const ring = cursor.querySelector('.cursor-ring')
-      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%) scale(${isHovering ? 1.7 : 1})`
-      requestAnimationFrame(animateRing)
+    const moveCursor = (e) => {
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
     }
-    animateRing()
 
-    const interactives = 'a, button, .project-card, input, textarea'
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(interactives)) { isHovering = true; cursor.classList.add('hovering') }
-    })
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(interactives)) { isHovering = false; cursor.classList.remove('hovering') }
-    })
-    document.addEventListener('mousedown', () => cursor.classList.add('clicking'))
-    document.addEventListener('mouseup', () => cursor.classList.remove('clicking'))
+    const handleMouseOver = (e) => {
+      if (e.target.closest('a, button, input, textarea, .group')) {
+        setIsHovering(true)
+      }
+    }
 
-    return () => cursor.remove()
-  }, [])
-  return null
+    const handleMouseOut = (e) => {
+      if (e.target.closest('a, button, input, textarea, .group')) {
+        setIsHovering(false)
+      }
+    }
+
+    window.addEventListener('mousemove', moveCursor)
+    window.addEventListener('mouseover', handleMouseOver)
+    window.addEventListener('mouseout', handleMouseOut)
+
+    return () => {
+      window.removeEventListener('mousemove', moveCursor)
+      window.removeEventListener('mouseover', handleMouseOver)
+      window.removeEventListener('mouseout', handleMouseOut)
+    }
+  }, [cursorX, cursorY])
+
+  if (!isVisible) return null
+
+  return (
+    <>
+      <motion.div
+        className="fixed top-0 left-0 w-8 h-8 border border-accent rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        style={{
+          x: cursorX,
+          y: cursorY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+        animate={{
+          scale: isHovering ? 2 : 1,
+          backgroundColor: isHovering ? 'rgba(59, 130, 246, 0.2)' : 'transparent',
+        }}
+      />
+      <motion.div
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-accent rounded-full pointer-events-none z-[9999]"
+        style={{
+          x: cursorX,
+          y: cursorY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      />
+    </>
+  )
 }

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import PageWrapper from '../components/PageWrapper'
-import MosaicGrid from '../components/MosaicGrid'
-import Reveal from '../components/Reveal'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, Video, Palette, Mic2 } from 'lucide-react'
+import MosaicGrid from '../components/MosaicGrid'
 
 export default function ProjetSansBavures() {
   const containerRef = useRef(null)
@@ -11,80 +10,120 @@ export default function ProjetSansBavures() {
     target: containerRef,
     offset: ["start start", "end start"]
   })
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"])
+  const baseUrl = import.meta.env.BASE_URL
 
   const sections = [{
     items: [
-      { src: 'images/sans-bavures/logo.png', alt: 'Logo Sans Bavures' },
-      { src: 'images/sans-bavures/affiche.png', alt: 'Affiche Sans Bavures', tall: true },
-      { src: 'images/sans-bavures/brochure.png', alt: 'Brochure' },
-      { src: 'images/sans-bavures/post-insta.png', alt: 'Post Instagram' },
-      { src: 'images/sans-bavures/post.png', alt: 'Post 1' },
-      { src: 'images/sans-bavures/post2.png', alt: 'Post 2' },
-      { src: 'images/sans-bavures/post3.png', alt: 'Post 3' },
+      { src: `${baseUrl}images/sans-bavures/logo.png`, alt: 'Logo Sans Bavures' },
+      { src: `${baseUrl}images/sans-bavures/affiche.png`, alt: 'Affiche Sans Bavures', tall: true },
+      { src: `${baseUrl}images/sans-bavures/brochure.png`, alt: 'Brochure' },
+      { src: `${baseUrl}images/sans-bavures/post-insta.png`, alt: 'Post Instagram' },
+      { src: `${baseUrl}images/sans-bavures/post.png`, alt: 'Post 1' },
+      { src: `${baseUrl}images/sans-bavures/post2.png`, alt: 'Post 2' },
+      { src: `${baseUrl}images/sans-bavures/post3.png`, alt: 'Post 3' },
     ]
   }]
 
   return (
-    <PageWrapper>
-      <div className="projet-hero-wrap" ref={containerRef}>
-        <motion.img style={{ y }} src="images/couvertures/sansbavures.png" alt="Sans Bavures" />
-        <div className="projet-hero-overlay"></div>
-        <Reveal y={50}>
-          <h1 className="projet-hero-title">Sans Bavures</h1>
-        </Reveal>
+    <main className="relative bg-primary">
+      {/* Background patterns */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="grid-overlay" />
       </div>
-      <div className="projet-intro">
-        <div className="projet-intro-left">
-          <Reveal delay={0.1}>
-            <h2>Intro</h2>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p>Au premier semestre de mon BUT, nous avons créé une association fictive pour lutter contre les abus policiers. Notre objectif était de partager des informations, organiser des événements et sensibiliser le public. Nous avons élaboré une stratégie de communication complète, créé une identité visuelle avec logo, typographies et couleurs, et conçu des supports pour les réseaux sociaux et des affiches de promotion.</p>
-          </Reveal>
-          <br />
-          <Reveal delay={0.3}>
-            <h2>Livrables</h2>
-          </Reveal>
-          <div className="projet-deliverables">
-            {['Identité visuelle','Logo','Stratégie communication','Affiches','Brochure','Publications réseaux sociaux','Vidéo animée'].map((t, i) => (
-              <Reveal key={t} delay={0.4 + i * 0.05} width="auto">
-                <span className="deliverable-tag">{t}</span>
-              </Reveal>
-            ))}
+
+      {/* Hero Header */}
+      <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
+        <motion.img 
+          src={`${baseUrl}images/couvertures/sans-bavures.png`} 
+          alt="Sans Bavures" 
+          className="w-full h-full object-cover"
+          style={{ y }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end section-container pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Link to="/projets" className="inline-flex items-center gap-2 text-accent-light font-bold mb-6 hover:gap-4 transition-all">
+              <ArrowLeft size={20} /> Retour aux projets
+            </Link>
+            <h1 className="text-4xl md:text-8xl font-extrabold text-white tracking-tighter">
+              Sans <span className="highlight">Bavures.</span>
+            </h1>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Project Meta */}
+      <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Rôle</span>
+          <p className="font-bold">Montage & Production</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Période</span>
+          <p className="font-bold">Sept. 2023 – Janv. 2024</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Outils</span>
+          <p className="font-bold">Premiere Pro, Illustrator</p>
+        </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-text-muted">Type</span>
+          <p className="font-bold">Reportage Multimédia (UPEC)</p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section-container py-24">
+        <div className="grid lg:grid-cols-2 gap-20">
+          <div>
+            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Informer & <span className="highlight">Sensibiliser</span>.</h2>
+            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+              <p>
+                Projet collaboratif visant à produire un reportage multimédia sur un sujet d'actualité. Mon rôle principal a été la production technique et le montage audiovisuel.
+              </p>
+              <p>
+                J'ai utilisé Adobe Premiere Pro pour synchroniser les séquences, ajuster la colorimétrie et intégrer des transitions dynamiques, tout en assurant une narration immersive.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8">
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
+              <Video className="text-accent-light mb-6" size={32} />
+              <h3 className="text-xl font-bold mb-4">Montage & Vidéo</h3>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Utilisation de Premiere Pro pour le montage, l'étalonnage et la synchronisation audio-visuelle du reportage.
+              </p>
+            </div>
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
+              <Mic2 className="text-accent-light mb-6" size={32} />
+              <h3 className="text-xl font-bold mb-4">Voix-off & Design</h3>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Traduction du script en anglais, enregistrement de la voix-off et création de visuels via Photoshop et Illustrator.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="projet-intro-right">
-          {[
-            { label: 'Période', value: 'Septembre 2022 — Janvier 2023' },
-            { label: 'Formation', value: 'BUT MMI' },
-            { label: 'École', value: 'IUT de Sénart-Fontainebleau' },
-            { label: 'Type', value: 'Association fictive' },
-            { label: 'Outils', value: 'Illustrator, Photoshop, After Effects' }
-          ].map((item, i) => (
-            <Reveal key={item.label} delay={0.2 + i * 0.1}>
-              <div className="projet-meta-block">
-                <span>{item.label}</span>
-                <p>{item.value}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      </section>
+
+      {/* Gallery */}
       <MosaicGrid sections={sections} />
-      <div className="projet-next">
-        <p>Projet suivant</p>
-        <div className="projet-next-cards">
-          <Link to="/projets/perso" className="projet-next-card">
-            <img src="images/couvertures/projets-crea.png" alt="Créations personnelles" />
-            <div className="projet-next-card-info">Créations personnelles →</div>
-          </Link>
-          <Link to="/projets" className="projet-next-card">
-            <img src="images/couvertures/futsal-drancy.png" alt="Tous les projets" />
-            <div className="projet-next-card-info">Tous les projets →</div>
+
+      {/* Next Project */}
+      <section className="section-container py-32 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Créations Perso</h2>
+          </div>
+          <Link to="/projets/perso" className="btn-premium gap-3 text-lg px-12 py-5">
+            Découvrir <ArrowRight size={20} />
           </Link>
         </div>
-      </div>
-    </PageWrapper>
+      </section>
+    </main>
   )
 }

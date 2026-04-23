@@ -126,55 +126,62 @@ export default function Photographie() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[200] bg-black/96 flex items-center justify-center"
+            className="fixed inset-0 z-[200] bg-black/98 flex flex-col items-center justify-center touch-none"
             onClick={() => setLightboxIndex(null)}
           >
-            {/* Close */}
-            <button
-              className="absolute top-4 right-4 md:top-8 md:right-8 text-white p-3 bg-white/10 hover:bg-white/20 rounded-full z-[210] transition-colors"
-              onClick={(e) => { e.stopPropagation(); setLightboxIndex(null) }}
-            >
-              <X size={20} />
-            </button>
+            {/* Header in Lightbox (Index + Close) */}
+            <div className="absolute top-0 left-0 right-0 p-6 flex items-center justify-between z-[220]">
+              <div className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white/70 text-[10px] font-bold border border-white/5 uppercase tracking-widest">
+                {lightboxIndex + 1} / {PHOTO_DATA.length}
+              </div>
+              <button
+                className="text-white p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(null) }}
+              >
+                <X size={20} />
+              </button>
+            </div>
 
-            {/* Prev */}
-            <button
-              className="absolute left-3 md:left-8 p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 text-white z-[210] transition-colors"
-              onClick={(e) => { e.stopPropagation(); setLightboxIndex(i => (i - 1 + PHOTO_DATA.length) % PHOTO_DATA.length) }}
-            >
-              <ChevronLeft size={22} />
-            </button>
+            {/* Main Image Container */}
+            <div className="relative w-full h-full flex items-center justify-center p-4">
+              {/* Prev (Hidden on small mobile if needed, or styled as circles) */}
+              <button
+                className="absolute left-2 md:left-8 p-3 md:p-5 rounded-full bg-white/5 hover:bg-white/10 text-white z-[210] transition-all border border-white/5"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(i => (i - 1 + PHOTO_DATA.length) % PHOTO_DATA.length) }}
+              >
+                <ChevronLeft size={20} />
+              </button>
 
-            {/* Image */}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={lightboxIndex}
-                initial={{ opacity: 0, scale: 0.93 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.93 }}
-                transition={{ duration: 0.25 }}
-                src={getFull(PHOTO_DATA[lightboxIndex])}
-                alt={`Photo ${lightboxIndex + 1}`}
-                className="max-w-[82vw] max-h-[82vh] object-contain rounded-xl shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </AnimatePresence>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={lightboxIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative max-w-full max-h-full flex flex-col items-center gap-4"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <img
+                    src={getFull(PHOTO_DATA[lightboxIndex])}
+                    alt={`Photo ${lightboxIndex + 1}`}
+                    className="max-w-[90vw] max-h-[70vh] md:max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/5"
+                  />
+                  <div className="text-center">
+                    <p className="text-white font-bold text-xs md:text-sm tracking-widest uppercase">
+                      {PHOTO_DATA[lightboxIndex].label}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-            {/* Next */}
-            <button
-              className="absolute right-3 md:right-8 p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 text-white z-[210] transition-colors"
-              onClick={(e) => { e.stopPropagation(); setLightboxIndex(i => (i + 1) % PHOTO_DATA.length) }}
-            >
-              <ChevronRight size={22} />
-            </button>
-
-            {/* Counter + label */}
-            <div className="absolute bottom-6 flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-white/70 text-xs font-bold">
-              <span className="text-white">{lightboxIndex + 1}</span>
-              <span className="text-white/30">/</span>
-              <span>{PHOTO_DATA.length}</span>
-              <span className="w-px h-3 bg-white/20 mx-1" />
-              <span className="text-accent-light">{PHOTO_DATA[lightboxIndex].label}</span>
+              {/* Next */}
+              <button
+                className="absolute right-2 md:right-8 p-3 md:p-5 rounded-full bg-white/5 hover:bg-white/10 text-white z-[210] transition-all border border-white/5"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(i => (i + 1) % PHOTO_DATA.length) }}
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </motion.div>
         )}

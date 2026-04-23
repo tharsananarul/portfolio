@@ -1,32 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Bike, Camera, Gamepad2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Canvas, useFrame, useLoader } from '@react-three/fiber'
-import { useRef, Suspense } from 'react'
-import * as THREE from 'three'
-import { Float, Environment } from '@react-three/drei'
-
-function Car3D() {
-  const baseUrl = import.meta.env.BASE_URL
-  const texture = useLoader(THREE.TextureLoader, `${baseUrl}images/bmw_premium_bg.png`)
-  const meshRef = useRef()
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.2) * 0.1
-      meshRef.current.position.y = Math.sin(state.clock.getElapsedTime() * 0.4) * 0.2
-    }
-  })
-
-  return (
-    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
-      <mesh ref={meshRef} scale={2.5}>
-        <planeGeometry args={[16, 16]} />
-        <meshBasicMaterial map={texture} transparent opacity={0.3} />
-      </mesh>
-    </Float>
-  )
-}
+import { useRef, useEffect } from 'react'
 
 const passions = [
   {
@@ -62,17 +37,42 @@ const passions = [
 ]
 
 export default function PassionSection() {
+  const baseUrl = import.meta.env.BASE_URL
+  const videoRef = useRef(null)
+
+  // Loop only the first 15 seconds
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= 15) {
+        video.currentTime = 0
+      }
+    }
+
+    video.addEventListener('timeupdate', handleTimeUpdate)
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate)
+  }, [])
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-y border-white/5">
-      {/* Background 3D */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <Canvas camera={{ position: [0, 0, 20], fov: 50 }} dpr={[1, 1.5]}>
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.5} />
-            <Car3D />
-            <Environment preset="city" />
-          </Suspense>
-        </Canvas>
+      {/* Video Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: 'brightness(0.25) saturate(0.8)' }}
+        >
+          <source src={`${baseUrl}videos/bmw-bg.mp4`} type="video/mp4" />
+        </video>
+        {/* Gradient overlays for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary via-transparent to-primary" />
+        <div className="absolute inset-0 bg-primary/40" />
       </div>
 
       <div className="section-container relative z-10">
@@ -123,8 +123,8 @@ export default function PassionSection() {
               >
                 <Link
                   to="/photographie"
-                  className="glass-card group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 hover:border-white/20 transition-all duration-500 relative overflow-hidden block cursor-pointer"
-                  style={{ background: `linear-gradient(135deg, ${p.bg}, transparent)` }}
+                  className="glass-card group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 hover:border-white/20 transition-all duration-500 relative overflow-hidden block cursor-pointer backdrop-blur-md bg-card/70"
+                  style={{ background: `linear-gradient(135deg, ${p.bg}, rgba(17,29,48,0.7))` }}
                 >
                   {CardContent}
                 </Link>
@@ -136,8 +136,8 @@ export default function PassionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 hover:border-white/20 transition-all duration-500 relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, ${p.bg}, transparent)` }}
+                className="glass-card group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 hover:border-white/20 transition-all duration-500 relative overflow-hidden backdrop-blur-md bg-card/70"
+                style={{ background: `linear-gradient(135deg, ${p.bg}, rgba(17,29,48,0.7))` }}
               >
                 {CardContent}
               </motion.div>
@@ -148,4 +148,3 @@ export default function PassionSection() {
     </section>
   )
 }
-

@@ -76,7 +76,8 @@ export default function PassionSection() {
     `${baseUrl}images/photographie/IMG_2812.jpg`,
     `${baseUrl}images/photographie/IMG_2813.jpg`,
     `${baseUrl}images/photographie/053a153c-0145-46ee-b38e-17f9cf95a3c3.jpg`,
-    `${baseUrl}images/photographie/898500a0-9c3b-4ccd-9abe-c54dfdf14969.jpg`
+    `${baseUrl}images/photographie/898500a0-9c3b-4ccd-9abe-c54dfdf14969.jpg`,
+    `${baseUrl}images/photographie/IMG_0915 (1).jpg`
   ]
 
   return (

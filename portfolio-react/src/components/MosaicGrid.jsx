@@ -119,59 +119,59 @@ export default function MosaicGrid({ sections, animate = true }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[200] bg-primary/95 backdrop-blur-2xl flex flex-col items-center justify-center p-4 md:p-12"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[200] bg-black/98 flex flex-col touch-none"
             onClick={(e) => { if (e.target === e.currentTarget) closeLb() }}
           >
-            <motion.button 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="absolute top-6 right-6 md:top-12 md:right-12 p-4 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white border border-white/10 z-[210]"
-              onClick={closeLb}
-            >
-              <X size={24} />
-            </motion.button>
-            
-            <div className="relative w-full h-full flex items-center justify-center">
+            {/* Top bar — always visible */}
+            <div className="flex items-center justify-between p-4 md:p-6 flex-shrink-0 z-[220]">
+              <div className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white/70 text-[10px] font-bold border border-white/5 uppercase tracking-widest">
+                {lbIndex + 1} / {lbImages.length}
+              </div>
               <button 
-                className="absolute left-0 md:left-8 p-4 md:p-6 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5 hidden md:block"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                onClick={closeLb}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            {/* Image area — centered */}
+            <div className="relative flex-1 flex items-center justify-center px-2 pb-4 md:px-12 md:pb-12 min-h-0">
+              {/* Prev */}
+              <button 
+                className="absolute left-2 md:left-8 p-3 md:p-5 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5"
                 onClick={() => navigate(-1)}
               >
-                <ChevronLeft size={32} />
+                <ChevronLeft size={20} />
               </button>
               
               <AnimatePresence mode="wait">
                 <motion.div
                   key={lbIndex}
-                  initial={{ opacity: 0, scale: 0.95, x: 20 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, x: -20 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                  className="flex items-center justify-center max-w-full max-h-full"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <img
                     src={lbImages[lbIndex]?.src}
                     alt={lbImages[lbIndex]?.alt || ''}
-                    className="max-w-full max-h-full object-contain rounded-xl md:rounded-3xl shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                    className="max-w-[85vw] max-h-[70vh] md:max-w-[75vw] md:max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/5"
                   />
                 </motion.div>
               </AnimatePresence>
 
+              {/* Next */}
               <button 
-                className="absolute right-0 md:right-8 p-4 md:p-6 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5 hidden md:block"
+                className="absolute right-2 md:right-8 p-3 md:p-5 rounded-full bg-white/5 hover:bg-white/10 transition-all text-white z-10 border border-white/5"
                 onClick={() => navigate(1)}
               >
-                <ChevronRight size={32} />
+                <ChevronRight size={20} />
               </button>
             </div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute bottom-8 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm font-bold backdrop-blur-md"
-            >
-              {lbIndex + 1} <span className="mx-2 text-white/20">/</span> {lbImages.length}
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -21,10 +21,17 @@ export default function ProjetBtsCom() {
         { src: `${baseUrl}images/bts-com/affichea0.jpg`, alt: 'Affiche A0' },
         { src: `${baseUrl}images/bts-com/affiche-inscription.jpg`, alt: 'Affiche Inscription' },
         { src: `${baseUrl}images/bts-com/expo-com.jpg`, alt: 'Expo Com' },
+        { src: `${baseUrl}images/bts-com/expocompost.jpg`, alt: 'Post Expo Com' },
         { src: `${baseUrl}images/bts-com/newsletter.jpg`, alt: 'Newsletter' },
         { src: `${baseUrl}images/bts-com/sdcipost.jpg`, alt: 'Post SDCI' },
+        { src: `${baseUrl}images/bts-com/postscc01.jpg`, alt: 'Post SCC 01' },
+        { src: `${baseUrl}images/bts-com/postscc02.jpg`, alt: 'Post SCC 02' },
+        { src: `${baseUrl}images/bts-com/flyer-bmw.jpg`, alt: 'Flyer BMW' },
         { src: `${baseUrl}images/bts-com/kakemono-mockup.jpg`, alt: 'Mockup Kakemono' },
         { src: `${baseUrl}images/bts-com/affichea0mockup.jpg`, alt: 'Mockup Affiche' },
+        { src: `${baseUrl}images/bts-com/instgram-mockup.jpg`, alt: 'Mockup Instagram' },
+        { src: `${baseUrl}images/bts-com/rollup-mockup.jpg`, alt: 'Mockup Roll-Up' },
+        { src: `${baseUrl}images/bts-com/mockuppull.jpg`, alt: 'Mockup Pull' },
       ]
     }
   ]

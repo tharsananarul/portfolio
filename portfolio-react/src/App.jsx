@@ -24,6 +24,7 @@ import ProjetSansBavures from './pages/ProjetSansBavures'
 import ProjetBtsCom from './pages/ProjetBtsCom'
 import ProjetPerso from './pages/ProjetPerso'
 import ProjetsUX from './pages/ProjetsUX'
+import Photographie from './pages/Photographie'
 
 export default function App() {
   const location = useLocation()
@@ -53,6 +54,7 @@ export default function App() {
             <Route path="/projets/bts-com" element={<PageTransition><ProjetBtsCom /></PageTransition>} />
             <Route path="/projets/perso" element={<PageTransition><ProjetPerso /></PageTransition>} />
             <Route path="/projets/ux" element={<PageTransition><ProjetsUX /></PageTransition>} />
+            <Route path="/photographie" element={<PageTransition><Photographie /></PageTransition>} />
           </Routes>
         </AnimatePresence>
 

@@ -64,7 +64,17 @@ export default function PassionSection() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
   const baseUrl = import.meta.env.BASE_URL
 
-  const photos = [
+  // Lock scroll when gallery is open
+  useEffect(() => {
+    if (isGalleryOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => { document.body.style.overflow = 'unset' }
+  }, [isGalleryOpen])
+
+  const photos = useMemo(() => [
     `${baseUrl}images/photographie/IMG_1717.jpg`,
     `${baseUrl}images/photographie/IMG_1718.jpg`,
     `${baseUrl}images/photographie/IMG_1727.jpg`,
@@ -78,20 +88,23 @@ export default function PassionSection() {
     `${baseUrl}images/photographie/053a153c-0145-46ee-b38e-17f9cf95a3c3.jpg`,
     `${baseUrl}images/photographie/898500a0-9c3b-4ccd-9abe-c54dfdf14969.jpg`,
     `${baseUrl}images/photographie/IMG_0915 (1).jpg`
-  ]
+  ], [baseUrl])
 
   return (
     <section className="relative py-32 overflow-hidden bg-transparent border-y border-white/5">
-      {/* Background 3D Elements */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
+      {/* Background 3D Elements - Hidden when gallery is open to save resources */}
+      <motion.div 
+        animate={{ opacity: isGalleryOpen ? 0 : 0.3 }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <Canvas camera={{ position: [0, 0, 20], fov: 50 }} dpr={[1, 1.5]}>
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
             <Car3D />
             <Environment preset="city" />
           </Suspense>
         </Canvas>
-      </div>
+      </motion.div>
 
       <div className="section-container relative z-10">
         <div className="max-w-3xl mb-20">
@@ -118,7 +131,7 @@ export default function PassionSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
+              transition={{ delay: i * 0.1 }}
               onClick={() => p.hasMore && setIsGalleryOpen(true)}
               className={`glass-card group p-8 md:p-10 rounded-[2.5rem] border border-white/5 hover:border-white/20 transition-all duration-500 relative overflow-hidden ${p.hasMore ? 'cursor-pointer' : ''}`}
               style={{ background: `linear-gradient(135deg, ${p.bg}, transparent)` }}
@@ -154,30 +167,45 @@ export default function PassionSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-primary/95 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-primary/98 backdrop-blur-2xl"
           >
-            <button 
+            <motion.button 
+              initial={{ scale: 0, rotate: -90 }}
+              animate={{ scale: 1, rotate: 0 }}
               onClick={() => setIsGalleryOpen(false)}
-              className="absolute top-8 right-8 text-white hover:text-accent-light transition-colors p-2 bg-white/5 rounded-full"
+              className="absolute top-6 right-6 md:top-10 md:right-10 text-white hover:text-accent-light transition-colors p-3 bg-white/10 hover:bg-white/20 rounded-full z-[110]"
             >
-              <X size={32} />
-            </button>
+              <X size={24} />
+            </motion.button>
 
-            <div className="w-full max-w-6xl h-full flex flex-col justify-center">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-y-auto max-h-[80vh] p-4">
+            <div className="w-full max-w-7xl h-full flex flex-col justify-center">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-y-auto max-h-[85vh] p-4 custom-scrollbar">
                 {photos.map((photo, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="aspect-square rounded-2xl overflow-hidden border border-white/10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="aspect-square rounded-3xl overflow-hidden border border-white/5 bg-white/5 group relative"
                   >
-                    <img src={photo} alt={`Photo ${index}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                    <img 
+                      src={photo} 
+                      alt={`Travail photographique ${index + 1}`} 
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.div>
                 ))}
               </div>
-              <p className="text-center mt-10 text-text-muted font-medium">Une sélection de mes travaux photographiques.</p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-center mt-8 text-text-muted font-medium tracking-wide uppercase text-[10px]"
+              >
+                — Galerie Photographique —
+              </motion.p>
             </div>
           </motion.div>
         )}

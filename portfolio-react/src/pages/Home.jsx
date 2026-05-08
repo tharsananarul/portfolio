@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight, Smartphone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import Magnetic from '../components/Magnetic'
@@ -60,7 +60,7 @@ const StatCard = ({ number, label, suffix = "+", delay = 0 }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -10, transition: { duration: 0.4 } }}
-      className="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-center text-center group border-white/5"
+      className="glass-card p-5 md:p-6 rounded-2xl flex flex-col items-center text-center group border-white/5"
     >
       <span className="text-4xl md:text-5xl font-extrabold text-accent-light mb-2 tracking-tighter font-heading">
         <Counter to={parseInt(number)} suffix={suffix} />
@@ -113,23 +113,13 @@ export default function Home() {
     <main className="relative overflow-hidden bg-transparent" onMouseMove={handleMouseMove}>
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="grid-overlay" />
       </div>
 
       {/* HERO SECTION */}
       <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0">
         
-        {/* Creative Abstract Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#060a18] via-[#0a1e4a]/50 to-primary">
-          <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#1e3a8a] rounded-full blur-[120px] opacity-20 mix-blend-screen animate-pulse" style={{ animationDuration: '10s' }} />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-[#0ea5e9] rounded-full blur-[140px] opacity-15 mix-blend-screen animate-pulse" style={{ animationDuration: '14s' }} />
-          <div className="grid-overlay opacity-20" />
-        </div>
-
-        {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-primary to-transparent" />
-        </div>
+        {/* Hero Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60 pointer-events-none z-0" />
 
         {/* Hero Text Content */}
         <motion.div 
@@ -168,31 +158,40 @@ export default function Home() {
           </motion.div>
 
           {/* Main Title Group */}
-          <div className="relative mb-8 md:mb-12">
-
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-3xl md:text-5xl font-black mb-0 md:mb-0 tracking-tighter"
+          <div className="relative mb-10 md:mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex items-center justify-center gap-4 mb-4"
             >
-              Bienvenue, <br className="md:hidden" />je suis
-            </motion.h2>
+              <span className="h-px w-8 bg-[var(--color-creative-blue)]" />
+              <h2 className="text-xl md:text-3xl font-black tracking-tight uppercase">
+                Bienvenue, je suis
+              </h2>
+              <span className="h-px w-8 bg-[var(--color-creative-blue)]" />
+            </motion.div>
             
-            <motion.h1 
-              className="font-heading text-[10vw] md:text-[7.5vw] leading-[0.7] tracking-tighter font-black uppercase mx-auto"
-              initial={{ opacity: 0, scale: 0.9 }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                color: 'white',
-                textShadow: '0 0 30px rgba(14, 165, 233, 0.3)'
-              }}
+              className="relative"
             >
-              <span className="block hover:text-white transition-colors duration-500 cursor-default">
+              <h1 
+                className="font-heading text-[12vw] md:text-[8.5vw] leading-[0.85] tracking-tighter font-black uppercase mx-auto text-white"
+                style={{
+                  textShadow: '0 20px 40px rgba(0,0,0,0.4), 0 0 50px rgba(14, 165, 233, 0.2)'
+                }}
+              >
                 Tharsanan
-              </span>
-            </motion.h1>
+              </h1>
+              <div className="absolute -bottom-4 md:-bottom-8 left-1/2 -translate-x-1/2 w-full opacity-20 pointer-events-none select-none">
+                <h1 className="font-heading text-[12vw] md:text-[8.5vw] leading-[0.85] tracking-tighter font-black uppercase editorial-title-outline">
+                  Tharsanan
+                </h1>
+              </div>
+            </motion.div>
           </div>
 
 
@@ -210,7 +209,7 @@ export default function Home() {
               </Link>
             </Magnetic>
             <Magnetic>
-              <Link to="/contact" className="btn-outline w-full sm:w-auto px-8">
+              <Link to="/contact" className="btn-outline-orange w-full sm:w-auto px-8">
                 Me contacter
               </Link>
             </Magnetic>
@@ -234,16 +233,27 @@ export default function Home() {
             </div>
             <span className="text-[10px] uppercase tracking-widest text-text-muted font-black">Scroll</span>
           </div>
-          <div className="md:hidden w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent" />
+          {/* Mobile Scroll Indicator */}
+          <div className="md:hidden flex flex-col items-center gap-3">
+            <div className="relative w-6 h-10 border-2 border-white/20 rounded-md flex justify-center p-1">
+              {/* Speaker/Top part of phone */}
+              <div className="absolute top-1 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-white/20 rounded-full" />
+              
+              {/* Swipe animation dot */}
+              <motion.div 
+                animate={{ y: [2, 18, 2], opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1.5 h-1.5 bg-[var(--color-creative-blue)] rounded-full"
+              />
+            </div>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-white/40 font-black">Scroll</span>
+          </div>
         </motion.div>
 
       </section>
 
-      {/* QUICK ABOUT / STATS SECTION */}
-      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/40 to-primary text-white relative py-20 md:py-32 overflow-hidden border-y-[6px] border-black">
-
-
-        {/* Decorative accent line */}
+      {/* QUICK ABOUT / STATS SECTION - Opaque bg to hide global 3D background */}
+      <section className="bg-primary text-white relative py-12 md:py-20 lg:py-32 overflow-hidden border-y-[6px] border-black z-10">
         <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="section-container relative z-10">
@@ -469,14 +479,14 @@ export default function Home() {
               Après l'obtention de mon BTS Communication, je souhaite poursuivre mon parcours en Licence Pro Communication. Pour accompagner ce projet, je suis à la recherche d'une alternance en Communication Digitale ou Design Graphique pour la rentrée de septembre 2026.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-              <Link to="/cv" className="btn-premium px-8 py-4 gap-3 bg-[var(--color-creative-orange)] text-white hover:bg-[var(--color-creative-blue)] border-black shadow-[4px_4px_0_0_#000] w-full sm:w-auto justify-center">
+              <Link to="/cv" className="btn-premium-orange px-8 py-4 gap-3 w-full sm:w-auto justify-center">
                 <Download size={18} />
                 Voir mon CV
               </Link>
               <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="btn-outline px-8 py-4 gap-3 border-[var(--color-creative-blue)] hover:bg-[var(--color-creative-blue)] hover:text-white w-full sm:w-auto justify-center">
                 Mon profil LinkedIn
               </a>
-              <Link to="/contact" className="btn-premium px-8 py-4 gap-3 bg-gradient-to-br from-[var(--color-creative-orange)] to-orange-700 text-white border-none shadow-lg w-full sm:w-auto justify-center group">
+              <Link to="/contact" className="btn-premium px-8 py-4 gap-3 bg-gradient-to-br from-[var(--color-creative-blue)] to-blue-700 text-white border-none shadow-lg w-full sm:w-auto justify-center group">
                 Me contacter
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -489,7 +499,7 @@ export default function Home() {
       <PassionSection />
 
       {/* CTA SECTION */}
-      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/20 to-primary py-32 md:py-48 relative">
+      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/20 to-primary py-20 md:py-32 lg:py-48 relative">
         <div className="section-container text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -507,8 +517,7 @@ export default function Home() {
             </h2>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-              <Link to="/contact" className="btn-premium px-12 py-6 w-full sm:w-auto text-lg shadow-accent/20 bg-[var(--color-creative-orange)] hover:bg-[var(--color-creative-blue)] text-white">
-
+              <Link to="/contact" className="btn-premium-orange px-12 py-6 w-full sm:w-auto text-lg">
                 Me contacter
               </Link>
               <a href="mailto:tharsananarul@gmail.com" className="text-text-muted font-bold hover:text-white transition-colors text-base md:text-xl flex items-center gap-2 group">

@@ -25,7 +25,7 @@ export default function PageHero({ tag, title, subtitle, compact = false, themeC
   const [color1, color2] = getColors()
 
   return (
-    <section className={`relative overflow-hidden ${compact ? 'pt-20 pb-2 md:pt-28 md:pb-4' : 'pt-28 pb-16 md:pt-40 md:pb-28'}`}>
+    <section className={`relative overflow-hidden ${compact ? 'pt-16 pb-2 md:pt-24 md:pb-4' : 'pt-24 pb-12 md:pt-32 md:pb-20'}`}>
       {/* Decorative background layers */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Radial gradient glow - colorful creative style */}
@@ -64,7 +64,7 @@ export default function PageHero({ tag, title, subtitle, compact = false, themeC
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-black mb-3 md:mb-4 tracking-tighter leading-[0.7] uppercase"
-            style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}
+            style={{ fontSize: 'clamp(1.75rem, 7vw, 4.25rem)' }}
           >
             {title}
           </motion.h1>

@@ -29,6 +29,7 @@ export default function PageWrapper({ children }) {
       initial="initial"
       animate="animate"
       exit="exit"
+      className="gpu-accelerated"
     >
       {children}
     </motion.div>

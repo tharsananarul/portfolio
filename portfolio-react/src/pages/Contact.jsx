@@ -17,7 +17,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="relative pb-20 bg-gradient-to-b from-primary via-[#ea580c]/20 to-primary min-h-screen overflow-hidden">
+    <main className="relative pb-20 bg-gradient-to-b from-primary via-blue-900/10 to-primary min-h-screen overflow-hidden">
       <PageHero
         tag="Contact"
         title={<span className="flex flex-col"><span>Parlons de votre</span> <span className="text-[var(--color-creative-blue)] -mt-2 md:-mt-5" style={{ WebkitTextStroke: '1px white' }}>prochain projet.</span></span>}

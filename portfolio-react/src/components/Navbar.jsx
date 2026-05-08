@@ -64,7 +64,7 @@ const LogoScramble = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="font-heading font-black text-2xl md:text-4xl tracking-tighter text-black uppercase leading-none select-none">
+      <span className="font-heading font-black text-xl md:text-3xl tracking-tighter text-black uppercase leading-none select-none">
         {text}
         <span className="text-[var(--color-creative-blue)]">.</span>
       </span>
@@ -103,8 +103,8 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-[5vw] transition-all duration-700 ease-[0.16,1,0.36,1] ${
         scrolled 
-          ? 'bg-black border-b-2 border-white/10 py-2 md:py-4 shadow-2xl' 
-          : 'bg-black/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/5 md:border-transparent py-3 md:py-8'
+          ? 'bg-[#01081a] md:bg-[#01081a]/90 md:backdrop-blur-xl border-b border-white/5 py-3 md:py-4 shadow-2xl' 
+          : 'bg-transparent py-4 md:py-8'
       }`}
     >
       {/* Logo */}
@@ -121,12 +121,12 @@ export default function Navbar() {
             <Magnetic key={link.name}>
               <Link
                 to={link.path}
-                className={`text-xs font-black uppercase tracking-widest transition-all duration-300 relative group p-2 ${
-                  location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white hover:text-[var(--color-creative-${color})]`
+                className={`text-[13px] font-semibold tracking-tight transition-all duration-300 relative group p-2 ${
+                  location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                 }`}
               >
                 {link.name}
-                <span className={`absolute bottom-1 left-2 h-[2px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
+                <span className={`absolute bottom-0 left-2 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
                   location.pathname === link.path ? 'w-[calc(100%-16px)]' : 'w-0 group-hover:w-[calc(100%-16px)]'
                 }`} />
               </Link>
@@ -181,52 +181,44 @@ export default function Navbar() {
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               style={{ willChange: 'transform' }}
-              className="fixed top-0 right-0 bottom-0 w-1/2 bg-[var(--color-secondary)] z-[105] flex flex-col shadow-[-10px_0_40px_rgba(0,0,0,0.9)] md:hidden border-l-4 border-black"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[400px] bg-[#01081a] z-[105] flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.8)] md:hidden border-l border-white/5"
             >
-            <div className="flex flex-col p-6 pt-24 gap-6 items-center text-center">
-              <p className="text-accent-light font-black tracking-[0.4em] uppercase text-sm mb-2 opacity-80">Menu</p>
+              <div className="flex flex-col p-10 pt-32 gap-8 items-start">
+                <p className="text-white/30 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
                 {navLinks.map((link, i) => {
                   const color = 'blue';
                   return (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: 15 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
                   >
                     <Link
                       to={link.path}
-                      style={{ color: `var(--color-creative-${color})` }}
-                      className={`text-base sm:text-lg font-heading font-black uppercase tracking-tighter block py-2 transition-all duration-500 ${
+                      className={`text-lg font-black uppercase tracking-wider block transition-all duration-300 ${
                         location.pathname === link.path 
-                          ? `scale-110` 
-                          : `hover:scale-105`
+                          ? `text-[var(--color-creative-${color})]` 
+                          : `text-white hover:text-[var(--color-creative-${color})]`
                       }`}
                     >
                       {link.name}
-                      {location.pathname === link.path && (
-                        <motion.span 
-                          layoutId="mobile-active-dot"
-                          style={{ backgroundColor: `var(--color-creative-${color})` }}
-                          className="inline-block w-2 h-2 rounded-full ml-4"
-                        />
-                      )}
                     </Link>
                   </motion.div>
                 )})}
               </div>
               
-              <div className="mt-auto p-8 border-t-4 border-black bg-[var(--color-primary)]">
-                <div className="flex items-center gap-6 mb-8">
-                  <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-white hover:text-[var(--color-creative-blue)] transition-colors">
+              <div className="mt-auto p-10 bg-white/[0.02] border-t border-white/5">
+                <div className="flex items-center gap-6 mb-10">
+                  <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-white/40 hover:text-[var(--color-creative-blue)] transition-colors">
                     <Linkedin size={24} />
                   </a>
-                  <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-white hover:text-[var(--color-creative-blue)] transition-colors">
+                  <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-white/40 hover:text-[var(--color-creative-blue)] transition-colors">
                     <Github size={24} />
                   </a>
                 </div>
-                <p className="text-white/60 font-black tracking-[0.2em] uppercase text-[9px] leading-relaxed">
-                  © 2026 THARSANAN
+                <p className="text-white/20 font-bold tracking-[0.2em] uppercase text-[10px]">
+                  © 2026 Tharsanan Arul
                 </p>
               </div>
             </motion.div>

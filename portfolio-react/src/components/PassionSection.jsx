@@ -56,7 +56,7 @@ export default function PassionSection() {
   }, [])
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-y border-white/5">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-[#060a18] border-y border-white/5 z-10">
       {/* YouTube Background with Cinematic Enhancements */}
       <div 
         className="absolute inset-0 overflow-hidden pointer-events-none"

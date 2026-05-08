@@ -134,7 +134,7 @@ export default function CV() {
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Magnetic>
-              <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium gap-3 text-lg px-10 py-5 group">
+              <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium-orange gap-3 group">
                 <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
                 Télécharger mon CV
               </a>
@@ -149,19 +149,24 @@ export default function CV() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-12"
+              className="flex items-center gap-6 mb-16"
             >
-              <div className="p-4 rounded-2xl bg-accent-light/10 border border-accent-light/20 shadow-[0_0_20px_rgba(188,217,245,0.1)]">
-                <GraduationCap className="text-accent-light" size={28} />
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-[var(--color-creative-blue)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                  <GraduationCap className="text-[var(--color-creative-blue)]" size={28} />
+                </div>
               </div>
-              <h2 className="text-2xl md:text-5xl font-black tracking-tighter uppercase">
-                Ma <br />
-                <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px white' }}>Formation</span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
+                <span className="text-white text-xl md:text-2xl block mb-2">Ma</span>
+                <span className="relative inline-block px-4 py-1">
+                  <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm -rotate-1 rounded-lg" />
+                  <span className="relative text-[var(--color-creative-blue)]">Formation</span>
+                </span>
               </h2>
             </motion.div>
 
             <div className="space-y-6 md:space-y-8 relative">
-              <div className="sticker-shape sticker-cyan absolute -top-10 md:-top-24 -right-2 md:-right-20 rotate-[15deg] z-20">Diploma</div>
               {education.map((item, i) => (
                 <motion.div 
                   key={i}
@@ -169,7 +174,7 @@ export default function CV() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="glass-card p-5 md:p-7 group glow-card"
+                  className="glass-card p-5 md:p-6 group glow-card"
                 >
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-2 block">{item.period}</span>
                   <h3 className="text-lg md:text-xl font-black mb-2 uppercase tracking-tighter text-white leading-tight">{item.title}</h3>
@@ -225,8 +230,13 @@ export default function CV() {
                       />
                     </div>
 
-                    <div className="sticker-shape sticker-cyan absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 shadow-xl z-30">
-                      Voir le CV
+                    <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
+                      <div className="relative px-4 py-2">
+                        <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
+                        <span className="relative text-[var(--color-creative-orange)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
+                          Voir le CV
+                        </span>
+                      </div>
                     </div>
                   </a>
                 </motion.div>
@@ -242,19 +252,24 @@ export default function CV() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-4 mb-12"
+                className="flex items-center gap-6 mb-16"
               >
-                <div className="p-4 rounded-none bg-white/5 backdrop-blur-sm border-4 border-white/10 shadow-[6px_6px_0_0_var(--color-creative-blue)]">
-                  <Briefcase className="text-[var(--color-creative-blue)]" size={28} />
+                <div className="relative group">
+                  <div className="absolute -inset-2 bg-[var(--color-creative-orange)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                    <Briefcase className="text-[var(--color-creative-orange)]" size={28} />
+                  </div>
                 </div>
-                <h2 className="text-3xl md:text-6xl font-black tracking-tighter uppercase text-white">
-                  Mon <br />
-                  <span className="bg-[var(--color-creative-blue)] px-3 inline-block rotate-1 border-2 border-white shadow-[4px_4px_0_0_#fff]">Expérience</span>
+                <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
+                  <span className="text-white text-xl md:text-2xl block mb-2">Mon</span>
+                  <span className="relative inline-block px-4 py-1">
+                    <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm rotate-1 rounded-lg" />
+                    <span className="relative text-[var(--color-creative-orange)]">Expérience</span>
+                  </span>
                 </h2>
               </motion.div>
 
               <div className="space-y-8 md:space-y-12 relative">
-                <div className="sticker-shape sticker-cyan absolute -top-10 md:-top-24 -right-2 md:-right-16 rotate-[15deg] z-20">Pro</div>
                 {experiences.map((item, i) => (
                   <motion.div 
                     key={i}
@@ -262,7 +277,7 @@ export default function CV() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="glass-card p-5 md:p-8 group glow-card"
+                    className="glass-card p-5 md:p-6 group glow-card"
                   >
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-orange)] mb-3 block">{item.period}</span>
                     
@@ -300,7 +315,7 @@ export default function CV() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 md:mt-32 p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] bg-secondary/50 border border-white/5 text-center relative overflow-hidden group shadow-2xl backdrop-blur-xl"
+          className="mt-12 md:mt-20 p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-secondary/50 border border-white/5 text-center relative overflow-hidden group shadow-2xl backdrop-blur-xl"
         >
           <div className="absolute inset-0 bg-accent-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10 max-w-4xl mx-auto">

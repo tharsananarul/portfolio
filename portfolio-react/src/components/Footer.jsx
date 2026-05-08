@@ -16,7 +16,7 @@ export default function Footer() {
             <Link to="/" className="logo mb-6 p-2 inline-flex items-center justify-center bg-white border-2 border-black shadow-[3px_3px_0_0_#000] rotate-[-2deg] hover:rotate-0 transition-all font-black text-2xl md:text-3xl uppercase tracking-tighter text-black">
               T<span className="text-[var(--color-creative-blue)]">.</span>
             </Link>
-            <p className="text-white/50 text-[13px] leading-relaxed mb-6">
+            <p className="text-white/50 text-caption leading-relaxed mb-6">
               Étudiant en BTS Communication. 
               Digital & Design graphique.
             </p>
@@ -32,8 +32,8 @@ export default function Footer() {
 
           <div className="flex gap-16 md:gap-24">
             <div>
-              <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-6 opacity-30">Navigation</h4>
-              <ul className="space-y-3 text-white/70 text-[13px] font-medium">
+              <h4 className="text-white font-bold text-caption uppercase tracking-[0.2em] mb-6 opacity-30">Navigation</h4>
+              <ul className="space-y-3 text-white/70 text-caption font-medium">
                 <li><Link to="/" className="hover:text-white transition-colors">Accueil</Link></li>
                 <li><Link to="/projets" className="hover:text-white transition-colors">Projets</Link></li>
                 <li><Link to="/cv" className="hover:text-white transition-colors">CV</Link></li>
@@ -41,8 +41,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-6 opacity-30">Contact</h4>
-              <ul className="space-y-3 text-white/70 text-[13px] font-medium">
+              <h4 className="text-white font-bold text-caption uppercase tracking-[0.2em] mb-6 opacity-30">Contact</h4>
+              <ul className="space-y-3 text-white/70 text-caption font-medium">
                 <li><a href="mailto:tharsananarul@gmail.com" className="hover:text-white transition-colors">Email</a></li>
                 <li><a href="tel:0749878775" className="hover:text-white transition-colors">07 49 87 87 75</a></li>
               </ul>
@@ -51,12 +51,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5">
-          <p className="text-[11px] text-white/30 font-medium tracking-wider uppercase">
+          <p className="text-caption text-white/30 font-medium tracking-wider uppercase">
             © 2026 Tharsanan Arul. All rights reserved.
           </p>
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-[11px] font-bold text-white/30 hover:text-white transition-colors group uppercase tracking-widest"
+            className="flex items-center gap-2 text-caption font-bold text-white/30 hover:text-white transition-colors group uppercase tracking-widest"
           >
             Scroll to top 
             <div className="p-1.5 rounded-full border border-white/5 group-hover:bg-white/5 transition-all">

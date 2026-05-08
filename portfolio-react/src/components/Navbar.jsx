@@ -121,7 +121,7 @@ export default function Navbar() {
             <Magnetic key={link.name}>
               <Link
                 to={link.path}
-                className={`text-[13px] font-semibold tracking-tight transition-all duration-300 relative group p-2 ${
+                className={`text-caption font-semibold tracking-tight transition-all duration-300 relative group p-2 ${
                   location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                 }`}
               >

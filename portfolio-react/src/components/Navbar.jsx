@@ -60,11 +60,11 @@ const LogoScramble = () => {
   return (
     <Link 
       to="/" 
-      className="logo group py-1.5 px-4 md:py-2 md:px-5 min-w-[40px] md:min-w-[50px] inline-flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20 rounded-full transition-all duration-300"
+      className="logo group py-1 px-3 md:py-1.5 md:px-4 min-w-[30px] md:min-w-[40px] inline-flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20 rounded-full transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="font-heading font-black text-xs md:text-sm tracking-[0.25em] text-white uppercase leading-none select-none">
+      <span className="font-heading font-black text-[10px] md:text-xs tracking-[0.2em] text-white uppercase leading-none select-none">
         {text}
         <span className="text-[var(--color-creative-blue)]">.</span>
       </span>
@@ -75,11 +75,23 @@ const LogoScramble = () => {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDimmed, setIsDimmed] = useState(false)
   const location = useLocation()
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    let previousScrollY = window.scrollY
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      setScrolled(currentScrollY > 40)
+      
+      if (currentScrollY > previousScrollY && currentScrollY > 80) {
+        setIsDimmed(true)
+      } else {
+        setIsDimmed(false)
+      }
+      previousScrollY = currentScrollY
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -101,11 +113,13 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] md:w-[90%] max-w-7xl z-[100] flex items-center justify-between px-6 md:px-8 rounded-full border transition-all duration-700 ease-[0.16,1,0.36,1] ${
-        scrolled 
-          ? 'bg-[#060a18]/80 backdrop-blur-md border-white/15 py-3 shadow-2xl' 
-          : 'bg-[#060a18]/40 backdrop-blur-sm border-white/10 py-4 shadow-lg'
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] max-w-5xl z-[100] flex items-center justify-between px-4 md:px-6 rounded-full border transition-all duration-500 ease-[0.16,1,0.3,1] ${
+        isDimmed 
+          ? 'opacity-20 scale-95 bg-[#060a18]/10 backdrop-blur-[1px] border-white/5 py-1.5 shadow-none pointer-events-auto' 
+          : scrolled
+            ? 'opacity-100 scale-100 bg-[#060a18]/85 backdrop-blur-md border-white/15 py-2 shadow-2xl' 
+            : 'opacity-100 scale-100 bg-[#060a18]/50 backdrop-blur-sm border-white/10 py-3 shadow-lg'
+      } hover:opacity-100 hover:scale-100 hover:bg-[#060a18]/85 hover:backdrop-blur-md hover:border-white/15 hover:py-2.5 hover:shadow-2xl`}
     >
       {/* Logo */}
       <Magnetic>
@@ -121,13 +135,13 @@ export default function Navbar() {
             <Magnetic key={link.name}>
               <Link
                 to={link.path}
-                className={`font-heading text-xs tracking-[0.2em] uppercase transition-all duration-300 relative group py-2 px-3.5 rounded-full hover:bg-white/5 ${
+                className={`font-heading text-[10px] md:text-[11px] tracking-[0.15em] uppercase transition-all duration-300 relative group py-1.5 px-3 rounded-full hover:bg-white/5 ${
                   location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                 }`}
               >
                 {link.name}
-                <span className={`absolute bottom-1 left-3.5 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
-                  location.pathname === link.path ? 'w-[calc(100%-28px)]' : 'w-0 group-hover:w-[calc(100%-28px)]'
+                <span className={`absolute bottom-0.5 left-3 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
+                  location.pathname === link.path ? 'w-[calc(100%-24px)]' : 'w-0 group-hover:w-[calc(100%-24px)]'
                 }`} />
               </Link>
             </Magnetic>
@@ -196,7 +210,7 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`text-lg font-black uppercase tracking-wider block transition-all duration-300 ${
+                      className={`font-heading text-lg md:text-xl tracking-[0.2em] uppercase block transition-all duration-300 ${
                         location.pathname === link.path 
                           ? `text-[var(--color-creative-${color})]` 
                           : `text-white hover:text-[var(--color-creative-${color})]`

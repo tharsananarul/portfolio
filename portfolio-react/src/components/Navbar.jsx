@@ -60,11 +60,11 @@ const LogoScramble = () => {
   return (
     <Link 
       to="/" 
-      className="logo group p-1.5 md:p-2 min-w-[40px] md:min-w-[50px] inline-flex items-center justify-center bg-white border-2 md:border-4 border-black shadow-[4px_4px_0_0_#000] rotate-[-2deg] hover:rotate-0 hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+      className="logo group py-1.5 px-4 md:py-2 md:px-5 min-w-[40px] md:min-w-[50px] inline-flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20 rounded-full transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="font-heading font-black text-xl md:text-3xl tracking-tighter text-black uppercase leading-none select-none">
+      <span className="font-heading font-black text-xs md:text-sm tracking-[0.25em] text-white uppercase leading-none select-none">
         {text}
         <span className="text-[var(--color-creative-blue)]">.</span>
       </span>
@@ -101,10 +101,10 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-[5vw] transition-all duration-700 ease-[0.16,1,0.36,1] ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] md:w-[90%] max-w-7xl z-[100] flex items-center justify-between px-6 md:px-8 rounded-full border transition-all duration-700 ease-[0.16,1,0.36,1] ${
         scrolled 
-          ? 'bg-[#01081a] md:bg-[#01081a]/90 md:backdrop-blur-xl border-b border-white/5 py-3 md:py-4 shadow-2xl' 
-          : 'bg-transparent py-4 md:py-8'
+          ? 'bg-[#060a18]/80 backdrop-blur-md border-white/15 py-3 shadow-2xl' 
+          : 'bg-[#060a18]/40 backdrop-blur-sm border-white/10 py-4 shadow-lg'
       }`}
     >
       {/* Logo */}
@@ -121,13 +121,13 @@ export default function Navbar() {
             <Magnetic key={link.name}>
               <Link
                 to={link.path}
-                className={`text-caption font-semibold tracking-tight transition-all duration-300 relative group p-2 ${
+                className={`font-heading text-xs tracking-[0.2em] uppercase transition-all duration-300 relative group py-2 px-3.5 rounded-full hover:bg-white/5 ${
                   location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                 }`}
               >
                 {link.name}
-                <span className={`absolute bottom-0 left-2 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
-                  location.pathname === link.path ? 'w-[calc(100%-16px)]' : 'w-0 group-hover:w-[calc(100%-16px)]'
+                <span className={`absolute bottom-1 left-3.5 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
+                  location.pathname === link.path ? 'w-[calc(100%-28px)]' : 'w-0 group-hover:w-[calc(100%-28px)]'
                 }`} />
               </Link>
             </Magnetic>
@@ -136,15 +136,15 @@ export default function Navbar() {
         
         <div className="w-px h-4 bg-white/10 mx-2" />
         
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3">
           <Magnetic>
-            <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-text-muted hover:text-white transition-all p-2" title="LinkedIn">
-              <Linkedin size={20} />
+            <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-all p-2 hover:scale-115" title="LinkedIn">
+              <Linkedin size={18} />
             </a>
           </Magnetic>
           <Magnetic>
-            <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-text-muted hover:text-white transition-all p-2" title="GitHub">
-              <Github size={20} />
+            <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-all p-2 hover:scale-115" title="GitHub">
+              <Github size={18} />
             </a>
           </Magnetic>
         </div>

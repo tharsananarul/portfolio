@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin, ArrowUp } from 'lucide-react'
+import { Github, Linkedin, Instagram, ArrowUp } from 'lucide-react'
 
 export default function Footer() {
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="max-w-[240px]">
-            <Link to="/" className="logo mb-6 p-2 inline-flex items-center justify-center bg-white border-2 border-black shadow-[3px_3px_0_0_#000] rotate-[-2deg] hover:rotate-0 transition-all font-black text-2xl md:text-3xl uppercase tracking-tighter text-black">
-              T<span className="text-[var(--color-creative-blue)]">.</span>
+            <Link to="/" className="logo mb-6 py-1.5 px-4 inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/15 hover:border-white/25 rounded-full transition-all duration-300 font-heading font-black text-xs tracking-[0.25em] text-white uppercase">
+              THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
             </Link>
             <p className="text-white/50 text-caption leading-relaxed mb-6">
               Étudiant en BTS Communication. 
@@ -24,7 +24,10 @@ export default function Footer() {
               <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-[var(--color-creative-blue)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(14,165,233,0.8)] hover:scale-110" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-[var(--color-creative-orange)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] hover:scale-110" title="GitHub">
+              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-[var(--color-creative-orange)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] hover:scale-110" title="Instagram">
+                <Instagram size={18} />
+              </a>
+              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-[var(--color-creative-yellow)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)] hover:scale-110" title="GitHub">
                 <Github size={18} />
               </a>
             </div>

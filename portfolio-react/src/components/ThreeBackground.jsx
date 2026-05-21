@@ -40,7 +40,7 @@ function SceneContent() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={stars.length / 3} array={stars} itemSize={3} />
         </bufferGeometry>
-        <pointsMaterial size={0.035} color="#ffffff" transparent opacity={0.8} sizeAttenuation />
+        <pointsMaterial size={0.06} color="#ffffff" transparent opacity={0.8} sizeAttenuation />
       </points>
 
       {/* Volumetric Auroras (Toruses/Large Spheres) */}

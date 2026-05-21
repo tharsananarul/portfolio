@@ -37,7 +37,7 @@ export default function ProjetBtsCom() {
   ]
 
   return (
-    <main className="relative bg-transparent min-h-screen">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -90,7 +90,7 @@ export default function ProjetBtsCom() {
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Théorie et <span className="highlight">pratique créative</span>.</h2>
-            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Dans le cadre de mon BTS Communication, j'ai réalisé de nombreux supports visuels alliant réflexion stratégique et exécution graphique.
               </p>
@@ -103,12 +103,12 @@ export default function ProjetBtsCom() {
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <PenTool className="text-accent-light mb-4" size={32} />
               <h3 className="text-xl font-bold mb-2">Conception Visuelle</h3>
-              <p className="text-text-muted text-sm">Maîtrise des outils de création vectorielle et de retouche d'image.</p>
+              <p className="text-slate-200 text-sm">Maîtrise des outils de création vectorielle et de retouche d'image.</p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Layers className="text-accent-light mb-4" size={32} />
               <h3 className="text-xl font-bold mb-2">Supports Print</h3>
-              <p className="text-text-muted text-sm">Réalisation de flyers, brochures et affiches conformes aux contraintes techniques.</p>
+              <p className="text-slate-200 text-sm">Réalisation de flyers, brochures et affiches conformes aux contraintes techniques.</p>
             </div>
           </div>
         </div>

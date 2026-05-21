@@ -30,7 +30,7 @@ export default function ProjetAlda() {
   }]
 
   return (
-    <main className="relative bg-transparent min-h-screen">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -83,7 +83,7 @@ export default function ProjetAlda() {
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight">Concept de marque <span className="highlight">artisanale</span>.</h2>
-            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Projet collaboratif visant à créer une identité de marque complète pour une nouvelle bière artisanale. Nous avons conceptualisé les valeurs, le positionnement et le public cible de la marque.
               </p>
@@ -96,14 +96,14 @@ export default function ProjetAlda() {
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Beer className="text-accent-light mb-6" size={32} />
               <h3 className="text-xl font-bold mb-4">Branding & Design</h3>
-              <p className="text-text-muted text-sm leading-relaxed">
+              <p className="text-slate-200 text-sm leading-relaxed">
                 Développement d'un nom évocateur et d'un univers visuel cohérent sur tous les supports promotionnels (affiches, réseaux sociaux).
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <BarChart3 className="text-accent-light mb-6" size={32} />
               <h3 className="text-xl font-bold mb-4">Marketing & Lancement</h3>
-              <p className="text-text-muted text-sm leading-relaxed">
+              <p className="text-slate-200 text-sm leading-relaxed">
                 Élaboration d'un plan de lancement complet incluant une stratégie de communication et l'organisation d'une dégustation fictive.
               </p>
             </div>

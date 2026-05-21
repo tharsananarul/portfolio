@@ -145,7 +145,7 @@ export default function Competences() {
                   <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-bold mb-0.5 md:mb-1">{lang.name}</h3>
+                  <h3 className="font-body normal-case text-sm md:text-lg font-black text-white mb-0.5 md:mb-1 tracking-normal leading-tight">{lang.name}</h3>
                   <p className="text-accent-light text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-widest leading-tight">{lang.info}</p>
                 </div>
               </motion.div>

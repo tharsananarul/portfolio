@@ -26,7 +26,7 @@ export default function ProjetSansBavures() {
   }]
 
   return (
-    <main className="relative bg-transparent min-h-screen">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -79,7 +79,7 @@ export default function ProjetSansBavures() {
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Informer & <span className="highlight">Sensibiliser</span>.</h2>
-            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Projet collaboratif visant à produire un reportage multimédia sur un sujet d'actualité. Mon rôle principal a été la production technique et le montage audiovisuel.
               </p>
@@ -92,14 +92,14 @@ export default function ProjetSansBavures() {
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Video className="text-accent-light mb-6" size={32} />
               <h3 className="text-xl font-bold mb-4">Montage & Vidéo</h3>
-              <p className="text-text-muted text-sm leading-relaxed">
+              <p className="text-slate-200 text-sm leading-relaxed">
                 Utilisation de Premiere Pro pour le montage, l'étalonnage et la synchronisation audio-visuelle du reportage.
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Mic2 className="text-accent-light mb-6" size={32} />
               <h3 className="text-xl font-bold mb-4">Voix-off & Design</h3>
-              <p className="text-text-muted text-sm leading-relaxed">
+              <p className="text-slate-200 text-sm leading-relaxed">
                 Traduction du script en anglais, enregistrement de la voix-off et création de visuels via Photoshop et Illustrator.
               </p>
             </div>

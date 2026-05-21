@@ -66,7 +66,7 @@ export default function ProjetFutsal() {
   ]
 
   return (
-    <main className="relative bg-transparent min-h-screen">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -123,7 +123,7 @@ export default function ProjetFutsal() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
-            <div className="space-y-6 text-text-muted text-base md:text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-100 text-base md:text-lg leading-relaxed">
               <p>
                 J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel.
               </p>

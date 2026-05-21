@@ -29,7 +29,7 @@ export default function ProjetPerso() {
   ]
 
   return (
-    <main className="relative bg-transparent min-h-screen">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -82,7 +82,7 @@ export default function ProjetPerso() {
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Expression <span className="highlight">libre</span>.</h2>
-            <div className="space-y-6 text-text-muted text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Mes projets personnels me permettent d'explorer de nouvelles techniques et de rendre hommage aux œuvres qui m'inspirent, notamment le cinéma sud-indien.
               </p>
@@ -95,12 +95,12 @@ export default function ProjetPerso() {
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Palette className="text-accent-light mb-4" size={32} />
               <h3 className="text-xl font-bold mb-2">Direction Artistique</h3>
-              <p className="text-text-muted text-sm">Exploration de styles graphiques variés, du minimalisme au néon-synthwave.</p>
+              <p className="text-slate-200 text-sm">Exploration de styles graphiques variés, du minimalisme au néon-synthwave.</p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Camera className="text-accent-light mb-4" size={32} />
               <h3 className="text-xl font-bold mb-2">Traitement d'Image</h3>
-              <p className="text-text-muted text-sm">Manipulation avancée de photos et création de montages complexes sur Photoshop.</p>
+              <p className="text-slate-200 text-sm">Manipulation avancée de photos et création de montages complexes sur Photoshop.</p>
             </div>
           </div>
         </div>

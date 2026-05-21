@@ -36,7 +36,7 @@ export default function ProjetsUX() {
   ]
 
   return (
-    <main className="relative bg-transparent min-h-screen overflow-hidden">
+    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -92,7 +92,7 @@ export default function ProjetsUX() {
       <section className="section-container py-16 md:py-24">
         <div className="max-w-4xl">
           <h2 className="text-2xl md:text-5xl font-bold mb-8 tracking-tight">Expérimentations et <span className="highlight">développement web</span>.</h2>
-          <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-12">
+          <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-12">
             Réalisés durant mon temps libre, ces projets m'ont permis de perfectionner mes compétences techniques en développement front-end et en design d'interfaces interactives.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
@@ -120,7 +120,7 @@ export default function ProjetsUX() {
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Développement & Design</span>
             <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">Site Web Futsal Drancy</h2>
-            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
+            <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Conception intégrale du premier site officiel du club. Utilisation de technologies modernes pour offrir une expérience fluide, de la présentation des équipes aux inscriptions en ligne.
             </p>
             <a href="https://tharsananarul.github.io/futsal-drancy/#/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
@@ -137,7 +137,7 @@ export default function ProjetsUX() {
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Plateforme Web</span>
             <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">BTS Révision</h2>
-            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
+            <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Conception d'une plateforme de révision complète pour les étudiants. Focus sur l'organisation des ressources et la facilité de navigation sur mobile.
             </p>
             <a href="https://tharsananarul.github.io/fdr-bts-com/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
@@ -153,7 +153,7 @@ export default function ProjetsUX() {
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mockup UI/UX</span>
             <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">HopePower</h2>
-            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
+            <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Prototype haute-fidélité réalisé dans le cadre de mon BTS Communication pour un projet d'études. Conception d'une interface mobile pour un site solidaire fictif, avec un focus sur le parcours utilisateur (UX flow) et la cohérence visuelle.
             </p>
             <a href="https://tharsananarul.github.io/hopepower/" target="_blank" rel="noreferrer" className="btn-premium gap-3">

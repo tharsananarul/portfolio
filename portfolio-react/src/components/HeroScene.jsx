@@ -37,15 +37,15 @@ function Crystal({ scrollProgress }) {
       floatingRange={[-0.2, 0.2]}
     >
       <mesh ref={meshRef} castShadow>
-        <icosahedronGeometry args={[2.2, 1]} />
+        <icosahedronGeometry args={[2.2, 4]} />
         <MeshDistortMaterial
           ref={materialRef}
-          color="#1B4FFF"
-          emissive="#0a1a4a"
-          emissiveIntensity={0.3}
-          roughness={0.15}
-          metalness={0.9}
-          distort={0.25}
+          color="#00D2FF"
+          emissive="#1B4FFF"
+          emissiveIntensity={0.8}
+          roughness={0.1}
+          metalness={1}
+          distort={0.3}
           speed={2}
           transparent
           opacity={0.85}
@@ -355,12 +355,7 @@ export default function HeroScene() {
           
           {/* Scene objects */}
           <Crystal scrollProgress={scrollProgress} />
-          <OrbitRing radius={3.5} speed={0.3} tilt={Math.PI / 3} color="#1B4FFF" thickness={0.015} scrollProgress={scrollProgress} />
-          <OrbitRing radius={4.2} speed={-0.2} tilt={Math.PI / 4} color="#BCD9F5" thickness={0.01} scrollProgress={scrollProgress} />
-          <OrbitRing radius={5} speed={0.15} tilt={Math.PI / 2.5} color="#1B4FFF" thickness={0.008} scrollProgress={scrollProgress} />
           <ParticleField count={150} scrollProgress={scrollProgress} />
-          <FloatingGems scrollProgress={scrollProgress} />
-          <LightRays scrollProgress={scrollProgress} />
           
           {/* Camera */}
           <CameraRig mousePosition={mousePosition} />

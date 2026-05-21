@@ -373,7 +373,7 @@ export default function Home() {
               Projets Phares
             </p>
 
-            <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[0.7] uppercase" style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}>
+            <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase" style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}>
                 Une sélection <br />
                 <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px white' }}>des travaux</span> <br />
                 <span className="bg-[var(--color-creative-orange)] text-white px-3 inline-block rotate-1 shadow-[4px_4px_0_0_#fff] border-2 border-white">phares</span>

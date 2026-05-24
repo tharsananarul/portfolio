@@ -49,66 +49,66 @@ export default function Footer() {
   const row1Items = ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"]
 
   return (
-    <footer className="bg-[#020512] relative z-10 border-t border-white/5 overflow-hidden pt-12">
+    <footer className="bg-[#020512] relative z-10 border-t border-white/5 overflow-hidden pt-16 pb-8">
       {/* Background Decorative Blob Elements */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
       <div className="absolute bottom-1/4 right-10 w-[50vw] h-[50vw] rounded-full bg-[var(--color-creative-orange)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
 
       {/* 1. SCROLLING MARQUEE (Sleek interactive ticker) */}
-      <div className="w-full overflow-hidden flex whitespace-nowrap py-4 select-none relative mb-12 border-b border-white/5 bg-slate-950/20">
+      <div className="w-full overflow-hidden flex whitespace-nowrap py-5 md:py-6 select-none relative mb-16 border-b border-white/5 bg-slate-950/20">
         <motion.div 
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="flex items-center gap-10 pr-10 font-heading font-black text-[10px] tracking-[0.25em] text-white/15 uppercase"
+          className="flex items-center gap-10 pr-10 font-heading font-black text-[10px] md:text-sm tracking-[0.25em] text-white/15 uppercase"
         >
           {[...row1Items, ...row1Items].map((item, i) => (
             <div key={i} className="flex items-center gap-10">
               <span>{item}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-creative-blue)]/40" />
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--color-creative-blue)]/40" />
             </div>
           ))}
         </motion.div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* 2. BENTO GRID SYSTEM */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-5 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 lg:gap-8 mb-16">
           {/* Card 1: Brand Info & Paris Time (Span 4) */}
-          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
-              <div className="logo mb-2 inline-flex items-center justify-center font-heading font-black text-sm tracking-[0.2em] text-white uppercase select-none">
+              <div className="logo mb-3 inline-flex items-center justify-center font-heading font-black text-sm md:text-lg tracking-[0.2em] text-white uppercase select-none">
                 THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
               </div>
-              <div className="flex flex-col gap-2.5 mt-2">
-                <p className="text-white/75 text-[10px] leading-relaxed font-semibold">
+              <div className="flex flex-col gap-3 mt-2">
+                <p className="text-white/75 text-xs md:text-[14px] leading-relaxed font-semibold">
                   Futur étudiant en Licence Pro Communication.
                 </p>
-                <p className="text-white/45 text-[10px] leading-relaxed border-l-2 border-[var(--color-creative-blue)]/30 pl-2.5">
+                <p className="text-white/45 text-[11px] md:text-xs leading-relaxed border-l-2 border-[var(--color-creative-blue)]/30 pl-3">
                   En recherche d'une alternance dans la communication digitale.
                 </p>
               </div>
             </div>
             
-            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+            <div className="pt-4 border-t border-white/5 flex items-center justify-between">
               {/* Paris Clock */}
-              <div className="flex items-center gap-1.5 text-white/40 text-[10px] font-mono">
-                <Clock size={11} className="text-[var(--color-creative-blue)] animate-pulse" />
+              <div className="flex items-center gap-2 text-white/40 text-[11px] md:text-xs font-mono">
+                <Clock size={13} className="text-[var(--color-creative-blue)] animate-pulse" />
                 <span>Paris, FR :</span>
                 <span className="text-white font-bold tracking-wider">{time || '00:00:00'}</span>
               </div>
               
-              <div className="flex items-center gap-1 text-white/20 text-[8px] font-mono">
-                <Globe size={10} />
+              <div className="flex items-center gap-1.5 text-white/20 text-[9px] md:text-[10px] font-mono">
+                <Globe size={11} />
                 <span>GMT+2</span>
               </div>
             </div>
           </div>
 
           {/* Card 2: Quick Navigation Sitemap (Span 4) */}
-          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
-            <h4 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.2em] mb-2 font-mono">Navigation</h4>
-            <div className="flex flex-col gap-1.5">
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+            <h4 className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">Navigation</h4>
+            <div className="flex flex-col gap-2 md:gap-3">
               {[
                 { name: 'Accueil', path: '/' },
                 { name: 'Projets', path: '/projets' },
@@ -119,72 +119,74 @@ export default function Footer() {
                 <Link 
                   key={link.path}
                   to={link.path} 
-                  className={`text-[11px] font-semibold flex items-center justify-between group transition-colors py-0.5 border-b border-white/[0.02] hover:border-white/10 ${
+                  className={`text-xs md:text-[14px] font-semibold flex items-center justify-between group transition-colors py-1 border-b border-white/[0.02] hover:border-white/10 ${
                     location.pathname === link.path ? 'text-[var(--color-creative-blue)]' : 'text-white/60 hover:text-white'
                   }`}
                 >
                   <span>{link.name}</span>
-                  <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-white/40" />
+                  <ArrowUpRight size={13} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-white/40" />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Card 3: Contact Details & Socials (Span 4) */}
-          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
-            <h4 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.2em] mb-3 font-mono">Contact</h4>
-            <div className="flex flex-col gap-2">
-              <button 
-                onClick={handleCopyEmail}
-                className="flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group w-full text-left"
-              >
-                <Mail size={13} className="text-[var(--color-creative-blue)] flex-shrink-0" />
-                <span className="text-[10px] font-mono text-white/80 group-hover:text-white truncate">
-                  {copied ? "Email copié !" : "tharsananarul@gmail.com"}
-                </span>
-              </button>
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+            <div>
+              <h4 className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">Contact</h4>
+              <div className="flex flex-col gap-2.5">
+                <button 
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group w-full text-left cursor-pointer"
+                >
+                  <Mail size={15} className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate" />
+                  <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate">
+                    {copied ? "Email copié !" : "tharsananarul@gmail.com"}
+                  </span>
+                </button>
 
-              <a 
-                href="tel:0749878775" 
-                className="flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group"
-              >
-                <Phone size={13} className="text-[var(--color-creative-orange)] flex-shrink-0" />
-                <span className="text-[10px] font-mono text-white/80 group-hover:text-white">07 49 87 87 75</span>
-              </a>
+                <a 
+                  href="tel:0749878775" 
+                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group"
+                >
+                  <Phone size={15} className="text-[var(--color-creative-orange)] flex-shrink-0" />
+                  <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white">07 49 87 87 75</span>
+                </a>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/5 mt-3">
-              <div className="flex items-center gap-1.5">
-                <Smile size={11} className="text-[var(--color-creative-yellow)]" />
-                <span className="text-[8px] text-white/30 font-bold uppercase tracking-wider">Socials</span>
+            <div className="flex items-center justify-between gap-2 pt-4 border-t border-white/5 mt-4">
+              <div className="flex items-center gap-2">
+                <Smile size={13} className="text-[var(--color-creative-yellow)]" />
+                <span className="text-[9px] md:text-[10px] text-white/30 font-bold uppercase tracking-wider">Socials</span>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <a 
                   href={linkedinUrl} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-blue-500/30 text-white/50 hover:text-[#0077B5] transition-all flex items-center justify-center"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-blue-500/30 text-white/50 hover:text-[#0077B5] transition-all flex items-center justify-center cursor-pointer"
                   title="LinkedIn"
                 >
-                  <Linkedin size={13} />
+                  <Linkedin size={15} />
                 </a>
                 <a 
                   href="https://www.instagram.com/tharsh.studio/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-pink-500/30 text-white/50 hover:text-[var(--color-creative-orange)] transition-all flex items-center justify-center"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-pink-500/30 text-white/50 hover:text-[var(--color-creative-orange)] transition-all flex items-center justify-center cursor-pointer"
                   title="Instagram"
                 >
-                  <Instagram size={13} />
+                  <Instagram size={15} />
                 </a>
                 <a 
                   href="https://github.com/tharsananarul" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-white/30 text-white/50 hover:text-white transition-all flex items-center justify-center"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-white/30 text-white/50 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="GitHub"
                 >
-                  <Github size={13} />
+                  <Github size={15} />
                 </a>
               </div>
             </div>
@@ -192,19 +194,19 @@ export default function Footer() {
         </div>
 
         {/* 3. BOTTOM BAR WITH SCROLL TO TOP */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 py-6 border-t border-white/5">
-          <p className="text-[9px] text-white/35 font-semibold tracking-wider uppercase">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 py-8 border-t border-white/5">
+          <p className="text-[10px] md:text-xs text-white/35 font-semibold tracking-wider uppercase">
             © 2026 Tharsanan. Tous droits réservés.
           </p>
           
           <Magnetic>
             <button 
               onClick={scrollToTop}
-              className="flex items-center gap-2.5 text-[9px] font-bold text-white/45 hover:text-white transition-colors group uppercase tracking-widest px-4 py-2 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03]"
+              className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-white/45 hover:text-white transition-colors group uppercase tracking-widest px-5 py-2.5 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] cursor-pointer"
             >
               <span>Retour en haut</span> 
               <div className="p-1 rounded-full bg-white/5 group-hover:bg-[var(--color-creative-blue)]/20 group-hover:text-[var(--color-creative-blue)] transition-all duration-300">
-                <ArrowUp size={11} className="group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUp size={13} className="group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </button>
           </Magnetic>

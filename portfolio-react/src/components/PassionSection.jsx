@@ -113,12 +113,12 @@ export default function PassionSection() {
           {passions.map((p, i) => {
             const CardContent = (
               <>
-                <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center mb-4 md:mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10">
+                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center mb-4 md:mb-4 lg:mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10">
                   <p.icon className={p.color} size={24} />
                 </div>
-                <h3 className="text-lg md:text-3xl font-bold mb-1 md:mb-2 tracking-tight text-white">{p.title}</h3>
-                <p className={`text-[10px] md:text-xs font-bold uppercase tracking-widest ${p.color} mb-3 md:mb-6 opacity-90`}>{p.subtitle}</p>
-                <p className="text-white/80 text-xs md:text-base leading-relaxed mb-4 md:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
+                <h3 className="text-lg md:text-xl lg:text-3xl font-bold mb-1 md:mb-2 tracking-tight text-white">{p.title}</h3>
+                <p className={`text-[10px] md:text-[11px] lg:text-xs font-bold uppercase tracking-widest ${p.color} mb-3 md:mb-4 lg:mb-6 opacity-90`}>{p.subtitle}</p>
+                <p className="text-white/80 text-xs md:text-[13px] lg:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
                 {p.hasMore && (
                   <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
                     Photos <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
@@ -128,7 +128,7 @@ export default function PassionSection() {
               </>
             )
 
-            const cardClasses = "group p-6 md:p-10 rounded-none border-2 md:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
+            const cardClasses = "group p-6 md:p-6 lg:p-10 rounded-none border-2 md:border-2 lg:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[4px_4px_0_0_#000] lg:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[2px_2px_0_0_#000] lg:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
             const accentStyle = { borderTopColor: p.color.includes('blue') ? 'var(--color-creative-blue)' : 'var(--color-creative-orange)' }
 
             return p.hasMore ? (

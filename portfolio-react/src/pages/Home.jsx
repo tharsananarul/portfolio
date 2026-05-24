@@ -7,6 +7,7 @@ import PassionSection from '../components/PassionSection'
 import InfiniteMarquee from '../components/InfiniteMarquee'
 import Counter from '../components/Counter'
 import LazyImage from '../components/ui/LazyImage'
+import HeroBackground3D from '../components/HeroBackground3D'
 
 // HeroScene removed for creative portfolio layout
 
@@ -118,6 +119,9 @@ export default function Home() {
       {/* HERO SECTION */}
       <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0">
         
+        {/* Interactive 3D Background */}
+        <HeroBackground3D />
+        
         {/* Hero Overlay for Contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60 pointer-events-none z-0" />
 
@@ -152,7 +156,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: -20 }}
             animate={{ scale: 1, rotate: 10 }}
             transition={{ delay: 1.5, type: "spring" }}
-            className="absolute sticker-shape sticker-orange bottom-[12%] sm:bottom-[15%] md:bottom-[20%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-90 sm:scale-110 origin-bottom-right pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-orange)]"
+            className="absolute sticker-shape sticker-cyan bottom-[12%] sm:bottom-[15%] md:bottom-[20%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-90 sm:scale-110 origin-bottom-right pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
           >
             Creative
           </motion.div>
@@ -203,13 +207,13 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center"
           >
             <Magnetic>
-              <Link to="/projets" className="btn-premium gap-3 group w-full sm:w-auto px-8">
+              <Link to="/projets" className="btn-dark-cyan gap-3 group w-full sm:w-auto px-8">
                 Découvrir mes projets
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Magnetic>
             <Magnetic>
-              <Link to="/contact" className="btn-outline-orange w-full sm:w-auto px-8">
+              <Link to="/contact" className="btn-outline-cyan-black w-full sm:w-auto px-8">
                 Me contacter
               </Link>
             </Magnetic>

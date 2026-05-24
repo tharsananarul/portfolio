@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import ThreeBackground from './ThreeBackground'
 import { Canvas } from '@react-three/fiber'
+import { useLocation } from 'react-router-dom'
 
 function Grid() {
   return (
@@ -19,13 +20,16 @@ function Grid() {
 }
 
 export default function Background() {
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-[#060a18]">
-      {/* Global Cosmic Engine */}
-      <ThreeBackground />
+      {/* Global Cosmic Engine - only render on non-home pages */}
+      {!isHomePage && <ThreeBackground />}
       
-      {/* Grid Overlay matching live site */}
-      <Grid />
+      {/* Grid Overlay matching live site - hidden on Home for fluid background */}
+      {!isHomePage && <Grid />}
 
       {/* Subtle Grain Texture */}
       <div className="absolute inset-0 opacity-[0.01] mix-blend-overlay pointer-events-none z-10" 

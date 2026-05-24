@@ -11,7 +11,7 @@
   
   --color-creative-yellow: #facc15;
   --color-creative-blue: #0ea5e9; 
-  --color-creative-orange: #f97316;
+  --color-creative-orange: #06b6d4;
   
   --font-heading: "Archivo Black", "Syne", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
@@ -152,7 +152,7 @@
   }
 
   .btn-premium-orange {
-    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-white transition-all duration-500 bg-gradient-to-br from-[var(--color-creative-orange)] to-orange-700 border border-white/20 rounded-2xl shadow-lg hover:shadow-[var(--color-creative-orange)]/20 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base overflow-hidden;
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-white transition-all duration-500 bg-gradient-to-br from-[var(--color-creative-orange)] to-cyan-700 border border-white/20 rounded-2xl shadow-lg hover:shadow-[var(--color-creative-orange)]/20 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base overflow-hidden;
   }
 
   .btn-premium-orange::after {
@@ -171,6 +171,14 @@
 
   .btn-outline-orange {
     @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-orange)] transition-all duration-500 border border-[var(--color-creative-orange)]/30 bg-[var(--color-creative-orange)]/5 backdrop-blur-md rounded-2xl hover:bg-[var(--color-creative-orange)]/10 hover:border-[var(--color-creative-orange)]/50 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
+  }
+
+  .btn-dark-cyan {
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-blue)] transition-all duration-500 bg-[#0c1225]/85 border border-[var(--color-creative-blue)]/30 rounded-2xl hover:bg-[#0c1225] hover:border-[var(--color-creative-blue)]/60 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
+  }
+
+  .btn-outline-cyan-black {
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-blue)] transition-all duration-500 border border-[var(--color-creative-blue)] bg-black rounded-2xl hover:bg-black/90 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
   }
 
   .blob {
@@ -287,7 +295,7 @@
 }
 
 .glass-card-orange {
-  @apply border-orange-500/20;
+  @apply border-cyan-500/20;
 }
 
 .glow-card {
@@ -329,11 +337,17 @@
 }
 
 .sticker-cyan {
-  @apply bg-[var(--color-creative-blue)] text-white border-white shadow-[4px_4px_0_0_rgba(255,255,255,1)];
+  background-color: rgba(12, 18, 37, 0.85) !important;
+  color: var(--color-creative-blue) !important;
+  border-color: var(--color-creative-blue) !important;
+  box-shadow: 4px 4px 0 0 var(--color-creative-blue) !important;
 }
 
 .sticker-orange {
-  @apply bg-[var(--color-creative-orange)] text-white border-white shadow-[4px_4px_0_0_rgba(255,255,255,1)];
+  background-color: rgba(12, 18, 37, 0.85) !important;
+  color: var(--color-creative-blue) !important;
+  border-color: var(--color-creative-blue) !important;
+  box-shadow: 4px 4px 0 0 var(--color-creative-blue) !important;
 }
 
 .asymmetric-box {

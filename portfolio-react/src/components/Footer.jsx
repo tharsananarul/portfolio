@@ -1,71 +1,213 @@
-import { Link } from 'react-router-dom'
-import { Github, Linkedin, Instagram, ArrowUp } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Github, Linkedin, Instagram, ArrowUp, ArrowUpRight, Mail, Phone, Copy, Check, Clock, Globe, Sparkles, Smile, Compass, Heart } from 'lucide-react'
+import Magnetic from './Magnetic'
+import { useToast } from '../hooks/useToast'
 
+
+
+// --- MAIN FOOTER COMPONENT ---
 export default function Footer() {
+  const showToast = useToast()
+  const location = useLocation()
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
-  
+  const [copied, setCopied] = useState(false)
+  const [time, setTime] = useState('')
+
+  // Live Paris Time Clock
+  useEffect(() => {
+    const updateTime = () => {
+      const formatted = new Date().toLocaleTimeString('fr-FR', {
+        timeZone: 'Europe/Paris',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      })
+      setTime(formatted)
+    }
+    
+    updateTime()
+    const interval = setInterval(updateTime, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("tharsananarul@gmail.com")
+    setCopied(true)
+    if (showToast) {
+      showToast("Email copié !", "success")
+    }
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const row1Items = ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"]
+
   return (
-    <footer className="bg-[#01081a] pt-16 pb-12 relative z-10 border-t border-white/5">
+    <footer className="bg-[#020512] relative z-10 border-t border-white/5 overflow-hidden pt-12">
+      {/* Background Decorative Blob Elements */}
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 right-10 w-[50vw] h-[50vw] rounded-full bg-[var(--color-creative-orange)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
+
+      {/* 1. SCROLLING MARQUEE (Sleek interactive ticker) */}
+      <div className="w-full overflow-hidden flex whitespace-nowrap py-4 select-none relative mb-12 border-b border-white/5 bg-slate-950/20">
+        <motion.div 
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="flex items-center gap-10 pr-10 font-heading font-black text-[10px] tracking-[0.25em] text-white/15 uppercase"
+        >
+          {[...row1Items, ...row1Items].map((item, i) => (
+            <div key={i} className="flex items-center gap-10">
+              <span>{item}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-creative-blue)]/40" />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
       <div className="max-w-5xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
-          <div className="max-w-[240px]">
-            <Link to="/" className="logo mb-6 py-1.5 px-4 inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/15 hover:border-white/25 rounded-full transition-all duration-300 font-heading font-black text-xs tracking-[0.25em] text-white uppercase">
-              THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
-            </Link>
-            <p className="text-white/50 text-caption leading-relaxed mb-6">
-              Étudiant en BTS Communication. 
-              Digital & Design graphique.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-[var(--color-creative-blue)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(14,165,233,0.8)] hover:scale-110" title="LinkedIn">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-[var(--color-creative-orange)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] hover:scale-110" title="Instagram">
-                <Instagram size={18} />
-              </a>
-              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-[var(--color-creative-yellow)] transition-all duration-300 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)] hover:scale-110" title="GitHub">
-                <Github size={18} />
-              </a>
+        {/* 2. BENTO GRID SYSTEM */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-5 mb-12">
+          {/* Card 1: Brand Info & Paris Time (Span 4) */}
+          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
+            <div>
+              <div className="logo mb-2 inline-flex items-center justify-center font-heading font-black text-sm tracking-[0.2em] text-white uppercase select-none">
+                THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
+              </div>
+              <div className="flex flex-col gap-2.5 mt-2">
+                <p className="text-white/75 text-[10px] leading-relaxed font-semibold">
+                  Futur étudiant en Licence Pro Communication.
+                </p>
+                <p className="text-white/45 text-[10px] leading-relaxed border-l-2 border-[var(--color-creative-blue)]/30 pl-2.5">
+                  En recherche d'une alternance dans la communication digitale.
+                </p>
+              </div>
+            </div>
+            
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+              {/* Paris Clock */}
+              <div className="flex items-center gap-1.5 text-white/40 text-[10px] font-mono">
+                <Clock size={11} className="text-[var(--color-creative-blue)] animate-pulse" />
+                <span>Paris, FR :</span>
+                <span className="text-white font-bold tracking-wider">{time || '00:00:00'}</span>
+              </div>
+              
+              <div className="flex items-center gap-1 text-white/20 text-[8px] font-mono">
+                <Globe size={10} />
+                <span>GMT+2</span>
+              </div>
             </div>
           </div>
 
-          <div className="flex gap-16 md:gap-24">
-            <div>
-              <h4 className="text-white font-bold text-caption uppercase tracking-[0.2em] mb-6 opacity-30">Navigation</h4>
-              <ul className="space-y-3 text-white/70 text-caption font-medium">
-                <li><Link to="/" className="hover:text-white transition-colors">Accueil</Link></li>
-                <li><Link to="/projets" className="hover:text-white transition-colors">Projets</Link></li>
-                <li><Link to="/cv" className="hover:text-white transition-colors">CV</Link></li>
-                <li><Link to="/competences" className="hover:text-white transition-colors">Compétences</Link></li>
-              </ul>
+          {/* Card 2: Quick Navigation Sitemap (Span 4) */}
+          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
+            <h4 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.2em] mb-2 font-mono">Navigation</h4>
+            <div className="flex flex-col gap-1.5">
+              {[
+                { name: 'Accueil', path: '/' },
+                { name: 'Projets', path: '/projets' },
+                { name: 'CV', path: '/cv' },
+                { name: 'Compétences', path: '/competences' },
+                { name: 'Contact', path: '/contact' }
+              ].map((link) => (
+                <Link 
+                  key={link.path}
+                  to={link.path} 
+                  className={`text-[11px] font-semibold flex items-center justify-between group transition-colors py-0.5 border-b border-white/[0.02] hover:border-white/10 ${
+                    location.pathname === link.path ? 'text-[var(--color-creative-blue)]' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-white/40" />
+                </Link>
+              ))}
             </div>
-            <div>
-              <h4 className="text-white font-bold text-caption uppercase tracking-[0.2em] mb-6 opacity-30">Contact</h4>
-              <ul className="space-y-3 text-white/70 text-caption font-medium">
-                <li><a href="mailto:tharsananarul@gmail.com" className="hover:text-white transition-colors">Email</a></li>
-                <li><a href="tel:0749878775" className="hover:text-white transition-colors">07 49 87 87 75</a></li>
-              </ul>
+          </div>
+
+          {/* Card 3: Contact Details & Socials (Span 4) */}
+          <div className="md:col-span-4 p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[190px]">
+            <h4 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.2em] mb-3 font-mono">Contact</h4>
+            <div className="flex flex-col gap-2">
+              <button 
+                onClick={handleCopyEmail}
+                className="flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group w-full text-left"
+              >
+                <Mail size={13} className="text-[var(--color-creative-blue)] flex-shrink-0" />
+                <span className="text-[10px] font-mono text-white/80 group-hover:text-white truncate">
+                  {copied ? "Email copié !" : "tharsananarul@gmail.com"}
+                </span>
+              </button>
+
+              <a 
+                href="tel:0749878775" 
+                className="flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group"
+              >
+                <Phone size={13} className="text-[var(--color-creative-orange)] flex-shrink-0" />
+                <span className="text-[10px] font-mono text-white/80 group-hover:text-white">07 49 87 87 75</span>
+              </a>
+            </div>
+
+            <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/5 mt-3">
+              <div className="flex items-center gap-1.5">
+                <Smile size={11} className="text-[var(--color-creative-yellow)]" />
+                <span className="text-[8px] text-white/30 font-bold uppercase tracking-wider">Socials</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <a 
+                  href={linkedinUrl} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-blue-500/30 text-white/50 hover:text-[#0077B5] transition-all flex items-center justify-center"
+                  title="LinkedIn"
+                >
+                  <Linkedin size={13} />
+                </a>
+                <a 
+                  href="https://www.instagram.com/tharsh.studio/" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-pink-500/30 text-white/50 hover:text-[var(--color-creative-orange)] transition-all flex items-center justify-center"
+                  title="Instagram"
+                >
+                  <Instagram size={13} />
+                </a>
+                <a 
+                  href="https://github.com/tharsananarul" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="w-7 h-7 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-white/30 text-white/50 hover:text-white transition-all flex items-center justify-center"
+                  title="GitHub"
+                >
+                  <Github size={13} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5">
-          <p className="text-caption text-white/30 font-medium tracking-wider uppercase">
-            © 2026 Tharsanan Arul. All rights reserved.
+        {/* 3. BOTTOM BAR WITH SCROLL TO TOP */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 py-6 border-t border-white/5">
+          <p className="text-[9px] text-white/35 font-semibold tracking-wider uppercase">
+            © 2026 Tharsanan. Tous droits réservés.
           </p>
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-caption font-bold text-white/30 hover:text-white transition-colors group uppercase tracking-widest"
-          >
-            Scroll to top 
-            <div className="p-1.5 rounded-full border border-white/5 group-hover:bg-white/5 transition-all">
-              <ArrowUp size={12} />
-            </div>
-          </button>
+          
+          <Magnetic>
+            <button 
+              onClick={scrollToTop}
+              className="flex items-center gap-2.5 text-[9px] font-bold text-white/45 hover:text-white transition-colors group uppercase tracking-widest px-4 py-2 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03]"
+            >
+              <span>Retour en haut</span> 
+              <div className="p-1 rounded-full bg-white/5 group-hover:bg-[var(--color-creative-blue)]/20 group-hover:text-[var(--color-creative-blue)] transition-all duration-300">
+                <ArrowUp size={11} className="group-hover:-translate-y-0.5 transition-transform" />
+              </div>
+            </button>
+          </Magnetic>
         </div>
       </div>
     </footer>

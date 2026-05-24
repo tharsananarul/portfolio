@@ -121,45 +121,45 @@ export default function Contact() {
                   
                   <div className="grid md:grid-cols-2 gap-10">
                     <div className="space-y-4">
-                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Nom complet</label>
+                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/85 px-1">Nom complet</label>
                       <input 
                         required
                         name="name"
                         type="text" 
                         placeholder="Marcel Dubois"
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/45"
                       />
                     </div>
                     <div className="space-y-4">
-                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Email</label>
+                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/85 px-1">Email</label>
                       <input 
                         required
                         name="email"
                         type="email" 
                         placeholder="marcel@dubois.fr"
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/45"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-4">
-                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Sujet</label>
+                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/85 px-1">Sujet</label>
                     <input 
                       name="subject"
                       type="text" 
                       placeholder="Collaboration, Opportunité, Question..."
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/45"
                     />
                   </div>
 
                   <div className="space-y-4">
-                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Message</label>
+                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/85 px-1">Message</label>
                     <textarea 
                       required
                       name="message"
                       rows="5"
                       placeholder="Comment puis-je vous aider ?"
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20 resize-none"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/45 resize-none"
                     ></textarea>
                   </div>
 

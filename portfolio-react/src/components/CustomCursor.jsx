@@ -113,15 +113,6 @@ export default function CustomCursor() {
           scale: hoverType ? 1.1 : 1
         }}
       >
-        <div className="flex items-center gap-2">
-          <span className="text-[8px] text-white/50">X:</span>
-          <span className="text-[9px] text-white">{Math.round(coords.x)}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-[8px] text-white/50">Y:</span>
-          <span className="text-[9px] text-white">{Math.round(coords.y)}</span>
-        </div>
-        
         <AnimatePresence>
           {hoverType && (
             <motion.div

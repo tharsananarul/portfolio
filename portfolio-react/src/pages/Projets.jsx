@@ -77,7 +77,7 @@ export default function Projets() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[var(--color-creative-blue)] rounded-full blur-[140px] opacity-[0.05] -z-10" />
 
         {/* Stickers - Hidden on mobile to prevent overlapping */}
-        <div className="hidden md:block sticker-shape sticker-cyan absolute top-60 -left-10 rotate-[-10deg] z-20">Creative</div>
+        <div className="hidden md:block sticker-shape sticker-blue-dark absolute top-60 -left-10 rotate-[-10deg] z-20">Creative</div>
         <div className="hidden md:block sticker-shape sticker-blue absolute bottom-60 -right-10 rotate-[15deg] z-20">Design</div>
 
 

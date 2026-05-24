@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, memo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -123,9 +123,9 @@ const fragmentShader = `
     float total = f0 + f1 + f2 + f3 + f4 + f5 + 0.0001;
     blobColor += CYAN   * f0;
     blobColor += BLUE   * f1;
-    blobColor += BLUE   * f2;
+    blobColor += COBALT * f2;
     blobColor += CYAN   * f3;
-    blobColor += COBALT * f4;
+    blobColor += WHITE  * f4;
     blobColor += CYAN   * f5;
     blobColor /= total;
 
@@ -171,9 +171,9 @@ function FluidBlobMesh({ mouseRef }) {
     const u = matRef.current.uniforms
     u.u_time.value = state.clock.getElapsedTime()
     u.u_res.value.set(state.size.width, state.size.height)
-    // Smooth lerp mouse
-    u.u_mouse.value.x = THREE.MathUtils.lerp(u.u_mouse.value.x, mouseRef.current.x, 0.035)
-    u.u_mouse.value.y = THREE.MathUtils.lerp(u.u_mouse.value.y, mouseRef.current.y, 0.035)
+    // Smooth lerp mouse — slower lerp = silky, no jitter
+    u.u_mouse.value.x = THREE.MathUtils.lerp(u.u_mouse.value.x, mouseRef.current.x, 0.022)
+    u.u_mouse.value.y = THREE.MathUtils.lerp(u.u_mouse.value.y, mouseRef.current.y, 0.022)
   })
 
   return (
@@ -199,7 +199,7 @@ function FluidBlobMesh({ mouseRef }) {
 }
 
 // ── Exported component ────────────────────────────────────────────────────────
-export default function HeroBackground3D() {
+const HeroBackground3D = memo(() => {
   const [isDesktop, setIsDesktop] = useState(false)
   const mouseRef = useRef(new THREE.Vector2(0.5, 0.5))
 
@@ -245,8 +245,9 @@ export default function HeroBackground3D() {
   return (
     <div className="absolute inset-0 -z-10 w-full h-full overflow-hidden bg-[#020410] pointer-events-none">
       <Canvas
-        gl={{ antialias: false, powerPreference: 'high-performance' }}
-        dpr={[1, 1.2]}
+        gl={{ antialias: true, powerPreference: 'high-performance', precision: 'highp' }}
+        dpr={[1, 2]}
+        frameloop="always"
         style={{ pointerEvents: 'none' }}
       >
         <FluidBlobMesh mouseRef={mouseRef} />
@@ -267,4 +268,6 @@ export default function HeroBackground3D() {
       />
     </div>
   )
-}
+})
+
+export default HeroBackground3D

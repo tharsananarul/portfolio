@@ -41,7 +41,7 @@ export default function Contact() {
           {/* Left Column: Info */}
           <div>
             <div className="space-y-8 relative">
-                <div className="hidden md:block sticker-shape sticker-cyan absolute -top-6 -right-4 rotate-[-5deg] z-20">Network</div>
+                <div className="hidden md:block sticker-shape sticker-blue-dark absolute -top-6 -right-4 rotate-[-5deg] z-20">Network</div>
 
 
               {[

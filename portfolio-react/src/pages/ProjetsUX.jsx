@@ -62,7 +62,7 @@ export default function ProjetsUX() {
             <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter uppercase relative inline-block">
               UI/UX <br />
               <span className="text-[var(--color-creative-blue)] editorial-title-outline mt-2 inline-block">Works.</span>
-              <div className="absolute -top-10 -right-20 sticker-shape sticker-cyan rotate-[12deg] hidden md:block">Design</div>
+              <div className="absolute -top-10 -right-20 sticker-shape sticker-blue-dark rotate-[12deg] hidden md:block">Design</div>
             </h1>
           </motion.div>
         </div>

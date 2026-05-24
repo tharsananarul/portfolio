@@ -104,7 +104,7 @@ export default function PassionSection() {
             <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-8 tracking-tighter uppercase text-white relative inline-block">
               Ce qui me <br />
               <span className="text-[var(--color-creative-blue)] mt-2 inline-block" style={{ WebkitTextStroke: '2px white' }}>définit aussi.</span>
-              <div className="sticker-shape sticker-cyan absolute -top-10 -right-20 rotate-12 hidden md:block">Life</div>
+              <div className="sticker-shape sticker-blue-dark absolute -top-10 -right-20 rotate-12 hidden md:block">Life</div>
             </h2>
           </motion.div>
         </div>
@@ -116,7 +116,7 @@ export default function PassionSection() {
                 <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center mb-4 md:mb-4 lg:mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10">
                   <p.icon className={p.color} size={24} />
                 </div>
-                <h3 className="text-lg md:text-xl lg:text-3xl font-bold mb-1 md:mb-2 tracking-tight text-white">{p.title}</h3>
+                <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-1 md:mb-2 tracking-tight text-white break-words break-all sm:break-normal">{p.title}</h3>
                 <p className={`text-[10px] md:text-[11px] lg:text-xs font-bold uppercase tracking-widest ${p.color} mb-3 md:mb-4 lg:mb-6 opacity-90`}>{p.subtitle}</p>
                 <p className="text-white/80 text-xs md:text-[13px] lg:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
                 {p.hasMore && (

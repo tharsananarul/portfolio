@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ThreeBackground from './ThreeBackground'
+import HeroBackground3D from './HeroBackground3D'
 import { Canvas } from '@react-three/fiber'
 import { useLocation } from 'react-router-dom'
 
@@ -26,7 +26,7 @@ export default function Background() {
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-[#060a18]">
       {/* Global Cosmic Engine - only render on non-home pages */}
-      {!isHomePage && <ThreeBackground />}
+      {!isHomePage && <HeroBackground3D />}
       
       {/* Grid Overlay matching live site - hidden on Home for fluid background */}
       {!isHomePage && <Grid />}

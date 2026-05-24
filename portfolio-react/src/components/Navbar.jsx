@@ -116,11 +116,11 @@ export default function Navbar() {
       <nav 
         className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] max-w-5xl z-[100] flex items-center justify-between px-4 md:px-6 rounded-full border transition-all duration-500 ease-[0.16,1,0.3,1] ${
           isDimmed 
-            ? 'opacity-55 scale-98 bg-[#091533]/65 backdrop-blur-[3px] border-blue-500/15 py-2 shadow-[0_4px_20px_rgba(30,100,255,0.06)] pointer-events-auto' 
+            ? 'opacity-55 scale-98 bg-[#060a18]/65 backdrop-blur-[3px] border-[#0ea5e9]/15 py-2 shadow-[0_4px_20px_rgba(14,165,233,0.06)] pointer-events-auto' 
             : scrolled
-              ? 'opacity-100 scale-100 bg-[#071129]/90 backdrop-blur-lg border-blue-500/25 py-2.5 shadow-[0_4px_30px_rgba(30,100,255,0.18)]' 
-              : 'opacity-100 scale-100 bg-[#091533]/80 backdrop-blur-md border-blue-500/20 py-3 shadow-[0_4px_30px_rgba(30,100,255,0.12)]'
-        } hover:opacity-100 hover:scale-100 hover:bg-[#071129]/95 hover:backdrop-blur-lg hover:border-blue-500/30 hover:py-2.5 hover:shadow-[0_4px_30px_rgba(30,100,255,0.22)]`}
+              ? 'opacity-100 scale-100 bg-[#060a18]/90 backdrop-blur-lg border-[#0ea5e9]/25 py-2.5 shadow-[0_4px_30px_rgba(14,165,233,0.18)]' 
+              : 'opacity-100 scale-100 bg-[#060a18]/80 backdrop-blur-md border-[#0ea5e9]/20 py-3 shadow-[0_4px_30px_rgba(14,165,233,0.12)]'
+        } hover:opacity-100 hover:scale-100 hover:bg-[#060a18]/95 hover:backdrop-blur-lg hover:border-[#0ea5e9]/30 hover:py-2.5 hover:shadow-[0_4px_30px_rgba(14,165,233,0.22)]`}
       >
         {/* Logo */}
         <Magnetic>

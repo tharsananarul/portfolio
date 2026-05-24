@@ -52,7 +52,7 @@ export default function Competences() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-32 relative">
           {/* Stickers */}
           <div className="sticker-shape sticker-blue absolute -top-12 -left-4 rotate-[-10deg] z-20">Creative</div>
-          <div className="sticker-shape sticker-cyan absolute -bottom-12 -right-4 rotate-[15deg] z-20">Technical</div>
+          <div className="sticker-shape sticker-blue-dark absolute -bottom-12 -right-4 rotate-[15deg] z-20">Technical</div>
 
           {skills.map((skill, i) => (
             <motion.div
@@ -65,7 +65,7 @@ export default function Competences() {
             >
               <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-6 md:mb-10 transition-all duration-500 transform group-hover:scale-110 shadow-lg ${
                 i % 3 === 0 ? 'bg-gradient-to-br from-[var(--color-creative-blue)] to-blue-600' : 
-                i % 3 === 1 ? 'bg-gradient-to-br from-[var(--color-creative-orange)] to-orange-600' : 
+                i % 3 === 1 ? 'bg-gradient-to-br from-[var(--color-creative-orange)] to-[#008BBF]' : 
                 'bg-gradient-to-br from-blue-400 to-[var(--color-creative-blue)]'
               } text-white`}>
                 {skill.icon}
@@ -84,7 +84,7 @@ export default function Competences() {
           </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 relative">
-             <div className="sticker-shape sticker-cyan absolute -top-8 -right-4 rotate-[-5deg] z-20">Tools</div>
+             <div className="sticker-shape sticker-blue-dark absolute -top-8 -right-4 rotate-[-5deg] z-20">Tools</div>
 
             {software.map((item, i) => (
               <motion.div

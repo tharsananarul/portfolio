@@ -101,17 +101,10 @@ export default function Home() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
   const baseUrl = import.meta.env.BASE_URL
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e
-    const { innerWidth, innerHeight } = window
-    const x = (clientX / innerWidth - 0.5) * 20
-    const y = (clientY / innerHeight - 0.5) * 20
-    setMousePos({ x, y })
-  }
+  const mousePosRef = useRef({ x: 0, y: 0 })
 
   return (
-    <main className="relative overflow-hidden bg-transparent" onMouseMove={handleMouseMove}>
+    <main className="relative overflow-hidden bg-transparent">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
       </div>
@@ -147,7 +140,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: 20 }}
             animate={{ scale: 1, rotate: -15 }}
             transition={{ delay: 1.7, type: "spring" }}
-            className="absolute sticker-shape sticker-cyan top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-10 scale-90 sm:scale-110 origin-top-left pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
+            className="absolute sticker-shape sticker-blue-dark top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-10 scale-90 sm:scale-110 origin-top-left pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
           >
             Portfolio
           </motion.div>
@@ -156,7 +149,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: -20 }}
             animate={{ scale: 1, rotate: 10 }}
             transition={{ delay: 1.5, type: "spring" }}
-            className="absolute sticker-shape sticker-cyan bottom-[12%] sm:bottom-[15%] md:bottom-[20%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-90 sm:scale-110 origin-bottom-right pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
+            className="absolute sticker-shape sticker-blue-dark bottom-[12%] sm:bottom-[15%] md:bottom-[20%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-90 sm:scale-110 origin-bottom-right pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
           >
             Creative
           </motion.div>
@@ -207,13 +200,13 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center"
           >
             <Magnetic>
-              <Link to="/projets" className="btn-dark-cyan gap-3 group w-full sm:w-auto px-8">
+              <Link to="/projets" className="btn-dark-blue-dark gap-3 group w-full sm:w-auto px-8">
                 Découvrir mes projets
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Magnetic>
             <Magnetic>
-              <Link to="/contact" className="btn-outline-cyan-black w-full sm:w-auto px-8">
+              <Link to="/contact" className="btn-outline-blue-dark-black w-full sm:w-auto px-8">
                 Me contacter
               </Link>
             </Magnetic>
@@ -282,20 +275,16 @@ export default function Home() {
               <motion.div
                 animate={{ y: [0, -30, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                style={{ 
-                  x: mousePos.x * 0.5, 
-                  y: mousePos.y * 0.5,
-                }}
               >
                 <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto group mx-auto">
                   <div className="absolute inset-0 bg-[var(--color-creative-blue)] translate-x-4 translate-y-4 border-2 border-white -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6"></div>
                   <LazyImage 
-                    src={`${baseUrl}images/photo-studio-creative.png`}
+                    src={`${baseUrl}images/ma-photo/photo-studio-bleu-final.png`}
                     alt="Tharsanan"
                     className="w-full h-auto object-contain border-2 border-white grayscale-0 hover:grayscale transition-all duration-500 bg-[var(--color-primary)]"
                     skeletonClassName="rounded-none"
                   />
-                  <div className="sticker-shape sticker-cyan bottom-4 -left-6 rotate-[-12deg] z-20">Design</div>
+                  <div className="sticker-shape sticker-blue-dark bottom-4 -left-6 rotate-[-12deg] z-20">Design</div>
                   <div className="tape-effect -top-4 left-1/2 -translate-x-1/2"></div>
                 </div>
               </motion.div>

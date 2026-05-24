@@ -116,7 +116,7 @@ export default function PassionSection() {
                 <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center mb-4 md:mb-4 lg:mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10">
                   <p.icon className={p.color} size={24} />
                 </div>
-                <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-1 md:mb-2 tracking-tight text-white break-words break-all sm:break-normal">{p.title}</h3>
+                <h3 className="text-2xl md:text-lg lg:text-xl xl:text-2xl font-black mb-1 md:mb-2 tracking-tighter text-white uppercase whitespace-nowrap">{p.title}</h3>
                 <p className={`text-[10px] md:text-[11px] lg:text-xs font-bold uppercase tracking-widest ${p.color} mb-3 md:mb-4 lg:mb-6 opacity-90`}>{p.subtitle}</p>
                 <p className="text-white/80 text-xs md:text-[13px] lg:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
                 {p.hasMore && (

@@ -106,7 +106,7 @@ export default function ProjetFutsal() {
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Adobe Suite, React</p>
+          <p className="font-bold text-sm md:text-base">Antigravity, React, Adobe Suite</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Contexte</span>
@@ -121,7 +121,7 @@ export default function ProjetFutsal() {
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
             <div className="space-y-6 text-slate-100 text-base md:text-lg leading-relaxed">
               <p>
-                J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel.
+                J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel en Vibe Coding (avec Antigravity).
               </p>
               <div className="pt-6">
                 <Magnetic>

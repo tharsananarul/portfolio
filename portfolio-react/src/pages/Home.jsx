@@ -77,14 +77,14 @@ const featuredProjects = [
   {
     title: "Futsal Drancy",
     category: "Web Dev & Communication",
-    desc: "Conception intégrale du site web et gestion de l'image de marque du club. Un projet alliant design moderne et performance.",
+    desc: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity).",
     img: "images/couvertures/futsal-drancy.png",
     path: "/projets/futsal"
   },
   {
     title: "UI/UX Works",
     category: "Design & Développement",
-    desc: "Plateforme de révisions BTS Com & Projet HopePower. Une exploration de l'ergonomie et de l'interactivité.",
+    desc: "Plateforme BTS Révision et projet HopePower. Des sites web conçus en Vibe Coding (Antigravity/Framer) pour une interactivité optimale.",
     img: "images/couvertures/ui-ux-designs.png",
     path: "/projets/ux"
   }

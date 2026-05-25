@@ -66,7 +66,7 @@ export default function ProjetAlda() {
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Illustrator, Photoshop</p>
+          <p className="font-bold text-sm md:text-base">Illustrator, Photoshop, Framer / IA</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
@@ -81,7 +81,7 @@ export default function ProjetAlda() {
             <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight">Concept de marque <span className="highlight">artisanale</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Projet collaboratif visant à créer une identité de marque complète pour une nouvelle bière artisanale. Nous avons conceptualisé les valeurs, le positionnement et le public cible de la marque.
+                Projet collaboratif de branding où la vision créative s'associe aux outils de Vibe Coding et d'IA pour concevoir et prototyper rapidement des déclinaisons graphiques cohérentes.
               </p>
               <p>
                 Mon rôle s'est concentré sur la création du logo, des étiquettes et du packaging, en veillant à ce que chaque élément visuel reflète l'histoire et l'authenticité de la bière Alda.

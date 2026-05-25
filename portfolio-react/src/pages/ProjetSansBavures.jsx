@@ -62,7 +62,7 @@ export default function ProjetSansBavures() {
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Premiere Pro, Illustrator</p>
+          <p className="font-bold text-sm md:text-base">Premiere Pro, Illustrator, Vibe Coding</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
@@ -77,7 +77,7 @@ export default function ProjetSansBavures() {
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Informer & <span className="highlight">Sensibiliser</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Projet collaboratif visant à produire un reportage multimédia sur un sujet d'actualité. Mon rôle principal a été la production technique et le montage audiovisuel.
+                Projet collaboratif visant à produire un reportage multimédia interactif sur un sujet d'actualité. Mon rôle a combiné la production technique, le montage audiovisuel et l'intégration web en Vibe Coding.
               </p>
               <p>
                 J'ai utilisé Adobe Premiere Pro pour synchroniser les séquences, ajuster la colorimétrie et intégrer des transitions dynamiques, tout en assurant une narration immersive.

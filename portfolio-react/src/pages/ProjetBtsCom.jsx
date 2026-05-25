@@ -73,7 +73,7 @@ export default function ProjetBtsCom() {
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator</p>
+          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Vibe Coding</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
@@ -88,7 +88,7 @@ export default function ProjetBtsCom() {
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Théorie et <span className="highlight">pratique créative</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Dans le cadre de mon BTS Communication, j'ai réalisé de nombreux supports visuels alliant réflexion stratégique et exécution graphique.
+                Dans le cadre de mon BTS Communication, j'ai conçu de nombreux supports de communication et maquettes web en intégrant le Vibe Coding à ma réflexion stratégique et mon exécution graphique.
               </p>
               <p>
                 De la création d'affiches publicitaires à la conception de mockups pour diverses marques, ce parcours me permet de maîtriser l'ensemble de la chaîne graphique.

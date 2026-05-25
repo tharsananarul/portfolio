@@ -9,7 +9,7 @@ const projects = [
     id: 'futsal',
     title: "Futsal Drancy",
     tag: "Web Dev & Communication",
-    desc: "Refonte complète de l'identité numérique et création d'une plateforme web pour un club de sport.",
+    desc: "Refonte complète de l'identité numérique et création d'un site officiel en Vibe Coding (Antigravity).",
     img: "images/couvertures/futsal-drancy.png",
     path: "/projets/futsal"
   },
@@ -17,7 +17,7 @@ const projects = [
     id: 'alda',
     title: "Alda Bière",
     tag: "Branding & Packaging",
-    desc: "Création d'un univers de marque artisanal et éco-responsable pour une brasserie locale.",
+    desc: "Création d'un univers de marque artisanal et éco-responsable avec prototypage rapide assisté par IA.",
     img: "images/couvertures/alda.png",
     path: "/projets/alda"
   },
@@ -25,7 +25,7 @@ const projects = [
     id: 'ux',
     title: "UI/UX Works",
     tag: "Interface Design",
-    desc: "Sélection d'interfaces interactives (BTS Révision, HopePower) axées sur l'expérience utilisateur.",
+    desc: "Sélection de sites web interactifs (BTS Révision, HopePower) développés en Vibe Coding (Antigravity/Framer).",
     img: "images/couvertures/ui-ux-designs.png",
     path: "/projets/ux"
   },
@@ -33,7 +33,7 @@ const projects = [
     id: 'sans-bavures',
     title: "Sans Bavures",
     tag: "Audiovisuel & Montage",
-    desc: "Production et montage d'un reportage multimédia sur les enjeux de l'information.",
+    desc: "Production, montage et intégration web en Vibe Coding pour un reportage multimédia interactif.",
     img: "images/couvertures/sans-bavures.png",
     path: "/projets/sans-bavures"
   },
@@ -41,7 +41,7 @@ const projects = [
     id: 'bts-com',
     title: "BTS Com Projects",
     tag: "Stratégie & Design",
-    desc: "Portfolio de réalisations académiques et professionnelles durant mon cursus en communication.",
+    desc: "Portfolio de projets de communication et maquettes web interactives conçus en Vibe Coding.",
     img: "images/couvertures/bts-com.png",
     path: "/projets/bts-com"
   },
@@ -49,7 +49,7 @@ const projects = [
     id: 'perso',
     title: "Créations Perso",
     tag: "Créativité Libre",
-    desc: "Explorations graphiques, montages expérimentaux et projets personnels divers.",
+    desc: "Explorations graphiques, posters de films et maquettes web expérimentées en Vibe Coding.",
     img: "images/couvertures/projets-crea.png",
     path: "/projets/perso"
   }
@@ -63,7 +63,7 @@ export default function Projets() {
       <PageHero
         tag="Réalisations"
         title={<>Découvrez <br /><span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>mon univers.</span></>}
-        subtitle="Une collection de projets variés, allant du design d'interface à la stratégie de communication, illustrant ma polyvalence et ma passion pour la création."
+        subtitle="Une collection de projets (principalement des sites web) réalisés en Vibe Coding à l'aide d'outils d'IA avancés comme Antigravity et Framer, illustrant ma polyvalence et ma passion pour la création."
         themeColor="blue"
       />
 

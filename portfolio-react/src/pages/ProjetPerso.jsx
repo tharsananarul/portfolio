@@ -65,7 +65,7 @@ export default function ProjetPerso() {
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator</p>
+          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Vibe Coding</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Thème</span>
@@ -80,7 +80,7 @@ export default function ProjetPerso() {
             <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Expression <span className="highlight">libre</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Mes projets personnels me permettent d'explorer de nouvelles techniques et de rendre hommage aux œuvres qui m'inspirent, notamment le cinéma sud-indien.
+                Mes projets personnels me permettent d'explorer de nouvelles techniques de design visuel et de Vibe Coding, me donnant la liberté d'expérimenter sur des maquettes de sites web et de rendre hommage aux œuvres qui m'inspirent, notamment le cinéma sud-indien.
               </p>
               <p>
                 Chaque poster est le fruit d'un travail sur la composition, la typographie et la gestion des couleurs pour capturer l'essence de l'œuvre originale.

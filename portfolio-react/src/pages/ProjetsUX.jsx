@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowLeft, ArrowRight, ExternalLink, Code2, Cpu, Globe, Layout } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink, Code2, Cpu, Globe, Layout, Sparkles } from 'lucide-react'
 import MosaicGrid from '../components/MosaicGrid'
 import LazyImage from '../components/ui/LazyImage'
 
@@ -89,9 +89,9 @@ export default function ProjetsUX() {
         <div className="max-w-4xl">
           <h2 className="text-2xl md:text-5xl font-bold mb-8 tracking-tight">Expérimentations et <span className="highlight">développement web</span>.</h2>
           <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-12">
-            Réalisés durant mon temps libre, ces projets m'ont permis de perfectionner mes compétences techniques en développement front-end et en design d'interfaces interactives.
+            Réalisés en <strong>Vibe Coding</strong> durant mon temps libre, ces projets (principalement des sites web) combinent ma créativité avec des outils d'IA avancés comme <strong>Antigravity</strong> et des plateformes comme <strong>Framer</strong> pour concevoir et itérer rapidement des interfaces interactives.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Code2 className="text-accent-light mb-4" size={32} />
               <h3 className="text-xl font-bold mb-3">HTML & CSS</h3>
@@ -104,6 +104,13 @@ export default function ProjetsUX() {
               <h3 className="text-xl font-bold mb-3">React & JS</h3>
               <p className="text-text-muted text-sm leading-relaxed">
                 Développement d'applications web modernes utilisant React pour une gestion dynamique de l'état et des interactions fluides.
+              </p>
+            </div>
+            <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
+              <Sparkles className="text-accent-light mb-4" size={32} />
+              <h3 className="text-xl font-bold mb-3">Vibe Coding & IA</h3>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Conception rapide et intégration de sites modernes en exploitant des technologies d'IA (Antigravity) et des outils comme Framer.
               </p>
             </div>
           </div>

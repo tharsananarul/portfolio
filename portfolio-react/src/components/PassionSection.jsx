@@ -20,8 +20,8 @@ const passions = [
     subtitle: "Liberté & Endurance",
     desc: "Le cyclisme me permet de me dépasser et de m'évader. C'est un équilibre entre effort, découverte et discipline.",
     icon: Bike,
-    color: "text-[var(--color-creative-orange)]",
-    bg: "rgba(249, 115, 22, 0.1)",
+    color: "text-[var(--color-creative-blue)]",
+    bg: "rgba(14, 165, 233, 0.1)",
     hasMore: false
   },
   {
@@ -31,7 +31,7 @@ const passions = [
     desc: "La photographie développe mon regard et mon sens du détail, des compétences que j'applique directement dans mes projets en communication.",
     icon: Camera,
     color: "text-[var(--color-creative-blue)]",
-    bg: "rgba(244, 63, 94, 0.1)",
+    bg: "rgba(14, 165, 233, 0.1)",
     hasMore: true
   }
 ]
@@ -129,7 +129,7 @@ export default function PassionSection() {
             )
 
             const cardClasses = "group p-6 md:p-6 lg:p-10 rounded-none border-2 md:border-2 lg:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[4px_4px_0_0_#000] lg:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[2px_2px_0_0_#000] lg:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
-            const accentStyle = { borderTopColor: p.color.includes('blue') ? 'var(--color-creative-blue)' : 'var(--color-creative-orange)' }
+            const accentStyle = { borderTopColor: 'var(--color-creative-blue)' }
 
             return p.hasMore ? (
               <motion.div

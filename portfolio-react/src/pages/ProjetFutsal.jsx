@@ -66,11 +66,7 @@ export default function ProjetFutsal() {
   ]
 
   return (
-    <main className="relative bg-gradient-to-b from-transparent via-[#060a18]/75 to-[#060a18]/95 backdrop-blur-[1px] min-h-screen">
-      {/* Background patterns */}
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="grid-overlay" />
-      </div>
+    <main className="relative bg-transparent min-h-screen">
 
       {/* Optimized Hero Header */}
       <div className="relative h-[40vh] md:h-[60vh] overflow-hidden" ref={containerRef}>

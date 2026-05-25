@@ -80,7 +80,7 @@ const experiences = [
 
 export default function CV() {
   return (
-    <main className="relative pb-20 bg-gradient-to-b from-primary via-[#0f172a]/80 to-primary min-h-screen overflow-hidden">
+    <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
       <PageHero
         tag="Expérience & Formation"
         title={<>Mon <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
@@ -92,7 +92,6 @@ export default function CV() {
 
       {/* Background patterns & Creative Blobs */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="grid-overlay opacity-20" />
         
         {/* Large creative blobs - Hidden on mobile to save GPU performance */}
         <motion.div 
@@ -233,7 +232,7 @@ export default function CV() {
                     <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
                       <div className="relative px-4 py-2">
                         <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
-                        <span className="relative text-[var(--color-creative-orange)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
+                        <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
                           Voir le CV
                         </span>
                       </div>
@@ -255,16 +254,16 @@ export default function CV() {
                 className="flex items-center gap-6 mb-16"
               >
                 <div className="relative group">
-                  <div className="absolute -inset-2 bg-[var(--color-creative-orange)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute -inset-2 bg-[var(--color-creative-blue)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                    <Briefcase className="text-[var(--color-creative-orange)]" size={28} />
+                    <Briefcase className="text-[var(--color-creative-blue)]" size={28} />
                   </div>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
                   <span className="text-white text-xl md:text-2xl block mb-2">Mon</span>
                   <span className="relative inline-block px-4 py-1">
                     <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm rotate-1 rounded-lg" />
-                    <span className="relative text-[var(--color-creative-orange)]">Expérience</span>
+                    <span className="relative text-[var(--color-creative-blue)]">Expérience</span>
                   </span>
                 </h2>
               </motion.div>
@@ -279,7 +278,7 @@ export default function CV() {
                     transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="glass-card p-5 md:p-6 group glow-card"
                   >
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-orange)] mb-3 block">{item.period}</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-3 block">{item.period}</span>
                     
                     <div className="mb-6">
                       <h3 className="text-lg md:text-2xl font-black mb-3 uppercase tracking-tighter text-white leading-tight">{item.title}</h3>
@@ -297,7 +296,7 @@ export default function CV() {
                     <ul className="space-y-3">
                       {item.missions.map((mission, idx) => (
                         <li key={idx} className="text-white/70 text-xs md:text-base flex items-start gap-3 font-medium leading-relaxed">
-                          <span className="mt-2 w-1 h-1 rounded-full bg-[var(--color-creative-orange)] shrink-0 shadow-[0_0_10px_var(--color-creative-orange)]" />
+                          <span className="mt-2 w-1 h-1 rounded-full bg-[var(--color-creative-blue)] shrink-0 shadow-[0_0_10px_var(--color-creative-blue)]" />
                           {mission}
                         </li>
                       ))}

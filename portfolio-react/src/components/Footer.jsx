@@ -33,13 +33,40 @@ export default function Footer() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("tharsananarul@gmail.com")
-    setCopied(true)
-    if (showToast) {
-      showToast("Email copié !", "success")
+  const fallbackCopyText = (text) => {
+    const textArea = document.createElement("textarea")
+    textArea.value = text
+    textArea.style.top = "0"
+    textArea.style.left = "0"
+    textArea.style.position = "fixed"
+    document.body.appendChild(textArea)
+    textArea.focus()
+    textArea.select()
+    try {
+      document.execCommand('copy')
+      setCopied(true)
+      if (showToast) showToast("Email copié !", "success")
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Fallback copy failed', err)
     }
-    setTimeout(() => setCopied(false), 2000)
+    document.body.removeChild(textArea)
+  }
+
+  const handleCopyEmail = () => {
+    const email = "tharsananarul@gmail.com"
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        setCopied(true)
+        if (showToast) showToast("Email copié !", "success")
+        setTimeout(() => setCopied(false), 2000)
+      }).catch(err => {
+        console.error("Failed to copy using navigator: ", err)
+        fallbackCopyText(email)
+      })
+    } else {
+      fallbackCopyText(email)
+    }
   }
 
   const scrollToTop = () => {
@@ -49,10 +76,10 @@ export default function Footer() {
   const row1Items = ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"]
 
   return (
-    <footer className="bg-[#020512] relative z-10 border-t border-white/5 overflow-hidden pt-16 pb-8">
+    <footer className="bg-transparent relative z-10 overflow-hidden pt-16 pb-8">
       {/* Background Decorative Blob Elements */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
-      <div className="absolute bottom-1/4 right-10 w-[50vw] h-[50vw] rounded-full bg-[var(--color-creative-orange)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 right-10 w-[50vw] h-[50vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
 
       {/* 1. SCROLLING MARQUEE (Sleek interactive ticker) */}
       <div className="w-full overflow-hidden flex whitespace-nowrap py-5 md:py-6 select-none relative mb-16 border-b border-white/5 bg-slate-950/20">
@@ -149,7 +176,7 @@ export default function Footer() {
                   href="tel:0749878775" 
                   className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group"
                 >
-                  <Phone size={15} className="text-[var(--color-creative-orange)] flex-shrink-0" />
+                  <Phone size={15} className="text-sky-400 flex-shrink-0" />
                   <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white">07 49 87 87 75</span>
                 </a>
               </div>
@@ -165,7 +192,7 @@ export default function Footer() {
                   href={linkedinUrl} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-blue-500/30 text-white/50 hover:text-[#0077B5] transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="LinkedIn"
                 >
                   <Linkedin size={15} />
@@ -174,7 +201,7 @@ export default function Footer() {
                   href="https://www.instagram.com/tharsh.studio/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-pink-500/30 text-white/50 hover:text-[var(--color-creative-orange)] transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="Instagram"
                 >
                   <Instagram size={15} />
@@ -183,7 +210,7 @@ export default function Footer() {
                   href="https://github.com/tharsananarul" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-white/30 text-white/50 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="GitHub"
                 >
                   <Github size={15} />

@@ -34,7 +34,7 @@ export default function Competences() {
   ]
 
   return (
-    <main className="relative pb-20 overflow-hidden bg-gradient-to-b from-primary via-[#1e3a8a]/40 to-primary min-h-screen">
+    <main className="relative pb-20 overflow-hidden bg-transparent min-h-screen">
       <PageHero
         tag="Expertise"
         title={<>Mes <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Compétences.</span></>}
@@ -43,8 +43,6 @@ export default function Competences() {
       />
 
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 pointer-events-none -z-10 opacity-30" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
 
       <section className="section-container relative z-10">
@@ -65,7 +63,7 @@ export default function Competences() {
             >
               <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-6 md:mb-10 transition-all duration-500 transform group-hover:scale-110 shadow-lg ${
                 i % 3 === 0 ? 'bg-gradient-to-br from-[var(--color-creative-blue)] to-blue-600' : 
-                i % 3 === 1 ? 'bg-gradient-to-br from-[var(--color-creative-orange)] to-[#008BBF]' : 
+                i % 3 === 1 ? 'bg-gradient-to-br from-[var(--color-creative-blue)] to-[#008BBF]' : 
                 'bg-gradient-to-br from-blue-400 to-[var(--color-creative-blue)]'
               } text-white`}>
                 {skill.icon}
@@ -128,7 +126,7 @@ export default function Competences() {
         <div>
           <h2 className="text-2xl md:text-6xl font-black mb-16 tracking-tighter uppercase">
             Langues <br />
-            <span className="bg-[var(--color-creative-orange)] text-white px-3 inline-block -rotate-1 border-2 border-black shadow-[4px_4px_0_0_var(--color-creative-blue)]">parlées</span>
+            <span className="bg-[var(--color-creative-blue)] text-white px-3 inline-block -rotate-1 border-2 border-black shadow-[4px_4px_0_0_var(--color-creative-blue)]">parlées</span>
           </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">

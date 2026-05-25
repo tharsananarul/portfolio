@@ -198,12 +198,29 @@ function FluidBlobMesh({ mouseRef }) {
   )
 }
 
+// ── Helper to detect WebGL support ──────────────────────────────────────────
+function hasWebGL() {
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    )
+  } catch (e) {
+    return false
+  }
+}
+
 // ── Exported component ────────────────────────────────────────────────────────
 const HeroBackground3D = memo(() => {
   const [isDesktop, setIsDesktop] = useState(false)
+  const [webGLSupported, setWebGLSupported] = useState(true)
   const mouseRef = useRef(new THREE.Vector2(0.5, 0.5))
 
   useEffect(() => {
+    // Detect WebGL support
+    setWebGLSupported(hasWebGL())
+
     const mq = window.matchMedia('(min-width: 768px)')
     const update = () => setIsDesktop(mq.matches)
     update()
@@ -223,12 +240,18 @@ const HeroBackground3D = memo(() => {
     }
   }, [])
 
-  // ── Mobile fallback: pure CSS gradient ────────────────────────────────────
-  if (!isDesktop) {
+  // ── Fallback: pure CSS gradient (for mobile or if WebGL is unsupported) ─────
+  if (!isDesktop || !webGLSupported) {
     return (
       <div
-        className="absolute inset-0 -z-10 w-full h-full pointer-events-none"
+        className="fixed inset-0 -z-10 w-screen h-screen pointer-events-none"
         style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1,
           background: `
             radial-gradient(ellipse 80% 60% at 8% 50%,  rgba(0,186,255,0.28) 0%, transparent 70%),
             radial-gradient(ellipse 60% 50% at 85% 20%,  rgba(20,80,230,0.32) 0%, transparent 70%),
@@ -243,21 +266,26 @@ const HeroBackground3D = memo(() => {
 
   // ── Desktop: WebGL fluid blobs ────────────────────────────────────────────
   return (
-    <div className="absolute inset-0 -z-10 w-full h-full overflow-hidden bg-[#020410] pointer-events-none">
+    <div className="fixed inset-0 -z-10 w-screen h-screen overflow-hidden bg-[#020410] pointer-events-none" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }}>
       <Canvas
         gl={{ antialias: true, powerPreference: 'high-performance', precision: 'highp' }}
         dpr={[1, 2]}
         frameloop="always"
-        style={{ pointerEvents: 'none' }}
+        style={{ 
+          pointerEvents: 'none',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1
+        }}
       >
         <FluidBlobMesh mouseRef={mouseRef} />
       </Canvas>
 
       {/* Semi-transparent black overlay to ensure text readability */}
       <div className="absolute inset-0 bg-black/30 pointer-events-none" />
-
-      {/* Bottom gradient to blend into page body */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020410] pointer-events-none" />
 
       {/* Subtle film-grain texture */}
       <div

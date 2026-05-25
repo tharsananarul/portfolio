@@ -153,17 +153,17 @@ export default function Navbar() {
           
           <div className="flex items-center gap-3">
             <Magnetic>
-              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-all p-2 hover:scale-115" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </Magnetic>
             <Magnetic>
-              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-all p-2 hover:scale-115" title="GitHub">
+              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="GitHub">
                 <Github size={18} />
               </a>
             </Magnetic>
             <Magnetic>
-              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-all p-2 hover:scale-115" title="Instagram">
+              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="Instagram">
                 <Instagram size={18} />
               </a>
             </Magnetic>
@@ -261,13 +261,13 @@ export default function Navbar() {
                   </div>
                   
                   <div className="flex items-center gap-2.5">
-                    <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-white/40 hover:text-[var(--color-creative-blue)] transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="LinkedIn">
+                    <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="LinkedIn">
                       <Linkedin size={14} />
                     </a>
-                    <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-white/40 hover:text-[var(--color-creative-blue)] transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="GitHub">
+                    <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="GitHub">
                       <Github size={14} />
                     </a>
-                    <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-white/40 hover:text-[var(--color-creative-blue)] transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="Instagram">
+                    <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-colors p-1.5 bg-white/5 rounded-full border border-white/5" title="Instagram">
                       <Instagram size={14} />
                     </a>
                   </div>

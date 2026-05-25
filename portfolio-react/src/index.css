@@ -11,7 +11,7 @@
   
   --color-creative-yellow: #0284c7; /* Sky 600 */
   --color-creative-blue: #0ea5e9; /* Fresh Sky */
-  --color-creative-orange: #00BAFF; /* Deep Sky Blue (replacing Gray/Orange for a full blue theme) */
+  --color-creative-orange: #0ea5e9; /* Unified with Fresh Sky for clean theme colors */
   
   --font-heading: "Archivo Black", "Syne", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
@@ -47,7 +47,9 @@
   }
 
   body {
-    @apply bg-primary text-[#e8edf8] font-body antialiased selection:bg-accent/30 selection:text-white;
+    @apply text-[#e8edf8] font-body antialiased selection:bg-accent/30 selection:text-white;
+    background: transparent !important;
+    background-color: transparent !important;
     overflow-x: hidden !important;
     width: 100vw;
     position: relative;
@@ -152,7 +154,7 @@
   }
 
   .btn-premium-orange {
-    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-white transition-all duration-500 bg-gradient-to-br from-[var(--color-creative-orange)] to-slate-700 border border-white/20 rounded-2xl shadow-lg hover:shadow-[var(--color-creative-orange)]/20 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base overflow-hidden;
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-white transition-all duration-500 bg-gradient-to-br from-[var(--color-creative-blue)] to-blue-700 border border-white/20 rounded-2xl shadow-lg hover:shadow-[var(--color-creative-blue)]/30 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base overflow-hidden;
   }
 
   .btn-premium-orange::after {
@@ -170,17 +172,17 @@
   }
 
   .btn-outline-orange {
-    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-orange)] transition-all duration-500 border border-[var(--color-creative-orange)]/30 bg-[var(--color-creative-orange)]/5 backdrop-blur-md rounded-2xl hover:bg-[var(--color-creative-orange)]/10 hover:border-[var(--color-creative-orange)]/50 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-blue)] transition-all duration-500 border border-[var(--color-creative-blue)]/30 bg-[var(--color-creative-blue)]/5 backdrop-blur-md rounded-2xl hover:bg-[var(--color-creative-blue)]/10 hover:border-[var(--color-creative-blue)]/50 hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
   }
 
   .btn-dark-blue-dark {
-    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-orange)] transition-all duration-500 bg-[#0c1225]/85 border border-[var(--color-creative-orange)]/40 rounded-2xl hover:bg-[#0c1225] hover:border-[var(--color-creative-orange)] hover:shadow-[0_0_20px_rgba(0,186,255,0.4),inset_0_0_10px_rgba(0,186,255,0.2)] hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
-    text-shadow: 0 0 5px rgba(0,186,255,0.3);
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-blue)] transition-all duration-500 bg-[#0c1225]/85 border border-[var(--color-creative-blue)]/40 rounded-2xl hover:bg-[#0c1225] hover:border-[var(--color-creative-blue)] hover:shadow-[0_0_20px_rgba(14,165,233,0.4),inset_0_0_10px_rgba(14,165,233,0.2)] hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
+    text-shadow: 0 0 5px rgba(14,165,233,0.3);
   }
 
   .btn-outline-blue-dark-black {
-    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-orange)] transition-all duration-500 border border-[var(--color-creative-orange)] bg-black rounded-2xl hover:bg-black/90 hover:shadow-[0_0_25px_rgba(0,186,255,0.6),inset_0_0_15px_rgba(0,186,255,0.4)] hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
-    text-shadow: 0 0 8px rgba(0,186,255,0.5);
+    @apply relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-black text-[var(--color-creative-blue)] transition-all duration-500 border border-[var(--color-creative-blue)] bg-black rounded-2xl hover:bg-black/90 hover:shadow-[0_0_25px_rgba(14,165,233,0.6),inset_0_0_15px_rgba(14,165,233,0.4)] hover:-translate-y-1 active:scale-95 text-[10px] md:text-sm lg:text-base;
+    text-shadow: 0 0 8px rgba(14,165,233,0.5);
   }
 
   .blob {
@@ -568,3 +570,35 @@
     radial-gradient(circle at 85% 85%, rgba(30, 64, 175, 0.2) 0%, transparent 50%),
     linear-gradient(180deg, #010411 0%, #050b1d 100%) !important;
 }
+
+/* --- Force Total Background Transparency for 3D Background Visibility --- */
+/* The 3D background is rendered in a fixed <div> inside Background.jsx with bg-[#020410]. */
+/* All wrappers above it must be transparent so the canvas shows through. */
+html {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body,
+#root,
+#root > div {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+main,
+section,
+header,
+nav,
+.page-transition,
+.smooth-scroll {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Canvas itself must stay transparent — color comes from the WebGL shader */
+canvas {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+

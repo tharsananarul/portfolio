@@ -173,7 +173,7 @@ ul {
 .blob-1 {
   width: 550px;
   height: 550px;
-  background: rgba(27, 79, 255, 0.1);
+  background: rgba(27, 79, 255, 0.04);
   top: -80px;
   left: -150px;
   animation: blobFloat 14s ease-in-out infinite alternate;
@@ -182,7 +182,7 @@ ul {
 .blob-2 {
   width: 350px;
   height: 350px;
-  background: rgba(188, 217, 245, 0.06);
+  background: rgba(188, 217, 245, 0.02);
   top: 200px;
   right: -80px;
   animation: blobFloat 18s ease-in-out infinite alternate-reverse;
@@ -569,7 +569,7 @@ ul {
    PROJETS
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .projets {
-  background: var(--bg);
+  background: transparent;
 }
 
 .projects-grid {
@@ -703,7 +703,7 @@ ul {
    ├Ç PROPOS HOME
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .apropos-home {
-  background: var(--bg-2);
+  background: transparent;
 }
 
 .apropos-home-inner {
@@ -767,7 +767,7 @@ ul {
    CONTACT HOME
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .contact-home {
-  background: var(--bg);
+  background: transparent;
 }
 
 .contact-home-inner {
@@ -837,7 +837,7 @@ ul {
    CONTACT FORM
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .contact-page {
-  background: var(--bg);
+  background: transparent;
 }
 
 .contact-inner {
@@ -963,7 +963,7 @@ ul {
    CV PAGE
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .cv-page {
-  background: var(--bg);
+  background: transparent;
 }
 
 .cv-inner {
@@ -1128,7 +1128,7 @@ ul {
    COMP├ëTENCES PAGE
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .competences-page {
-  background: var(--bg);
+  background: transparent;
 }
 
 .comp-block {
@@ -1327,7 +1327,7 @@ ul {
    PROJETS PAGE
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .projets-page {
-  background: var(--bg);
+  background: transparent;
 }
 
 .projets-categorie {
@@ -1432,8 +1432,8 @@ ul {
    FOOTER
 ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ */
 .footer {
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
+  background: transparent;
+  border-top: none;
   padding: 40px 6vw;
 }
 
@@ -2260,4 +2260,24 @@ body.page-exit {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* --- Force Total Background Transparency for 3D Background Visibility --- */
+html,
+body,
+#root,
+#root > div,
+main,
+section,
+header,
+nav,
+.page-transition,
+.smooth-scroll {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+canvas {
+  background: transparent !important;
+  background-color: transparent !important;
 }

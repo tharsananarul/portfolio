@@ -110,10 +110,7 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0">
-        
-        {/* Interactive 3D Background */}
-        <HeroBackground3D />
+      <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0 bg-transparent">
         
         {/* Hero Overlay for Contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60 pointer-events-none z-0" />
@@ -250,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* QUICK ABOUT / STATS SECTION - Opaque bg to hide global 3D background */}
-      <section className="bg-primary text-white relative py-12 md:py-20 lg:py-32 overflow-hidden border-y-[6px] border-black z-10">
+      <section className="bg-transparent text-white relative py-12 md:py-20 lg:py-32 overflow-hidden z-10">
         <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="section-container relative z-10">
@@ -306,7 +303,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter leading-tight uppercase relative inline-block text-white">
                 Un parcours entre <br />
                 <span className="mt-2 inline-block text-[var(--color-creative-blue)]">technique</span> et <br />
-                <span className="bg-[var(--color-creative-orange)] text-white px-2 mt-2 inline-block -rotate-2 border-2 border-white shadow-[4px_4px_0_0_#fff]">communication</span>
+                <span className="bg-[var(--color-creative-blue)] text-white px-2 mt-2 inline-block -rotate-2 border-2 border-white shadow-[4px_4px_0_0_#fff]">communication</span>
               </h2>
               <div className="space-y-4 md:space-y-6 text-white/90 font-bold text-sm md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
 
@@ -331,7 +328,7 @@ export default function Home() {
                  <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={4} /></span>
                  <span className="text-xs font-bold uppercase tracking-widest text-white/60">Ans d'études</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-[var(--color-creative-orange)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative top-4">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-[var(--color-creative-blue)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative top-4">
                  <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={1} /></span>
                  <span className="text-xs font-bold uppercase tracking-widest text-white/80">An d'expérience</span>
               </motion.div>
@@ -339,7 +336,7 @@ export default function Home() {
                  <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={6} /></span>
                  <span className="text-xs font-bold uppercase tracking-widest text-white">Logiciels</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="bg-white/5 backdrop-blur-sm border-[3px] border-white/10 shadow-[6px_6px_0_0_var(--color-creative-orange)] p-6 rounded-none text-center relative top-2">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="bg-white/5 backdrop-blur-sm border-[3px] border-white/10 shadow-[6px_6px_0_0_var(--color-creative-blue)] p-6 rounded-none text-center relative top-2">
                  <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={100} suffix="%" /></span>
                  <span className="text-xs font-bold uppercase tracking-widest text-white/60">Passionné</span>
               </motion.div>
@@ -351,7 +348,7 @@ export default function Home() {
       <InfiniteMarquee />
 
       {/* FEATURED PROJECTS */}
-      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/50 to-primary relative pb-32">
+      <section className="bg-transparent relative pb-32">
         <div className="section-container relative">
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[var(--color-creative-blue)] rounded-full blur-[140px] opacity-[0.06] -z-10" />
 
@@ -369,7 +366,7 @@ export default function Home() {
             <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase" style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}>
                 Une sélection <br />
                 <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px white' }}>des travaux</span> <br />
-                <span className="bg-[var(--color-creative-orange)] text-white px-3 inline-block rotate-1 shadow-[4px_4px_0_0_#fff] border-2 border-white">phares</span>
+                <span className="bg-[var(--color-creative-blue)] text-white px-3 inline-block rotate-1 shadow-[4px_4px_0_0_#fff] border-2 border-white">phares</span>
               </h2>
           </motion.div>
         </div>
@@ -386,12 +383,12 @@ export default function Home() {
             >
               <Link to={project.path} className="w-full lg:w-[60%] aspect-[16/9] rounded-none overflow-hidden relative block border-2 sm:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[4px_4px_0_0_#000] transition-all duration-300">
                 <LazyImage 
-                  src={`${baseUrl}${project.img}`} 
+                   src={`${baseUrl}${project.img}`} 
                   alt={project.title} 
                   className="w-full h-full object-cover"
                   skeletonClassName="opacity-20"
                 />
-                <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 text-black font-black uppercase px-2 py-0.5 sm:px-3 sm:py-1 text-[7px] sm:text-[10px] md:text-xs border sm:border-2 border-black rotate-[-5deg] ${i === 0 ? 'bg-[var(--color-creative-blue)]' : 'bg-[var(--color-creative-orange)] text-white'}`}>
+                <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 text-black font-black uppercase px-2 py-0.5 sm:px-3 sm:py-1 text-[7px] sm:text-[10px] md:text-xs border sm:border-2 border-black rotate-[-5deg] ${i === 0 ? 'bg-[var(--color-creative-blue)]' : 'bg-blue-600 text-white'}`}>
                   {project.category}
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
@@ -420,7 +417,7 @@ export default function Home() {
                   {project.desc}
                 </p>
                 <Magnetic>
-                  <Link to={project.path} className={`inline-flex items-center gap-4 font-black text-black hover:text-white transition-all group/link text-sm md:text-base px-6 py-3 border-2 border-black shadow-[4px_4px_0_0_#000] ${i === 0 ? 'bg-[var(--color-creative-blue)] text-white' : 'bg-[var(--color-creative-orange)] text-white'}`}>
+                  <Link to={project.path} className={`inline-flex items-center gap-4 font-black text-black hover:text-white transition-all group/link text-sm md:text-base px-6 py-3 border-2 border-black shadow-[4px_4px_0_0_#000] ${i === 0 ? 'bg-[var(--color-creative-blue)] text-white' : 'bg-blue-600 text-white'}`}>
                     Détails du projet 
                     <ArrowRight size={20} className="group-hover/link:translate-x-2 transition-transform" />
                   </Link>
@@ -449,7 +446,7 @@ export default function Home() {
       </section>
 
       {/* MON PROJET FUTUR SECTION */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-primary via-[#0a1e4a]/30 to-primary border-y border-white/5">
+      <section className="relative py-20 md:py-32 overflow-hidden bg-transparent">
         <div className="absolute top-0 left-0 w-[40vw] h-[40vw] bg-[#0ea5e9] rounded-full blur-[160px] opacity-[0.05] -z-10" />
         <div className="section-container relative z-10">
           <motion.div
@@ -472,7 +469,7 @@ export default function Home() {
               Après l'obtention de mon BTS Communication, je souhaite poursuivre mon parcours en Licence Pro Communication. Pour accompagner ce projet, je suis à la recherche d'une alternance en Communication Digitale ou Design Graphique pour la rentrée de septembre 2026.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-              <Link to="/cv" className="btn-premium-orange px-8 py-4 gap-3 w-full sm:w-auto justify-center">
+              <Link to="/cv" className="btn-premium px-8 py-4 gap-3 w-full sm:w-auto justify-center">
                 <Download size={18} />
                 Voir mon CV
               </Link>
@@ -492,7 +489,7 @@ export default function Home() {
       <PassionSection />
 
       {/* CTA SECTION */}
-      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/20 to-primary py-20 md:py-32 lg:py-48 relative">
+      <section className="bg-transparent py-20 md:py-32 lg:py-48 relative">
         <div className="section-container text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -505,12 +502,12 @@ export default function Home() {
 
             <h2 className="text-4xl md:text-8xl font-black mb-8 md:mb-12 text-white tracking-tighter leading-[1] uppercase relative">
               Un projet en tête ? <br />
-              <span className="editorial-title-outline text-[var(--color-creative-orange)] mt-2 inline-block -rotate-2">Parlons-en.</span>
+              <span className="editorial-title-outline text-[var(--color-creative-blue)] mt-2 inline-block -rotate-2">Parlons-en.</span>
               <div className="absolute -top-12 right-0 md:right-10 sticker-shape sticker-blue rotate-[10deg]">Hello!</div>
             </h2>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-              <Link to="/contact" className="btn-premium-orange px-12 py-6 w-full sm:w-auto text-lg">
+              <Link to="/contact" className="btn-premium px-12 py-6 w-full sm:w-auto text-lg">
                 Me contacter
               </Link>
               <a href="mailto:tharsananarul@gmail.com" className="text-text-muted font-bold hover:text-white transition-colors text-base md:text-xl flex items-center gap-2 group">

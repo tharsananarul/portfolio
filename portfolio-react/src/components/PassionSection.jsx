@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Bike, Camera, Gamepad2, ArrowRight } from 'lucide-react'
+import { Mountain, Camera, Gamepad2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
 
@@ -16,10 +16,10 @@ const passions = [
   },
   {
     id: "velo",
-    title: "Cyclisme",
-    subtitle: "Liberté & Endurance",
-    desc: "Le cyclisme me permet de me dépasser et de m'évader. C'est un équilibre entre effort, découverte et discipline.",
-    icon: Bike,
+    title: "VTT",
+    subtitle: "Liberté & Évasion",
+    desc: "Faire du VTT en pleine nature, c'est tellement plus fun que de rouler en ville ! C'est dans ces moments que je ressens un véritable sentiment de liberté et d'évasion.",
+    icon: Mountain,
     color: "text-[var(--color-creative-blue)]",
     bg: "rgba(14, 165, 233, 0.1)",
     hasMore: false
@@ -28,7 +28,7 @@ const passions = [
     id: "photo",
     title: "Photographie",
     subtitle: "Instants & Lumière",
-    desc: "La photographie développe mon regard et mon sens du détail, des compétences que j'applique directement dans mes projets en communication.",
+    desc: "Je ne suis pas photographe professionnel, mais j'aime capturer l'instant présent sur un coup de cœur, dès qu'un détail ou une lumière me paraît beau.",
     icon: Camera,
     color: "text-[var(--color-creative-blue)]",
     bg: "rgba(14, 165, 233, 0.1)",
@@ -57,17 +57,8 @@ export default function PassionSection() {
 
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-[#060a18] border-y border-white/5 z-10">
-      {/* YouTube Background with Cinematic Enhancements */}
-      <div 
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        style={{
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)',
-          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)'
-        }}
-      >
-        {/* Vignette Overlay - reduced to let more video through */}
-        <div className="absolute inset-0 z-10 bg-black/30" />
-        
+      {/* YouTube Background with Cinematic Enhancements (Optimized) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}
           autoPlay
@@ -75,14 +66,18 @@ export default function PassionSection() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover object-center scale-[1.05]"
-          style={{ filter: 'brightness(1.1) saturate(1.2) contrast(1.1)' }}
         >
           <source src={`${baseUrl}videos/bmw-bg.mp4`} type="video/mp4" />
         </video>
 
+        {/* Gradient Overlay replacing the heavy maskImage */}
+        <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, #060a18 100%)' }} />
+
+        {/* Extra darkening to ensure readability */}
+        <div className="absolute inset-0 z-10 bg-black/40" />
 
         {/* Decorative cinematic scanlines/grain */}
-        <div className="absolute inset-0 z-20 bg-noise opacity-[0.05] pointer-events-none" />
+        <div className="absolute inset-0 z-20 bg-noise opacity-[0.03] pointer-events-none" />
       </div>
 
 
@@ -97,14 +92,17 @@ export default function PassionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-white font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
-              <span className="w-8 h-1 bg-[var(--color-creative-blue)]" />
+            <p className="text-white/60 font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
+              <span className="w-8 h-px bg-[var(--color-creative-blue)]/50" />
               En dehors du digital
             </p>
             <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-8 tracking-tighter uppercase text-white relative inline-block">
               Ce qui me <br />
-              <span className="text-[var(--color-creative-blue)] mt-2 inline-block" style={{ WebkitTextStroke: '2px white' }}>définit aussi.</span>
-              <div className="sticker-shape sticker-blue-dark absolute -top-10 -right-20 rotate-12 hidden md:block">Life</div>
+              <span className="text-[var(--color-creative-blue)] mt-2 inline-block relative">
+                 <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
+                 <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/10 border border-[var(--color-creative-blue)]/30 rounded-2xl backdrop-blur-md">définit aussi.</span>
+              </span>
+              <div className="absolute -top-10 -right-20 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-12 hidden md:block">Life</div>
             </h2>
           </motion.div>
         </div>
@@ -128,8 +126,8 @@ export default function PassionSection() {
               </>
             )
 
-            const cardClasses = "group p-6 md:p-6 lg:p-10 rounded-none border-2 md:border-2 lg:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[4px_4px_0_0_#000] lg:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[2px_2px_0_0_#000] lg:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
-            const accentStyle = { borderTopColor: 'var(--color-creative-blue)' }
+            const cardClasses = "group p-6 md:p-6 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md hover:border-[var(--color-creative-blue)]/50 hover:shadow-[0_0_40px_rgba(var(--color-creative-blue-rgb),0.2)] transition-all duration-500 relative overflow-hidden"
+            const accentStyle = {} // Remove manual brutalist border top
 
             return p.hasMore ? (
               <motion.div

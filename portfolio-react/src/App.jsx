@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <ToastProvider>
-      <div className="text-slate-50 min-h-screen selection:bg-accent/30 selection:text-accent overflow-hidden">
+      <div className="text-slate-50 min-h-screen selection:bg-accent/30 selection:text-accent overflow-hidden bg-transparent">
         <Background />
         
         <SmoothScroll>

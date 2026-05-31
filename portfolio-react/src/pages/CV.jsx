@@ -80,10 +80,10 @@ const experiences = [
 
 export default function CV() {
   return (
-    <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
+    <main className="relative bg-transparent min-h-screen pb-32">
       <PageHero
         tag="Expérience & Formation"
-        title={<>Mon <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
+        title={<><span className="text-[1.3em]">Mon</span> <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
         subtitle="Une trajectoire mêlant expertise technique, communication stratégique et passion pour le design."
         compact={true}
         themeColor="blue"
@@ -157,7 +157,7 @@ export default function CV() {
                 </div>
               </div>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-                <span className="text-white text-xl md:text-2xl block mb-2">Ma</span>
+                <span className="text-white block mb-2 text-[1.4em]">Ma</span>
                 <span className="relative inline-block px-4 py-1">
                   <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm -rotate-1 rounded-lg" />
                   <span className="relative text-[var(--color-creative-blue)]">Formation</span>
@@ -260,7 +260,7 @@ export default function CV() {
                   </div>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-                  <span className="text-white text-xl md:text-2xl block mb-2">Mon</span>
+                  <span className="text-white block mb-2 text-[1.4em]">Mon</span>
                   <span className="relative inline-block px-4 py-1">
                     <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm rotate-1 rounded-lg" />
                     <span className="relative text-[var(--color-creative-blue)]">Expérience</span>

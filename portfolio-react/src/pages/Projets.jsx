@@ -59,7 +59,7 @@ export default function Projets() {
   const baseUrl = import.meta.env.BASE_URL
 
   return (
-    <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
+    <main className="relative pb-20 bg-transparent min-h-screen">
       <PageHero
         tag="Réalisations"
         title={<>Découvrez <br /><span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>mon univers.</span></>}
@@ -88,8 +88,9 @@ export default function Projets() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link to={project.path} className="group flex flex-col bg-[#020410]/80 backdrop-blur-sm border-2 sm:border-4 border-white/10 rounded-none overflow-hidden hover:translate-x-1 hover:translate-y-1 transition-all duration-300 shadow-[8px_8px_0_0_var(--color-creative-blue)] hover:shadow-[4px_4px_0_0_var(--color-creative-blue)]">
-                <div className="aspect-[16/10] overflow-hidden relative border-b-4 border-black">
+              <Link to={project.path} className="group flex flex-col bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.3)] relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="aspect-[16/10] overflow-hidden relative border-b border-white/10">
                   <img 
                     src={`${baseUrl}${project.img}`} 
                     alt={project.title} 

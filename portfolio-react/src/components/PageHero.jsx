@@ -25,7 +25,7 @@ export default function PageHero({ tag, title, subtitle, compact = false, themeC
   const [color1, color2] = getColors()
 
   return (
-    <section className={`relative overflow-hidden ${compact ? 'pt-16 pb-2 md:pt-24 md:pb-4' : 'pt-24 pb-12 md:pt-32 md:pb-20'}`}>
+    <section className={`relative ${compact ? 'pt-16 pb-2 md:pt-24 md:pb-4' : 'pt-24 pb-12 md:pt-32 md:pb-20'}`}>
       {/* Decorative background layers */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Radial gradient glow - colorful creative style */}

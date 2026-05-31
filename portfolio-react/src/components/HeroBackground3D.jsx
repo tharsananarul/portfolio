@@ -63,8 +63,14 @@ const fragmentShader = `
     off.x = snoise(uv * 1.8 + vec2(t * 0.13, center.y * 3.0)) * warpAmt;
     off.y = snoise(uv * 1.8 + vec2(center.x * 3.0, t * 0.11)) * warpAmt;
     vec2 d = (uv + off) - center;
-    // aspect-correct
+    // Aspect correct: make physical width and height proportional
     d.x *= u_res.x / u_res.y;
+    
+    // On portrait screens (mobile), scale down the blobs so they don't overlap 
+    // and overwhelm the narrow screen with solid cyan/white
+    float portraitScale = max(1.0, u_res.y / u_res.x * 0.8);
+    d *= portraitScale;
+    
     float dist = length(d);
     // smooth falloff
     return 1.0 - smoothstep(0.0, radius, dist);
@@ -244,21 +250,21 @@ const HeroBackground3D = memo(() => {
   if (!isDesktop || !webGLSupported) {
     return (
       <div
-        className="fixed inset-0 -z-10 w-screen h-screen pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '100vw',
           height: '100vh',
-          zIndex: -1,
+          zIndex: -10,
           background: `
             radial-gradient(ellipse 80% 60% at 8% 50%,  rgba(0,186,255,0.28) 0%, transparent 70%),
             radial-gradient(ellipse 60% 50% at 85% 20%,  rgba(20,80,230,0.32) 0%, transparent 70%),
             radial-gradient(ellipse 55% 45% at 50% 80%,  rgba(0,120,255,0.20) 0%, transparent 70%),
-            radial-gradient(ellipse 45% 35% at 20% 18%,  rgba(0,200,255,0.18) 0%, transparent 70%),
-            #020410
-          `
+            radial-gradient(ellipse 45% 35% at 20% 18%,  rgba(0,200,255,0.18) 0%, transparent 70%)
+          `,
+          backgroundColor: '#020410'
         }}
       />
     )
@@ -266,7 +272,7 @@ const HeroBackground3D = memo(() => {
 
   // ── Desktop: WebGL fluid blobs ────────────────────────────────────────────
   return (
-    <div className="fixed inset-0 -z-10 w-screen h-screen overflow-hidden bg-[#020410] pointer-events-none" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }}>
+    <div className="fixed inset-0 pointer-events-none" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -10, backgroundColor: 'transparent' }}>
       <Canvas
         gl={{ antialias: true, powerPreference: 'high-performance', precision: 'highp' }}
         dpr={[1, 2]}
@@ -274,11 +280,9 @@ const HeroBackground3D = memo(() => {
         style={{ 
           pointerEvents: 'none',
           position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: -1
+          inset: 0,
+          zIndex: -10,
+          backgroundColor: 'transparent'
         }}
       >
         <FluidBlobMesh mouseRef={mouseRef} />

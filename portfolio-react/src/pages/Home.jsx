@@ -220,7 +220,7 @@ export default function Home() {
             className="relative flex justify-center items-center h-[380px] sm:h-[480px] lg:h-[600px] order-1 lg:order-2 mt-4 lg:mt-0"
           >
             <div className="relative z-10">
-              <HeroPhoto src={`${baseUrl}images/ma-photo/photo heros section.png`} alt="Tharsanan" />
+              <HeroPhoto src={`${baseUrl}images/ma-photo/photo_heros_section_nobg.png`} alt="Tharsanan" />
 
               {/* Floating Badge (Bottom Right) */}
               <motion.div

@@ -8,6 +8,7 @@ import InfiniteMarquee from '../components/InfiniteMarquee'
 import Counter from '../components/Counter'
 import LazyImage from '../components/ui/LazyImage'
 import HeroBackground3D from '../components/HeroBackground3D'
+import HeroPhoto from '../components/HeroPhoto'
 
 // HeroScene removed for creative portfolio layout
 
@@ -130,6 +131,7 @@ const featuredProjects = [
 ]
 
 export default function Home() {
+  const [heroVariant, setHeroVariant] = useState('grain') // 'grain' or 'spotlight'
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -139,25 +141,6 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
   const baseUrl = import.meta.env.BASE_URL
-
-  const mousePosRef = useRef({ x: 0, y: 0 })
-
-  // Mouse-tracking spotlight
-  const spotX = useMotionValue(50)
-  const spotY = useMotionValue(50)
-  const springX = useSpring(spotX, { stiffness: 60, damping: 20 })
-  const springY = useSpring(spotY, { stiffness: 60, damping: 20 })
-
-  const handleHeroMouseMove = useCallback((e) => {
-    const rect = heroRef.current?.getBoundingClientRect()
-    if (!rect) return
-    spotX.set(((e.clientX - rect.left) / rect.width) * 100)
-    spotY.set(((e.clientY - rect.top) / rect.height) * 100)
-  }, [spotX, spotY])
-
-  // Reactive spotlight background via motion template
-  const spotlightBg = useMotionTemplate`radial-gradient(600px circle at ${springX}% ${springY}%, rgba(14,165,233,0.11) 0%, transparent 65%)`
-
   return (
     <main className="relative overflow-hidden bg-transparent">
       {/* Background patterns */}
@@ -167,87 +150,88 @@ export default function Home() {
       {/* HERO SECTION */}
       <section
         ref={heroRef}
-        onMouseMove={handleHeroMouseMove}
-        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-0 md:pb-0 bg-transparent"
+        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-0 md:pb-0 hero-grain-bg bg-transparent"
       >
-        {/* Cursor spotlight */}
-        <motion.div className="absolute inset-0 pointer-events-none z-0" style={{ background: spotlightBg }} />
+        {/* Fine grid background */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div 
+            className="absolute inset-0 opacity-[0.035]" 
+            style={{ 
+              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px)', 
+              backgroundSize: '40px 40px' 
+            }} 
+          />
+        </div>
 
         {/* Main Hero Container - 2-Column Layout */}
-        <div className="relative z-10 w-full section-container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center mt-2 md:mt-0 px-4 md:px-8">
+        <div className="relative z-10 w-full section-container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-center mt-2 md:mt-0 px-4 md:px-8">
           
           {/* LEFT COLUMN: Text Content */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 order-2 lg:order-1"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 order-2 lg:order-1 mt-8 lg:mt-0"
           >
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-lg">
-              <span className="w-4 h-px bg-white/30 hidden sm:block" />
-              <span className="text-white/80 font-black tracking-[0.2em] uppercase text-[10px] sm:text-xs">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/[0.02] border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-white/85 font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em]">
                 BTS Communication · Design Graphique
               </span>
-              <span className="w-4 h-px bg-white/30 hidden sm:block" />
             </div>
 
             {/* Main Title Area */}
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="flex items-center justify-center lg:justify-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-[var(--color-creative-blue)] animate-pulse shadow-[0_0_10px_var(--color-creative-blue)]" />
-                <h2 className="text-white/60 font-medium tracking-[0.3em] uppercase text-sm md:text-lg">
+                <h2 className="text-white/75 font-bold tracking-[0.3em] uppercase text-xs sm:text-sm">
                   Bienvenue, je suis
                 </h2>
               </div>
-              
-              <h1 className="text-[11vw] sm:text-[10vw] md:text-6xl lg:text-[7vw] xl:text-[90px] font-black text-white leading-[0.9] tracking-tight drop-shadow-xl uppercase whitespace-nowrap">
+              <h1 className="font-black text-white leading-[0.95] tracking-tight drop-shadow-xl uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
                 THARSANAN
               </h1>
             </div>
 
             {/* Tagline */}
-            <p className="flex items-center gap-3 text-white/90 font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em]">
-              <Sparkles size={18} className="text-[var(--color-creative-blue)] shrink-0" />
+            <p className="text-white/80 font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">
               Design · Développement · Communication
-              <Sparkles size={18} className="text-[var(--color-creative-blue)] shrink-0 lg:hidden" />
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-              <Link to="/projets" className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-black font-black uppercase text-xs sm:text-sm tracking-widest transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                Découvrir mes projets
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <Link to="/projets" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/60 bg-transparent text-white hover:bg-white hover:text-black font-bold uppercase text-xs tracking-wider transition-all">
+                Mes projets →
               </Link>
-              
-              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 text-white/90 hover:text-white hover:bg-white/10 font-bold uppercase text-xs sm:text-sm tracking-widest transition-colors backdrop-blur-sm">
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-white/30 font-bold uppercase text-xs tracking-wider transition-all">
                 Me contacter
               </Link>
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Photo & Circle */}
+          {/* RIGHT COLUMN: Photo & Frame */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="relative flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[600px] order-1 lg:order-2 mt-4 lg:mt-0"
+            className="relative flex justify-center items-center h-[380px] sm:h-[480px] lg:h-[600px] order-1 lg:order-2 mt-4 lg:mt-0"
           >
+            <div className="relative z-10">
+              <HeroPhoto src={`${baseUrl}images/ma-photo/photo heros section.png`} alt="Tharsanan" />
+
+              {/* Floating Badge (Bottom Right) */}
               <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ type: "spring", bounce: 0.4, duration: 2, delay: 0.3 }}
-                  className="absolute z-0 h-[280px] w-[280px] sm:h-[350px] sm:w-[350px] lg:h-[450px] lg:w-[450px] rounded-full bg-[var(--color-creative-blue)]/80 blur-xl shadow-[0_0_100px_rgba(14,165,233,0.4)]"
-              />
-              <motion.img
-                  src="/photo_heros_section_nobg.png"
-                  alt="Tharsanan"
-                  className="relative z-10 h-auto w-[240px] sm:w-[300px] lg:w-[400px] xl:w-[450px] drop-shadow-2xl object-contain origin-bottom"
-                  style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' }}
-                  initial={{ opacity: 0, scale: 0.5, y: 150, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ type: "spring", bounce: 0.5, duration: 2, delay: 0.4 }}
-              />
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-6 -right-4 sm:-right-6 z-30 px-4 py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[170px] sm:max-w-[190px] pointer-events-none"
+              >
+                <span className="text-[9px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">En recherche d'une alternance</span>
+                <span className="text-[8.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">Septembre 2026</span>
+              </motion.div>
+            </div>
           </motion.div>
 
         </div>
@@ -293,7 +277,7 @@ export default function Home() {
           
 
           {/* Top Row: Photo + Text */}
-          <div className="grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center mb-16 md:mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch mb-12 md:mb-20">
             {/* Profile Photo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: -30 }}
@@ -311,16 +295,23 @@ export default function Home() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] h-auto group mx-auto">
-                  {/* Changed brutalist border to elegant glow/glass backplate */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-creative-blue)]/30 to-transparent rounded-3xl blur-xl transition-all group-hover:blur-2xl"></div>
-                  <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 backdrop-blur-sm">
-                    <LazyImage 
-                      src={`${baseUrl}images/ma-photo/photo-studio-bleu-final.png`}
-                      alt="Tharsanan"
-                      className="w-full h-auto object-contain grayscale-0 hover:grayscale transition-all duration-500"
-                      skeletonClassName="rounded-3xl"
-                    />
+                  {/* Glowing background aura behind image */}
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--color-creative-blue)]/30 to-blue-600/5 rounded-[2rem] blur-2xl opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 -z-10"></div>
+                  
+                  {/* Outer container with animated gradient border */}
+                  <div className="profile-about-card">
+                    <div className="profile-about-inner shadow-2xl">
+                      <LazyImage 
+                        src={`${baseUrl}images/ma-photo/photo-studio-bleu-final.png`}
+                        alt="Tharsanan"
+                        className="w-full h-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
+                        skeletonClassName="rounded-[22px]"
+                      />
+                      {/* Sheen sweep ray */}
+                      <div className="profile-about-sheen" />
+                    </div>
                   </div>
+                  
                   {/* Sticker changed to pill */}
                   <div className="absolute bottom-6 -left-4 z-20 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] hover:rotate-0 hover:scale-105 transition-all">Design</div>
                 </div>
@@ -333,22 +324,23 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center lg:text-left relative"
+              className="relative px-6 py-8 md:p-12 bg-black/20 backdrop-blur-3xl rounded-[2rem] md:rounded-[3rem] border border-white/5 shadow-2xl text-center lg:text-left w-full self-stretch"
             >
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-3xl rounded-[40px] -m-8 md:-m-12 border border-white/5 shadow-2xl -z-10" />
+
 
               <p className="text-white/60 font-black tracking-widest uppercase text-[11px] md:text-sm mb-6 flex items-center gap-3 justify-center lg:justify-start">
-                <span className="w-8 h-px bg-[var(--color-creative-blue)]/50" />
+                <span className="w-8 h-px bg-[var(--color-creative-blue)]/50 shrink-0" />
                 Qui suis-je ?
+                <span className="w-8 h-px bg-[var(--color-creative-blue)]/50 shrink-0 lg:hidden" />
               </p>
 
-              <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter leading-tight uppercase relative inline-block text-white">
-                Un parcours entre <br />
-                <span className="mt-2 inline-block text-[var(--color-creative-blue)]">technique</span> et <br />
-                <span className="relative inline-block mt-2">
-                   <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
-                   <span className="relative z-10 px-2 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md">communication</span>
-                </span>
+              <h2 className="font-extrabold mb-5 md:mb-8 tracking-normal leading-snug uppercase text-white" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.6rem)' }}>
+                Un parcours entre <br />{" "}
+                <span className="text-[var(--color-creative-blue)]">technique</span> et <br />{" "}
+                <span className="relative inline-block mt-2 px-2 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md">
+                   <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg -z-10"></span>
+                   <span className="relative z-10">communication</span>
+                 </span>
               </h2>
               <div className="space-y-4 md:space-y-6 text-white/80 font-medium text-sm md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start">
 
@@ -363,7 +355,7 @@ export default function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                   </span>
-                  <span className="text-emerald-300 font-bold uppercase tracking-widest text-[9px] md:text-[10px]">
+                  <span className="text-emerald-300 font-bold uppercase tracking-wide sm:tracking-widest text-[8px] xs:text-[9px] md:text-[10px]">
                     En recherche d'alternance · Sept. 2026
                   </span>
                 </div>
@@ -427,10 +419,10 @@ export default function Home() {
               Projets Phares
             </p>
 
-            <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase text-white" style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}>
-                Une sélection <br />
-                <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>des travaux</span> <br />
-                <span className="relative inline-block mt-2">
+            <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5.5vw, 4rem)' }}>
+                Une sélection <br className="block md:hidden" />{" "}
+                <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>des travaux</span> <br className="block md:hidden" />{" "}
+                <span className="relative inline-block mt-2 md:mt-0 md:ml-3">
                    <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
                    <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md rotate-1 inline-block">phares</span>
                 </span>
@@ -446,9 +438,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`flex flex-col ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-24 items-center group`}
+              className={`flex flex-col ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center group`}
             >
-              <Link to={project.path} className="w-full lg:w-[60%] aspect-[16/9] rounded-3xl overflow-hidden relative block border border-white/5 bg-black/40 backdrop-blur-md shadow-2xl hover:border-[var(--color-creative-blue)]/50 hover:shadow-[0_0_40px_rgba(29,78,216,0.2)] transition-all duration-500 group/image">
+              <Link to={project.path} className="w-full lg:flex-1 aspect-[16/9] rounded-3xl overflow-hidden relative block border border-white/5 bg-black/40 backdrop-blur-md shadow-2xl hover:border-[var(--color-creative-blue)]/50 hover:shadow-[0_0_40px_rgba(29,78,216,0.2)] transition-all duration-500 group/image">
                 <LazyImage 
                    src={`${baseUrl}${project.img}`} 
                   alt={project.title} 
@@ -464,7 +456,7 @@ export default function Home() {
                   </span>
                 </div>
               </Link>
-              <div className="w-full lg:w-[40%]">
+              <div className="w-full lg:w-[420px] lg:shrink-0">
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -477,7 +469,7 @@ export default function Home() {
                   </span>
 
                 </motion.div>
-                <h3 className="text-xl sm:text-2xl md:text-6xl font-black mb-4 md:mb-8 tracking-tighter text-white group-hover:text-[var(--color-creative-blue)] transition-colors duration-500 leading-none">
+                <h3 className="font-black mb-4 md:mb-8 tracking-tighter text-white group-hover:text-[var(--color-creative-blue)] transition-colors duration-500 leading-none" style={{ fontSize: 'clamp(1.2rem, 2.2vw, 1.8rem)' }}>
                   {project.title}
                 </h3>
                 <p className="text-white/70 mb-6 md:mb-12 text-xs sm:text-sm md:text-xl leading-relaxed max-w-md font-medium">
@@ -536,8 +528,8 @@ export default function Home() {
                     <span className="w-8 h-px bg-[var(--color-creative-blue)]/60" />
                     Ambition
                   </p>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1] uppercase text-white">
-                    Mon Projet <br />
+                  <h2 className="font-black tracking-tighter leading-[1] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.5rem)' }}>
+                    Mon Projet <br className="block md:hidden" />{" "}
                     <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '1px white' }}>Futur.</span>
                   </h2>
                 </div>
@@ -592,11 +584,11 @@ export default function Home() {
                   <span className="w-12 h-px bg-white/20" />
                 </p>
 
-                <h2 className="text-5xl md:text-[6rem] lg:text-[7rem] font-black mb-12 text-white tracking-tighter leading-[0.9] uppercase relative inline-block">
-                  Un projet <br className="hidden md:block" /> en tête ? <br />
+                <h2 className="font-black mb-12 text-white tracking-tighter leading-[0.95] uppercase relative" style={{ fontSize: 'clamp(2rem, 7vw, 6rem)' }}>
+                  Un projet en tête ? <br />
                   <span className="editorial-title-outline text-[var(--color-creative-blue)] mt-4 inline-block -rotate-2 transform hover:rotate-0 transition-transform duration-500">Parlons-en.</span>
                   
-                  <div className="absolute -top-6 -right-6 md:-right-12 sticker-shape sticker-blue rotate-[12deg] shadow-[0_0_30px_rgba(14,165,233,0.4)] cursor-default">Hello! 👋</div>
+                  <div className="absolute -top-6 -right-6 md:-right-12 sticker-shape sticker-blue rotate-[12deg] shadow-[0_0_30px_rgba(14,165,233,0.4)] cursor-default hidden sm:block">Hello! 👋</div>
                 </h2>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-4">

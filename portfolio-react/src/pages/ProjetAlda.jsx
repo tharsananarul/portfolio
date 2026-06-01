@@ -47,7 +47,7 @@ export default function ProjetAlda() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter font-heading">
+            <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black text-white tracking-tighter leading-[1.1] font-heading">
               Alda <span className="text-accent-light italic">Bière.</span>
             </h1>
           </motion.div>
@@ -78,7 +78,7 @@ export default function ProjetAlda() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight">Concept de marque <span className="highlight">artisanale</span>.</h2>
+            <h2 className="text-[clamp(1.8rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Concept de marque <span className="highlight">artisanale</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Projet collaboratif de branding où la vision créative s'associe aux outils de Vibe Coding et d'IA pour concevoir et prototyper rapidement des déclinaisons graphiques cohérentes.

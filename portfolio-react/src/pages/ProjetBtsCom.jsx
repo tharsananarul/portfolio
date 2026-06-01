@@ -54,7 +54,7 @@ export default function ProjetBtsCom() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter font-heading">
+            <h1 className="text-[clamp(2.2rem,8vw,5.5rem)] font-black text-white tracking-tighter leading-[1.1] font-heading">
               BTS <span className="text-accent-light italic">Com.</span>
             </h1>
           </motion.div>
@@ -85,7 +85,7 @@ export default function ProjetBtsCom() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Théorie et <span className="highlight">pratique créative</span>.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Théorie et <span className="highlight">pratique créative</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Dans le cadre de mon BTS Communication, j'ai conçu de nombreux supports de communication et maquettes web en intégrant le Vibe Coding à ma réflexion stratégique et mon exécution graphique.

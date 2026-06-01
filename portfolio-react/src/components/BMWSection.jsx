@@ -60,7 +60,7 @@ export default function BMWSection() {
           className="max-w-xl bg-primary/40 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] border border-white/10"
         >
           <p className="text-accent-light font-bold tracking-[0.3em] uppercase text-xs mb-4">Passions</p>
-          <h2 className="text-3xl md:text-6xl font-bold mb-6 tracking-tighter">L'Automobile <br /><span className="highlight italic">& le Design.</span></h2>
+          <h2 className="text-3xl md:text-6xl font-bold mb-6 tracking-tighter">L'Automobile <br className="block md:hidden" />{" "}<span className="highlight italic">& le Design.</span></h2>
           <p className="text-text-muted text-sm md:text-lg leading-relaxed mb-0">
             Au-delà de la communication, je suis un passionné de design automobile. Pour moi, une BMW n'est pas qu'une voiture, c'est une pièce d'ingénierie où chaque ligne a une fonction et chaque courbe raconte une histoire de performance.
           </p>

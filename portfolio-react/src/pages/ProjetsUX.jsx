@@ -55,10 +55,12 @@ export default function ProjetsUX() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter uppercase relative inline-block">
-              UI/UX <br />
-              <span className="text-[var(--color-creative-blue)] editorial-title-outline mt-2 inline-block">Works.</span>
-              <div className="absolute -top-10 -right-20 sticker-shape sticker-blue-dark rotate-[12deg] hidden md:block">Design</div>
+            <h1 className="text-[clamp(2.5rem,9vw,6rem)] font-black text-white tracking-tighter leading-[1.1] uppercase relative inline-block">
+              UI/UX <br className="block md:hidden" />{" "}
+              <span className="text-[var(--color-creative-blue)] editorial-title-outline mt-2 md:mt-0 md:ml-4 inline-block">Works.</span>
+              <div className="hidden md:block">
+                <div className="absolute -top-10 -right-20 sticker-shape sticker-blue-dark rotate-[12deg]">Design</div>
+              </div>
             </h1>
           </motion.div>
         </div>
@@ -87,7 +89,7 @@ export default function ProjetsUX() {
       {/* Introduction */}
       <section className="section-container py-16 md:py-24">
         <div className="max-w-4xl">
-          <h2 className="text-2xl md:text-5xl font-bold mb-8 tracking-tight">Expérimentations et <span className="highlight">développement web</span>.</h2>
+          <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-8 tracking-tight leading-[1.1]">Expérimentations et <span className="highlight">développement web</span>.</h2>
           <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-12">
             Réalisés en <strong>Vibe Coding</strong> durant mon temps libre, ces projets (principalement des sites web) combinent ma créativité avec des outils d'IA avancés comme <strong>Antigravity</strong> et des plateformes comme <strong>Framer</strong> pour concevoir et itérer rapidement des interfaces interactives.
           </p>
@@ -122,7 +124,7 @@ export default function ProjetsUX() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Développement & Design</span>
-            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">Site Web Futsal Drancy</h2>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">Site Web Futsal Drancy</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Conception intégrale du premier site officiel du club. Utilisation de technologies modernes pour offrir une expérience fluide, de la présentation des équipes aux inscriptions en ligne.
             </p>
@@ -139,7 +141,7 @@ export default function ProjetsUX() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Plateforme Web</span>
-            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">BTS Révision</h2>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">BTS Révision</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Conception d'une plateforme de révision complète pour les étudiants. Focus sur l'organisation des ressources et la facilité de navigation sur mobile.
             </p>
@@ -155,7 +157,7 @@ export default function ProjetsUX() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mockup UI/UX</span>
-            <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">HopePower</h2>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">HopePower</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
               Prototype haute-fidélité réalisé dans le cadre de mon BTS Communication pour un projet d'études. Conception d'une interface mobile pour un site solidaire fictif, avec un focus sur le parcours utilisateur (UX flow) et la cohérence visuelle.
             </p>

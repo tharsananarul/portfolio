@@ -81,24 +81,23 @@ export default function Footer() {
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
       <div className="absolute bottom-1/4 right-10 w-[50vw] h-[50vw] rounded-full bg-[var(--color-creative-blue)]/5 blur-[130px] pointer-events-none -z-10 animate-pulse" />
 
-      {/* 1. SCROLLING MARQUEE (Sleek interactive ticker) */}
-      <div className="w-full overflow-hidden flex whitespace-nowrap py-5 md:py-6 select-none relative mb-16 border-b border-white/5 bg-slate-950/20">
+      <div className="w-full overflow-hidden whitespace-nowrap py-5 md:py-6 select-none relative mb-16 border-b border-white/5 bg-slate-950/20">
         <motion.div 
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="flex items-center gap-10 pr-10 font-heading font-black text-[10px] md:text-sm tracking-[0.25em] text-white/15 uppercase"
+          className="flex flex-row flex-nowrap shrink-0 items-center gap-10 pr-10 font-heading font-black text-[10px] md:text-sm tracking-[0.25em] text-white/15 uppercase w-max"
         >
           {[...row1Items, ...row1Items].map((item, i) => (
-            <div key={i} className="flex items-center gap-10">
-              <span>{item}</span>
-              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--color-creative-blue)]/40" />
+            <div key={i} className="flex flex-row flex-nowrap shrink-0 items-center gap-10 whitespace-nowrap">
+              <span className="whitespace-nowrap shrink-0">{item}</span>
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--color-creative-blue)]/40 shrink-0" />
             </div>
           ))}
         </motion.div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4">
         {/* 2. BENTO GRID SYSTEM */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 lg:gap-8 mb-16">
           {/* Card 1: Brand Info & Paris Time (Span 4) */}

@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Download, GraduationCap, Briefcase, MapPin, Sparkles } from 'lucide-react'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import LazyImage from '../components/ui/LazyImage'
+
 
 const education = [
   {
@@ -79,11 +81,19 @@ const experiences = [
 ]
 
 export default function CV() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   return (
     <main className="relative bg-transparent min-h-screen pb-32">
       <PageHero
         tag="Expérience & Formation"
-        title={<><span className="text-[1.3em]">Mon</span> <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
+        title={<><span className="text-[1.1em] md:text-[1.3em]">Mon</span> <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
         subtitle="Une trajectoire mêlant expertise technique, communication stratégique et passion pour le design."
         compact={true}
         themeColor="blue"
@@ -141,7 +151,7 @@ export default function CV() {
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-32">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24">
           {/* EDUCATION */}
           <div className="space-y-16">
             <motion.div 
@@ -150,117 +160,117 @@ export default function CV() {
               viewport={{ once: true }}
               className="flex items-center gap-6 mb-16"
             >
-              <div className="relative group">
+              <div className="relative group shrink-0">
                 <div className="absolute -inset-2 bg-[var(--color-creative-blue)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                  <GraduationCap className="text-[var(--color-creative-blue)]" size={28} />
+                <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center">
+                  <GraduationCap style={{ color: 'var(--color-creative-blue)' }} size={28} className="shrink-0" />
                 </div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-                <span className="text-white block mb-2 text-[1.4em]">Ma</span>
+              <h2 className="font-extrabold tracking-normal uppercase leading-none" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}>
+                <span className="text-white block mb-1" style={{ fontSize: '1em' }}>Ma</span>
                 <span className="relative inline-block px-4 py-1">
                   <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm -rotate-1 rounded-lg" />
                   <span className="relative text-[var(--color-creative-blue)]">Formation</span>
                 </span>
               </h2>
             </motion.div>
-
-            <div className="space-y-6 md:space-y-8 relative">
-              {education.map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="glass-card p-5 md:p-6 group glow-card"
-                >
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-2 block">{item.period}</span>
-                  <h3 className="text-lg md:text-xl font-black mb-2 uppercase tracking-tighter text-white leading-tight">{item.title}</h3>
-                  <div className="flex items-center gap-2 text-white/50 text-[10px] md:text-sm mb-3 font-bold">
-                    <MapPin size={14} /> {item.location}
-                  </div>
-                  <p className="text-white/60 text-xs md:text-sm leading-relaxed max-w-xl font-medium">{item.desc}</p>
-                </motion.div>
-              ))}
-
-              {/* Realistic 3D Flyer Preview at the bottom of Education */}
-              <div className="mt-24 relative flex justify-center md:justify-start perspective-[1500px]">
-                <motion.div
-                  initial={{ opacity: 0, rotateX: 45, rotateZ: -10, y: 100, scale: 0.8 }}
-                  whileInView={{ opacity: 1, rotateX: 25, rotateZ: -12, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 40,
-                    damping: 15,
-                    delay: 0.2
-                  }}
-                  className="relative group cursor-pointer"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  {/* Intense Outer Glow — Blue/Cyan */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[var(--color-creative-blue)] blur-[100px] opacity-20 group-hover:opacity-50 transition-all duration-700 -z-20 rounded-[2rem]" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#06b6d4] blur-[80px] opacity-10 group-hover:opacity-40 transition-all duration-700 -z-20 rounded-[2rem]" />
-
-                  {/* Elegant Glass Backing - perfectly sized to the flyer */}
-                  <div className="absolute -inset-8 -z-10 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] transform-gpu">
-                    {/* Decorative corner marks */}
-                    <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/20" />
-                    <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white/20" />
-                    <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white/20" />
-                    <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/20" />
-                    
-                    {/* Subtle internal glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-[#06b6d4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl" />
-                  </div>
-
-                  {/* Main CV Flyer Link */}
-                  <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
-                    {/* Shadow under the flyer */}
-                    <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[110%] h-12 bg-black/50 blur-3xl rounded-[100%] scale-x-110 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
-                    
-                    {/* The Flyer itself */}
-                    <div className="relative w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
-                      <LazyImage 
-                        src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.png`} 
-                        alt="CV Tharsanan Preview" 
-                        className="w-full h-auto"
-                      />
-                    </div>
-
-                    <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
-                      <div className="relative px-4 py-2">
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
-                        <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
-                          Voir le CV
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-
-          {/* EXPERIENCE */}
-          <div className="relative">
-            <div className="max-w-full mx-auto relative z-10">
-              {/* EXPERIENCE HEADER */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-6 mb-16"
-              >
-                <div className="relative group">
-                  <div className="absolute -inset-2 bg-[var(--color-creative-blue)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                    <Briefcase className="text-[var(--color-creative-blue)]" size={28} />
-                  </div>
-                </div>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-                  <span className="text-white block mb-2 text-[1.4em]">Mon</span>
+ 
+             <div className="space-y-6 md:space-y-8 relative">
+               {education.map((item, i) => (
+                 <motion.div 
+                   key={i}
+                   initial={{ opacity: 0, y: 30 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                   className="glass-card p-5 md:p-6 group glow-card w-full min-w-0"
+                 >
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-2 block">{item.period}</span>
+                   <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-2 uppercase tracking-normal text-white leading-tight break-words">{item.title}</h3>
+                   <div className="flex items-center gap-2 text-white/50 text-[10px] md:text-sm mb-3 font-bold">
+                     <MapPin size={14} /> {item.location}
+                   </div>
+                   <p className="text-white/60 text-xs md:text-sm leading-relaxed max-w-xl font-medium">{item.desc}</p>
+                 </motion.div>
+               ))}
+ 
+               {/* Realistic 3D Flyer Preview at the bottom of Education */}
+               <div className="mt-16 relative flex justify-center md:justify-start perspective-[1500px]">
+                 <motion.div
+                   initial={{ opacity: 0, rotateX: isMobile ? 0 : 45, rotateZ: isMobile ? 0 : -10, y: 100, scale: 0.8 }}
+                   whileInView={{ opacity: 1, rotateX: isMobile ? 0 : 25, rotateZ: isMobile ? 0 : -12, y: 0, scale: 1 }}
+                   viewport={{ once: true, amount: 0.3 }}
+                   transition={{ 
+                     type: "spring",
+                     stiffness: 40,
+                     damping: 15,
+                     delay: 0.2
+                   }}
+                   className="relative group cursor-pointer"
+                   style={{ transformStyle: 'preserve-3d' }}
+                 >
+                   {/* Intense Outer Glow — Blue/Cyan */}
+                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[var(--color-creative-blue)] blur-[100px] opacity-20 group-hover:opacity-50 transition-all duration-700 -z-20 rounded-[2rem]" />
+                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#06b6d4] blur-[80px] opacity-10 group-hover:opacity-40 transition-all duration-700 -z-20 rounded-[2rem]" />
+ 
+                   {/* Elegant Glass Backing - perfectly sized to the flyer */}
+                   <div className="absolute -inset-4 sm:-inset-8 -z-10 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] transform-gpu">
+                     {/* Decorative corner marks */}
+                     <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/20" />
+                     <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white/20" />
+                     <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white/20" />
+                     <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/20" />
+                     
+                     {/* Subtle internal glow */}
+                     <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-[#06b6d4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl" />
+                   </div>
+ 
+                   {/* Main CV Flyer Link */}
+                   <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
+                     {/* Shadow under the flyer */}
+                     <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[110%] h-12 bg-black/50 blur-3xl rounded-[100%] scale-x-110 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
+                     
+                     {/* The Flyer itself */}
+                     <div className="relative w-48 sm:w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
+                       <LazyImage 
+                         src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.png`} 
+                         alt="CV Tharsanan Preview" 
+                         className="w-full h-auto"
+                       />
+                     </div>
+ 
+                     <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
+                       <div className="relative px-4 py-2">
+                         <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
+                         <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
+                           Voir le CV
+                         </span>
+                       </div>
+                     </div>
+                   </a>
+                 </motion.div>
+               </div>
+             </div>
+           </div>
+ 
+           {/* EXPERIENCE */}
+           <div className="relative w-full min-w-0">
+             <div className="w-full mx-auto relative z-10">
+               {/* EXPERIENCE HEADER */}
+               <motion.div 
+                 initial={{ opacity: 0, x: 20 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 className="flex items-center gap-6 mb-16"
+               >
+                 <div className="relative group shrink-0">
+                   <div className="absolute -inset-2 bg-[var(--color-creative-blue)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                   <div className="relative p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center">
+                     <Briefcase style={{ color: 'var(--color-creative-blue)' }} size={28} className="shrink-0" />
+                   </div>
+                 </div>
+                 <h2 className="font-extrabold tracking-normal uppercase leading-none" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}>
+                  <span className="text-white block mb-1" style={{ fontSize: '1em' }}>Mon</span>
                   <span className="relative inline-block px-4 py-1">
                     <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm rotate-1 rounded-lg" />
                     <span className="relative text-[var(--color-creative-blue)]">Expérience</span>
@@ -276,13 +286,13 @@ export default function CV() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="glass-card p-5 md:p-6 group glow-card"
+                    className="glass-card p-5 md:p-6 group glow-card w-full min-w-0"
                   >
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-3 block">{item.period}</span>
                     
                     <div className="mb-6">
-                      <h3 className="text-lg md:text-2xl font-black mb-3 uppercase tracking-tighter text-white leading-tight">{item.title}</h3>
-                      <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-3 uppercase tracking-normal text-white leading-tight break-words">{item.title}</h3>
+                      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-3">
                         <span className="text-lg md:text-xl font-black text-white/90">{item.company}</span>
                         <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[9px] font-black uppercase text-[var(--color-creative-blue)] tracking-wider backdrop-blur-md">
                           {item.type}
@@ -295,7 +305,7 @@ export default function CV() {
 
                     <ul className="space-y-3">
                       {item.missions.map((mission, idx) => (
-                        <li key={idx} className="text-white/70 text-xs md:text-base flex items-start gap-3 font-medium leading-relaxed">
+                        <li key={idx} className="text-white/70 text-xs md:text-base flex items-start gap-3 font-medium leading-relaxed break-words">
                           <span className="mt-2 w-1 h-1 rounded-full bg-[var(--color-creative-blue)] shrink-0 shadow-[0_0_10px_var(--color-creative-blue)]" />
                           {mission}
                         </li>

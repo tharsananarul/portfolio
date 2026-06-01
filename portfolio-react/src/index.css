@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @theme {
   --color-primary: #020410;
@@ -13,8 +13,10 @@
   --color-creative-blue: #0ea5e9; /* Fresh Sky */
   --color-creative-orange: #0ea5e9; /* Unified with Fresh Sky for clean theme colors */
   
-  --font-heading: "Archivo Black", "Syne", sans-serif;
+  --font-heading: "Syne", "Archivo Black", sans-serif;
   --font-body: "Outfit", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-space-mono: "Space Mono", monospace;
 }
 
 @layer base {
@@ -34,10 +36,15 @@
     }
   }
 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   html {
     font-size: calc(18px * var(--global-scale));
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width: 100vw;
   }
 
   @media (pointer: fine) {
@@ -46,12 +53,21 @@
     }
   }
 
+  html, body, #root, p, li, a, label, span, button, input, textarea {
+    font-family: var(--font-body), "Outfit", sans-serif !important;
+  }
+
+  h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+    font-family: inherit !important;
+  }
+
   html, body, #root {
     @apply text-[#e8edf8] font-body antialiased selection:bg-accent/30 selection:text-white;
     background: transparent !important;
     background-color: transparent !important;
     overflow-x: hidden !important;
-    width: 100vw;
+    max-width: 100%;
+    width: 100%;
     position: relative;
     cursor: none;
   }
@@ -66,36 +82,73 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight font-black uppercase;
-    line-height: 1.05;
+  h1, h2 {
+    @apply font-heading tracking-normal font-extrabold uppercase;
+    line-height: 1.1;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    max-width: 100%;
   }
 
-  h1 { 
-    font-size: 2.66rem; /* 48px Display */
-    @apply leading-[1.1];
-  }
-  h2 { 
-    font-size: 1.77rem; /* 32px Heading */
-    @apply leading-[1.2];
-  }
-  h3 { 
-    font-size: 1.5rem;  /* 27px */
-    @apply leading-[1.3];
-  }
-  h4 { 
-    font-size: 1.25rem; /* 22.5px */
-    @apply leading-[1.4];
+  h3, h4, h5, h6 {
+    @apply font-heading tracking-normal font-extrabold uppercase;
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    max-width: 100%;
   }
 
-  p, a, li, div, label, input, textarea, button {
+  h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.1;
+  }
+  h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    line-height: 1.2;
+  }
+  h4 {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.3;
+  }
+
+  p {
+    font-family: var(--font-body), "Outfit", sans-serif;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    margin-bottom: 1rem;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  li {
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  a, label, input, textarea, button {
     text-transform: none;
     line-height: 1.6;
-    font-size: 1rem; /* 18px Body */
+  }
+
+  img, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   .text-caption {
-    font-size: 0.77rem; /* 14px Caption */
+    font-size: 0.77rem;
     @apply text-text-muted font-medium;
   }
 }
@@ -136,7 +189,28 @@
   }
 
   .section-container {
-    @apply max-w-[1100px] mx-auto px-5 py-8 md:py-14 lg:py-20;
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 default */
+    padding-right: 1rem;
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+    padding-bottom: clamp(2.5rem, 6vw, 5rem);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding-left: 2rem; /* px-8 */
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
   }
 
   .btn-premium {
@@ -370,33 +444,50 @@
   @apply absolute bg-white/20 backdrop-blur-sm border border-white/30 h-6 w-24 -rotate-12 z-30 shadow-sm;
 }
 
-/* Mobile Adjustments */
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — Mobile First Fixes
+   ═══════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-  :root {
-    --section-py: 4rem;
-    --section-px: 1.25rem;
-  }
-
   .section-container {
-    padding-top: var(--section-py);
-    padding-bottom: var(--section-py);
-    padding-left: var(--section-px);
-    padding-right: var(--section-px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    overflow-x: hidden;
   }
 
-  /* Prevent overflow */
   img, video, iframe {
     max-width: 100%;
+    height: auto;
   }
 
-  .btn-premium, .btn-outline {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  .btn-premium, .btn-premium-orange, .btn-outline, .btn-outline-orange,
+  .btn-dark-blue-dark, .btn-outline-blue-dark-black {
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.75rem;
   }
 
-  /* Compact spacing for mobile */
-  .space-y-mobile {
-    gap: 2rem !important;
+  .space-y-mobile { gap: 1.5rem !important; }
+
+  /* Prevent overflow on all text */
+  h1, h2 {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  h3, h4, h5, h6, p, li, span, a, label {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
   }
 }
 
@@ -535,10 +626,6 @@
 
 /* Tablet and mobile responsive tweaks */
 @media (max-width: 1024px) {
-  .section-container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
   .projects-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
@@ -550,10 +637,6 @@
   }
 }
 @media (max-width: 768px) {
-  .section-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -667,4 +750,78 @@ canvas {
     -webkit-backdrop-filter: blur(14px);
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   ABOUT — Profile Photo Sheen & Border Effects
+   ═══════════════════════════════════════════════════════ */
+
+.profile-about-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, var(--color-creative-blue), #22d3ee);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+.group:hover .profile-about-card::before {
+  opacity: 1;
+}
+
+.profile-about-inner {
+  position: relative;
+  border-radius: 23px;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.6);
+  display: block;
+}
+
+.profile-about-sheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.02) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.group:hover .profile-about-sheen {
+  animation: profile-sheen-sweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes profile-sheen-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+  }
+}
+
 

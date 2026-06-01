@@ -40,18 +40,19 @@ export default function Competences() {
         tag="Expertise"
         title={<>Mes <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Compétences.</span></>}
         subtitle="Un mix polyvalent entre design créatif, communication stratégique et développement technique."
+        compact={true}
         themeColor="cyan"
       />
 
 
 
 
-      <section className="section-container relative z-10">
+      <section className="section-container relative z-10 -mt-4 md:-mt-8">
         {/* Core Skills Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-32 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-12 md:mb-24 relative">
           {/* Stickers */}
-          <div className="absolute -top-12 -left-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-10deg] z-20 hidden md:block">Creative</div>
-          <div className="absolute -bottom-12 -right-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[15deg] z-20 hidden md:block">Technical</div>
+          <div className="absolute -top-12 -left-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-10deg] z-20 hidden lg:block">Creative</div>
+          <div className="absolute -bottom-12 -right-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[15deg] z-20 hidden lg:block">Technical</div>
 
           {skills.map((skill, i) => (
             <motion.div
@@ -88,7 +89,7 @@ export default function Competences() {
                 } text-white`}>
                   {skill.icon}
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-black mb-3 md:mb-5 uppercase tracking-tighter text-white leading-tight">{skill.title}</h3>
+                <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-3 md:mb-5 uppercase tracking-normal text-white leading-tight">{skill.title}</h3>
                 <p className="text-white/60 leading-relaxed text-sm md:text-base font-medium">{skill.desc}</p>
               </div>
             </motion.div>
@@ -96,14 +97,14 @@ export default function Competences() {
         </div>
 
         {/* Software Section */}
-        <div className="mb-32">
-          <h2 className="text-2xl md:text-6xl font-black mb-16 tracking-tighter uppercase text-white">
-            Logiciels <br />
-            <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>maîtrisés</span>
+        <div className="mb-12 md:mb-24">
+          <h2 className="font-extrabold mb-10 tracking-normal uppercase text-white" style={{ fontSize: 'clamp(1.6rem, 6vw, 3.5rem)' }}>
+            Logiciels <br className="block md:hidden" />{" "}
+            <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>maîtrisés</span>
           </h2>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 relative">
-             <div className="absolute -top-10 -right-6 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] z-20 hidden md:block">Tools</div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 relative">
+             <div className="absolute -top-10 -right-6 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] z-20 hidden lg:block">Tools</div>
 
             {software.map((item, i) => (
               <motion.div
@@ -112,7 +113,7 @@ export default function Competences() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.8 }}
-                className="glass-card p-6 md:p-10 group flex flex-col h-full glow-card"
+                className="glass-card p-4 md:p-6 group flex flex-col h-full glow-card w-full min-w-0"
               >
                 <div className="flex items-center justify-between mb-6 md:mb-10">
                   <div 
@@ -122,7 +123,7 @@ export default function Competences() {
                     {item.abbr}
                   </div>
                 </div>
-                <h3 className="text-sm sm:text-base md:text-xl font-black mb-2 md:mb-4 uppercase tracking-tighter text-white leading-tight">{item.name}</h3>
+                <h3 className="text-sm sm:text-base md:text-lg font-extrabold mb-2 md:mb-4 uppercase tracking-normal text-white leading-tight">{item.name}</h3>
                 <p className="text-white/50 text-xs md:text-base mb-6 md:mb-8 leading-relaxed font-medium">
                   {item.desc}
                 </p>
@@ -145,9 +146,9 @@ export default function Competences() {
 
         {/* Languages Section */}
         <div>
-          <h2 className="text-2xl md:text-6xl font-black mb-16 tracking-tighter uppercase text-white">
-            Langues <br />
-            <span className="relative inline-block mt-2">
+          <h2 className="font-extrabold mb-10 tracking-normal uppercase text-white" style={{ fontSize: 'clamp(1.6rem, 6vw, 3.5rem)' }}>
+            Langues <br className="block md:hidden" />{" "}
+            <span className="relative inline-block mt-2 md:mt-0 md:ml-3">
                <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
                <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md -rotate-1 inline-block">parlées</span>
             </span>
@@ -161,14 +162,14 @@ export default function Competences() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] flex flex-col md:flex-row md:items-center gap-3 md:gap-6 group hover:border-accent-light/40 transition-all duration-500"
+                className="glass-card p-4 md:p-5 rounded-[1.5rem] md:rounded-[2rem] flex flex-col md:flex-row md:items-center gap-3 md:gap-4 group hover:border-accent-light/40 transition-all duration-500 min-w-0"
               >
-                <div className="w-8 h-6 md:w-16 md:h-12 rounded-md md:rounded-xl overflow-hidden shadow-lg border border-white/10 group-hover:scale-110 transition-transform duration-500 flex-shrink-0">
+                <div className="w-8 h-6 md:w-12 md:h-9 rounded-md md:rounded-xl overflow-hidden shadow-lg border border-white/10 group-hover:scale-110 transition-transform duration-500 flex-shrink-0">
                   <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="font-body normal-case text-sm md:text-lg font-black text-white mb-0.5 md:mb-1 tracking-normal leading-tight">{lang.name}</h3>
-                  <p className="text-accent-light text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-widest leading-tight">{lang.info}</p>
+                  <p className="text-accent-light text-[9px] sm:text-[10px] font-bold uppercase tracking-widest leading-tight">{lang.info}</p>
                 </div>
               </motion.div>
             ))}

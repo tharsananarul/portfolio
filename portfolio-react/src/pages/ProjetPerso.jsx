@@ -46,7 +46,7 @@ export default function ProjetPerso() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter font-heading">
+            <h1 className="text-[clamp(2.2rem,8vw,5.5rem)] font-black text-white tracking-tighter leading-[1.1] font-heading">
               Projets <span className="text-accent-light italic">Perso.</span>
             </h1>
           </motion.div>
@@ -77,7 +77,7 @@ export default function ProjetPerso() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight">Expression <span className="highlight">libre</span>.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Expression <span className="highlight">libre</span>.</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
                 Mes projets personnels me permettent d'explorer de nouvelles techniques de design visuel et de Vibe Coding, me donnant la liberté d'expérimenter sur des maquettes de sites web et de rendre hommage aux œuvres qui m'inspirent, notamment le cinéma sud-indien.

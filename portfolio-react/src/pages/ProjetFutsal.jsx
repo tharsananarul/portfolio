@@ -87,7 +87,7 @@ export default function ProjetFutsal() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none font-heading">
+            <h1 className="text-[clamp(2.2rem,8vw,5.5rem)] font-black text-white tracking-tighter leading-[1.1] font-heading">
               Futsal <span className="text-accent-light italic">Drancy.</span>
             </h1>
           </motion.div>
@@ -118,7 +118,7 @@ export default function ProjetFutsal() {
       <section className="section-container py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h2 className="text-2xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
             <div className="space-y-6 text-slate-100 text-base md:text-lg leading-relaxed">
               <p>
                 J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel en Vibe Coding (avec Antigravity).

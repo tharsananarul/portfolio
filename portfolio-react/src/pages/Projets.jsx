@@ -74,12 +74,12 @@ export default function Projets() {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[var(--color-creative-blue)] rounded-full blur-[140px] opacity-[0.05] -z-10" />
 
-        {/* Stickers - Hidden on mobile to prevent overlapping */}
-        <div className="hidden md:block sticker-shape sticker-blue-dark absolute top-60 -left-10 rotate-[-10deg] z-20">Creative</div>
-        <div className="hidden md:block sticker-shape sticker-blue absolute bottom-60 -right-10 rotate-[15deg] z-20">Design</div>
+        {/* Stickers - Hidden on mobile/tablets to prevent overlapping */}
+        <div className="hidden xl:block sticker-shape sticker-blue-dark absolute top-60 -left-10 rotate-[-10deg] z-20">Creative</div>
+        <div className="hidden xl:block sticker-shape sticker-blue absolute bottom-60 -right-10 rotate-[15deg] z-20">Design</div>
 
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -88,7 +88,7 @@ export default function Projets() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link to={project.path} className="group flex flex-col bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.3)] relative">
+              <Link to={project.path} className="group flex flex-col bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.3)] relative min-w-0 w-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="aspect-[16/10] overflow-hidden relative border-b border-white/10">
                   <img 
@@ -104,10 +104,10 @@ export default function Projets() {
                   <span className="text-accent-light font-bold text-[10px] tracking-widest uppercase mb-3">
                     {project.tag}
                   </span>
-                  <h3 className="text-xl md:text-3xl font-bold text-white tracking-tighter mb-4 group-hover:text-accent-light transition-colors">
+                  <h3 className="text-xl md:text-3xl font-bold text-white tracking-tighter mb-4 group-hover:text-accent-light transition-colors break-words">
                     {project.title}
                   </h3>
-                  <p className="text-text-muted text-xs md:text-base leading-relaxed mb-8 line-clamp-2">
+                  <p className="text-text-muted text-xs md:text-base leading-relaxed mb-8 line-clamp-2 break-words">
                     {project.desc}
                   </p>
                   <div className="mt-auto pt-4 flex items-center gap-2 font-bold text-[10px] md:text-xs uppercase tracking-widest text-white group-hover:gap-4 transition-all">

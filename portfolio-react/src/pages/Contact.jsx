@@ -157,7 +157,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     setStatus('sending')
-    toast("Envoi de votre message...", "info")
+    toast("Envoi de votre message…", "info")
   }
 
   return (
@@ -259,7 +259,7 @@ export default function Contact() {
                         {status === 'sending' ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            Envoi en cours...
+                            Envoi en cours…
                           </>
                         ) : (
                           <>

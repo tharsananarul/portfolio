@@ -1,0 +1,179 @@
+/* ═══════════════════════════════════════════════════════════════
+   HeroPhoto.css
+   Effet : anneau lumineux tournant + coins angulaires + scanline
+   Compatible React (CSS Module-free, classe préfixée hero-photo)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Conteneur principal ─────────────────────────────────────── */
+.hero-photo-wrapper {
+  position: relative;
+
+  /* Adapte ces valeurs à la taille de ta photo actuelle */
+  width: 320px;
+  height: 460px;
+
+  /* Laisse dépasser le ring (2px de chaque côté) */
+  padding: 2px;
+
+  border-radius: 20px;
+
+  /* Isole les effets internes */
+  isolation: isolate;
+}
+
+
+/* ── ① Anneau lumineux tournant ──────────────────────────────── */
+/*
+   Le ring est un conic-gradient qui tourne indéfiniment.
+   Il crée l'effet "bord lumineux" sans toucher à ton image.
+*/
+.hero-photo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent   0deg,
+    rgba(255, 255, 255, 0.85) 50deg,
+    rgba(255, 255, 255, 0.15) 100deg,
+    transparent  160deg,
+    transparent  200deg,
+    rgba(255, 255, 255, 0.40) 230deg,
+    transparent  280deg,
+    transparent  360deg
+  );
+
+  animation: hero-ring-spin 4s linear infinite;
+}
+
+@keyframes hero-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Variante plus lente si tu préfères (remplace 4s par 8s ci-dessus) */
+
+
+/* ── ② Fond intermédiaire ────────────────────────────────────── */
+/*
+   Masque le ring sous la photo pour qu'on ne le voie
+   qu'en bordure. Garde la même couleur que ton fond de page.
+*/
+.hero-photo-bg {
+  position: absolute;
+  inset: 2px;           /* épaisseur du ring visible = 2px */
+  border-radius: 18px;  /* légèrement inférieur au wrapper */
+  background: #090909;  /* ← correspond au fond de la carte */
+  z-index: 1;
+}
+
+
+/* ── ③ Photo ─────────────────────────────────────────────────── */
+.hero-photo-img {
+  position: absolute;
+  inset: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center;
+  z-index: 2;
+}
+
+
+/* ── ④ Ligne de scan ─────────────────────────────────────────── */
+/*
+   Trait lumineux qui descend de haut en bas en boucle.
+   Effet "surveillance camera" / tech très discret.
+*/
+.hero-photo-scanline {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.50) 50%,
+    rgba(255, 255, 255, 0.25) 70%,
+    transparent 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+
+  animation: hero-scan 3.5s ease-in-out infinite;
+}
+
+@keyframes hero-scan {
+  0%   { top: 2px;   opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 0.6; }
+  100% { top: calc(100% - 2px); opacity: 0; }
+}
+
+
+/* ── ⑤ Coins angulaires (viewfinder) ────────────────────────── */
+/*
+   4 coins positionnés aux angles du wrapper.
+   Chaque coin = 2 traits perpendiculaires (border-top + border-left etc.)
+*/
+.hero-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-style: solid;
+  z-index: 4;
+  pointer-events: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Léger glow au survol de toute la carte */
+.hero-photo-wrapper:hover .hero-corner {
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-corner--tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 5px 0 0 0;
+}
+
+.hero-corner--tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 5px 0 0;
+}
+
+.hero-corner--bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 5px;
+}
+
+.hero-corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 5px 0;
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-photo-wrapper {
+    width: 220px;
+    height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-ring    { animation: none; }
+  .hero-photo-scanline { animation: none; }
+}

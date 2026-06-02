@@ -15,13 +15,13 @@ export default function ProjetSansBavures() {
 
   const sections = [{
     items: [
-      { src: `${baseUrl}images/sans-bavures/logo.png`, alt: 'Logo Sans Bavures' },
-      { src: `${baseUrl}images/sans-bavures/affiche.png`, alt: 'Affiche Sans Bavures', tall: true },
-      { src: `${baseUrl}images/sans-bavures/brochure.png`, alt: 'Brochure' },
-      { src: `${baseUrl}images/sans-bavures/post-insta.png`, alt: 'Post Instagram' },
-      { src: `${baseUrl}images/sans-bavures/post.png`, alt: 'Post 1' },
-      { src: `${baseUrl}images/sans-bavures/post2.png`, alt: 'Post 2' },
-      { src: `${baseUrl}images/sans-bavures/post3.png`, alt: 'Post 3' },
+      { src: `${baseUrl}images/sans-bavures/logo.webp`, alt: 'Logo Sans Bavures' },
+      { src: `${baseUrl}images/sans-bavures/affiche.webp`, alt: 'Affiche Sans Bavures', tall: true },
+      { src: `${baseUrl}images/sans-bavures/brochure.webp`, alt: 'Brochure' },
+      { src: `${baseUrl}images/sans-bavures/post-insta.webp`, alt: 'Post Instagram' },
+      { src: `${baseUrl}images/sans-bavures/post.webp`, alt: 'Post 1' },
+      { src: `${baseUrl}images/sans-bavures/post2.webp`, alt: 'Post 2' },
+      { src: `${baseUrl}images/sans-bavures/post3.webp`, alt: 'Post 3' },
     ]
   }]
 
@@ -31,7 +31,7 @@ export default function ProjetSansBavures() {
       {/* Hero Header */}
       <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src={`${baseUrl}images/couvertures/sans-bavures.png`} 
+          src={`${baseUrl}images/couvertures/sans-bavures.webp`} 
           alt="Sans Bavures" 
           className="w-full h-full object-cover"
           style={{ y }}

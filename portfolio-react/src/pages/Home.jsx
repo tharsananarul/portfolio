@@ -118,14 +118,14 @@ const featuredProjects = [
     title: "Futsal Drancy",
     category: "Web Dev & Communication",
     desc: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity).",
-    img: "images/couvertures/futsal-drancy.png",
+    img: "images/couvertures/futsal-drancy.webp",
     path: "/projets/futsal"
   },
   {
     title: "UI/UX Works",
     category: "Design & Développement",
     desc: "Plateforme BTS Révision et projet HopePower. Des sites web conçus en Vibe Coding (Antigravity/Framer) pour une interactivité optimale.",
-    img: "images/couvertures/ui-ux-designs.png",
+    img: "images/couvertures/ui-ux-designs.webp",
     path: "/projets/ux"
   }
 ]
@@ -220,7 +220,7 @@ export default function Home() {
             className="relative flex justify-center items-center h-[380px] sm:h-[480px] lg:h-[600px] order-1 lg:order-2 mt-4 lg:mt-0"
           >
             <div className="relative z-10">
-              <HeroPhoto src={`${baseUrl}images/ma-photo/photo_heros_section_nobg.png`} alt="Tharsanan" />
+              <HeroPhoto src={`${baseUrl}images/ma-photo/photo_heros_section_nobg.webp`} alt="Tharsanan" />
 
               {/* Floating Badge (Bottom Right) */}
               <motion.div
@@ -302,7 +302,7 @@ export default function Home() {
                   <div className="profile-about-card">
                     <div className="profile-about-inner shadow-2xl">
                       <LazyImage 
-                        src={`${baseUrl}images/ma-photo/photo-studio-bleu-final.png`}
+                        src={`${baseUrl}images/ma-photo/photo-studio-bleu-final.webp`}
                         alt="Tharsanan"
                         className="w-full h-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
                         skeletonClassName="rounded-[22px]"

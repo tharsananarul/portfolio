@@ -10,7 +10,7 @@ const projects = [
     title: "Futsal Drancy",
     tag: "Web Dev & Communication",
     desc: "Refonte complète de l'identité numérique et création d'un site officiel en Vibe Coding (Antigravity).",
-    img: "images/couvertures/futsal-drancy.png",
+    img: "images/couvertures/futsal-drancy.webp",
     path: "/projets/futsal"
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     title: "Alda Bière",
     tag: "Branding & Packaging",
     desc: "Création d'un univers de marque artisanal et éco-responsable avec prototypage rapide assisté par IA.",
-    img: "images/couvertures/alda.png",
+    img: "images/couvertures/alda.webp",
     path: "/projets/alda"
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     title: "UI/UX Works",
     tag: "Interface Design",
     desc: "Sélection de sites web interactifs (BTS Révision, HopePower) développés en Vibe Coding (Antigravity/Framer).",
-    img: "images/couvertures/ui-ux-designs.png",
+    img: "images/couvertures/ui-ux-designs.webp",
     path: "/projets/ux"
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     title: "Sans Bavures",
     tag: "Audiovisuel & Montage",
     desc: "Production, montage et intégration web en Vibe Coding pour un reportage multimédia interactif.",
-    img: "images/couvertures/sans-bavures.png",
+    img: "images/couvertures/sans-bavures.webp",
     path: "/projets/sans-bavures"
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     title: "BTS Com Projects",
     tag: "Stratégie & Design",
     desc: "Portfolio de projets de communication et maquettes web interactives conçus en Vibe Coding.",
-    img: "images/couvertures/bts-com.png",
+    img: "images/couvertures/bts-com.webp",
     path: "/projets/bts-com"
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     title: "Créations Perso",
     tag: "Créativité Libre",
     desc: "Explorations graphiques, posters de films et maquettes web expérimentées en Vibe Coding.",
-    img: "images/couvertures/projets-crea.png",
+    img: "images/couvertures/projets-crea.webp",
     path: "/projets/perso"
   }
 ]

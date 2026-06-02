@@ -15,24 +15,24 @@ export default function ProjetsUX() {
   const baseUrl = import.meta.env.BASE_URL
   
   const futsalScreens = [
-    { src: `${baseUrl}images/site/futsal-drancy/1.png`, alt: 'Futsal Website 1' },
-    { src: `${baseUrl}images/site/futsal-drancy/2.png`, alt: 'Futsal Website 2' },
-    { src: `${baseUrl}images/site/futsal-drancy/3.png`, alt: 'Futsal Website 3' },
-    { src: `${baseUrl}images/site/futsal-drancy/4.png`, alt: 'Futsal Website 4' },
-    { src: `${baseUrl}images/site/futsal-drancy/5.png`, alt: 'Futsal Website 5' },
-    { src: `${baseUrl}images/site/futsal-drancy/6.png`, alt: 'Futsal Website 6' },
+    { src: `${baseUrl}images/site/futsal-drancy/1.webp`, alt: 'Futsal Website 1' },
+    { src: `${baseUrl}images/site/futsal-drancy/2.webp`, alt: 'Futsal Website 2' },
+    { src: `${baseUrl}images/site/futsal-drancy/3.webp`, alt: 'Futsal Website 3' },
+    { src: `${baseUrl}images/site/futsal-drancy/4.webp`, alt: 'Futsal Website 4' },
+    { src: `${baseUrl}images/site/futsal-drancy/5.webp`, alt: 'Futsal Website 5' },
+    { src: `${baseUrl}images/site/futsal-drancy/6.webp`, alt: 'Futsal Website 6' },
   ]
   const btsRevision = [
-    { src: `${baseUrl}images/site/bts-fdr/1.png`, alt: 'BTS REVISIONS 1' },
-    { src: `${baseUrl}images/site/bts-fdr/2.png`, alt: 'BTS REVISIONS 2' },
-    { src: `${baseUrl}images/site/bts-fdr/3.png`, alt: 'BTS REVISIONS 3' },
-    { src: `${baseUrl}images/site/bts-fdr/4.png`, alt: 'BTS REVISIONS 4' },
+    { src: `${baseUrl}images/site/bts-fdr/1.webp`, alt: 'BTS REVISIONS 1' },
+    { src: `${baseUrl}images/site/bts-fdr/2.webp`, alt: 'BTS REVISIONS 2' },
+    { src: `${baseUrl}images/site/bts-fdr/3.webp`, alt: 'BTS REVISIONS 3' },
+    { src: `${baseUrl}images/site/bts-fdr/4.webp`, alt: 'BTS REVISIONS 4' },
   ]
   const hopePower = [
-    { src: `${baseUrl}images/site/hope-power/1.png`, alt: 'HopePower 1' },
-    { src: `${baseUrl}images/site/hope-power/2.png`, alt: 'HopePower 2' },
-    { src: `${baseUrl}images/site/hope-power/3.png`, alt: 'HopePower 3' },
-    { src: `${baseUrl}images/site/hope-power/4.png`, alt: 'HopePower 4' },
+    { src: `${baseUrl}images/site/hope-power/1.webp`, alt: 'HopePower 1' },
+    { src: `${baseUrl}images/site/hope-power/2.webp`, alt: 'HopePower 2' },
+    { src: `${baseUrl}images/site/hope-power/3.webp`, alt: 'HopePower 3' },
+    { src: `${baseUrl}images/site/hope-power/4.webp`, alt: 'HopePower 4' },
   ]
 
   return (
@@ -42,7 +42,7 @@ export default function ProjetsUX() {
       <div className="relative h-[50vh] md:h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.div style={{ y, height: '100%' }}>
           <LazyImage 
-            src={`${baseUrl}images/couvertures/ui-ux-designs.png`} 
+            src={`${baseUrl}images/couvertures/ui-ux-designs.webp`} 
             alt="UI/UX Design" 
             className="w-full h-full"
             skeletonClassName="opacity-30"

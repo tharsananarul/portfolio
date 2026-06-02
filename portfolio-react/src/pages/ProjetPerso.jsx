@@ -17,13 +17,13 @@ export default function ProjetPerso() {
     {
       tag: 'Posters & Illustrations', title: 'Cinéma & Créations',
       items: [
-        { src: `${baseUrl}images/projets-crea/captain-miller.png`, alt: 'Captain Miller Poster' },
-        { src: `${baseUrl}images/projets-crea/kok-poster.jpg`, alt: 'KOK Poster' },
-        { src: `${baseUrl}images/projets-crea/cover-base-1.jpg`, alt: 'Cover Base 1' },
-        { src: `${baseUrl}images/projets-crea/cover-base-2.jpg`, alt: 'Cover Base 2' },
-        { src: `${baseUrl}images/projets-crea/kok-car.png`, alt: 'KOK Car Design' },
-        { src: `${baseUrl}images/projets-crea/animal.png`, alt: 'Animal Poster' },
-        { src: `${baseUrl}images/projets-crea/cover-magazine.jpeg`, alt: 'Cover Magazine' },
+        { src: `${baseUrl}images/projets-crea/captain-miller.webp`, alt: 'Captain Miller Poster' },
+        { src: `${baseUrl}images/projets-crea/kok-poster.webp`, alt: 'KOK Poster' },
+        { src: `${baseUrl}images/projets-crea/cover-base-1.webp`, alt: 'Cover Base 1' },
+        { src: `${baseUrl}images/projets-crea/cover-base-2.webp`, alt: 'Cover Base 2' },
+        { src: `${baseUrl}images/projets-crea/kok-car.webp`, alt: 'KOK Car Design' },
+        { src: `${baseUrl}images/projets-crea/animal.webp`, alt: 'Animal Poster' },
+        { src: `${baseUrl}images/projets-crea/cover-magazine.webp`, alt: 'Cover Magazine' },
       ]
     }
   ]
@@ -34,7 +34,7 @@ export default function ProjetPerso() {
       {/* Hero Header */}
       <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src={`${baseUrl}images/couvertures/projets-crea.png`} 
+          src={`${baseUrl}images/couvertures/projets-crea.webp`} 
           alt="Créations Personnelles" 
           className="w-full h-full object-cover"
           style={{ y }}

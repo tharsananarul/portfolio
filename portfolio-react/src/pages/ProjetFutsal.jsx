@@ -18,49 +18,49 @@ export default function ProjetFutsal() {
     {
       tag: 'Identité visuelle', title: 'Branding & Équipements',
       items: [
-        { src: `${baseUrl}images/futsal-drancy/logofinal.png`, alt: 'Logo final' },
-        { src: `${baseUrl}images/futsal-drancy/planlogo.png`, alt: 'Plan logo' },
-        { src: `${baseUrl}images/futsal-drancy/maillotlogovert.png`, alt: 'Maillot vert' },
-        { src: `${baseUrl}images/futsal-drancy/logomaillotblanc.png`, alt: 'Maillot blanc' },
-        { src: `${baseUrl}images/futsal-drancy/logomaillotnoir.png`, alt: 'Maillot noir' },
-        { src: `${baseUrl}images/futsal-drancy/gobelet-01.png`, alt: 'Gobelet design' },
-        { src: `${baseUrl}images/futsal-drancy/gobelet-02.png`, alt: 'Gobelet design 2' },
+        { src: `${baseUrl}images/futsal-drancy/logofinal.webp`, alt: 'Logo final' },
+        { src: `${baseUrl}images/futsal-drancy/planlogo.webp`, alt: 'Plan logo' },
+        { src: `${baseUrl}images/futsal-drancy/maillotlogovert.webp`, alt: 'Maillot vert' },
+        { src: `${baseUrl}images/futsal-drancy/logomaillotblanc.webp`, alt: 'Maillot blanc' },
+        { src: `${baseUrl}images/futsal-drancy/logomaillotnoir.webp`, alt: 'Maillot noir' },
+        { src: `${baseUrl}images/futsal-drancy/gobelet-01.webp`, alt: 'Gobelet design' },
+        { src: `${baseUrl}images/futsal-drancy/gobelet-02.webp`, alt: 'Gobelet design 2' },
       ]
     },
     {
       tag: 'Communication & Événements', title: 'Affiches & Campagnes',
       items: [
-        { src: `${baseUrl}images/futsal-drancy/affiche-tournoi.png`, alt: 'Affiche Tournoi', tall: true },
-        { src: `${baseUrl}images/futsal-drancy/afficheldc.png`, alt: 'Affiche LDC' },
-        { src: `${baseUrl}images/futsal-drancy/affichelangevin.png`, alt: 'Affiche Langevin' },
-        { src: `${baseUrl}images/futsal-drancy/recutement-langevin.png`, alt: 'Recrutement Langevin' },
-        { src: `${baseUrl}images/futsal-drancy/recutement-langevin02.png`, alt: 'Recrutement Langevin 2' },
-        { src: `${baseUrl}images/futsal-drancy/affiche-equipement.png`, alt: 'Affiche Équipement', tall: true },
-        { src: `${baseUrl}images/futsal-drancy/affiche-reunion.png`, alt: 'Affiche Réunion' },
-        { src: `${baseUrl}images/futsal-drancy/coursenor.png`, alt: 'Course Or' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-tournoi.webp`, alt: 'Affiche Tournoi', tall: true },
+        { src: `${baseUrl}images/futsal-drancy/afficheldc.webp`, alt: 'Affiche LDC' },
+        { src: `${baseUrl}images/futsal-drancy/affichelangevin.webp`, alt: 'Affiche Langevin' },
+        { src: `${baseUrl}images/futsal-drancy/recutement-langevin.webp`, alt: 'Recrutement Langevin' },
+        { src: `${baseUrl}images/futsal-drancy/recutement-langevin02.webp`, alt: 'Recrutement Langevin 2' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-equipement.webp`, alt: 'Affiche Équipement', tall: true },
+        { src: `${baseUrl}images/futsal-drancy/affiche-reunion.webp`, alt: 'Affiche Réunion' },
+        { src: `${baseUrl}images/futsal-drancy/coursenor.webp`, alt: 'Course Or' },
       ]
     },
     {
       tag: 'Vie du Club', title: 'Action Sociale & Festive',
       items: [
-        { src: `${baseUrl}images/futsal-drancy/fete-de-la-ville.png`, alt: 'Fête de la ville' },
-        { src: `${baseUrl}images/futsal-drancy/fetedenoel01.png`, alt: 'Fête de Noël' },
-        { src: `${baseUrl}images/futsal-drancy/affiche-telethon01.png`, alt: 'Téléthon 1' },
-        { src: `${baseUrl}images/futsal-drancy/affiche-telethon02.png`, alt: 'Téléthon 2' },
-        { src: `${baseUrl}images/futsal-drancy/guiliascup.png`, alt: 'Guilias Cup' },
+        { src: `${baseUrl}images/futsal-drancy/fete-de-la-ville.webp`, alt: 'Fête de la ville' },
+        { src: `${baseUrl}images/futsal-drancy/fetedenoel01.webp`, alt: 'Fête de Noël' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-telethon01.webp`, alt: 'Téléthon 1' },
+        { src: `${baseUrl}images/futsal-drancy/affiche-telethon02.webp`, alt: 'Téléthon 2' },
+        { src: `${baseUrl}images/futsal-drancy/guiliascup.webp`, alt: 'Guilias Cup' },
       ]
     },
     {
       tag: 'Social Media', title: 'Réseaux Sociaux',
       items: [
-        { src: `${baseUrl}images/futsal-drancy/1.png`, alt: 'Post 1' },
-        { src: `${baseUrl}images/futsal-drancy/2.png`, alt: 'Post 2' },
-        { src: `${baseUrl}images/futsal-drancy/3.png`, alt: 'Post 3' },
-        { src: `${baseUrl}images/futsal-drancy/5.png`, alt: 'Post 5' },
-        { src: `${baseUrl}images/futsal-drancy/7.png`, alt: 'Post 7' },
-        { src: `${baseUrl}images/futsal-drancy/12.png`, alt: 'Post 12' },
-        { src: `${baseUrl}images/futsal-drancy/13.png`, alt: 'Post 13' },
-        { src: `${baseUrl}images/futsal-drancy/14.png`, alt: 'Post 14' },
+        { src: `${baseUrl}images/futsal-drancy/1.webp`, alt: 'Post 1' },
+        { src: `${baseUrl}images/futsal-drancy/2.webp`, alt: 'Post 2' },
+        { src: `${baseUrl}images/futsal-drancy/3.webp`, alt: 'Post 3' },
+        { src: `${baseUrl}images/futsal-drancy/5.webp`, alt: 'Post 5' },
+        { src: `${baseUrl}images/futsal-drancy/7.webp`, alt: 'Post 7' },
+        { src: `${baseUrl}images/futsal-drancy/12.webp`, alt: 'Post 12' },
+        { src: `${baseUrl}images/futsal-drancy/13.webp`, alt: 'Post 13' },
+        { src: `${baseUrl}images/futsal-drancy/14.webp`, alt: 'Post 14' },
       ]
     }
   ]
@@ -75,7 +75,7 @@ export default function ProjetFutsal() {
           className="absolute inset-0 bg-[#0d1525]"
         >
           <img 
-            src={`${baseUrl}images/couvertures/futsal-drancy.png`} 
+            src={`${baseUrl}images/couvertures/futsal-drancy.webp`} 
             alt="Futsal Drancy Cover" 
             className="w-full h-full object-cover"
           />

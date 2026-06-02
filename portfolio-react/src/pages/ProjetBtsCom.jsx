@@ -17,21 +17,21 @@ export default function ProjetBtsCom() {
     {
       tag: 'Print & Branding', title: 'Mockups & Com Visuelle',
       items: [
-        { src: `${baseUrl}images/bts-com/kakemono.jpg`, alt: 'Kakemono BTS Com' },
-        { src: `${baseUrl}images/bts-com/affichea0.jpg`, alt: 'Affiche A0' },
-        { src: `${baseUrl}images/bts-com/affiche-inscription.jpg`, alt: 'Affiche Inscription' },
-        { src: `${baseUrl}images/bts-com/expo-com.jpg`, alt: 'Expo Com' },
-        { src: `${baseUrl}images/bts-com/expocompost.jpg`, alt: 'Post Expo Com' },
-        { src: `${baseUrl}images/bts-com/newsletter.jpg`, alt: 'Newsletter' },
-        { src: `${baseUrl}images/bts-com/sdcipost.jpg`, alt: 'Post SDCI' },
-        { src: `${baseUrl}images/bts-com/postscc01.jpg`, alt: 'Post SCC 01' },
-        { src: `${baseUrl}images/bts-com/postscc02.jpg`, alt: 'Post SCC 02' },
-        { src: `${baseUrl}images/bts-com/flyer-bmw.jpg`, alt: 'Flyer BMW' },
-        { src: `${baseUrl}images/bts-com/kakemono-mockup.jpg`, alt: 'Mockup Kakemono' },
-        { src: `${baseUrl}images/bts-com/affichea0mockup.jpg`, alt: 'Mockup Affiche' },
-        { src: `${baseUrl}images/bts-com/instgram-mockup.jpg`, alt: 'Mockup Instagram' },
-        { src: `${baseUrl}images/bts-com/rollup-mockup.jpg`, alt: 'Mockup Roll-Up' },
-        { src: `${baseUrl}images/bts-com/mockuppull.jpg`, alt: 'Mockup Pull' },
+        { src: `${baseUrl}images/bts-com/kakemono.webp`, alt: 'Kakemono BTS Com' },
+        { src: `${baseUrl}images/bts-com/affichea0.webp`, alt: 'Affiche A0' },
+        { src: `${baseUrl}images/bts-com/affiche-inscription.webp`, alt: 'Affiche Inscription' },
+        { src: `${baseUrl}images/bts-com/expo-com.webp`, alt: 'Expo Com' },
+        { src: `${baseUrl}images/bts-com/expocompost.webp`, alt: 'Post Expo Com' },
+        { src: `${baseUrl}images/bts-com/newsletter.webp`, alt: 'Newsletter' },
+        { src: `${baseUrl}images/bts-com/sdcipost.webp`, alt: 'Post SDCI' },
+        { src: `${baseUrl}images/bts-com/postscc01.webp`, alt: 'Post SCC 01' },
+        { src: `${baseUrl}images/bts-com/postscc02.webp`, alt: 'Post SCC 02' },
+        { src: `${baseUrl}images/bts-com/flyer-bmw.webp`, alt: 'Flyer BMW' },
+        { src: `${baseUrl}images/bts-com/kakemono-mockup.webp`, alt: 'Mockup Kakemono' },
+        { src: `${baseUrl}images/bts-com/affichea0mockup.webp`, alt: 'Mockup Affiche' },
+        { src: `${baseUrl}images/bts-com/instgram-mockup.webp`, alt: 'Mockup Instagram' },
+        { src: `${baseUrl}images/bts-com/rollup-mockup.webp`, alt: 'Mockup Roll-Up' },
+        { src: `${baseUrl}images/bts-com/mockuppull.webp`, alt: 'Mockup Pull' },
       ]
     }
   ]
@@ -42,7 +42,7 @@ export default function ProjetBtsCom() {
       {/* Hero Header */}
       <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src={`${baseUrl}images/couvertures/bts-com.png`} 
+          src={`${baseUrl}images/couvertures/bts-com.webp`} 
           alt="BTS Communication" 
           className="w-full h-full object-cover"
           style={{ y }}

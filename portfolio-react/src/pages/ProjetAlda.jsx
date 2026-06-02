@@ -15,17 +15,17 @@ export default function ProjetAlda() {
   
   const sections = [{
     items: [
-      { src: `${baseUrl}images/alda/affichemockup.jpg`, alt: 'Affiche mockup', tall: true },
-      { src: `${baseUrl}images/alda/bouteille1.jpg`, alt: 'Bouteille Alda' },
-      { src: `${baseUrl}images/alda/bouteille2.jpg`, alt: 'Bouteille 2' },
-      { src: `${baseUrl}images/alda/bouteille3.jpg`, alt: 'Bouteille 3' },
-      { src: `${baseUrl}images/alda/bouteille4.jpg`, alt: 'Bouteille 4' },
-      { src: `${baseUrl}images/alda/bouteille5.jpg`, alt: 'Bouteille 5' },
-      { src: `${baseUrl}images/alda/bouteille6.jpg`, alt: 'Bouteille 6' },
-      { src: `${baseUrl}images/alda/site-mockup.png`, alt: 'Site mockup', wide: true },
-      { src: `${baseUrl}images/alda/aldaaccueil.png`, alt: 'Page accueil' },
-      { src: `${baseUrl}images/alda/aldalandingpage.jpg`, alt: 'Landing page' },
-      { src: `${baseUrl}images/alda/pageproduit.jpg`, alt: 'Page produit' },
+      { src: `${baseUrl}images/alda/affichemockup.webp`, alt: 'Affiche mockup', tall: true },
+      { src: `${baseUrl}images/alda/bouteille1.webp`, alt: 'Bouteille Alda' },
+      { src: `${baseUrl}images/alda/bouteille2.webp`, alt: 'Bouteille 2' },
+      { src: `${baseUrl}images/alda/bouteille3.webp`, alt: 'Bouteille 3' },
+      { src: `${baseUrl}images/alda/bouteille4.webp`, alt: 'Bouteille 4' },
+      { src: `${baseUrl}images/alda/bouteille5.webp`, alt: 'Bouteille 5' },
+      { src: `${baseUrl}images/alda/bouteille6.webp`, alt: 'Bouteille 6' },
+      { src: `${baseUrl}images/alda/site-mockup.webp`, alt: 'Site mockup', wide: true },
+      { src: `${baseUrl}images/alda/aldaaccueil.webp`, alt: 'Page accueil' },
+      { src: `${baseUrl}images/alda/aldalandingpage.webp`, alt: 'Landing page' },
+      { src: `${baseUrl}images/alda/pageproduit.webp`, alt: 'Page produit' },
     ]
   }]
 
@@ -35,7 +35,7 @@ export default function ProjetAlda() {
       {/* Hero Header */}
       <div className="relative h-[60vh] overflow-hidden" ref={containerRef}>
         <motion.img 
-          src={`${baseUrl}images/couvertures/alda.png`} 
+          src={`${baseUrl}images/couvertures/alda.webp`} 
           alt="Alda Bière" 
           className="w-full h-full object-cover"
           style={{ y }}

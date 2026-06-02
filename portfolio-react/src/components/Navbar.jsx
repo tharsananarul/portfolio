@@ -136,7 +136,7 @@ export default function Navbar() {
               <Magnetic key={link.name}>
                 <Link
                   to={link.path}
-                  className={`font-heading text-[10px] md:text-[11px] tracking-[0.15em] uppercase transition-all duration-300 relative group py-1.5 px-3 rounded-full hover:bg-white/5 ${
+                  className={`font-heading font-bold text-[10px] md:text-[11px] tracking-[0.15em] uppercase transition-all duration-300 relative group py-1.5 px-3 rounded-full hover:bg-white/5 ${
                     location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                   }`}
                 >
@@ -240,7 +240,7 @@ export default function Navbar() {
                         <span className={`font-mono text-[10px] font-bold tracking-widest ${isActive ? 'text-[var(--color-creative-blue)]' : 'text-white/20 group-hover:text-white/40'} transition-all duration-300`}>
                           {number}
                         </span>
-                        <span className={`font-heading text-lg font-black uppercase tracking-[0.1em] transition-all duration-300 ${isActive ? 'text-[var(--color-creative-blue)] translate-x-1.5' : 'text-white/80 group-hover:text-white group-hover:translate-x-1.5'}`}>
+                        <span className={`font-heading text-lg font-extrabold uppercase tracking-[0.1em] transition-all duration-300 ${isActive ? 'text-[var(--color-creative-blue)] translate-x-1.5' : 'text-white/80 group-hover:text-white group-hover:translate-x-1.5'}`}>
                           {link.name}
                         </span>
                       </Link>

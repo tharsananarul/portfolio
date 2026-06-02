@@ -119,14 +119,16 @@ const featuredProjects = [
     category: "Web Dev & Communication",
     desc: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity).",
     img: "images/couvertures/futsal-drancy.webp",
-    path: "/projets/futsal"
+    path: "/projets/futsal",
+    objectPosition: "object-top"
   },
   {
     title: "UI/UX Works",
     category: "Design & Développement",
     desc: "Plateforme BTS Révision et projet HopePower. Des sites web conçus en Vibe Coding (Antigravity/Framer) pour une interactivité optimale.",
     img: "images/couvertures/ui-ux-designs.webp",
-    path: "/projets/ux"
+    path: "/projets/ux",
+    objectPosition: "object-center"
   }
 ]
 
@@ -446,7 +448,7 @@ export default function Home() {
                 <LazyImage 
                    src={`${baseUrl}${project.img}`} 
                   alt={project.title} 
-                  className="w-full h-full object-cover group-hover/image:scale-105 transition-transform duration-700 ease-out"
+                  className={`w-full h-full object-cover ${project.objectPosition ?? 'object-center'} group-hover/image:scale-105 transition-transform duration-700 ease-out`}
                   skeletonClassName="opacity-20"
                   width={800}
                   height={500}

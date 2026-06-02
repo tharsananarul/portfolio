@@ -5,7 +5,7 @@ import Skeleton from './Skeleton';
 /**
  * LazyImage component with loading skeleton and smooth transition.
  */
-export default function LazyImage({ src, alt, className = '', skeletonClassName = '', ...props }) {
+export default function LazyImage({ src, alt, className = '', skeletonClassName = '', imgClassName = '', imgStyle = {}, ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -26,7 +26,8 @@ export default function LazyImage({ src, alt, className = '', skeletonClassName 
       <img
         src={src}
         alt={alt}
-        className={`w-full h-full object-cover transition-all duration-700 ${
+        style={imgStyle}
+        className={`w-full h-full object-cover ${imgClassName} transition-all duration-700 ${
           isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-105 blur-lg'
         }`}
         onLoad={() => setIsLoaded(true)}

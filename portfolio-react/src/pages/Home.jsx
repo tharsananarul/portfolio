@@ -120,7 +120,8 @@ const featuredProjects = [
     desc: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity).",
     img: "images/couvertures/futsal-drancy.webp",
     path: "/projets/futsal",
-    objectPosition: "object-top"
+    imgStyle: { objectPosition: 'center' },
+    imgMobileStyle: { objectPosition: 'center' }
   },
   {
     title: "UI/UX Works",
@@ -128,11 +129,21 @@ const featuredProjects = [
     desc: "Plateforme BTS Révision et projet HopePower. Des sites web conçus en Vibe Coding (Antigravity/Framer) pour une interactivité optimale.",
     img: "images/couvertures/ui-ux-designs.webp",
     path: "/projets/ux",
-    objectPosition: "object-center"
+    imgStyle: { objectPosition: 'center' },
+    imgMobileStyle: { objectPosition: 'center' }
   }
 ]
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 1024px)')
+    setIsMobile(media.matches)
+    const listener = (e) => setIsMobile(e.matches)
+    media.addEventListener('change', listener)
+    return () => media.removeEventListener('change', listener)
+  }, [])
+
   const [heroVariant, setHeroVariant] = useState('grain') // 'grain' or 'spotlight'
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -448,7 +459,8 @@ export default function Home() {
                 <LazyImage 
                    src={`${baseUrl}${project.img}`} 
                   alt={project.title} 
-                  className={`w-full h-full object-cover ${project.objectPosition ?? 'object-center'} group-hover/image:scale-105 transition-transform duration-700 ease-out`}
+                  className="w-full h-full group-hover/image:scale-105 transition-transform duration-700 ease-out"
+                  imgStyle={isMobile ? (project.imgMobileStyle ?? project.imgStyle ?? {}) : (project.imgStyle ?? {})}
                   skeletonClassName="opacity-20"
                   width={800}
                   height={500}

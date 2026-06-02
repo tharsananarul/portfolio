@@ -306,6 +306,8 @@ export default function Home() {
                         alt="Tharsanan"
                         className="w-full h-auto object-contain transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
                         skeletonClassName="rounded-[22px]"
+                        width={800}
+                        height={800}
                       />
                       {/* Sheen sweep ray */}
                       <div className="profile-about-sheen" />
@@ -446,6 +448,8 @@ export default function Home() {
                   alt={project.title} 
                   className="w-full h-full object-cover group-hover/image:scale-105 transition-transform duration-700 ease-out"
                   skeletonClassName="opacity-20"
+                  width={800}
+                  height={500}
                 />
                 <div className={`absolute top-4 right-4 font-black uppercase px-4 py-1.5 text-[10px] md:text-xs rounded-full border backdrop-blur-md z-10 ${i === 0 ? 'bg-[var(--color-creative-blue)]/80 text-white border-white/20' : 'bg-black/50 text-white border-white/10'}`}>
                   {project.category}

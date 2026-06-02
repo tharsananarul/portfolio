@@ -16,6 +16,8 @@ const HeroPhoto = ({ src, alt = 'Tharsanan' }) => {
         src={src}
         alt={alt}
         fetchPriority="high"
+        width={800}
+        height={800}
       />
 
       {/* ④ Ligne de scan animée */}

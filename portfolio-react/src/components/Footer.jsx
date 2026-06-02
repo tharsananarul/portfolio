@@ -133,7 +133,7 @@ export default function Footer() {
 
           {/* Card 2: Quick Navigation Sitemap (Span 4) */}
           <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
-            <h4 className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">Navigation</h4>
+            <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">Navigation</p>
             <div className="flex flex-col gap-2 md:gap-3">
               {[
                 { name: 'Accueil', path: '/' },
@@ -159,7 +159,7 @@ export default function Footer() {
           {/* Card 3: Contact Details & Socials (Span 4) */}
           <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
-              <h4 className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">Contact</h4>
+              <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">Contact</p>
               <div className="flex flex-col gap-2.5">
                 <button 
                   onClick={handleCopyEmail}

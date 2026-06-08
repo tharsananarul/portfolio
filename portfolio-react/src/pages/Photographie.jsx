@@ -189,7 +189,7 @@ export default function Photographie() {
       <PageHero
         tag="Galerie"
         title={<>Photo<span className="text-accent-light italic">graphie.</span></>}
-        subtitle={`À travers l'objectif, je cherche à capturer l'invisible — ${PHOTO_DATA.length} instants sélectionnés.`}
+        subtitle="À travers l'objectif, je cherche à capturer l'invisible."
         compact
       />
 

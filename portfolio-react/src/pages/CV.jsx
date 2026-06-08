@@ -8,6 +8,12 @@ import LazyImage from '../components/ui/LazyImage'
 
 const education = [
   {
+    period: "2026 — 2027",
+    title: "Licence Professionnelle (Admis)",
+    location: "Université Paris-Est Créteil (UPEC)",
+    desc: "Spécialisation dans la communication d'intérêt général."
+  },
+  {
     period: "2025 — 2026",
     title: "BTS Communication",
     location: "Lycée Jacques Brel · La Courneuve",

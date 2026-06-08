@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion'
-import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight, Smartphone, Sparkles } from 'lucide-react'
+import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight, Smartphone, Sparkles, Send } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
 import Magnetic from '../components/Magnetic'
@@ -187,12 +187,12 @@ export default function Home() {
             className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 order-2 lg:order-1 mt-8 lg:mt-0"
           >
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/[0.02] border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-sky-950/30 border border-sky-500/30 text-sky-200/90 shadow-[0_0_20px_rgba(14,165,233,0.15)] backdrop-blur-md">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
               </span>
-              <span className="text-white/85 font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em]">
+              <span className="text-sky-100/90 font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em]">
                 BTS Communication · Design Graphique
               </span>
             </div>
@@ -204,23 +204,38 @@ export default function Home() {
                   Bienvenue, je suis
                 </h2>
               </div>
-              <h1 className="font-black text-white leading-[0.95] tracking-tight drop-shadow-xl uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
+              <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight drop-shadow-[0_0_35px_rgba(14,165,233,0.35)] uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
                 THARSANAN
               </h1>
             </div>
 
             {/* Tagline */}
-            <p className="text-white/80 font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">
-              Design · Développement · Communication
-            </p>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
+                <Palette size={13} className="text-sky-400" />
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Design</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
+                <Code size={13} className="text-sky-400" />
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Développement</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
+                <Sparkles size={13} className="text-sky-400" />
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Communication</span>
+              </div>
+            </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-              <Link to="/projets" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/60 bg-transparent text-white hover:bg-white hover:text-black font-bold uppercase text-xs tracking-wider transition-all">
-                Mes projets →
+            <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto">
+              <Link to="/projets" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-sky-500/30 bg-sky-950/15 text-white hover:bg-[var(--color-creative-blue)] hover:border-[var(--color-creative-blue)] hover:text-white font-bold uppercase text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(14,165,233,0.1)] hover:shadow-[0_0_35px_rgba(14,165,233,0.45)] group/btn-prim">
+                <span>Mes projets</span>
+                <ArrowUpRight size={16} className="text-sky-400 group-hover/btn-prim:text-white group-hover/btn-prim:translate-x-0.5 group-hover/btn-prim:-translate-y-0.5 transition-transform duration-300" />
               </Link>
-              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-white/30 font-bold uppercase text-xs tracking-wider transition-all">
-                Me contacter
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-sky-500/35 hover:bg-sky-950/25 font-bold uppercase text-xs tracking-wider transition-all group/btn-sec">
+                <span>Me contacter</span>
+                <Send size={13} className="text-white/40 group-hover/btn-sec:text-sky-400 group-hover/btn-sec:translate-x-0.5 group-hover/btn-sec:-translate-y-0.5 transition-all duration-300" />
               </Link>
             </div>
           </motion.div>
@@ -555,7 +570,7 @@ export default function Home() {
                 {/* Right Side: Text & Actions */}
                 <div className="w-full lg:w-[55%] flex flex-col justify-center gap-8 lg:border-l lg:border-white/10 lg:pl-10">
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium" style={{ textTransform: 'none' }}>
-                    Après l'obtention de mon BTS Communication, je souhaite poursuivre mon parcours en Licence Pro Communication. Pour accompagner ce projet, je suis à la recherche d'une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en Communication Digitale ou Design Graphique</span> pour la rentrée de septembre 2026.
+                    Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en Communication Digitale ou Chargé de Communication</span> pour la rentrée de septembre 2026.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row items-center gap-4">

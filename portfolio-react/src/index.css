@@ -824,4 +824,31 @@ canvas {
   }
 }
 
+/* Text Gradient Scroll Animation */
+.animate-text-gradient {
+  background-image: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 25%,
+    #7dd3fc 50%,
+    #ffffff 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-gradient-loop 4.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes text-gradient-loop {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
 

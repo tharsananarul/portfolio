@@ -114,7 +114,7 @@ export default function PassionSection() {
                 <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center mb-4 md:mb-4 lg:mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10">
                   <p.icon className={p.color} size={24} />
                 </div>
-                <h3 className="text-xl md:text-base lg:text-xl xl:text-2xl font-black mb-1 md:mb-2 tracking-tighter text-white uppercase leading-tight">{p.title}</h3>
+                <h3 className="text-xl md:text-base lg:text-lg xl:text-xl font-black mb-1 md:mb-2 tracking-tighter text-white uppercase leading-tight">{p.title}</h3>
                 <p className={`text-[10px] md:text-[11px] lg:text-xs font-bold uppercase tracking-widest ${p.color} mb-3 md:mb-4 lg:mb-6 opacity-90`}>{p.subtitle}</p>
                 <p className="text-white/80 text-xs md:text-[13px] lg:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
                 {p.hasMore && (
@@ -126,7 +126,7 @@ export default function PassionSection() {
               </>
             )
 
-            const cardClasses = "group p-6 md:p-6 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md hover:border-[var(--color-creative-blue)]/50 hover:shadow-[0_0_40px_rgba(var(--color-creative-blue-rgb),0.2)] transition-all duration-500 relative overflow-hidden"
+            const cardClasses = "group p-6 md:p-6 lg:p-8 xl:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md hover:border-[var(--color-creative-blue)]/50 hover:shadow-[0_0_40px_rgba(var(--color-creative-blue-rgb),0.2)] transition-all duration-500 relative overflow-hidden"
             const accentStyle = {} // Remove manual brutalist border top
 
             return p.hasMore ? (

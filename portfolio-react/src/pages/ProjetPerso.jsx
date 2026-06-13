@@ -110,9 +110,9 @@ export default function ProjetPerso() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Futsal Drancy</h2>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Tharsh Studio</h2>
           </div>
-          <Link to="/projets/futsal" className="btn-premium gap-3 text-lg px-12 py-5">
+          <Link to="/projets/tharsh-studio" className="btn-premium gap-3 text-lg px-12 py-5">
             Découvrir <ArrowRight size={20} />
           </Link>
         </div>

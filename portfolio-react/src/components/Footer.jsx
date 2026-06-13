@@ -103,8 +103,10 @@ export default function Footer() {
           {/* Card 1: Brand Info & Paris Time (Span 4) */}
           <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
-              <div className="logo mb-3 inline-flex items-center justify-center font-heading font-black text-sm md:text-lg tracking-[0.2em] text-white uppercase select-none">
-                THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
+              <div className="mb-4 flex items-center select-none">
+                <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
+                  THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
+                </div>
               </div>
               <div className="flex flex-col gap-3 mt-2">
                 <p className="text-white/75 text-xs md:text-[14px] leading-relaxed font-semibold">

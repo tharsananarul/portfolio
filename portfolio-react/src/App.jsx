@@ -26,6 +26,7 @@ import ProjetBtsCom from './pages/ProjetBtsCom'
 import ProjetPerso from './pages/ProjetPerso'
 import ProjetsUX from './pages/ProjetsUX'
 import Photographie from './pages/Photographie'
+import ProjetTharshStudio from './pages/ProjetTharshStudio'
 
 export default function App() {
   const location = useLocation()
@@ -56,6 +57,7 @@ export default function App() {
               <Route path="/projets/bts-com" element={<PageTransition><ProjetBtsCom /></PageTransition>} />
               <Route path="/projets/perso" element={<PageTransition><ProjetPerso /></PageTransition>} />
               <Route path="/projets/ux" element={<PageTransition><ProjetsUX /></PageTransition>} />
+              <Route path="/projets/tharsh-studio" element={<PageTransition><ProjetTharshStudio /></PageTransition>} />
               <Route path="/photographie" element={<PageTransition><Photographie /></PageTransition>} />
             </Routes>
           </AnimatePresence>

@@ -206,8 +206,10 @@ export default function Navbar() {
             >
               {/* Header inside floating Menu */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02]">
-                <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
-                  THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
+                <div className="flex items-center gap-2.5 py-1 select-none">
+                  <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
+                    THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
+                  </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}

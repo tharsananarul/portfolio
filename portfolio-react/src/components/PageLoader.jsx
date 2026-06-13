@@ -40,27 +40,27 @@ export default function PageLoader() {
             y: -100,
             transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
           }}
-          className="fixed inset-0 z-[200] bg-primary flex items-center justify-center p-6"
+          className="fixed inset-0 z-[200] bg-[#02030a] flex items-center justify-center p-6"
         >
           <div className="flex flex-col items-center gap-8 w-full max-w-xs">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="text-6xl font-heading font-extrabold tracking-tighter"
+              className="text-6xl font-heading font-extrabold tracking-tighter text-white"
             >
-              T<span className="text-[var(--color-creative-blue)]">.</span>
+              T<span className="text-sky-400">.</span>
             </motion.div>
             
             <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-[var(--color-creative-blue)]"
+                className="h-full bg-sky-400"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
               />
             </div>
             
             <motion.span 
-              className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500"
+              className="text-xs font-bold uppercase tracking-[0.3em] text-sky-400/60"
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             >

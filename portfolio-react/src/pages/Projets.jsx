@@ -6,6 +6,14 @@ import PageHero from '../components/PageHero'
 
 const projects = [
   {
+    id: 'tharsh-studio',
+    title: "Tharsh Studio",
+    tag: "Branding & Graphic Design",
+    desc: "Création de la charte graphique et de l'identité visuelle de mon studio de création pour son lancement sur Instagram.",
+    img: "images/couvertures/tharsh-studio.webp",
+    path: "/projets/tharsh-studio"
+  },
+  {
     id: 'futsal',
     title: "Futsal Drancy",
     tag: "Web Dev & Communication",

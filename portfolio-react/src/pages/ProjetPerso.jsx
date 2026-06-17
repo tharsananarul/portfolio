@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, Camera, Palette, Music } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetPerso() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,7 +18,7 @@ export default function ProjetPerso() {
 
   const sections = [
     {
-      tag: 'Posters & Illustrations', title: 'Cinéma & Créations',
+      tag: t('project_details.perso.gallery_tag'), title: t('project_details.perso.gallery_title'),
       items: [
         { src: `${baseUrl}images/projets-crea/captain-miller.webp`, alt: 'Captain Miller Poster' },
         { src: `${baseUrl}images/projets-crea/kok-poster.webp`, alt: 'KOK Poster' },
@@ -56,20 +59,20 @@ export default function ProjetPerso() {
       {/* Project Meta */}
       <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
-          <p className="font-bold text-sm md:text-base">Créations Libres</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.type")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.perso.type")}</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Focus</span>
-          <p className="font-bold text-sm md:text-base">Illustrations & Posters</p>
+          <p className="font-bold text-sm md:text-base">{t("project_details.perso.focus")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Vibe Coding</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
+          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Web Design</p>
         </div>
         <div className="space-y-2">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Thème</span>
-          <p className="font-bold text-sm md:text-base">Cinéma & Culture</p>
+          <p className="font-bold text-sm md:text-base">{t("project_details.perso.theme")}</p>
         </div>
       </section>
 
@@ -77,26 +80,26 @@ export default function ProjetPerso() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Expression <span className="highlight">libre</span>.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">{t("project_details.perso.concept_title")}</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Mes projets personnels me permettent d'explorer de nouvelles techniques de design visuel et de Vibe Coding, me donnant la liberté d'expérimenter sur des maquettes de sites web et de rendre hommage aux œuvres qui m'inspirent, notamment le cinéma sud-indien.
+                {t("project_details.perso.para1")}
               </p>
               <p>
-                Chaque poster est le fruit d'un travail sur la composition, la typographie et la gestion des couleurs pour capturer l'essence de l'œuvre originale.
+                {t("project_details.perso.para2")}
               </p>
             </div>
           </div>
           <div className="grid gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Palette className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-2">Direction Artistique</h3>
-              <p className="text-slate-200 text-sm">Exploration de styles graphiques variés, du minimalisme au néon-synthwave.</p>
+              <h3 className="text-xl font-bold mb-2">{t("project_details.perso.card1_title")}</h3>
+              <p className="text-slate-200 text-sm">{t("project_details.perso.card1_desc")}</p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Camera className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-2">Traitement d'Image</h3>
-              <p className="text-slate-200 text-sm">Manipulation avancée de photos et création de montages complexes sur Photoshop.</p>
+              <h3 className="text-xl font-bold mb-2">{t("project_details.perso.card2_title")}</h3>
+              <p className="text-slate-200 text-sm">{t("project_details.perso.card2_desc")}</p>
             </div>
           </div>
         </div>
@@ -106,14 +109,17 @@ export default function ProjetPerso() {
       <MosaicGrid sections={sections} accentColor="#f97316" />
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#f97316" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Tharsh Studio</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Tharsh&nbsp;Studio</h2>
           </div>
           <Link to="/projets/tharsh-studio" className="btn-premium gap-3 text-lg px-12 py-5">
-            Découvrir <ArrowRight size={20} />
+            {t("project_details.explore")} <ArrowRight size={20} />
           </Link>
         </div>
       </section>

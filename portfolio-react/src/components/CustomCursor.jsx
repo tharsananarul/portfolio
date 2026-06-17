@@ -34,9 +34,12 @@ export default function CustomCursor() {
     const handleMouseUp = () => setIsClicking(false)
 
     const handleMouseOver = (e) => {
-      const target = e.target.closest('a, button, .group, .cursor-pointer, .glass-card')
+      const target = e.target.closest('[data-cursor], a, button, .group, .cursor-pointer, .glass-card')
       if (target) {
-        if (target.tagName === 'A' && target.href.includes('projets')) {
+        const dataCursor = target.getAttribute('data-cursor')
+        if (dataCursor) {
+          setHoverType(dataCursor)
+        } else if (target.tagName === 'A' && target.href.includes('projets')) {
           setHoverType('PROJECT_SCAN')
         } else if (target.tagName === 'A' && target.href.includes('contact')) {
           setHoverType('INIT_CONNECTION')
@@ -96,9 +99,34 @@ export default function CustomCursor() {
           }}
         />
 
+        {/* Custom Contextual Label */}
+        <AnimatePresence>
+          {hoverType && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.6 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="absolute text-[8px] font-black tracking-[0.2em] text-white select-none pointer-events-none uppercase text-center"
+            >
+              {hoverType === 'GALLERY_ZOOM' && 'ZOOM'}
+              {hoverType === 'PROJECT_SCAN' && 'VIEW'}
+              {hoverType === 'INIT_CONNECTION' && 'OPEN'}
+              {hoverType === 'DATA_ANALYSIS' && 'INFO'}
+              {hoverType === 'ACTION_REQ' && 'GO'}
+            </motion.span>
+          )}
+        </AnimatePresence>
+
         {/* Technical Cross */}
-        <motion.div className="absolute w-4 h-[1px] bg-white/40" />
-        <motion.div className="absolute h-4 w-[1px] bg-white/40" />
+        <motion.div 
+          className="absolute w-4 h-[1px] bg-white/40"
+          animate={{ opacity: hoverType ? 0 : 0.4 }}
+        />
+        <motion.div 
+          className="absolute h-4 w-[1px] bg-white/40"
+          animate={{ opacity: hoverType ? 0 : 0.4 }}
+        />
       </motion.div>
 
       {/* Real-time Data Display */}

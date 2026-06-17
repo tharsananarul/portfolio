@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
 import LazyImage from './ui/LazyImage'
 import Skeleton from './ui/Skeleton'
+import ScrollParallax from './ui/ScrollParallax'
+import InteractiveString from './ui/InteractiveString'
 
-export default function MosaicGrid({ sections, animate = true, accentColor }) {
+export default function MosaicGrid({ sections, animate = true, accentColor, aspectRatio = 'aspect-square' }) {
   const [lbOpen, setLbOpen] = useState(false)
   const [lbImages, setLbImages] = useState([])
   const [lbIndex, setLbIndex] = useState(0)
@@ -100,10 +102,16 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
   return (
     <>
       {sections.map((section, si) => (
-        <div className="py-12" key={si}>
-          {(section.tag || section.title) && (
-            <div className="section-container pb-8">
-              {section.tag && (
+        <div key={si}>
+          {si > 0 && (
+            <div className="section-container py-2 opacity-30">
+              <InteractiveString hoverColor={accentColor} />
+            </div>
+          )}
+          <div className="py-12">
+            {(section.tag || section.title) && (
+              <div className="section-container pb-8">
+                {section.tag && (
                 <motion.span 
                    initial={{ opacity: 0, x: -10 }}
                    whileInView={{ opacity: 1, x: 0 }}
@@ -140,19 +148,22 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
                     delay: idx * 0.03,
                     ease: "easeOut"
                   }}
-                  className={`relative group cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden glass-card aspect-square bg-white/5 ${
+                  className={`relative group cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden glass-card ${aspectRatio} bg-white/5 ${
                     item.tall ? 'md:row-span-2 md:aspect-auto' : ''
                   } ${item.wide ? 'md:col-span-2 md:aspect-auto' : ''}`}
                   style={{ '--card-accent': accentColor || 'var(--color-creative-blue)' }}
                   onClick={() => openLb(section.items, idx)}
+                  data-cursor="GALLERY_ZOOM"
                 >
                   <div className="w-full h-full pointer-events-none">
-                    <LazyImage
-                      src={item.src}
-                      alt={item.alt || ''}
-                      className="w-full h-full"
-                      skeletonClassName="opacity-50"
-                    />
+                    <ScrollParallax className="w-full h-full" speed={0.06}>
+                      <LazyImage
+                        src={item.src}
+                        alt={item.alt || ''}
+                        className="w-full h-full"
+                        skeletonClassName="opacity-50"
+                      />
+                    </ScrollParallax>
                   </div>
                   
                   <div 
@@ -168,7 +179,8 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
             </div>
           </div>
         </div>
-      ))}
+      </div>
+    ))}
 
       {createPortal(lightboxContent, document.body)}
     </>

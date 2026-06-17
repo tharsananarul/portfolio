@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring, 
 import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight, Smartphone, Sparkles, Send } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PassionSection from '../components/PassionSection'
 import InfiniteMarquee from '../components/InfiniteMarquee'
@@ -55,8 +56,13 @@ const TextScramble = ({ text }) => {
 }
 
 // Animated cycling role display
-const roles = ['Design Graphique', 'Développement Web', 'Communication Digitale']
 const RoleCycler = () => {
+  const { t } = useTranslation()
+  const roles = [
+    t('hero.roles.graphic'),
+    t('hero.roles.web'),
+    t('hero.roles.comm')
+  ]
   const [idx, setIdx] = useState(0)
   const [visible, setVisible] = useState(true)
 
@@ -69,7 +75,7 @@ const RoleCycler = () => {
       }, 350)
     }, 2800)
     return () => clearInterval(interval)
-  }, [])
+  }, [roles.length])
 
   return (
     <span
@@ -113,28 +119,32 @@ const StatCard = ({ number, label, suffix = "+", delay = 0 }) => {
   )
 }
 
-const featuredProjects = [
-  {
-    title: "Futsal Drancy",
-    category: "Web Dev & Communication",
-    desc: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity).",
-    img: "images/couvertures/futsal-drancy.webp",
-    path: "/projets/futsal",
-    imgStyle: { objectPosition: 'center' },
-    imgMobileStyle: { objectPosition: 'center' }
-  },
-  {
-    title: "UI/UX Works",
-    category: "Design & Développement",
-    desc: "Plateforme BTS Révision et projet HopePower. Des sites web conçus en Vibe Coding (Antigravity/Framer) pour une interactivité optimale.",
-    img: "images/couvertures/ui-ux-designs.webp",
-    path: "/projets/ux",
-    imgStyle: { objectPosition: 'center' },
-    imgMobileStyle: { objectPosition: 'center' }
-  }
-]
+// featuredProjects is now declared inside the Home component to support multi-language translation
 
 export default function Home() {
+  const { t, i18n } = useTranslation()
+
+  const featuredProjects = [
+    {
+      title: "Tharsh Studio",
+      category: t('projects.roles.branding'),
+      desc: t('projects.desc.tharsh_studio'),
+      img: "images/couvertures/tharsh-studio.webp",
+      path: "/projets/tharsh-studio",
+      imgStyle: { objectPosition: 'center' },
+      imgMobileStyle: { objectPosition: 'center' }
+    },
+    {
+      title: "Futsal Drancy",
+      category: t('projects.roles.web'),
+      desc: t('projects.desc.futsal'),
+      img: "images/couvertures/futsal-drancy.webp",
+      path: "/projets/futsal",
+      imgStyle: { objectPosition: 'center' },
+      imgMobileStyle: { objectPosition: 'center' }
+    }
+  ]
+
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     const media = window.matchMedia('(max-width: 1024px)')
@@ -201,7 +211,7 @@ export default function Home() {
             <div className="flex flex-col gap-3 lg:gap-4">
               <div className="flex items-center justify-center lg:justify-start gap-3">
                 <h2 className="text-white/75 font-bold tracking-[0.3em] uppercase text-xs sm:text-sm">
-                  Bienvenue, je suis
+                  {t('hero.welcome')}
                 </h2>
               </div>
               <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight drop-shadow-[0_0_35px_rgba(14,165,233,0.35)] uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
@@ -213,30 +223,46 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
                 <Palette size={13} className="text-sky-400" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Design</span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">{t('hero.badges.design')}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
                 <Code size={13} className="text-sky-400" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Développement</span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">{t('hero.badges.dev')}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.02] border border-white/5 text-white/70 hover:text-white hover:border-sky-500/20 hover:bg-sky-950/10 transition-all duration-300 shadow-sm">
                 <Sparkles size={13} className="text-sky-400" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">Communication</span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">{t('hero.badges.comm')}</span>
               </div>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-6 w-full sm:w-auto">
               <Link to="/projets" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-sky-500/30 bg-sky-950/15 text-white hover:bg-[var(--color-creative-blue)] hover:border-[var(--color-creative-blue)] hover:text-white font-bold uppercase text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(14,165,233,0.1)] hover:shadow-[0_0_35px_rgba(14,165,233,0.45)] group/btn-prim">
-                <span>Mes projets</span>
+                <span>{t('hero.buttons.projects')}</span>
                 <ArrowUpRight size={16} className="text-sky-400 group-hover/btn-prim:text-white group-hover/btn-prim:translate-x-0.5 group-hover/btn-prim:-translate-y-0.5 transition-transform duration-300" />
               </Link>
               <Link to="/contact" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-sky-500/35 hover:bg-sky-950/25 font-bold uppercase text-xs tracking-wider transition-all group/btn-sec">
-                <span>Me contacter</span>
+                <span>{t('hero.buttons.contact')}</span>
                 <Send size={13} className="text-white/40 group-hover/btn-sec:text-sky-400 group-hover/btn-sec:translate-x-0.5 group-hover/btn-sec:-translate-y-0.5 transition-all duration-300" />
               </Link>
+
+              {/* Language Switcher */}
+              <div className="flex items-center gap-0.5 bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md self-center sm:self-auto shadow-lg">
+                <button 
+                  onClick={() => i18n.changeLanguage('fr')}
+                  className={`px-3.5 py-1.5 rounded-full text-[10px] font-black tracking-wider transition-all uppercase ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-md shadow-sky-500/25' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                >
+                  FR
+                </button>
+                <button 
+                  onClick={() => i18n.changeLanguage('en')}
+                  className={`px-3.5 py-1.5 rounded-full text-[10px] font-black tracking-wider transition-all uppercase ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-md shadow-sky-500/25' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                >
+                  EN
+                </button>
+              </div>
             </div>
           </motion.div>
 
@@ -256,8 +282,8 @@ export default function Home() {
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -bottom-6 -right-4 sm:-right-6 z-30 px-4 py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[170px] sm:max-w-[190px] pointer-events-none"
               >
-                <span className="text-[9px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">En recherche d'une alternance</span>
-                <span className="text-[8.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">Septembre 2026</span>
+                <span className="text-[9px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">{t('hero.alternance')}</span>
+                <span className="text-[8.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">{t('hero.date')}</span>
               </motion.div>
             </div>
           </motion.div>
@@ -360,23 +386,22 @@ export default function Home() {
 
               <p className="text-white/60 font-black tracking-widest uppercase text-[11px] md:text-sm mb-6 flex items-center gap-3 justify-center lg:justify-start">
                 <span className="w-8 h-px bg-[var(--color-creative-blue)]/50 shrink-0" />
-                Qui suis-je ?
+                {t('about.eyebrow')}
                 <span className="w-8 h-px bg-[var(--color-creative-blue)]/50 shrink-0 lg:hidden" />
               </p>
 
               <h2 className="font-extrabold mb-5 md:mb-8 tracking-normal leading-snug uppercase text-white" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.6rem)' }}>
-                Un parcours entre <br />{" "}
-                <span className="text-[var(--color-creative-blue)]">technique</span> et <br />{" "}
+                {t('about.title_start')} <br />{" "}
+                <span className="text-[var(--color-creative-blue)]">{t('about.title_tech')}</span>{t('about.title_middle')} <br />{" "}
                 <span className="relative inline-block mt-2 px-2 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md">
                    <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg -z-10"></span>
-                   <span className="relative z-10">communication</span>
+                   <span className="relative z-10">{t('about.title_comm')}</span>
                  </span>
               </h2>
               <div className="space-y-4 md:space-y-6 text-white/80 font-medium text-sm md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start">
 
                 <p>
-                  Après un début en BUT Métiers du Multimédia et de l'Internet, j'ai choisi de me spécialiser en communication. 
-                  Ce parcours m'a permis de développer à la fois des compétences techniques et une vision créative orientée vers le digital.
+                  {t('about.paragraph')}
                 </p>
 
                 {/* Availability badge */}
@@ -386,12 +411,12 @@ export default function Home() {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                   </span>
                   <span className="text-emerald-300 font-bold uppercase tracking-wide sm:tracking-widest text-[8px] xs:text-[9px] md:text-[10px]">
-                    En recherche d'alternance · Sept. 2026
+                    {t('about.alternance_pill')}
                   </span>
                 </div>
               </div>
               <Link to="/cv" className="mt-10 md:mt-12 inline-flex items-center justify-center lg:justify-start gap-3 font-bold text-white/70 hover:text-white transition-colors group">
-                <span className="border-b border-white/20 group-hover:border-white transition-colors pb-1">Voir mon parcours complet</span>
+                <span className="border-b border-white/20 group-hover:border-white transition-colors pb-1">{t('about.cv_link')}</span>
                 <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[var(--color-creative-blue)]/20 group-hover:border-[var(--color-creative-blue)]/50 transition-all">
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
@@ -406,25 +431,25 @@ export default function Home() {
              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                  <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={4} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">Ans d'études</span>
+                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.studies')}</span>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                  <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={1} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">An d'expérience</span>
+                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.exp')}</span>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                  <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={6} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">Logiciels</span>
+                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.software')}</span>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                  <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={100} suffix="%" /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">Passionné</span>
+                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.passion')}</span>
               </motion.div>
           </div>
         </div>
@@ -446,17 +471,12 @@ export default function Home() {
           >
             <p className="text-accent-light font-bold tracking-widest uppercase text-[11px] md:text-sm mb-4 flex items-center gap-3">
               <span className="w-8 h-px bg-accent-light/60" />
-              Projets Phares
+              {t('projects.eyebrow')}
             </p>
 
             <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5.5vw, 4rem)' }}>
-                Une sélection <br className="block md:hidden" />{" "}
-                <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>des travaux</span> <br className="block md:hidden" />{" "}
-                <span className="relative inline-block mt-2 md:mt-0 md:ml-3">
-                   <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
-                   <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md rotate-1 inline-block">phares</span>
-                </span>
-              </h2>
+                {t('projects.title')}
+            </h2>
           </motion.div>
         </div>
 

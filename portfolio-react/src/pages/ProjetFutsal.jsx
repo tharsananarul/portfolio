@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, Camera, Share2, Users, Palette, Globe, ExternalLink } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import Magnetic from '../components/Magnetic'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetFutsal() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -16,7 +19,7 @@ export default function ProjetFutsal() {
 
   const sections = [
     {
-      tag: 'Identité visuelle', title: 'Branding & Équipements',
+      tag: t('project_details.futsal.gallery_tags.branding'), title: t('project_details.futsal.gallery_tags.branding_title'),
       items: [
         { src: `${baseUrl}images/futsal-drancy/logofinal.webp`, alt: 'Logo final' },
         { src: `${baseUrl}images/futsal-drancy/planlogo.webp`, alt: 'Plan logo' },
@@ -28,7 +31,7 @@ export default function ProjetFutsal() {
       ]
     },
     {
-      tag: 'Communication & Événements', title: 'Affiches & Campagnes',
+      tag: t('project_details.futsal.gallery_tags.comm'), title: t('project_details.futsal.gallery_tags.comm_title'),
       items: [
         { src: `${baseUrl}images/futsal-drancy/affiche-tournoi.webp`, alt: 'Affiche Tournoi', tall: true },
         { src: `${baseUrl}images/futsal-drancy/afficheldc.webp`, alt: 'Affiche LDC' },
@@ -41,7 +44,7 @@ export default function ProjetFutsal() {
       ]
     },
     {
-      tag: 'Vie du Club', title: 'Action Sociale & Festive',
+      tag: t('project_details.futsal.gallery_tags.life'), title: t('project_details.futsal.gallery_tags.life_title'),
       items: [
         { src: `${baseUrl}images/futsal-drancy/fete-de-la-ville.webp`, alt: 'Fête de la ville' },
         { src: `${baseUrl}images/futsal-drancy/fetedenoel01.webp`, alt: 'Fête de Noël' },
@@ -51,7 +54,7 @@ export default function ProjetFutsal() {
       ]
     },
     {
-      tag: 'Social Media', title: 'Réseaux Sociaux',
+      tag: t('project_details.futsal.gallery_tags.social'), title: t('project_details.futsal.gallery_tags.social_title'),
       items: [
         { src: `${baseUrl}images/futsal-drancy/1.webp`, alt: 'Post 1' },
         { src: `${baseUrl}images/futsal-drancy/2.webp`, alt: 'Post 2' },
@@ -97,20 +100,20 @@ export default function ProjetFutsal() {
       {/* Project Meta */}
       <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-white/5">
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Rôle</span>
-          <p className="font-bold text-sm md:text-base">Chargé de Communication</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.role")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.futsal.role")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Période</span>
-          <p className="font-bold text-sm md:text-base">2024 — Présent</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.period")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.futsal.period")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
           <p className="font-bold text-sm md:text-base">Antigravity, React, Adobe Suite</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Contexte</span>
-          <p className="font-bold text-sm md:text-base">Service Civique & CDD</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.context")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.futsal.context")}</p>
         </div>
       </section>
 
@@ -118,15 +121,15 @@ export default function ProjetFutsal() {
       <section className="section-container py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Structurer la <span className="highlight">communication</span> d'un club de sport.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">{t("project_details.futsal.concept_title")}</h2>
             <div className="space-y-6 text-slate-100 text-base md:text-lg leading-relaxed">
               <p>
-                J'ai rejoint le Futsal Drancy avec pour mission de professionnaliser l'image du club. Du Service Civique au CDD, j'ai mis en place une stratégie globale incluant la création du premier site web officiel en Vibe Coding (avec Antigravity).
+                {t("project_details.futsal.para1")}
               </p>
               <div className="pt-6">
                 <Magnetic>
                   <a href="https://tharsananarul.github.io/futsal-drancy/#/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
-                    Découvrir le site web <ExternalLink size={20} />
+                    {t("project_details.futsal.visit_website")} <ExternalLink size={20} />
                   </a>
                 </Magnetic>
               </div>
@@ -135,23 +138,23 @@ export default function ProjetFutsal() {
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             <div className="glass-card p-6 md:p-8 rounded-3xl">
               <Globe className="text-accent-light mb-4" size={28} />
-              <h3 className="text-sm md:text-lg font-bold mb-2">Web Design</h3>
-              <p className="text-text-muted text-[10px] md:text-xs">Premier site officiel du club.</p>
+              <h3 className="text-sm md:text-lg font-bold mb-2">{t("project_details.futsal.card1_title")}</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">{t("project_details.futsal.card1_desc")}</p>
             </div>
             <div className="glass-card p-6 md:p-8 rounded-3xl">
               <Camera className="text-accent-light mb-4" size={28} />
-              <h3 className="text-sm md:text-lg font-bold mb-2">Contenu</h3>
-              <p className="text-text-muted text-[10px] md:text-xs">Photos & Vidéos terrain.</p>
+              <h3 className="text-sm md:text-lg font-bold mb-2">{t("project_details.futsal.card2_title")}</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">{t("project_details.futsal.card2_desc")}</p>
             </div>
             <div className="glass-card p-6 md:p-8 rounded-3xl">
               <Users className="text-accent-light mb-4" size={28} />
-              <h3 className="text-xs sm:text-sm md:text-lg font-bold mb-2 break-words">Événementiel</h3>
-              <p className="text-text-muted text-[10px] md:text-xs">Téléthon & Fête de la ville.</p>
+              <h3 className="text-xs sm:text-sm md:text-lg font-bold mb-2 break-words">{t("project_details.futsal.card3_title")}</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">{t("project_details.futsal.card3_desc")}</p>
             </div>
             <div className="glass-card p-6 md:p-8 rounded-3xl">
               <Palette className="text-accent-light mb-4" size={28} />
-              <h3 className="text-sm md:text-lg font-bold mb-2">Branding</h3>
-              <p className="text-text-muted text-[10px] md:text-xs">Équipements & Logo.</p>
+              <h3 className="text-sm md:text-lg font-bold mb-2">{t("project_details.futsal.card4_title")}</h3>
+              <p className="text-text-muted text-[10px] md:text-xs">{t("project_details.futsal.card4_desc")}</p>
             </div>
           </div>
         </div>
@@ -161,15 +164,18 @@ export default function ProjetFutsal() {
       <MosaicGrid sections={sections} accentColor="#22c55e" />
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#22c55e" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Alda Bière</h2>
           </div>
           <Magnetic>
             <Link to="/projets/alda" className="btn-premium gap-3 text-lg px-12 py-5">
-              Découvrir <ArrowRight size={20} />
+              {t("project_details.explore")} <ArrowRight size={20} />
             </Link>
           </Magnetic>
         </div>

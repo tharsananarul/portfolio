@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, ExternalLink, Beer, Palette, BarChart3 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetAlda() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -57,20 +60,20 @@ export default function ProjetAlda() {
       {/* Project Meta */}
       <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Rôle</span>
-          <p className="font-bold text-sm md:text-base">Branding & Packaging</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.role")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.alda.role")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Période</span>
-          <p className="font-bold text-sm md:text-base">Jan. 2023 – Juin 2023</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.period")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.alda.period")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Illustrator, Photoshop, Framer / IA</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
+          <p className="font-bold text-sm md:text-base">Figma, Illustrator, HTML, CSS</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
-          <p className="font-bold text-sm md:text-base">Projet universitaire</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.type")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.alda.type")}</p>
         </div>
       </section>
 
@@ -78,29 +81,29 @@ export default function ProjetAlda() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-[clamp(1.8rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Concept de marque <span className="highlight">artisanale</span>.</h2>
+            <h2 className="text-[clamp(1.8rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">{t("project_details.alda.concept_title")}</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Projet collaboratif de branding où la vision créative s'associe aux outils de Vibe Coding et d'IA pour concevoir et prototyper rapidement des déclinaisons graphiques cohérentes.
+                {t("project_details.alda.para1")}
               </p>
               <p>
-                Mon rôle s'est concentré sur la création du logo, des étiquettes et du packaging, en veillant à ce que chaque élément visuel reflète l'histoire et l'authenticité de la bière Alda.
+                {t("project_details.alda.para2")}
               </p>
             </div>
           </div>
           <div className="grid gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Beer className="text-accent-light mb-6" size={32} />
-              <h3 className="text-xl font-bold mb-4">Branding & Design</h3>
+              <h3 className="text-xl font-bold mb-4">{t("project_details.alda.card1_title")}</h3>
               <p className="text-slate-200 text-sm leading-relaxed">
-                Développement d'un nom évocateur et d'un univers visuel cohérent sur tous les supports promotionnels (affiches, réseaux sociaux).
+                {t("project_details.alda.card1_desc")}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <BarChart3 className="text-accent-light mb-6" size={32} />
-              <h3 className="text-xl font-bold mb-4">Marketing & Lancement</h3>
+              <h3 className="text-xl font-bold mb-4">{t("project_details.alda.card2_title")}</h3>
               <p className="text-slate-200 text-sm leading-relaxed">
-                Élaboration d'un plan de lancement complet incluant une stratégie de communication et l'organisation d'une dégustation fictive.
+                {t("project_details.alda.card2_desc")}
               </p>
             </div>
           </div>
@@ -111,14 +114,17 @@ export default function ProjetAlda() {
       <MosaicGrid sections={sections} accentColor="#facc15" />
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#facc15" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Sans Bavures</h2>
           </div>
           <Link to="/projets/sans-bavures" className="btn-premium gap-3 text-lg px-12 py-5">
-            Découvrir <ArrowRight size={20} />
+            {t("project_details.explore")} <ArrowRight size={20} />
           </Link>
         </div>
       </section>

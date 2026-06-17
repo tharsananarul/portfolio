@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node modules and build output
+portfolio-react/node_modules/
+portfolio-react/dist/
+portfolio-react/dist-ssr/
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary scratch and analysis files
+portfolio-react/scratch*.cjs
+portfolio-react/print*.cjs
+portfolio-react/*.cjs
+portfolio-react/test_mobile.cjs
+portfolio-react/optimize-all-images.js
+portfolio-react/*results.json
+portfolio-react/*.png
+portfolio-react/screenshot-*.png
+portfolio-react/ss-*.png
+portfolio-react/check-*.png

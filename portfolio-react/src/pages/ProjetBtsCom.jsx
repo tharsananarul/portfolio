@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, Palette, Layers, PenTool } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetBtsCom() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,7 +18,7 @@ export default function ProjetBtsCom() {
 
   const sections = [
     {
-      tag: 'Print & Branding', title: 'Mockups & Com Visuelle',
+      tag: t('project_details.bts_com.gallery_tag'), title: t('project_details.bts_com.gallery_title'),
       items: [
         { src: `${baseUrl}images/bts-com/kakemono.webp`, alt: 'Kakemono BTS Com' },
         { src: `${baseUrl}images/bts-com/affichea0.webp`, alt: 'Affiche A0' },
@@ -64,20 +67,20 @@ export default function ProjetBtsCom() {
       {/* Project Meta */}
       <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Contexte</span>
-          <p className="font-bold text-sm md:text-base">Lycée Jacques Brel</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.context")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.bts_com.context")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Période</span>
-          <p className="font-bold text-sm md:text-base">2024 — 2026</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.period")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.bts_com.period")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Vibe Coding</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
+          <p className="font-bold text-sm md:text-base">Photoshop, Illustrator, Web Design</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
-          <p className="font-bold text-sm md:text-base">Design Graphique</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.type")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.bts_com.type")}</p>
         </div>
       </section>
 
@@ -85,26 +88,26 @@ export default function ProjetBtsCom() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Théorie et <span className="highlight">pratique créative</span>.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">{t("project_details.bts_com.concept_title")}</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Dans le cadre de mon BTS Communication, j'ai conçu de nombreux supports de communication et maquettes web en intégrant le Vibe Coding à ma réflexion stratégique et mon exécution graphique.
+                {t("project_details.bts_com.para1")}
               </p>
               <p>
-                De la création d'affiches publicitaires à la conception de mockups pour diverses marques, ce parcours me permet de maîtriser l'ensemble de la chaîne graphique.
+                {t("project_details.bts_com.para2")}
               </p>
             </div>
           </div>
           <div className="grid gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <PenTool className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-2">Conception Visuelle</h3>
-              <p className="text-slate-200 text-sm">Maîtrise des outils de création vectorielle et de retouche d'image.</p>
+              <h3 className="text-xl font-bold mb-2">{t("project_details.bts_com.card1_title")}</h3>
+              <p className="text-slate-200 text-sm">{t("project_details.bts_com.card1_desc")}</p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5">
               <Layers className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-2">Supports Print</h3>
-              <p className="text-slate-200 text-sm">Réalisation de flyers, brochures et affiches conformes aux contraintes techniques.</p>
+              <h3 className="text-xl font-bold mb-2">{t("project_details.bts_com.card2_title")}</h3>
+              <p className="text-slate-200 text-sm">{t("project_details.bts_com.card2_desc")}</p>
             </div>
           </div>
         </div>
@@ -114,14 +117,17 @@ export default function ProjetBtsCom() {
       <MosaicGrid sections={sections} accentColor="#3b82f6" />
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#3b82f6" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Créations Perso</h2>
           </div>
           <Link to="/projets/perso" className="btn-premium gap-3 text-lg px-12 py-5">
-            Découvrir <ArrowRight size={20} />
+            {t("project_details.explore")} <ArrowRight size={20} />
           </Link>
         </div>
       </section>

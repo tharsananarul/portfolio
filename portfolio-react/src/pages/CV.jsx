@@ -1,93 +1,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Download, GraduationCap, Briefcase, MapPin, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import LazyImage from '../components/ui/LazyImage'
 
-
-const education = [
-  {
-    period: "2026 — 2027",
-    title: "Licence Professionnelle (Admis)",
-    location: "Université Paris-Est Créteil (UPEC)",
-    desc: "Spécialisation dans la communication d'intérêt général."
-  },
-  {
-    period: "2025 — 2026",
-    title: "BTS Communication",
-    location: "Lycée Jacques Brel · La Courneuve",
-    desc: "Mise en œuvre d'actions de communication, relations avec les prestataires, veille technologique et design graphique."
-  },
-  {
-    period: "2022 — 2024",
-    title: "BUT Métiers du Multimédia et de l'Internet",
-    location: "IUT de Sénart-Fontainebleau",
-    desc: "Développement web, UI/UX Design, audiovisuel et communication multimédia."
-  },
-  {
-    period: "2019 — 2022",
-    title: "Bac STI2D",
-    location: "Lycée Paul Le Rolland · Drancy",
-    desc: "Spécialité Systèmes d'Information et Numérique."
-  }
-]
-
-const experiences = [
-  {
-    period: "Sept. 2024 — Présent",
-    title: "Communication & Design Graphique",
-    company: "Futsal Drancy",
-    location: "Drancy",
-    type: "Stage | Service Civique | Bénévolat",
-    missions: [
-      "Bénévole (Depuis Janv. 2026) : Soutien événementiel et animation de communauté.",
-      "Service Civique (Sept. 2024 — Mai 2025) : Gestion des réseaux sociaux et création de contenu digital.",
-      "Stagiaire Communication (Mai — Juin 2025 & Nov — Déc 2025) : Stratégie de visibilité et supports print."
-    ]
-  },
-  {
-    period: "Août 2024 — Janvier 2026",
-    title: "Chargé de Clientèle",
-    company: "La Banque Postale",
-    location: "Le Blanc-Mesnil",
-    type: "CDI",
-    missions: [
-      "Accueil et orientation des clients avec professionnalisme",
-      "Vente de produits et services postaux (solutions adaptées)",
-      "Gestion du tri et de la distribution sécurisée des colis et lettres"
-    ]
-  },
-  {
-    period: "Mars 2023 — Présent",
-    title: "Community Manager — Photographe",
-    company: "Objectif Sciences International",
-    location: "Paris & Genève",
-    type: "Stage | Bénévolat",
-    missions: [
-      "Stagiaire (Mars — Avril 2023) puis Bénévole (Depuis Mai 2023).",
-      "Couverture photographique et vidéo du Forum de Genève au Palais des Nations (ONU).",
-      "Gestion des réseaux sociaux et valorisation des actions de diplomatie scientifique.",
-      "Réalisation d'interviews de délégués internationaux et chercheurs pour Terra Scientifica.",
-      "Création de contenus digitaux pour promouvoir l'éducation aux sciences participatives.",
-      "Soutien à la communication événementielle lors de salons et conférences internationales."
-    ]
-  },
-  {
-    period: "Sept. 2023 — Présent",
-    title: "Tuteur Indépendant",
-    company: "Parkours",
-    location: "Paris",
-    type: "Indépendant",
-    missions: [
-      "Accompagnement et soutien pédagogique des élèves",
-      "Aide à l'organisation et optimisation des méthodes d'apprentissage"
-    ]
-  }
-]
-
 export default function CV() {
+  const { t } = useTranslation()
   const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
@@ -95,15 +17,78 @@ export default function CV() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  const education = [
+    {
+      period: "2026 — 2027",
+      title: t("cv_page.education.upec.title"),
+      location: t("cv_page.education.upec.location"),
+      desc: t("cv_page.education.upec.desc")
+    },
+    {
+      period: "2025 — 2026",
+      title: t("cv_page.education.brel.title"),
+      location: t("cv_page.education.brel.location"),
+      desc: t("cv_page.education.brel.desc")
+    },
+    {
+      period: "2022 — 2024",
+      title: t("cv_page.education.mmi.title"),
+      location: t("cv_page.education.mmi.location"),
+      desc: t("cv_page.education.mmi.desc")
+    },
+    {
+      period: "2019 — 2022",
+      title: t("cv_page.education.sti2d.title"),
+      location: t("cv_page.education.sti2d.location"),
+      desc: t("cv_page.education.sti2d.desc")
+    }
+  ]
+
+  const experiences = [
+    {
+      period: "Sept. 2024 — Présent",
+      title: t("cv_page.experiences.futsal.title"),
+      company: t("cv_page.experiences.futsal.company"),
+      location: "Drancy",
+      type: t("cv_page.experiences.futsal.type"),
+      missions: t("cv_page.experiences.futsal.missions", { returnObjects: true }) || []
+    },
+    {
+      period: "Août 2024 — Janvier 2026",
+      title: t("cv_page.experiences.banque.title"),
+      company: t("cv_page.experiences.banque.company"),
+      location: "Le Blanc-Mesnil",
+      type: t("cv_page.experiences.banque.type"),
+      missions: t("cv_page.experiences.banque.missions", { returnObjects: true }) || []
+    },
+    {
+      period: "Mars 2023 — Présent",
+      title: t("cv_page.experiences.osi.title"),
+      company: t("cv_page.experiences.osi.company"),
+      location: t("lng") === 'en' ? "Paris & Geneva" : "Paris & Genève",
+      type: t("cv_page.experiences.osi.type"),
+      missions: t("cv_page.experiences.osi.missions", { returnObjects: true }) || []
+    },
+    {
+      period: "Sept. 2023 — Présent",
+      title: t("cv_page.experiences.parkours.title"),
+      company: t("cv_page.experiences.parkours.company"),
+      location: "Paris",
+      type: t("cv_page.experiences.parkours.type"),
+      missions: t("cv_page.experiences.parkours.missions", { returnObjects: true }) || []
+    }
+  ]
+
   return (
     <main className="relative bg-transparent min-h-screen pb-32">
       <PageHero
-        tag="Expérience & Formation"
-        title={<><span className="text-[1.1em] md:text-[1.3em]">Mon</span> <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Parcours.</span></>}
-        subtitle="Une trajectoire mêlant expertise technique, communication stratégique et passion pour le design."
+        tag={t("cv_page.tag")}
+        title={<><span className="text-[1.1em] md:text-[1.3em]">{t("cv_page.title_start")}</span> <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>{t("cv_page.title_end")}</span></>}
+        subtitle={t("cv_page.subtitle")}
         compact={true}
         themeColor="blue"
       />
+
 
 
       {/* Background patterns & Creative Blobs */}
@@ -151,7 +136,7 @@ export default function CV() {
             <Magnetic>
               <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium-orange gap-3 group">
                 <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
-                Télécharger mon CV
+                {t("cv_page.download")}
               </a>
             </Magnetic>
           </motion.div>
@@ -173,10 +158,10 @@ export default function CV() {
                 </div>
               </div>
               <h2 className="font-extrabold tracking-normal uppercase leading-none" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}>
-                <span className="text-white block mb-1" style={{ fontSize: '1em' }}>Ma</span>
+                <span className="text-white block mb-1" style={{ fontSize: '1em' }}>{t("cv_page.education_start", "Ma")}</span>
                 <span className="relative inline-block px-4 py-1">
                   <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm -rotate-1 rounded-lg" />
-                  <span className="relative text-[var(--color-creative-blue)]">Formation</span>
+                  <span className="relative text-[var(--color-creative-blue)]">{t("cv_page.education_title")}</span>
                 </span>
               </h2>
             </motion.div>
@@ -249,7 +234,7 @@ export default function CV() {
                        <div className="relative px-4 py-2">
                          <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
                          <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
-                           Voir le CV
+                           {t("cv_page.view_badge")}
                          </span>
                        </div>
                      </div>
@@ -276,10 +261,10 @@ export default function CV() {
                    </div>
                  </div>
                  <h2 className="font-extrabold tracking-normal uppercase leading-none" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}>
-                  <span className="text-white block mb-1" style={{ fontSize: '1em' }}>Mon</span>
+                  <span className="text-white block mb-1" style={{ fontSize: '1em' }}>{t("cv_page.experience_start", "Mon")}</span>
                   <span className="relative inline-block px-4 py-1">
                     <span className="absolute inset-0 bg-white/5 border border-white/10 backdrop-blur-sm rotate-1 rounded-lg" />
-                    <span className="relative text-[var(--color-creative-blue)]">Expérience</span>
+                    <span className="relative text-[var(--color-creative-blue)]">{t("cv_page.experience_title")}</span>
                   </span>
                 </h2>
               </motion.div>
@@ -335,20 +320,19 @@ export default function CV() {
           <div className="absolute inset-0 bg-accent-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-base sm:text-lg md:text-3xl font-bold mb-6 md:mb-10 italic tracking-tight leading-snug md:leading-tight">
-              "L'innovation est le fruit d'une <span className="highlight">curiosité constante</span> et d'une rigueur créative."
+              {t("cv_page.quote")}
             </h2>
 
             <p className="text-text-muted text-[10px] sm:text-xs md:text-lg mb-8 md:mb-12 leading-relaxed font-medium">
-              Chaque étape de mon parcours a été guidée par l'envie d'apprendre et de relever des défis. 
-              Je suis prêt à mettre cette expérience au service de vos projets.
+              {t("cv_page.quote_sub")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
               {[
-                { name: "Autonomie", color: "text-[var(--color-creative-blue)]" },
-                { name: "Travail d'équipe", color: "text-[var(--color-creative-blue)]" },
-                { name: "Adaptabilité", color: "text-[var(--color-creative-blue)]" },
-                { name: "Rigueur", color: "text-[var(--color-creative-blue)]" },
-                { name: "Créativité", color: "text-[var(--color-creative-blue)]" }
+                { name: t("cv_page.skills.autonomy"), color: "text-[var(--color-creative-blue)]" },
+                { name: t("cv_page.skills.teamwork"), color: "text-[var(--color-creative-blue)]" },
+                { name: t("cv_page.skills.adaptability"), color: "text-[var(--color-creative-blue)]" },
+                { name: t("cv_page.skills.rigor"), color: "text-[var(--color-creative-blue)]" },
+                { name: t("cv_page.skills.creativity"), color: "text-[var(--color-creative-blue)]" }
               ].map(skill => (
                 <Magnetic key={skill.name}>
                   <div className={`px-5 py-2.5 md:px-8 md:py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[9px] md:text-[11px] font-black uppercase tracking-[0.2em] ${skill.color} hover:bg-white/10 hover:border-white/20 transition-all cursor-default`}>

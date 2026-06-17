@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Instagram, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from './Magnetic'
 
 const navLinks = [
-  { name: 'Projets', path: '/projets' },
-  { name: 'CV', path: '/cv' },
-  { name: 'Compétences', path: '/competences' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Projets', path: '/projets', key: 'projects' },
+  { name: 'CV', path: '/cv', key: 'cv' },
+  { name: 'Compétences', path: '/competences', key: 'skills' },
+  { name: 'Contact', path: '/contact', key: 'contact' },
 ]
 
 const LogoScramble = () => {
@@ -73,6 +74,7 @@ const LogoScramble = () => {
 }
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDimmed, setIsDimmed] = useState(false)
@@ -128,19 +130,19 @@ export default function Navbar() {
         </Magnetic>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
-          <div className="flex items-center gap-8 nav-links">
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-6 nav-links">
             {navLinks.map((link, i) => {
               const color = 'blue';
               return (
-              <Magnetic key={link.name}>
+              <Magnetic key={link.key}>
                 <Link
                   to={link.path}
                   className={`font-heading font-bold text-[10px] md:text-[11px] tracking-[0.15em] uppercase transition-all duration-300 relative group py-1.5 px-3 rounded-full hover:bg-white/5 ${
                     location.pathname === link.path ? `text-[var(--color-creative-${color})]` : `text-white/80 hover:text-white`
                   }`}
                 >
-                  {link.name}
+                  {t(`nav.${link.key}`)}
                   <span className={`absolute bottom-0.5 left-3 h-[1px] bg-[var(--color-creative-${color})] transition-all duration-500 ${
                     location.pathname === link.path ? 'w-[calc(100%-24px)]' : 'w-0 group-hover:w-[calc(100%-24px)]'
                   }`} />
@@ -148,22 +150,38 @@ export default function Navbar() {
               </Magnetic>
             )})}
           </div>
+
+          {/* Language Selector */}
+          <div className="flex items-center gap-0.5 bg-white/5 border border-white/10 p-0.5 rounded-full backdrop-blur-md">
+            <button 
+              onClick={() => i18n.changeLanguage('fr')}
+              className={`px-2 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all uppercase ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+            >
+              FR
+            </button>
+            <button 
+              onClick={() => i18n.changeLanguage('en')}
+              className={`px-2 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all uppercase ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+            >
+              EN
+            </button>
+          </div>
           
-          <div className="w-px h-4 bg-white/10 mx-2" />
+          <div className="w-px h-4 bg-white/10 mx-1" />
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Magnetic>
-              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-1.5 hover:scale-115" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </Magnetic>
             <Magnetic>
-              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="GitHub">
+              <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-1.5 hover:scale-115" title="GitHub">
                 <Github size={18} />
               </a>
             </Magnetic>
             <Magnetic>
-              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-2 hover:scale-115" title="Instagram">
+              <a href="https://www.instagram.com/tharsh.studio/" target="_blank" rel="noreferrer" className="text-sky-400 hover:text-white transition-all p-1.5 hover:scale-115" title="Instagram">
                 <Instagram size={18} />
               </a>
             </Magnetic>
@@ -222,13 +240,31 @@ export default function Navbar() {
 
               {/* Staggered Navigation Links */}
               <div className="flex flex-col px-6 py-6 gap-4">
-                <p className="text-[9px] text-white/30 font-bold uppercase tracking-[0.3em] mb-1">Navigation</p>
+                <div className="flex justify-between items-center mb-1">
+                  <p className="text-[9px] text-white/30 font-bold uppercase tracking-[0.3em]">Navigation</p>
+                  
+                  {/* Language switch on mobile */}
+                  <div className="flex items-center gap-0.5 bg-white/5 border border-white/10 p-0.5 rounded-full backdrop-blur-md">
+                    <button 
+                      onClick={() => i18n.changeLanguage('fr')}
+                      className={`px-2.5 py-1 rounded-full text-[8px] font-black tracking-wider transition-all uppercase ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                    >
+                      FR
+                    </button>
+                    <button 
+                      onClick={() => i18n.changeLanguage('en')}
+                      className={`px-2.5 py-1 rounded-full text-[8px] font-black tracking-wider transition-all uppercase ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
                 {navLinks.map((link, i) => {
                   const number = `0${i + 1}`;
                   const isActive = location.pathname === link.path;
                   return (
                     <motion.div
-                      key={link.name}
+                      key={link.key}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.05 + i * 0.05 }}
@@ -243,7 +279,7 @@ export default function Navbar() {
                           {number}
                         </span>
                         <span className={`font-heading text-lg font-extrabold uppercase tracking-[0.1em] transition-all duration-300 ${isActive ? 'text-[var(--color-creative-blue)] translate-x-1.5' : 'text-white/80 group-hover:text-white group-hover:translate-x-1.5'}`}>
-                          {link.name}
+                          {t(`nav.${link.key}`)}
                         </span>
                       </Link>
                     </motion.div>

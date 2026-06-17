@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Camera } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import PageHero from '../components/PageHero'
 
 const PHOTO_DATA = [
@@ -21,6 +22,7 @@ const PHOTO_DATA = [
 ]
 
 export default function Photographie() {
+  const { t } = useTranslation()
   const baseUrl = import.meta.env.BASE_URL
   const [lightboxIndex, setLightboxIndex] = useState(null)
 
@@ -187,9 +189,9 @@ export default function Photographie() {
   return (
     <main className="relative bg-transparent min-h-screen">
       <PageHero
-        tag="Galerie"
-        title={<>Photo<span className="text-accent-light italic">graphie.</span></>}
-        subtitle="À travers l'objectif, je cherche à capturer l'invisible."
+        tag={t("photo_page.tag")}
+        title={<>{t("photo_page.title_start")}<span className="text-accent-light italic">{t("photo_page.title_end")}</span></>}
+        subtitle={t("photo_page.subtitle")}
         compact
       />
 
@@ -223,3 +225,4 @@ export default function Photographie() {
     </main>
   )
 }
+

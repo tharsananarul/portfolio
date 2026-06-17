@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Linkedin, Send, MessageSquare, Phone, Sparkles, CheckCircle2, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import { useToast } from '../hooks/useToast'
@@ -72,9 +73,10 @@ function FloatingTextarea({ label, name, required = false, rows = 5 }) {
 }
 
 // ── Custom Interactive Info Card ─────────────────────────────────────────────
-function ContactCard({ icon, label, val, href }) {
+function ContactCard({ icon, label, val, href, copyable = false }) {
+  const { t } = useTranslation()
   const [copied, setCopied] = useState(false)
-  const isCopyable = label === "Email" || label === "Téléphone"
+  const isCopyable = copyable
 
   const fallbackCopyText = (text) => {
     const textArea = document.createElement("textarea")
@@ -139,7 +141,7 @@ function ContactCard({ icon, label, val, href }) {
           <button 
             onClick={handleCopy}
             className="z-20 shrink-0 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/50 hover:text-white transition-all duration-300 ml-4 relative cursor-pointer"
-            title="Copier dans le presse-papiers"
+            title={t("contact_page.tooltip")}
           >
             {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
           </button>
@@ -151,21 +153,22 @@ function ContactCard({ icon, label, val, href }) {
 
 // ── Contact Main Component ───────────────────────────────────────────────────
 export default function Contact() {
+  const { t } = useTranslation()
   const [status, setStatus] = useState('idle') // idle, sending, success, error
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
   const toast = useToast()
 
   const handleSubmit = (e) => {
     setStatus('sending')
-    toast("Envoi de votre message…", "info")
+    toast(t("contact_page.status.sending_toast"), "info")
   }
 
   return (
     <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
       <PageHero
-        tag="Contact"
-        title={<span className="flex flex-col"><span>Parlons de votre</span> <span className="text-[var(--color-creative-blue)] -mt-2 md:-mt-5" style={{ WebkitTextStroke: '1px white' }}>prochain projet.</span></span>}
-        subtitle="Que vous ayez une idée précise ou que vous souhaitiez explorer des possibilités, je suis là pour vous accompagner."
+        tag={t("contact_page.tag")}
+        title={<span className="flex flex-col"><span>{t("contact_page.title_start")}</span> <span className="text-[var(--color-creative-blue)] -mt-2 md:-mt-5" style={{ WebkitTextStroke: '1px white' }}>{t("contact_page.title_end")}</span></span>}
+        subtitle={t("contact_page.subtitle")}
         compact
         themeColor="blue"
       />
@@ -179,7 +182,7 @@ export default function Contact() {
           
           {/* Left Column: Cards */}
           <div className="space-y-6 relative">
-            <div className="hidden md:block sticker-shape sticker-blue-dark absolute -top-8 -left-4 rotate-[-6deg] z-20 shadow-lg">Network</div>
+            <div className="hidden md:block sticker-shape sticker-blue-dark absolute -top-8 -left-4 rotate-[-6deg] z-20 shadow-lg">{t("contact_page.sticker")}</div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,9 +191,9 @@ export default function Contact() {
               transition={{ delay: 0.1, duration: 0.8 }}
               className="space-y-5"
             >
-              <ContactCard icon={<Mail size={22} />} label="Email" val="tharsananarul@gmail.com" href="mailto:tharsananarul@gmail.com" />
+              <ContactCard icon={<Mail size={22} />} label={t("contact_page.labels.email")} val="tharsananarul@gmail.com" href="mailto:tharsananarul@gmail.com" copyable />
               <ContactCard icon={<Linkedin size={22} />} label="LinkedIn" val="Tharsanan Arul" href={linkedinUrl} />
-              <ContactCard icon={<Phone size={22} />} label="Téléphone" val="07 49 87 87 75" href="tel:+33749878775" />
+              <ContactCard icon={<Phone size={22} />} label={t("contact_page.labels.phone")} val="07 49 87 87 75" href="tel:+33749878775" copyable />
             </motion.div>
           </div>
 
@@ -217,13 +220,13 @@ export default function Contact() {
                   <div className="p-7 rounded-full bg-[var(--color-creative-blue)]/20 text-[var(--color-creative-blue)] shadow-[0_0_40px_rgba(14,165,233,0.3)] animate-pulse">
                     <CheckCircle2 size={72} />
                   </div>
-                  <h3 className="text-3xl font-black uppercase tracking-tight text-white">Message envoyé !</h3>
-                  <p className="text-text-muted max-w-sm mx-auto text-base font-medium">Merci pour votre message. Je reviens vers vous très rapidement.</p>
+                  <h3 className="text-3xl font-black uppercase tracking-tight text-white">{t("contact_page.status.success")}</h3>
+                  <p className="text-text-muted max-w-sm mx-auto text-base font-medium">{t("contact_page.status.success_desc")}</p>
                   <button 
                     onClick={() => setStatus('idle')}
-                    className="text-[var(--color-creative-blue)] font-bold hover:text-white transition-colors mt-6 text-sm uppercase tracking-widest border border-[var(--color-creative-blue)]/30 hover:border-white px-6 py-3 rounded-full bg-white/5"
+                    className="text-[var(--color-creative-blue)] font-bold hover:text-white transition-colors mt-6 text-sm uppercase tracking-widest border border-[var(--color-creative-blue)]/30 hover:border-white px-6 py-3 rounded-full bg-white/5 cursor-pointer"
                   >
-                    Envoyer un autre message
+                    {t("contact_page.buttons.another")}
                   </button>
                 </motion.div>
               ) : (
@@ -242,12 +245,12 @@ export default function Contact() {
                   <input type="hidden" name="_subject" value="Nouveau message Portfolio !" />
                   
                   <div className="grid md:grid-cols-2 gap-6">
-                    <FloatingInput label="Nom complet" name="name" type="text" required />
-                    <FloatingInput label="Email" name="email" type="email" required />
+                    <FloatingInput label={t("contact_page.labels.name")} name="name" type="text" required />
+                    <FloatingInput label={t("contact_page.labels.email")} name="email" type="email" required />
                   </div>
 
-                  <FloatingInput label="Sujet" name="subject" type="text" />
-                  <FloatingTextarea label="Message" name="message" required rows={5} />
+                  <FloatingInput label={t("contact_page.labels.subject")} name="subject" type="text" />
+                  <FloatingTextarea label={t("contact_page.labels.message")} name="message" required rows={5} />
 
                   <div className="pt-2">
                     <Magnetic>
@@ -259,11 +262,11 @@ export default function Contact() {
                         {status === 'sending' ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            Envoi en cours…
+                            {t("contact_page.buttons.sending")}
                           </>
                         ) : (
                           <>
-                            Envoyer le message 
+                            {t("contact_page.buttons.send")} 
                             <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                           </>
                         )}
@@ -272,7 +275,7 @@ export default function Contact() {
                   </div>
                   
                   {status === 'error' && (
-                    <p className="text-red-400 text-xs text-center font-bold">Une erreur est survenue. Veuillez réessayer.</p>
+                    <p className="text-red-400 text-xs text-center font-bold">{t("contact_page.status.error")}</p>
                   )}
                 </motion.form>
               )}

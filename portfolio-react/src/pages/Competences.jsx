@@ -1,58 +1,57 @@
 import { motion } from 'framer-motion'
 import { Wrench, Shield, Zap, Globe, Layout, Palette, Code2, Globe2, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import CanvasAnimation from '../components/ui/CanvasAnimation'
 
-const skills = [
-  { title: "Design Graphique", icon: <Palette size={24} />, desc: "Maîtrise de la suite Adobe (Ps, Ai, Id) pour créer des visuels percutants.", animationId: "crystalline-refraction" },
-  { title: "Développement Web", icon: <Code2 size={24} />, desc: "Conception de sites modernes avec React, HTML5 et CSS3/Tailwind.", animationId: "helix-scanner" },
-  { title: "Communication", icon: <Globe size={24} />, desc: "Élaboration de stratégies de com et gestion des réseaux sociaux.", animationId: "sonar-sweep" },
-  { title: "UI/UX Design", icon: <Layout size={24} />, desc: "Création d'interfaces intuitives centrées sur l'utilisateur.", animationId: "sphere-scan" },
-  { title: "Motion Design", icon: <Zap size={24} />, desc: "Animations fluides avec After Effects pour dynamiser vos contenus.", animationId: "interconnecting-waves" },
-  { title: "Maîtrise des outils", icon: <Wrench size={24} />, desc: "À l'aise avec les logiciels de création, de communication et de gestion.", animationId: "voxel-matrix-morph" },
-]
-
 export default function Competences() {
+  const { t } = useTranslation()
   const baseUrl = import.meta.env.BASE_URL
   
+  const skills = [
+    { title: t("skills_page.categories.graphic.title"), icon: <Palette size={24} />, desc: t("skills_page.categories.graphic.desc"), animationId: "crystalline-refraction" },
+    { title: t("skills_page.categories.web.title"), icon: <Code2 size={24} />, desc: t("skills_page.categories.web.desc"), animationId: "helix-scanner" },
+    { title: t("skills_page.categories.comm.title"), icon: <Globe size={24} />, desc: t("skills_page.categories.comm.desc"), animationId: "sonar-sweep" },
+    { title: t("skills_page.categories.uiux.title"), icon: <Layout size={24} />, desc: t("skills_page.categories.uiux.desc"), animationId: "sphere-scan" },
+    { title: t("skills_page.categories.motion.title"), icon: <Zap size={24} />, desc: t("skills_page.categories.motion.desc"), animationId: "interconnecting-waves" },
+    { title: t("skills_page.categories.tools.title"), icon: <Wrench size={24} />, desc: t("skills_page.categories.tools.desc"), animationId: "voxel-matrix-morph" },
+  ]
+  
   const languages = [
-    { name: "Français", level: 100, info: "Bilingue — C2", flag: "https://flagcdn.com/w320/fr.png" },
-    { name: "Anglais", level: 85, info: "Intermédiaire — B2", flag: "https://flagcdn.com/w320/gb.png" },
-    { name: "Tamoul", level: 100, info: "Langue maternelle — C2", flag: `${baseUrl}images/te-flag/tamil-eelam.png` },
-    { name: "Allemand", level: 25, info: "Débutant — A1", flag: "https://flagcdn.com/w320/de.png" },
+    { name: t("skills_page.languages.fr.name"), level: 100, info: t("skills_page.languages.fr.info"), flag: "https://flagcdn.com/w320/fr.png" },
+    { name: t("skills_page.languages.en.name"), level: 85, info: t("skills_page.languages.en.info"), flag: "https://flagcdn.com/w320/gb.png" },
+    { name: t("skills_page.languages.tamil.name"), level: 100, info: t("skills_page.languages.tamil.info"), flag: `${baseUrl}images/te-flag/tamil-eelam.png` },
+    { name: t("skills_page.languages.de.name"), level: 25, info: t("skills_page.languages.de.info"), flag: "https://flagcdn.com/w320/de.png" },
   ]
 
   const software = [
-    { name: "Photoshop", level: 75, abbr: "Ps", color: "#31A8FF", desc: "Retouche photo, montage, création visuelle" },
-    { name: "After Effects", level: 50, abbr: "Ae", color: "#CF96FD", desc: "Motion design, animations" },
-    { name: "Premiere Pro", level: 60, abbr: "Pr", color: "#EA77FF", desc: "Montage vidéo, édition professionnelle" },
-    { name: "Illustrator", level: 70, abbr: "Ai", color: "#FF9A00", desc: "Création vectorielle, logos, affiches" },
-    { name: "InDesign", level: 60, abbr: "Id", color: "#FF3366", desc: "Mise en page, supports print" },
-    { name: "Canva", level: 100, abbr: "Cv", color: "#00C4CC", desc: "Création rapide et efficace" },
-    { name: "WordPress", level: 75, abbr: "Wp", color: "#21759B", desc: "Rédaction et gestion de contenu" },
-    { name: "HTML & CSS", level: 70, abbr: "</>", color: "#E34F26", desc: "Structure et style web moderne" },
+    { name: "Photoshop", level: 75, abbr: "Ps", color: "#31A8FF", desc: t("skills_page.software.ps") },
+    { name: "After Effects", level: 50, abbr: "Ae", color: "#CF96FD", desc: t("skills_page.software.ae") },
+    { name: "Premiere Pro", level: 60, abbr: "Pr", color: "#EA77FF", desc: t("skills_page.software.pr") },
+    { name: "Illustrator", level: 70, abbr: "Ai", color: "#FF9A00", desc: t("skills_page.software.ai") },
+    { name: "InDesign", level: 60, abbr: "Id", color: "#FF3366", desc: t("skills_page.software.id") },
+    { name: "Canva", level: 100, abbr: "Cv", color: "#00C4CC", desc: t("skills_page.software.cv") },
+    { name: "WordPress", level: 75, abbr: "Wp", color: "#21759B", desc: t("skills_page.software.wp") },
+    { name: "HTML & CSS", level: 70, abbr: "</>", color: "#E34F26", desc: t("skills_page.software.html_css") },
   ]
 
   return (
     <main className="relative pb-20 bg-transparent min-h-screen">
       <PageHero
-        tag="Expertise"
-        title={<>Mes <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>Compétences.</span></>}
-        subtitle="Un mix polyvalent entre design créatif, communication stratégique et développement technique."
+        tag={t("skills_page.tag")}
+        title={<>{t("skills_page.title_start")} <span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>{t("skills_page.title_end")}</span></>}
+        subtitle={t("skills_page.subtitle")}
         compact={true}
         themeColor="cyan"
       />
-
-
-
 
       <section className="section-container relative z-10 -mt-4 md:-mt-8">
         {/* Core Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-12 md:mb-24 relative">
           {/* Stickers */}
-          <div className="absolute -top-12 -left-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-10deg] z-20 hidden lg:block">Creative</div>
-          <div className="absolute -bottom-12 -right-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[15deg] z-20 hidden lg:block">Technical</div>
+          <div className="absolute -top-12 -left-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-10deg] z-20 hidden lg:block">{t("skills_page.stickers.creative")}</div>
+          <div className="absolute -bottom-12 -right-4 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[15deg] z-20 hidden lg:block">{t("skills_page.stickers.technical")}</div>
 
           {skills.map((skill, i) => (
             <motion.div
@@ -99,12 +98,12 @@ export default function Competences() {
         {/* Software Section */}
         <div className="mb-12 md:mb-24">
           <h2 className="font-extrabold mb-10 tracking-normal uppercase text-white" style={{ fontSize: 'clamp(1.6rem, 6vw, 3.5rem)' }}>
-            Logiciels <br className="block md:hidden" />{" "}
-            <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>maîtrisés</span>
+            {t("skills_page.software.title")} <br className="block md:hidden" />{" "}
+            <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>{t("skills_page.software.highlighted")}</span>
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 relative">
-             <div className="absolute -top-10 -right-6 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] z-20 hidden lg:block">Tools</div>
+             <div className="absolute -top-10 -right-6 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] z-20 hidden lg:block">{t("skills_page.stickers.tools")}</div>
 
             {software.map((item, i) => (
               <motion.div
@@ -147,10 +146,10 @@ export default function Competences() {
         {/* Languages Section */}
         <div>
           <h2 className="font-extrabold mb-10 tracking-normal uppercase text-white" style={{ fontSize: 'clamp(1.6rem, 6vw, 3.5rem)' }}>
-            Langues <br className="block md:hidden" />{" "}
+            {t("skills_page.languages.title")} <br className="block md:hidden" />{" "}
             <span className="relative inline-block mt-2 md:mt-0 md:ml-3">
                <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
-               <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md -rotate-1 inline-block">parlées</span>
+               <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/20 border border-[var(--color-creative-blue)]/50 rounded-xl backdrop-blur-md -rotate-1 inline-block">{t("skills_page.languages.highlighted")}</span>
             </span>
           </h2>
 

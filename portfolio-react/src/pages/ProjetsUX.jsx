@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, ExternalLink, Code2, Cpu, Globe, Layout, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import LazyImage from '../components/ui/LazyImage'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetsUX() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -73,46 +76,46 @@ export default function ProjetsUX() {
           <p className="font-bold text-sm md:text-base">HTML, CSS, React</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Période</span>
-          <p className="font-bold text-sm md:text-base">Temps Libre</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.period")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.ux.period")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
           <p className="font-bold text-sm md:text-base">VS Code, Figma</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
-          <p className="font-bold text-sm md:text-base">Projets Personnels</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.type")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.ux.type")}</p>
         </div>
       </section>
 
       {/* Introduction */}
       <section className="section-container py-16 md:py-24">
         <div className="max-w-4xl">
-          <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-8 tracking-tight leading-[1.1]">Expérimentations et <span className="highlight">développement web</span>.</h2>
+          <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-8 tracking-tight leading-[1.1]">{t("project_details.ux.concept_title")}</h2>
           <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-12">
-            Réalisés en <strong>Vibe Coding</strong> durant mon temps libre, ces projets (principalement des sites web) combinent ma créativité avec des outils d'IA avancés comme <strong>Antigravity</strong> et des plateformes comme <strong>Framer</strong> pour concevoir et itérer rapidement des interfaces interactives.
+            {t("project_details.ux.para1")}
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Code2 className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-3">HTML & CSS</h3>
+              <h3 className="text-xl font-bold mb-3">{t("project_details.ux.card1_title")}</h3>
               <p className="text-text-muted text-sm leading-relaxed">
-                Maîtrise des structures sémantiques et des mises en page complexes (Flexbox, Grid) pour des interfaces fluides et responsives.
+                {t("project_details.ux.card1_desc")}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Cpu className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-3">React & JS</h3>
+              <h3 className="text-xl font-bold mb-3">{t("project_details.ux.card2_title")}</h3>
               <p className="text-text-muted text-sm leading-relaxed">
-                Développement d'applications web modernes utilisant React pour une gestion dynamique de l'état et des interactions fluides.
+                {t("project_details.ux.card2_desc")}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Sparkles className="text-accent-light mb-4" size={32} />
-              <h3 className="text-xl font-bold mb-3">Vibe Coding & IA</h3>
+              <h3 className="text-xl font-bold mb-3">{t("project_details.ux.card3_title")}</h3>
               <p className="text-text-muted text-sm leading-relaxed">
-                Conception rapide et intégration de sites modernes en exploitant des technologies d'IA (Antigravity) et des outils comme Framer.
+                {t("project_details.ux.card3_desc")}
               </p>
             </div>
           </div>
@@ -123,13 +126,13 @@ export default function ProjetsUX() {
       <section className="section-container py-20 md:py-32 border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Développement & Design</span>
-            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">Site Web Futsal Drancy</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">{t("project_details.ux.futsal.tag")}</span>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">{t("project_details.ux.futsal.title")}</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
-              Conception intégrale du premier site officiel du club. Utilisation de technologies modernes pour offrir une expérience fluide, de la présentation des équipes aux inscriptions en ligne.
+              {t("project_details.ux.futsal.desc")}
             </p>
             <a href="https://tharsananarul.github.io/futsal-drancy/#/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
-              Voir le site live <ExternalLink size={20} />
+              {t("project_details.ux.futsal.btn")} <ExternalLink size={20} />
             </a>
           </div>
         </div>
@@ -140,13 +143,13 @@ export default function ProjetsUX() {
       <section className="section-container py-20 md:py-32 border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Plateforme Web</span>
-            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">BTS Révision</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">{t("project_details.ux.bts.tag")}</span>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">{t("project_details.ux.bts.title")}</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
-              Conception d'une plateforme de révision complète pour les étudiants. Focus sur l'organisation des ressources et la facilité de navigation sur mobile.
+              {t("project_details.ux.bts.desc")}
             </p>
             <a href="https://tharsananarul.github.io/fdr-bts-com/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
-              Voir le site live <ExternalLink size={20} />
+              {t("project_details.ux.bts.btn")} <ExternalLink size={20} />
             </a>
           </div>
         </div>
@@ -156,13 +159,13 @@ export default function ProjetsUX() {
       <section className="section-container py-20 md:py-32 border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mockup UI/UX</span>
-            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">HopePower</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">{t("project_details.ux.hope.tag")}</span>
+            <h2 className="text-[clamp(1.8rem,5vw,3.5rem)] font-bold mb-8 tracking-tighter leading-[1.1]">{t("project_details.ux.hope.title")}</h2>
             <p className="text-base md:text-xl text-slate-100 leading-relaxed mb-10">
-              Prototype haute-fidélité réalisé dans le cadre de mon BTS Communication pour un projet d'études. Conception d'une interface mobile pour un site solidaire fictif, avec un focus sur le parcours utilisateur (UX flow) et la cohérence visuelle.
+              {t("project_details.ux.hope.desc")}
             </p>
             <a href="https://tharsananarul.github.io/hopepower/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
-              Voir le mockup live <ExternalLink size={20} />
+              {t("project_details.ux.hope.btn")} <ExternalLink size={20} />
             </a>
           </div>
         </div>
@@ -170,14 +173,17 @@ export default function ProjetsUX() {
       </section>
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#0ea5e9" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Tharsh Studio</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Tharsh&nbsp;Studio</h2>
           </div>
           <Link to="/projets/tharsh-studio" className="btn-premium gap-3 text-lg px-12 py-5">
-            Découvrir <ArrowRight size={20} />
+            {t("project_details.explore")} <ArrowRight size={20} />
           </Link>
         </div>
       </section>

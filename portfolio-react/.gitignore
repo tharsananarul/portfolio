@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scratch & Temporary Analysis
+scratch*.cjs
+print*.cjs
+*.cjs
+*-results.json
+*.png
+!portfolio-react/public/**/*.png
+!portfolio-react/public/*.png
+!images/**/*.png
+!images/*.png

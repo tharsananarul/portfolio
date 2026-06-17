@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Instagram, ArrowUp, ArrowUpRight, Mail, Phone, Copy, Check, Clock, Globe, Sparkles, Smile, Compass, Heart } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import Magnetic from './Magnetic'
 import { useToast } from '../hooks/useToast'
 
-
-
 // --- MAIN FOOTER COMPONENT ---
 export default function Footer() {
+  const { t, i18n } = useTranslation()
   const showToast = useToast()
   const location = useLocation()
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
@@ -45,7 +45,7 @@ export default function Footer() {
     try {
       document.execCommand('copy')
       setCopied(true)
-      if (showToast) showToast("Email copié !", "success")
+      if (showToast) showToast(t("footer.copied"), "success")
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
       console.error('Fallback copy failed', err)
@@ -58,7 +58,7 @@ export default function Footer() {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(email).then(() => {
         setCopied(true)
-        if (showToast) showToast("Email copié !", "success")
+        if (showToast) showToast(t("footer.copied"), "success")
         setTimeout(() => setCopied(false), 2000)
       }).catch(err => {
         console.error("Failed to copy using navigator: ", err)
@@ -73,7 +73,7 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const row1Items = ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"]
+  const row1Items = t("footer.marquee", { returnObjects: true }) || ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"]
 
   return (
     <footer className="bg-transparent relative z-10 overflow-hidden pt-16 pb-8">
@@ -110,10 +110,10 @@ export default function Footer() {
               </div>
               <div className="flex flex-col gap-3 mt-2">
                 <p className="text-white/75 text-xs md:text-[14px] leading-relaxed font-semibold">
-                  Futur étudiant en Licence Pro Communication.
+                  {t("footer.profile.student")}
                 </p>
                 <p className="text-white/45 text-[11px] md:text-xs leading-relaxed border-l-2 border-[var(--color-creative-blue)]/30 pl-3">
-                  En recherche d'une alternance dans la communication digitale.
+                  {t("footer.profile.search")}
                 </p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Footer() {
               {/* Paris Clock */}
               <div className="flex items-center gap-2 text-white/40 text-[11px] md:text-xs font-mono">
                 <Clock size={13} className="text-[var(--color-creative-blue)] animate-pulse" />
-                <span>Paris, FR :</span>
+                <span>{t("footer.clock")}</span>
                 <span className="text-white font-bold tracking-wider">{time || '00:00:00'}</span>
               </div>
               
@@ -135,14 +135,14 @@ export default function Footer() {
 
           {/* Card 2: Quick Navigation Sitemap (Span 4) */}
           <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
-            <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">Navigation</p>
+            <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">{t("footer.nav_title")}</p>
             <div className="flex flex-col gap-2 md:gap-3">
               {[
-                { name: 'Accueil', path: '/' },
-                { name: 'Projets', path: '/projets' },
-                { name: 'CV', path: '/cv' },
-                { name: 'Compétences', path: '/competences' },
-                { name: 'Contact', path: '/contact' }
+                { name: t("nav.home"), path: '/' },
+                { name: t("nav.projects"), path: '/projets' },
+                { name: t("nav.cv"), path: '/cv' },
+                { name: t("nav.skills"), path: '/competences' },
+                { name: t("nav.contact"), path: '/contact' }
               ].map((link) => (
                 <Link 
                   key={link.path}
@@ -161,7 +161,7 @@ export default function Footer() {
           {/* Card 3: Contact Details & Socials (Span 4) */}
           <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
-              <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">Contact</p>
+              <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">{t("footer.contact_title")}</p>
               <div className="flex flex-col gap-2.5">
                 <button 
                   onClick={handleCopyEmail}
@@ -169,7 +169,7 @@ export default function Footer() {
                 >
                   <Mail size={15} className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate" />
                   <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate">
-                    {copied ? "Email copié !" : "tharsananarul@gmail.com"}
+                    {copied ? t("footer.copied") : "tharsananarul@gmail.com"}
                   </span>
                 </button>
 
@@ -186,7 +186,7 @@ export default function Footer() {
             <div className="flex items-center justify-between gap-2 pt-4 border-t border-white/5 mt-4">
               <div className="flex items-center gap-2">
                 <Smile size={13} className="text-[var(--color-creative-yellow)]" />
-                <span className="text-[9px] md:text-[10px] text-white/30 font-bold uppercase tracking-wider">Socials</span>
+                <span className="text-[9px] md:text-[10px] text-white/30 font-bold uppercase tracking-wider">{t("footer.socials_title")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <a 
@@ -222,17 +222,35 @@ export default function Footer() {
         </div>
 
         {/* 3. BOTTOM BAR WITH SCROLL TO TOP */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 py-8 border-t border-white/5">
-          <p className="text-[10px] md:text-xs text-white/35 font-semibold tracking-wider uppercase">
-            © 2026 Tharsanan. Tous droits réservés.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 py-8 border-t border-white/5">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+            <p className="text-[10px] md:text-xs text-white/35 font-semibold tracking-wider uppercase text-center sm:text-left">
+              {t("footer.copyright")}
+            </p>
+
+            {/* Bottom Bar Language Switcher */}
+            <div className="flex items-center gap-0.5 bg-white/[0.03] border border-white/10 p-0.5 rounded-full backdrop-blur-md shrink-0">
+              <button 
+                onClick={() => i18n.changeLanguage('fr')}
+                className={`px-2.5 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all duration-300 uppercase cursor-pointer ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+              >
+                FR
+              </button>
+              <button 
+                onClick={() => i18n.changeLanguage('en')}
+                className={`px-2.5 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all duration-300 uppercase cursor-pointer ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+              >
+                EN
+              </button>
+            </div>
+          </div>
           
           <Magnetic>
             <button 
               onClick={scrollToTop}
               className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-white/45 hover:text-white transition-colors group uppercase tracking-widest px-5 py-2.5 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] cursor-pointer"
             >
-              <span>Retour en haut</span> 
+              <span>{t("footer.back_to_top")}</span> 
               <div className="p-1 rounded-full bg-white/5 group-hover:bg-[var(--color-creative-blue)]/20 group-hover:text-[var(--color-creative-blue)] transition-all duration-300">
                 <ArrowUp size={13} className="group-hover:-translate-y-0.5 transition-transform" />
               </div>

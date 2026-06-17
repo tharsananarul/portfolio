@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, Video, Palette, Mic2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
+import InteractiveString from '../components/ui/InteractiveString'
 
 export default function ProjetSansBavures() {
+  const { t } = useTranslation()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -53,20 +56,20 @@ export default function ProjetSansBavures() {
       {/* Project Meta */}
       <section className="section-container grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-white/5">
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Rôle</span>
-          <p className="font-bold text-sm md:text-base">Montage & Production</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.role")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.sans_bavures.role")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Période</span>
-          <p className="font-bold text-sm md:text-base">Sept. 2023 – Janv. 2024</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.period")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.sans_bavures.period")}</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Outils</span>
-          <p className="font-bold text-sm md:text-base">Premiere Pro, Illustrator, Vibe Coding</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.tools")}</span>
+          <p className="font-bold text-sm md:text-base">Premiere Pro, Illustrator, Web Design</p>
         </div>
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">Type</span>
-          <p className="font-bold text-sm md:text-base">Reportage Multimédia</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-light/50">{t("project_details.labels.type")}</span>
+          <p className="font-bold text-sm md:text-base">{t("project_details.sans_bavures.type")}</p>
         </div>
       </section>
 
@@ -74,29 +77,29 @@ export default function ProjetSansBavures() {
       <section className="section-container py-24">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">Informer & <span className="highlight">Sensibiliser</span>.</h2>
+            <h2 className="text-[clamp(1.5rem,4.5vw,3rem)] font-bold mb-10 tracking-tight leading-[1.1]">{t("project_details.sans_bavures.concept_title")}</h2>
             <div className="space-y-6 text-slate-100 text-lg leading-relaxed">
               <p>
-                Projet collaboratif visant à produire un reportage multimédia interactif sur un sujet d'actualité. Mon rôle a combiné la production technique, le montage audiovisuel et l'intégration web en Vibe Coding.
+                {t("project_details.sans_bavures.para1")}
               </p>
               <p>
-                J'ai utilisé Adobe Premiere Pro pour synchroniser les séquences, ajuster la colorimétrie et intégrer des transitions dynamiques, tout en assurant une narration immersive.
+                {t("project_details.sans_bavures.para2")}
               </p>
             </div>
           </div>
           <div className="grid gap-8">
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Video className="text-accent-light mb-6" size={32} />
-              <h3 className="text-xl font-bold mb-4">Montage & Vidéo</h3>
+              <h3 className="text-xl font-bold mb-4">{t("project_details.sans_bavures.card1_title")}</h3>
               <p className="text-slate-200 text-sm leading-relaxed">
-                Utilisation de Premiere Pro pour le montage, l'étalonnage et la synchronisation audio-visuelle du reportage.
+                {t("project_details.sans_bavures.card1_desc")}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-secondary border border-white/5 group hover:border-accent-light/30 transition-all">
               <Mic2 className="text-accent-light mb-6" size={32} />
-              <h3 className="text-xl font-bold mb-4">Voix-off & Design</h3>
+              <h3 className="text-xl font-bold mb-4">{t("project_details.sans_bavures.card2_title")}</h3>
               <p className="text-slate-200 text-sm leading-relaxed">
-                Traduction du script en anglais, enregistrement de la voix-off et création de visuels via Photoshop et Illustrator.
+                {t("project_details.sans_bavures.card2_desc")}
               </p>
             </div>
           </div>
@@ -107,14 +110,17 @@ export default function ProjetSansBavures() {
       <MosaicGrid sections={sections} accentColor="#8b5cf6" />
 
       {/* Next Project */}
-      <section className="section-container py-32 border-t border-white/5">
+      <div className="section-container pb-8 pt-24 opacity-30">
+        <InteractiveString hoverColor="#8b5cf6" />
+      </div>
+      <section className="section-container pb-32 pt-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">Projet suivant</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-text-muted mb-4 block">{t("project_details.next")}</span>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Créations Perso</h2>
           </div>
           <Link to="/projets/perso" className="btn-premium gap-3 text-lg px-12 py-5">
-            Découvrir <ArrowRight size={20} />
+            {t("project_details.explore")} <ArrowRight size={20} />
           </Link>
         </div>
       </section>

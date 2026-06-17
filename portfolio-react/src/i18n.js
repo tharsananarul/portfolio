@@ -44,6 +44,9 @@ const resources = {
         eyebrow: "Projets Phares",
         title: "Sélection de travaux.",
         view_all: "Voir tous les projets",
+        explore_project: "Explorer le projet",
+        explore_others: "Explorer d'autres projets",
+        project_details: "Détails du projet",
         roles: {
           branding: "Branding & Graphic Design",
           web: "Web Dev & Communication"
@@ -52,6 +55,20 @@ const resources = {
           tharsh_studio: "Création complète de la charte graphique et de l'identité visuelle de mon studio de création pour son lancement sur Instagram.",
           futsal: "Conception intégrale du site web et branding du club. Un projet de site interactif développé en Vibe Coding (Antigravity)."
         }
+      },
+      ambition: {
+        tag: "Ambition",
+        title_start: "Mon Projet ",
+        title_end: "Futur.",
+        desc: "Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une alternance en Communication Digitale ou Chargé de Communication pour la rentrée de septembre 2026.",
+        cv_btn: "Mon CV",
+        linkedin_btn: "LinkedIn"
+      },
+      home_cta: {
+        tag: "Contact",
+        title: "Un projet en tête ?",
+        highlight: "Parlons-en.",
+        btn: "Me contacter"
       },
       nav: {
         home: "Accueil",
@@ -504,6 +521,9 @@ const resources = {
         eyebrow: "Featured Projects",
         title: "Selected works.",
         view_all: "View all projects",
+        explore_project: "Explore project",
+        explore_others: "Explore other projects",
+        project_details: "Project details",
         roles: {
           branding: "Branding & Graphic Design",
           web: "Web Dev & Communication"
@@ -512,6 +532,20 @@ const resources = {
           tharsh_studio: "Complete creation of the graphic charter and visual identity of my creative studio for its launch on Instagram.",
           futsal: "Integral website design and club branding. An interactive site project developed with Vibe Coding (Antigravity)."
         }
+      },
+      ambition: {
+        tag: "Ambition",
+        title_start: "My Future ",
+        title_end: "Project.",
+        desc: "Admitted to the Professional Licence at UPEC, I am pursuing my studies to specialize in public interest communication. To accompany this project, I am looking for a work-study contract (apprenticeship) in Digital Communication or as a Communication Officer for the start of the academic year in September 2026.",
+        cv_btn: "My CV",
+        linkedin_btn: "LinkedIn"
+      },
+      home_cta: {
+        tag: "Contact",
+        title: "Have a project in mind?",
+        highlight: "Let's talk.",
+        btn: "Contact me"
       },
       nav: {
         home: "Home",

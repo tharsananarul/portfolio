@@ -505,7 +505,7 @@ export default function Home() {
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-[2px]">
                   <span className="px-6 py-3 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white font-bold tracking-wider uppercase text-sm transform translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500">
-                    Explorer le projet
+                    {t('projects.explore_project')}
                   </span>
                 </div>
               </Link>
@@ -530,7 +530,7 @@ export default function Home() {
                 </p>
                 <Magnetic>
                   <Link to={project.path} className="inline-flex items-center gap-4 font-bold text-white group/link text-sm md:text-base px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/50 backdrop-blur-md transition-all duration-300 shadow-lg">
-                    Détails du projet 
+                    {t('projects.project_details')}
                     <ArrowRight size={18} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </Magnetic>
@@ -549,7 +549,7 @@ export default function Home() {
         >
           <Magnetic>
             <Link to="/projets" className="btn-outline px-10 py-5 gap-3 group text-base md:text-lg border-accent-light/20 hover:border-accent-light">
-              Explorer d'autres projets 
+              {t('projects.explore_others')}
               <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </Magnetic>
@@ -579,24 +579,32 @@ export default function Home() {
                 <div className="w-full lg:w-[45%] flex flex-col justify-center">
                   <p className="text-[var(--color-creative-blue)] font-bold tracking-[0.3em] uppercase text-[10px] md:text-sm mb-4 flex items-center justify-center lg:justify-start gap-3">
                     <span className="w-8 h-px bg-[var(--color-creative-blue)]/60" />
-                    Ambition
+                    {t('ambition.tag')}
                   </p>
                   <h2 className="font-black tracking-tighter leading-[1] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.5rem)' }}>
-                    Mon Projet <br className="block md:hidden" />{" "}
-                    <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '1px white' }}>Futur.</span>
+                    {t('ambition.title_start')}<br className="block md:hidden" />{" "}
+                    <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '1px white' }}>{t('ambition.title_end')}</span>
                   </h2>
                 </div>
                 
                 {/* Right Side: Text & Actions */}
                 <div className="w-full lg:w-[55%] flex flex-col justify-center gap-8 lg:border-l lg:border-white/10 lg:pl-10">
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium" style={{ textTransform: 'none' }}>
-                    Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en Communication Digitale ou Chargé de Communication</span> pour la rentrée de septembre 2026.
+                    {i18n.language === 'fr' ? (
+                      <>
+                        Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en Communication Digitale ou Chargé de Communication</span> pour la rentrée de septembre 2026.
+                      </>
+                    ) : (
+                      <>
+                        Admitted to the Professional Licence at UPEC, I am pursuing my studies to specialize in public interest communication. To accompany this project, I am looking for a <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">work-study contract (apprenticeship) in Digital Communication or as a Communication Officer</span> for the start of the academic year in September 2026.
+                      </>
+                    )}
                   </p>
                   
                   <div className="flex flex-col sm:flex-row items-center gap-4">
                     <Link to="/cv" className="btn-premium-orange px-6 md:px-8 py-3.5 md:py-4 gap-3 w-full sm:w-auto justify-center group">
                       <Download size={16} className="group-hover:-translate-y-1 transition-transform" />
-                      Mon CV
+                      {t('ambition.cv_btn')}
                     </Link>
                     <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="btn-outline px-6 md:px-8 py-3.5 md:py-4 w-full sm:w-auto justify-center border-[var(--color-creative-blue)]/30 hover:border-[var(--color-creative-blue)] hover:bg-[var(--color-creative-blue)]/10 text-white">
                       LinkedIn
@@ -638,15 +646,15 @@ export default function Home() {
                 </p>
 
                 <h2 className="font-black mb-12 text-white tracking-tighter leading-[0.95] uppercase relative" style={{ fontSize: 'clamp(2rem, 7vw, 6rem)' }}>
-                  Un projet en tête ? <br />
-                  <span className="editorial-title-outline text-[var(--color-creative-blue)] mt-4 inline-block -rotate-2 transform hover:rotate-0 transition-transform duration-500">Parlons-en.</span>
+                  {t('home_cta.title')} <br />
+                  <span className="editorial-title-outline text-[var(--color-creative-blue)] mt-4 inline-block -rotate-2 transform hover:rotate-0 transition-transform duration-500">{t('home_cta.highlight')}</span>
                   
                   <div className="absolute -top-6 -right-6 md:-right-12 sticker-shape sticker-blue rotate-[12deg] shadow-[0_0_30px_rgba(14,165,233,0.4)] cursor-default hidden sm:block">Hello! 👋</div>
                 </h2>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-4">
                   <Link to="/contact" className="btn-premium-orange px-10 md:px-12 py-4 md:py-5 w-full sm:w-auto text-sm md:text-base group shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_50px_rgba(14,165,233,0.5)]">
-                    Me contacter
+                    {t('home_cta.btn')}
                     <ArrowRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
                   </Link>
                   <a href="mailto:tharsananarul@gmail.com" className="px-8 md:px-10 py-4 md:py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 hover:border-white/20 transition-all text-sm md:text-base flex items-center justify-center gap-3 backdrop-blur-md w-full sm:w-auto group">

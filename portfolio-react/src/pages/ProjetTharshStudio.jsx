@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, Download, Palette, Instagram, Brush, Layers, Eye } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Download, Palette, Instagram, Brush, Layers, Eye, Volume2, VolumeX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import InteractiveString from '../components/ui/InteractiveString'
@@ -19,6 +19,8 @@ export default function ProjetTharshStudio() {
   
   // States for interactive logo switcher
   const [logoTheme, setLogoTheme] = useState('blue') // 'blue', 'dark', 'light'
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef(null)
 
   // Sections for graphic charter gallery
   const sections = [
@@ -238,6 +240,185 @@ export default function ProjetTharshStudio() {
             <div className="absolute bottom-4 left-6 flex items-center gap-2 text-[9px] uppercase tracking-widest font-black opacity-60">
               <Eye size={12} />
               {currentLogo.label}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Logo Animation Section */}
+      <section className="section-container py-20 relative z-10 border-t border-white/5">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Text content - spans 7 cols on lg */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7 space-y-6"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-widest animate-pulse">
+              {t("project_details.tharsh_studio.animation_tag")}
+            </div>
+            <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] font-black tracking-tight leading-[1.1] text-white uppercase">
+              {t("project_details.tharsh_studio.animation_title")}
+            </h2>
+            <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-xl">
+              {t("project_details.tharsh_studio.animation_desc")}
+            </p>
+            
+            {/* Motion specs grid */}
+            <div className="grid sm:grid-cols-2 gap-4 pt-4">
+              <div className="flex gap-3.5 items-start p-4.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[var(--color-creative-blue)]/20 transition-all duration-300">
+                <div className="w-9 h-9 rounded-xl bg-[var(--color-creative-blue)]/10 flex items-center justify-center text-[var(--color-creative-blue)] shrink-0">
+                  <Instagram size={18} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">{t("project_details.tharsh_studio.animation_spec_vertical_title")}</h4>
+                  <p className="text-slate-350 text-xs mt-1 leading-relaxed">{t("project_details.tharsh_studio.animation_spec_vertical_desc")}</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-3.5 items-start p-4.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[var(--color-creative-blue)]/20 transition-all duration-300">
+                <div className="w-9 h-9 rounded-xl bg-[var(--color-creative-blue)]/10 flex items-center justify-center text-[var(--color-creative-blue)] shrink-0">
+                  <Layers size={18} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">{t("project_details.tharsh_studio.animation_spec_objects_title")}</h4>
+                  <p className="text-slate-350 text-xs mt-1 leading-relaxed">{t("project_details.tharsh_studio.animation_spec_objects_desc")}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Video Mockup - spans 5 cols on lg */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5 flex justify-center"
+          >
+            {/* 3D Perspective container */}
+            <div className="relative cursor-pointer group py-8 [perspective:1000px] flex items-center justify-center">
+              
+              {/* Floating 3D shadow behind the device with ambient sky blue glow */}
+              <div 
+                className="absolute -inset-4 bg-black/60 blur-2xl rounded-[3rem] transition-all duration-700 ease-[0.16,1,0.3,1] opacity-75 z-0 pointer-events-none"
+                style={{
+                  transform: 'rotateX(8deg) rotateY(-15deg) rotateZ(3deg) translateZ(-40px) translate(-10px, 15px)',
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(56, 189, 248, 0.06)',
+                }}
+              />
+
+              {/* iPhone 15 Pro 3D Mockup Frame (Premium Sky Blue Titanium with soft glow) */}
+              <div 
+                className="relative w-[180px] h-[310px] sm:w-[220px] sm:h-[379px] md:w-[270px] md:h-[468px] p-[2px] md:p-[2.5px] bg-gradient-to-b from-[#88caf0] via-[#3b7da3] to-[#0d1b2a] rounded-[2rem] sm:rounded-[2.4rem] md:rounded-[2.6rem] transition-transform duration-700 ease-[0.16,1,0.3,1] will-change-transform z-10"
+                style={{ 
+                  transform: 'rotateX(8deg) rotateY(-15deg) rotateZ(3deg)',
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 0 20px rgba(56, 189, 248, 0.15), 0 4px 12px rgba(0, 0, 0, 0.4)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(3deg) rotateY(-7deg) rotateZ(1deg) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 0 35px rgba(56, 189, 248, 0.35), 0 10px 25px rgba(0, 0, 0, 0.6)';
+                  const shadow = e.currentTarget.previousElementSibling;
+                  if (shadow) {
+                    shadow.style.transform = 'rotateX(3deg) rotateY(-7deg) rotateZ(1deg) translateZ(-50px) translate(-15px, 20px)';
+                    shadow.style.boxShadow = '0 30px 70px rgba(0,0,0,0.9), 0 0 60px rgba(56, 189, 248, 0.18)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(8deg) rotateY(-15deg) rotateZ(3deg)';
+                  e.currentTarget.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.15), 0 4px 12px rgba(0, 0, 0, 0.4)';
+                  const shadow = e.currentTarget.previousElementSibling;
+                  if (shadow) {
+                    shadow.style.transform = 'rotateX(8deg) rotateY(-15deg) rotateZ(3deg) translateZ(-40px) translate(-10px, 15px)';
+                    shadow.style.boxShadow = '0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(56, 189, 248, 0.06)';
+                  }
+                }}
+              >
+                {/* Speaker Ear Piece Grill */}
+                <div 
+                  className="absolute top-[2px] md:top-[3px] left-1/2 -translate-x-1/2 w-8 md:w-12 h-[1.5px] md:h-[2.5px] bg-[#04101e] rounded-full z-30" 
+                  style={{ transform: 'translateZ(12px)' }}
+                />
+
+                {/* Screen Bezel (Outer margin of the glass) */}
+                <div 
+                  className="absolute inset-[2px] md:inset-[3px] bg-[#02070e] rounded-[1.85rem] sm:rounded-[2.25rem] md:rounded-[2.45rem]"
+                  style={{ transform: 'translateZ(8px)', transformStyle: 'preserve-3d' }}
+                >
+                  {/* Active Screen Area (Ensures video fits absolutely 100% inside) */}
+                  <div 
+                    className="absolute inset-[3px] md:inset-[5px] rounded-[1.55rem] sm:rounded-[1.85rem] md:rounded-[2.05rem] overflow-hidden bg-black shadow-[inset_0_0_8px_rgba(0,0,0,0.95)]"
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    <video
+                      ref={videoRef}
+                      src={`${baseUrl}videos/animation-logo.mp4`}
+                      autoPlay
+                      loop
+                      muted={isMuted}
+                      playsInline
+                      className="absolute inset-0 w-full h-full"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    
+                    {/* Glass diagonal reflection sheen overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none z-20" />
+                    
+                    {/* Glossy reflection sheen sliding on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none z-20" />
+                    
+                    {/* Hover overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+                    
+                    {/* Dynamic Island (Pill Shape cutout inside screen) */}
+                    <div 
+                      className="absolute top-2.5 md:top-3.5 left-1/2 -translate-x-1/2 w-[52px] sm:w-[60px] md:w-[70px] h-3.5 md:h-5 rounded-full bg-black z-30 flex items-center justify-end pr-1.5 md:pr-2.5 shadow-inner"
+                      style={{ transform: 'translateZ(15px)' }}
+                    >
+                      {/* Camera reflection dot */}
+                      <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-[#0d162d] border border-[#1a2d59]/50 shadow-inner" />
+                    </div>
+
+                    {/* Floating Volume control */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Avoid triggering hover interactions
+                        setIsMuted(!isMuted);
+                      }}
+                      className="absolute bottom-3 right-3 md:bottom-4 md:right-4 p-2 md:p-2.5 rounded-full bg-black/60 hover:bg-[var(--color-creative-blue)] text-white border border-white/10 backdrop-blur-md transition-all duration-300 shadow-lg z-30"
+                      aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
+                    >
+                      {isMuted ? <VolumeX size={12} className="md:w-4 md:h-4" /> : <Volume2 size={12} className="md:w-4 md:h-4" />}
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Hardware buttons details - positioned in 3D (matching Sky Blue Titanium) */}
+                {/* Silent switch (Left) */}
+                <div 
+                  className="absolute left-[-2px] md:left-[-2.5px] top-[45px] sm:top-[55px] md:top-[60px] w-[2px] md:w-[2.5px] h-[9px] md:h-[12px] bg-[#3b7da3] rounded-l-[1px]" 
+                  style={{ transform: 'translateZ(5px)' }}
+                />
+                {/* Volume Up (Left) */}
+                <div 
+                  className="absolute left-[-2px] md:left-[-2.5px] top-[63px] sm:top-[77px] md:top-[85px] w-[2px] md:w-[2.5px] h-[15px] md:h-[20px] bg-[#3b7da3] rounded-l-[1px]"
+                  style={{ transform: 'translateZ(5px)' }}
+                />
+                {/* Volume Down (Left) */}
+                <div 
+                  className="absolute left-[-2px] md:left-[-2.5px] top-[85px] sm:top-[103px] md:top-[115px] w-[2px] md:w-[2.5px] h-[15px] md:h-[20px] bg-[#3b7da3] rounded-l-[1px]"
+                  style={{ transform: 'translateZ(5px)' }}
+                />
+                {/* Power button (Right) */}
+                <div 
+                  className="absolute right-[-2px] md:right-[-2.5px] top-[75px] sm:top-[90px] md:top-[100px] w-[2px] md:w-[2.5px] h-[26px] md:h-[35px] bg-[#3b7da3] rounded-r-[1px]"
+                  style={{ transform: 'translateZ(5px)' }}
+                />
+              </div>
             </div>
           </motion.div>
         </div>

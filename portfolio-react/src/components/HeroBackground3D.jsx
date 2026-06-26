@@ -289,7 +289,7 @@ const HeroBackground3D = memo(() => {
       </Canvas>
 
       {/* Semi-transparent black overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/38 pointer-events-none" />
 
       {/* Subtle film-grain texture */}
       <div

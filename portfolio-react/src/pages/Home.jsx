@@ -214,7 +214,7 @@ export default function Home() {
                   {t('hero.welcome')}
                 </h2>
               </div>
-              <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight drop-shadow-[0_0_35px_rgba(14,165,233,0.35)] uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
+              <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
                 THARSANAN
               </h1>
             </div>

@@ -63,7 +63,7 @@ export default function PageHero({ tag, title, subtitle, compact = false, themeC
             initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase"
+            className="font-black mb-3 md:mb-4 tracking-tighter leading-[1.1] uppercase blend-difference"
             style={{ fontSize: 'clamp(1.75rem, 7vw, 4.25rem)' }}
           >
             {title}

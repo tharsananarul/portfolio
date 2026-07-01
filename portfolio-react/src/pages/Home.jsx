@@ -280,10 +280,10 @@ export default function Home() {
               <motion.div
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-6 -right-4 sm:-right-6 z-30 px-4 py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[170px] sm:max-w-[190px] pointer-events-none"
+                className="absolute -bottom-6 -right-4 sm:-right-6 z-30 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[150px] sm:max-w-[190px] pointer-events-none"
               >
-                <span className="text-[9px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">{t('hero.alternance')}</span>
-                <span className="text-[8.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">{t('hero.date')}</span>
+                <span className="text-[8px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">{t('hero.alternance')}</span>
+                <span className="text-[7.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">{t('hero.date')}</span>
               </motion.div>
             </div>
           </motion.div>
@@ -592,11 +592,11 @@ export default function Home() {
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium" style={{ textTransform: 'none' }}>
                     {i18n.language === 'fr' ? (
                       <>
-                        Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en Communication Digitale ou Chargé de Communication</span> pour la rentrée de septembre 2026.
+                        Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je vais commencer mon alternance à l'<span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">ASSOCIATION GAIA en tant que chargé de communication</span> pour la rentrée de septembre 2026.
                       </>
                     ) : (
                       <>
-                        Admitted to the Professional Licence at UPEC, I am pursuing my studies to specialize in public interest communication. To accompany this project, I am looking for a <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">work-study contract (apprenticeship) in Digital Communication or as a Communication Officer</span> for the start of the academic year in September 2026.
+                        Admitted to the Professional Licence at UPEC to specialize in public interest communication, I will start my apprenticeship at <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">ASSOCIATION GAIA as a Communication Officer</span> for the start of the academic year in September 2026.
                       </>
                     )}
                   </p>

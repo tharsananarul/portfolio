@@ -21,7 +21,7 @@ const resources = {
           projects: "Mes projets",
           contact: "Me contacter"
         },
-        alternance: "En recherche d'une alternance",
+        alternance: "Étudiant Licence Pro Chargé de Com",
         date: "Septembre 2026"
       },
       about: {
@@ -30,9 +30,9 @@ const resources = {
         title_tech: "technique",
         title_middle: " et ",
         title_comm: "communication",
-        paragraph: "Après un début en BUT Métiers du Multimédia et de l'Internet, j'ai choisi de me spécialiser en communication. Ce parcours m'a permis de développer à la fois des compétences techniques et une vision créative orientée vers le digital.",
+        paragraph: "Après un début en BUT Métiers du Multimédia et de l'Internet, j'ai choisi de me spécialiser en communication. Récemment diplômé de mon BTS Communication, j'intègre en septembre l'UPEC en Licence professionnelle Chargé de communication des collectivités territoriales et des associations.",
         cv_link: "Voir mon parcours complet",
-        alternance_pill: "En recherche d'alternance · Sept. 2026",
+        alternance_pill: "Futur Alternant | Licence Pro Chargé de Communication",
         stats: {
           studies: "Ans d'études",
           exp: "An d'expérience",
@@ -60,7 +60,7 @@ const resources = {
         tag: "Ambition",
         title_start: "Mon Projet ",
         title_end: "Futur.",
-        desc: "Admis en Licence Professionnelle à l'UPEC, je poursuis mon parcours pour me spécialiser dans la communication d'intérêt général. Pour accompagner ce projet, je recherche une alternance en Communication Digitale ou Chargé de Communication pour la rentrée de septembre 2026.",
+        desc: "Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je vais commencer mon alternance à l'ASSOCIATION GAIA en tant que chargé de communication pour la rentrée de septembre 2026.",
         cv_btn: "Mon CV",
         linkedin_btn: "LinkedIn"
       },
@@ -98,14 +98,14 @@ const resources = {
         },
         education: {
           upec: {
-            title: "Licence Professionnelle (Admis)",
+            title: "Licence Professionnelle",
             location: "Université Paris-Est Créteil (UPEC)",
-            desc: "Spécialisation dans la communication d'intérêt général."
+            desc: "Licence professionnelle Chargé de communication des collectivités territoriales et des associations. Spécialisation dans la communication d'intérêt général, stratégies de communication publique et associative."
           },
           brel: {
             title: "BTS Communication",
             location: "Lycée Jacques Brel · La Courneuve",
-            desc: "Mise en œuvre d'actions de communication, relations avec les prestataires, veille technologique et design graphique."
+            desc: "Diplôme obtenu en Juin 2026. Mise en œuvre d'actions de communication, relations avec les prestataires, veille technologique et design graphique."
           },
           mmi: {
             title: "BUT Métiers du Multimédia et de l'Internet",
@@ -299,8 +299,8 @@ const resources = {
       footer: {
         marquee: ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"],
         profile: {
-          student: "Futur étudiant en Licence Pro Communication.",
-          search: "En recherche d'une alternance dans la communication digitale."
+          student: "Étudiant en Licence Pro Communication des collectivités et associations à l'UPEC.",
+          search: "Futur alternant en communication digitale à l'Association Gaïa."
         },
         clock: "Paris, FR :",
         nav_title: "Navigation",
@@ -505,7 +505,7 @@ const resources = {
           projects: "My projects",
           contact: "Contact me"
         },
-        alternance: "Looking for an apprenticeship",
+        alternance: "LP Communication Student",
         date: "September 2026"
       },
       about: {
@@ -514,9 +514,9 @@ const resources = {
         title_tech: "technical skills",
         title_middle: " and ",
         title_comm: "communication",
-        paragraph: "After starting with a BUT in Multimedia and Internet, I chose to specialize in communication. This path allowed me to develop both technical skills and a creative vision oriented towards digital media.",
+        paragraph: "After starting with a BUT in Multimedia and Internet, I chose to specialize in communication. Having recently graduated with my BTS in Communication, I will join UPEC in September for a Professional Licence in Communication for Local Authorities and Associations.",
         cv_link: "View my full background",
-        alternance_pill: "Looking for an apprenticeship · Sept. 2026",
+        alternance_pill: "Future Apprentice | Professional Licence in Communication",
         stats: {
           studies: "Years of study",
           exp: "Year of experience",
@@ -544,7 +544,7 @@ const resources = {
         tag: "Ambition",
         title_start: "My Future ",
         title_end: "Project.",
-        desc: "Admitted to the Professional Licence at UPEC, I am pursuing my studies to specialize in public interest communication. To accompany this project, I am looking for a work-study contract (apprenticeship) in Digital Communication or as a Communication Officer for the start of the academic year in September 2026.",
+        desc: "Admitted to the Professional Licence at UPEC to specialize in public interest communication, I will start my work-study contract at ASSOCIATION GAIA as a Communication Officer in September 2026.",
         cv_btn: "My CV",
         linkedin_btn: "LinkedIn"
       },
@@ -582,14 +582,14 @@ const resources = {
         },
         education: {
           upec: {
-            title: "Professional Licence (Admitted)",
-            location: "University of Paris-Est Créteil (UPEC)",
-            desc: "Specializing in public interest communication."
+            title: "Professional Licence",
+            location: "Université Paris-Est Créteil (UPEC)",
+            desc: "Professional Licence in Communication for Local Authorities and Associations. Specializing in public interest, government, and non-profit organization communication."
           },
           brel: {
             title: "BTS Communication",
             location: "Jacques Brel High School · La Courneuve",
-            desc: "Implementation of communication actions, service provider relations, technology watch, and graphic design."
+            desc: "Degree obtained in June 2026. Implementation of communication actions, service provider relations, technology watch, and graphic design."
           },
           mmi: {
             title: "BUT Multimedia and Internet Careers",
@@ -783,8 +783,8 @@ const resources = {
       footer: {
         marquee: ["DIGITAL DESIGN", "LP COMMUNICATION", "ART DIRECTION", "CREATIVE PORTFOLIO"],
         profile: {
-          student: "Future LP Communication student.",
-          search: "Looking for an apprenticeship in digital communication."
+          student: "LP Communication student at UPEC (Local Authorities & Associations).",
+          search: "Future digital communication apprentice at Association Gaïa."
         },
         clock: "Paris, FR:",
         nav_title: "Navigation",

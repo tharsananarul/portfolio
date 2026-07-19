@@ -275,6 +275,14 @@ const HeroBackground3D = memo(() => {
     <div className="fixed inset-0 pointer-events-none" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -10, backgroundColor: 'transparent' }}>
       <Canvas
         gl={{ antialias: true, powerPreference: 'high-performance', precision: 'highp' }}
+        onCreated={({ gl }) => {
+          const handleContextLost = (e) => {
+            e.preventDefault()
+            console.warn('WebGL context lost, falling back to CSS background')
+            setWebGLSupported(false)
+          }
+          gl.domElement.addEventListener('webglcontextlost', handleContextLost, { once: true })
+        }}
         dpr={[1, 2]}
         frameloop="always"
         style={{ 

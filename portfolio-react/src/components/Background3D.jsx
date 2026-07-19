@@ -59,6 +59,7 @@ function GridSystem() {
 export default function Background3D() {
   const baseUrl = import.meta.env.BASE_URL
   const [scrollY, setScrollY] = useState(0)
+  const [webGLSupported, setWebGLSupported] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -90,13 +91,25 @@ export default function Background3D() {
       <div className="glow-line" style={{ animationDelay: '5s', opacity: 0.3 }} />
 
       {/* 3D Dynamic Elements */}
-      <div className="absolute inset-0 opacity-40">
-        <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-          <ambientLight intensity={0.4} />
-          <LightStreaks />
-          <GridSystem />
-        </Canvas>
-      </div>
+      {webGLSupported && (
+        <div className="absolute inset-0 opacity-40">
+          <Canvas 
+            camera={{ position: [0, 0, 10], fov: 60 }}
+            onCreated={({ gl }) => {
+              const handleContextLost = (e) => {
+                e.preventDefault()
+                console.warn('Background3D WebGL context lost, disabling 3D Canvas')
+                setWebGLSupported(false)
+              }
+              gl.domElement.addEventListener('webglcontextlost', handleContextLost, { once: true })
+            }}
+          >
+            <ambientLight intensity={0.4} />
+            <LightStreaks />
+            <GridSystem />
+          </Canvas>
+        </div>
+      )}
 
       {/* Dark Overlays for Readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#010409]/80 via-transparent to-[#010409]/95" />

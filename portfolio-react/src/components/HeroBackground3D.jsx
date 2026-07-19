@@ -20,12 +20,12 @@ const fragmentShader = `
   uniform vec2  u_res;
 
   // ── Color palette ──────────────────────────────────────────────────────────
-  // Lighter deep night-blue background
-  const vec3 BG      = vec3(0.02,  0.035, 0.12);   // #05091e → lighter navy
+  // Balanced night-blue background
+  const vec3 BG      = vec3(0.012, 0.022, 0.085);   // #030616 → darker navy
   // Blob interior colors
   const vec3 CYAN    = vec3(0.0,   0.73,  1.0);    // bright electric cyan
-  const vec3 BLUE    = vec3(0.08,  0.25,  0.95);   // brighter electric blue
-  const vec3 COBALT  = vec3(0.04,  0.12,  0.60);   // brighter cobalt
+  const vec3 BLUE    = vec3(0.06,  0.20,  0.92);   // electric blue
+  const vec3 COBALT  = vec3(0.03,  0.10,  0.58);   // cobalt
   const vec3 WHITE   = vec3(0.85,  0.95,  1.0);    // luminous highlight core
 
   // ── Noise helpers ──────────────────────────────────────────────────────────
@@ -161,8 +161,8 @@ const fragmentShader = `
     float grain = snoise(vUv * 420.0 + u_time * 3.7) * 0.018;
     col += grain;
 
-    // ── Lighter dark overlay so text stays readable but background pops ───
-    col *= 0.94;
+    // ── Darker overlay so text stays readable ──────────────────────────────
+    col *= 0.86;
 
     gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
   }
@@ -259,12 +259,12 @@ const HeroBackground3D = memo(() => {
           height: '100vh',
           zIndex: -10,
           background: `
-            radial-gradient(ellipse 80% 60% at 8% 50%,  rgba(0,186,255,0.38) 0%, transparent 70%),
-            radial-gradient(ellipse 60% 50% at 85% 20%,  rgba(20,80,230,0.42) 0%, transparent 70%),
-            radial-gradient(ellipse 55% 45% at 50% 80%,  rgba(0,120,255,0.30) 0%, transparent 70%),
-            radial-gradient(ellipse 45% 35% at 20% 18%,  rgba(0,200,255,0.28) 0%, transparent 70%)
+            radial-gradient(ellipse 80% 60% at 8% 50%,  rgba(0,186,255,0.26) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 50% at 85% 20%,  rgba(20,80,230,0.30) 0%, transparent 70%),
+            radial-gradient(ellipse 55% 45% at 50% 80%,  rgba(0,120,255,0.22) 0%, transparent 70%),
+            radial-gradient(ellipse 45% 35% at 20% 18%,  rgba(0,200,255,0.18) 0%, transparent 70%)
           `,
-          backgroundColor: '#05081b'
+          backgroundColor: '#020410'
         }}
       />
     )
@@ -296,8 +296,8 @@ const HeroBackground3D = memo(() => {
         <FluidBlobMesh mouseRef={mouseRef} />
       </Canvas>
 
-      {/* Lighter semi-transparent black overlay to make the site brighter */}
-      <div className="absolute inset-0 bg-black/18 pointer-events-none" />
+      {/* Semi-transparent black overlay to keep the site dark and legible */}
+      <div className="absolute inset-0 bg-black/28 pointer-events-none" />
 
       {/* Subtle film-grain texture */}
       <div

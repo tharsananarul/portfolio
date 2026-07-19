@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import CanvasAnimation from '../components/ui/CanvasAnimation'
+import useSEO from '../hooks/useSEO'
 
 export default function Competences() {
   const { t } = useTranslation()
+  useSEO('seo.skills.title', 'seo.skills.desc')
   const baseUrl = import.meta.env.BASE_URL
   
   const skills = [
@@ -21,7 +23,7 @@ export default function Competences() {
   const languages = [
     { name: t("skills_page.languages.fr.name"), level: 100, info: t("skills_page.languages.fr.info"), flag: "https://flagcdn.com/w320/fr.png" },
     { name: t("skills_page.languages.en.name"), level: 85, info: t("skills_page.languages.en.info"), flag: "https://flagcdn.com/w320/gb.png" },
-    { name: t("skills_page.languages.tamil.name"), level: 100, info: t("skills_page.languages.tamil.info"), flag: `${baseUrl}images/te-flag/tamil-eelam.png` },
+    { name: t("skills_page.languages.tamil.name"), level: 100, info: t("skills_page.languages.tamil.info"), flag: `${baseUrl}images/te-flag/tamil-eelam.webp` },
     { name: t("skills_page.languages.de.name"), level: 25, info: t("skills_page.languages.de.info"), flag: "https://flagcdn.com/w320/de.png" },
   ]
 

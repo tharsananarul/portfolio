@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import LazyImage from '../components/ui/LazyImage'
+import useSEO from '../hooks/useSEO'
 
 export default function CV() {
   const { t } = useTranslation()
+  useSEO('seo.cv.title', 'seo.cv.desc')
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -224,7 +226,7 @@ export default function CV() {
                      {/* The Flyer itself */}
                      <div className="relative w-48 sm:w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
                        <LazyImage 
-                         src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.png`} 
+                         src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.webp`} 
                          alt="CV Tharsanan Preview" 
                          className="w-full h-auto"
                        />

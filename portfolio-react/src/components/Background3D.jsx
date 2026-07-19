@@ -72,7 +72,7 @@ export default function Background3D() {
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out"
         style={{ 
-          backgroundImage: `url('${baseUrl}images/bmw_m4.png')`,
+          backgroundImage: `url('${baseUrl}images/bmw_m4.webp')`,
           opacity: 0.15,
           transform: `scale(${1.1 + scrollY * 0.0001}) translateY(${scrollY * 0.1}px)`,
           filter: 'contrast(1.2) brightness(0.8)'

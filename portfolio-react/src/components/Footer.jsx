@@ -227,6 +227,17 @@ export default function Footer() {
             <p className="text-[10px] md:text-xs text-white/35 font-semibold tracking-wider uppercase text-center sm:text-left">
               {t("footer.copyright")}
             </p>
+            
+            <span className="hidden sm:inline text-white/15">|</span>
+
+            <Link 
+              to="/legal" 
+              className="text-[10px] md:text-xs text-white/35 hover:text-white transition-colors font-semibold tracking-wider uppercase"
+            >
+              {t("legal_page.tabs.legal")} & RGPD
+            </Link>
+
+            <span className="hidden sm:inline text-white/15">|</span>
 
             {/* Bottom Bar Language Switcher */}
             <div className="flex items-center gap-0.5 bg-white/[0.03] border border-white/10 p-0.5 rounded-full backdrop-blur-md shrink-0">

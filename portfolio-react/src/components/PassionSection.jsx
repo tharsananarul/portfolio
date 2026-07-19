@@ -2,43 +2,45 @@ import { motion } from 'framer-motion'
 import { Mountain, Camera, Gamepad2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
-
-const passions = [
-  {
-    id: "gaming",
-    title: "Gaming",
-    subtitle: "Open World & Immersion",
-    desc: "Passionné par les univers ouverts comme GTA V, Red Dead Redemption ou Watch Dogs, j'apprécie les expériences immersives où narration et liberté de jeu se complètent.",
-    icon: Gamepad2,
-    color: "text-[var(--color-creative-blue)]",
-    bg: "rgba(14, 165, 233, 0.1)",
-    hasMore: false
-  },
-  {
-    id: "velo",
-    title: "VTT",
-    subtitle: "Liberté & Évasion",
-    desc: "Faire du VTT en pleine nature, c'est tellement plus fun que de rouler en ville ! C'est dans ces moments que je ressens un véritable sentiment de liberté et d'évasion.",
-    icon: Mountain,
-    color: "text-[var(--color-creative-blue)]",
-    bg: "rgba(14, 165, 233, 0.1)",
-    hasMore: false
-  },
-  {
-    id: "photo",
-    title: "Photographie",
-    subtitle: "Instants & Lumière",
-    desc: "Je ne suis pas photographe professionnel, mais j'aime capturer l'instant présent sur un coup de cœur, dès qu'un détail ou une lumière me paraît beau.",
-    icon: Camera,
-    color: "text-[var(--color-creative-blue)]",
-    bg: "rgba(14, 165, 233, 0.1)",
-    hasMore: true
-  }
-]
+import { useTranslation } from 'react-i18next'
 
 export default function PassionSection() {
+  const { t } = useTranslation()
   const baseUrl = import.meta.env.BASE_URL
   const videoRef = useRef(null)
+
+  const passions = [
+    {
+      id: "gaming",
+      title: t("passions.gaming.title"),
+      subtitle: t("passions.gaming.subtitle"),
+      desc: t("passions.gaming.desc"),
+      icon: Gamepad2,
+      color: "text-[var(--color-creative-blue)]",
+      bg: "rgba(14, 165, 233, 0.1)",
+      hasMore: false
+    },
+    {
+      id: "velo",
+      title: t("passions.velo.title"),
+      subtitle: t("passions.velo.subtitle"),
+      desc: t("passions.velo.desc"),
+      icon: Mountain,
+      color: "text-[var(--color-creative-blue)]",
+      bg: "rgba(14, 165, 233, 0.1)",
+      hasMore: false
+    },
+    {
+      id: "photo",
+      title: t("passions.photo.title"),
+      subtitle: t("passions.photo.subtitle"),
+      desc: t("passions.photo.desc"),
+      icon: Camera,
+      color: "text-[var(--color-creative-blue)]",
+      bg: "rgba(14, 165, 233, 0.1)",
+      hasMore: true
+    }
+  ]
 
   // Loop only the first 15 seconds
   useEffect(() => {
@@ -94,13 +96,13 @@ export default function PassionSection() {
           >
             <p className="text-white/60 font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
               <span className="w-8 h-px bg-[var(--color-creative-blue)]/50" />
-              En dehors du digital
+              {t("passions.tag")}
             </p>
             <h2 className="text-[clamp(2rem,6vw,4.5rem)] font-black mb-4 md:mb-8 tracking-tighter uppercase text-white relative leading-[1.1]">
-              Ce qui me <br className="block md:hidden" />{" "}
+              {t("passions.title_start")} <br className="block md:hidden" />{" "}
               <span className="text-[var(--color-creative-blue)] mt-2 md:mt-0 md:ml-4 inline-block relative">
                  <span className="absolute inset-0 bg-[var(--color-creative-blue)]/20 blur-md rounded-lg"></span>
-                 <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/10 border border-[var(--color-creative-blue)]/30 rounded-2xl backdrop-blur-md">définit aussi.</span>
+                 <span className="relative z-10 px-3 py-1 bg-[var(--color-creative-blue)]/10 border border-[var(--color-creative-blue)]/30 rounded-2xl backdrop-blur-md">{t("passions.title_end")}</span>
               </span>
               <div className="absolute -top-10 -right-20 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-12 hidden md:block">Life</div>
             </h2>
@@ -119,7 +121,7 @@ export default function PassionSection() {
                 <p className="text-white/80 text-xs md:text-[13px] lg:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 line-clamp-3 md:line-clamp-none font-medium">{p.desc}</p>
                 {p.hasMore && (
                   <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
-                    Photos <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    {t("passions.photo.more")} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 )}
                 <div className="absolute -bottom-10 -right-10 w-24 h-24 md:w-32 md:h-32 bg-white/5 blur-[40px] md:blur-[50px] rounded-full group-hover:bg-white/20 transition-colors" />

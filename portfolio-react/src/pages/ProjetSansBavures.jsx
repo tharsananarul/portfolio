@@ -5,9 +5,11 @@ import { ArrowLeft, ArrowRight, Video, Palette, Mic2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetSansBavures() {
   const { t } = useTranslation()
+  useSEO('seo.sans_bavures.title', 'seo.sans_bavures.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,

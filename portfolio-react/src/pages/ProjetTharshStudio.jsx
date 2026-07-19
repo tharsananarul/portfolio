@@ -5,9 +5,11 @@ import { ArrowLeft, ArrowRight, Download, Palette, Instagram, Brush, Layers, Eye
 import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetTharshStudio() {
   const { t } = useTranslation()
+  useSEO('seo.tharsh_studio.title', 'seo.tharsh_studio.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -28,15 +30,15 @@ export default function ProjetTharshStudio() {
       title: t('project_details.tharsh_studio.gallery_tags.charter_title'),
       tag: t('project_details.tharsh_studio.gallery_tags.charter'),
       items: [
-        { src: `${baseUrl}images/charte-graphique-images/01- Cover charte graphique.png`, alt: 'Couverture de la charte graphique', wide: true },
-        { src: `${baseUrl}images/charte-graphique-images/02 - Logotype.png`, alt: 'Logotype - Construction et grille' },
-        { src: `${baseUrl}images/charte-graphique-images/03 - Color variation.png`, alt: 'Déclinaisons chromatiques du logo' },
-        { src: `${baseUrl}images/charte-graphique-images/04 - Colors.png`, alt: 'Palette de couleurs de la marque' },
-        { src: `${baseUrl}images/charte-graphique-images/05 - Typographie for headings.png`, alt: 'Typographies pour les titres' },
-        { src: `${baseUrl}images/charte-graphique-images/06 - Typography Text.png`, alt: 'Typographies pour le corps de texte' },
-        { src: `${baseUrl}images/charte-graphique-images/07 - Textured backgrounds.png`, alt: 'Fonds textures et motifs', wide: true },
-        { src: `${baseUrl}images/charte-graphique-images/08 - Moodboard.png`, alt: 'Moodboard d\'inspiration artistique' },
-        { src: `${baseUrl}images/charte-graphique-images/09 - Déclinaisons.png`, alt: 'Déclinaisons graphiques et mockups' },
+        { src: `${baseUrl}images/charte-graphique-images/01- Cover charte graphique.webp`, alt: 'Couverture de la charte graphique', wide: true },
+        { src: `${baseUrl}images/charte-graphique-images/02 - Logotype.webp`, alt: 'Logotype - Construction et grille' },
+        { src: `${baseUrl}images/charte-graphique-images/03 - Color variation.webp`, alt: 'Déclinaisons chromatiques du logo' },
+        { src: `${baseUrl}images/charte-graphique-images/04 - Colors.webp`, alt: 'Palette de couleurs de la marque' },
+        { src: `${baseUrl}images/charte-graphique-images/05 - Typographie for headings.webp`, alt: 'Typographies pour les titres' },
+        { src: `${baseUrl}images/charte-graphique-images/06 - Typography Text.webp`, alt: 'Typographies pour le corps de texte' },
+        { src: `${baseUrl}images/charte-graphique-images/07 - Textured backgrounds.webp`, alt: 'Fonds textures et motifs', wide: true },
+        { src: `${baseUrl}images/charte-graphique-images/08 - Moodboard.webp`, alt: 'Moodboard d\'inspiration artistique' },
+        { src: `${baseUrl}images/charte-graphique-images/09 - Déclinaisons.webp`, alt: 'Déclinaisons graphiques et mockups' },
       ]
     },
     {
@@ -60,20 +62,20 @@ export default function ProjetTharshStudio() {
     switch (logoTheme) {
       case 'dark':
         return {
-          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio-02 bg.png`,
+          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio-02 bg.webp`,
           bgClass: 'bg-black border-white/10 text-white',
           label: t('project_details.tharsh_studio.labels.dark')
         }
       case 'light':
         return {
-          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio bg-01.png`,
+          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio bg-01.webp`,
           bgClass: 'bg-white border-black/10 text-black',
           label: t('project_details.tharsh_studio.labels.light')
         }
       case 'blue':
       default:
         return {
-          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio-03 bg .png`,
+          src: `${baseUrl}images/logo-tharsh-studio/Logo Tharsh Studio-03 bg .webp`,
           bgClass: 'bg-sky-950/40 backdrop-blur-md border-sky-500/20 text-white',
           label: t('project_details.tharsh_studio.labels.signature')
         }

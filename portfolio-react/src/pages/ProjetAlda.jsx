@@ -5,9 +5,11 @@ import { ArrowLeft, ArrowRight, ExternalLink, Beer, Palette, BarChart3 } from 'l
 import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetAlda() {
   const { t } = useTranslation()
+  useSEO('seo.alda.title', 'seo.alda.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,

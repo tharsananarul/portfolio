@@ -4,6 +4,7 @@ import { X, ChevronLeft, ChevronRight, Camera } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import PageHero from '../components/PageHero'
+import useSEO from '../hooks/useSEO'
 
 const PHOTO_DATA = [
   { file: 'IMG_1717', ext: 'jpg' },
@@ -23,6 +24,7 @@ const PHOTO_DATA = [
 
 export default function Photographie() {
   const { t } = useTranslation()
+  useSEO('seo.photo.title', 'seo.photo.desc')
   const baseUrl = import.meta.env.BASE_URL
   const [lightboxIndex, setLightboxIndex] = useState(null)
 

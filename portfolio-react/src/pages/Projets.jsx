@@ -6,9 +6,11 @@ import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import SpotlightCard from '../components/ui/SpotlightCard'
 import ScrollParallax from '../components/ui/ScrollParallax'
+import useSEO from '../hooks/useSEO'
 
 export default function Projets() {
   const { t } = useTranslation()
+  useSEO('seo.projects.title', 'seo.projects.desc')
   const baseUrl = import.meta.env.BASE_URL
 
   const projects = [

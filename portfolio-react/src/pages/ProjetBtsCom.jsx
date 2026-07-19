@@ -5,9 +5,11 @@ import { ArrowLeft, ArrowRight, Palette, Layers, PenTool } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetBtsCom() {
   const { t } = useTranslation()
+  useSEO('seo.bts_com.title', 'seo.bts_com.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,

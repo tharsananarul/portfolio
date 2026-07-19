@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import Magnetic from '../components/Magnetic'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetFutsal() {
   const { t } = useTranslation()
+  useSEO('seo.futsal.title', 'seo.futsal.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,

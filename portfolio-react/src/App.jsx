@@ -17,6 +17,7 @@ import Projets from './pages/Projets'
 import CV from './pages/CV'
 import Competences from './pages/Competences'
 import Contact from './pages/Contact'
+import Legal from './pages/Legal'
 
 // Project Case Studies
 import ProjetFutsal from './pages/ProjetFutsal'
@@ -49,6 +50,7 @@ export default function App() {
               <Route path="/cv" element={<PageTransition><CV /></PageTransition>} />
               <Route path="/competences" element={<PageTransition><Competences /></PageTransition>} />
               <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />
               
               {/* Detailed Project Routes */}
               <Route path="/projets/futsal" element={<PageTransition><ProjetFutsal /></PageTransition>} />

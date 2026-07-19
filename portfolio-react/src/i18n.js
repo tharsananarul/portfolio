@@ -296,6 +296,27 @@ const resources = {
           error: "Une erreur est survenue. Veuillez réessayer."
         }
       },
+      passions: {
+        tag: "En dehors du digital",
+        title_start: "Ce qui me ",
+        title_end: "définit aussi.",
+        gaming: {
+          title: "Gaming",
+          subtitle: "Open World & Immersion",
+          desc: "Passionné par les univers ouverts comme GTA V, Red Dead Redemption ou Watch Dogs, j'apprécie les expériences immersives où narration et liberté de jeu se complètent."
+        },
+        velo: {
+          title: "VTT",
+          subtitle: "Liberté & Évasion",
+          desc: "Faire du VTT en pleine nature, c'est tellement plus fun que de rouler en ville ! C'est dans ces moments que je ressens un véritable sentiment de liberté et d'évasion."
+        },
+        photo: {
+          title: "Photographie",
+          subtitle: "Instants & Lumière",
+          desc: "Je ne suis pas photographe professionnel, mais j'aime capturer l'instant présent sur un coup de cœur, dès qu'un détail ou une lumière me paraît beau.",
+          more: "Photos"
+        }
+      },
       footer: {
         marquee: ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"],
         profile: {
@@ -309,6 +330,94 @@ const resources = {
         copied: "Email copié !",
         copyright: "© 2026 Tharsanan · Design · Développement · Communication",
         back_to_top: "Retour en haut"
+      },
+      seo: {
+        home: {
+          title: "Portfolio Créatif & Web Design",
+          desc: "Bienvenue sur le portfolio de Tharsanan. Découvrez mes réalisations en communication, web design et création graphique."
+        },
+        projects: {
+          title: "Mes Projets",
+          desc: "Découvrez mes réalisations de projets en communication digitale, web design et création graphique."
+        },
+        cv: {
+          title: "Mon CV",
+          desc: "Consultez mon parcours professionnel, mes formations et mes expériences en communication et web design."
+        },
+        skills: {
+          title: "Mes Compétences",
+          desc: "Découvrez mes compétences techniques et créatives en web design, développement front-end et outils de communication."
+        },
+        contact: {
+          title: "Contact",
+          desc: "Un projet en tête ? Contactez-moi pour toute opportunité d'alternance ou de collaboration."
+        },
+        legal: {
+          title: "Mentions Légales & RGPD",
+          desc: "Mentions légales, conditions d'utilisation et politique de protection des données personnelles de Tharsanan."
+        },
+        futsal: {
+          title: "Projet Futsal Drancy",
+          desc: "Étude de cas : Refonte de la communication visuelle et création graphique pour l'association Futsal Drancy."
+        },
+        alda: {
+          title: "Projet ALDA",
+          desc: "Étude de cas : Conception de supports de communication et identité visuelle pour le projet ALDA."
+        },
+        sans_bavures: {
+          title: "Projet Sans Bavures",
+          desc: "Étude de cas : Direction artistique et création visuelle pour le projet Sans Bavures."
+        },
+        bts_com: {
+          title: "Projet BTS Communication",
+          desc: "Étude de cas : Projets et travaux réalisés dans le cadre du BTS Communication."
+        },
+        perso: {
+          title: "Projets Personnels",
+          desc: "Sélection de mes projets créatifs personnels, expérimentations graphiques et artistiques."
+        },
+        ux: {
+          title: "Projets UX/UI",
+          desc: "Découvrez mes études de cas d'expérience utilisateur (UX) et d'interface utilisateur (UI) pour applications web et mobiles."
+        },
+        tharsh_studio: {
+          title: "Projet Tharsh Studio",
+          desc: "Étude de cas : Création de marque, identité visuelle complète et supports digitaux pour Tharsh Studio."
+        },
+        photo: {
+          title: "Photographie",
+          desc: "Galerie photo créative : capturer l'invisible, paysages, portraits et expressions artistiques."
+        }
+      },
+      legal_page: {
+        tag: "Confidentialité & Mentions",
+        title_start: "Mentions",
+        title_end: "Légales & RGPD.",
+        subtitle: "Informations légales et politique de protection de vos données personnelles.",
+        tabs: {
+          legal: "Mentions Légales",
+          privacy: "Données Personnelles (RGPD)"
+        },
+        sections: {
+          editor_title: "1. Édition du Site",
+          editor_desc: "En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :\nPropriétaire : Tharsanan Arulananthaselvam\nContact : tharsananarul@gmail.com\nHébergeur : GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA).",
+          intellectual_title: "2. Propriété Intellectuelle",
+          intellectual_desc: "Tharsanan Arulananthaselvam est propriétaire des droits de propriété intellectuelle ou détient les droits d'usage sur tous les éléments accessibles sur le site, notamment les textes, images, graphismes, logos, vidéos, icônes et sons.\nToute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable.",
+          cookies_title: "3. Gestion des Cookies",
+          cookies_desc: "La navigation sur le site est susceptible de provoquer l'installation de cookie(s) sur l'ordinateur de l'utilisateur. Un cookie est un fichier de petite taille qui enregistre des informations relatives à la navigation d'un ordinateur sur un site. Les données ainsi obtenues visent à faciliter la navigation ultérieure sur le site et ont également vocation à permettre diverses mesures de fréquentation.",
+          data_collect_title: "1. Collecte des Données Personnelles",
+          data_collect_desc: "Sur le site, les données personnelles ne sont collectées que via le formulaire de contact (nom, adresse e-mail, téléphone, sujet, message). Ces données ne sont collectées qu'avec votre consentement explicite lors de l'envoi du formulaire.",
+          data_use_title: "2. Utilisation des Données",
+          data_use_desc: "Les informations que vous saisissez dans le formulaire de contact sont utilisées exclusivement pour répondre à vos demandes de projets, de stages, d'alternance ou de collaboration. Ces données ne sont jamais transmises à des tiers ni utilisées à des fins commerciales.",
+          data_rights_title: "3. Vos Droits (RGPD)",
+          data_rights_desc: "Conformément à la réglementation européenne sur la protection des données (RGPD), vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant. Vous pouvez exercer ce droit à tout moment en envoyant un e-mail à : tharsananarul@gmail.com."
+        }
+      },
+      cookie_banner: {
+        text: "Ce site utilise des cookies pour améliorer votre expérience utilisateur et analyser le trafic.",
+        accept: "Accepter",
+        decline: "Refuser",
+        more_info: "En savoir plus"
       },
       photo_page: {
         tag: "Galerie",
@@ -780,6 +889,27 @@ const resources = {
           error: "An error occurred. Please try again."
         }
       },
+      passions: {
+        tag: "Outside of digital",
+        title_start: "What else ",
+        title_end: "defines me.",
+        gaming: {
+          title: "Gaming",
+          subtitle: "Open World & Immersion",
+          desc: "Passionate about open-world games like GTA V, Red Dead Redemption or Watch Dogs, I appreciate immersive experiences where storytelling and freedom of gameplay complement each other."
+        },
+        velo: {
+          title: "Mountain Biking",
+          subtitle: "Freedom & Escape",
+          desc: "Riding a mountain bike in the heart of nature is so much more fun than riding in the city! It's in these moments that I feel a true sense of freedom and escape."
+        },
+        photo: {
+          title: "Photography",
+          subtitle: "Moments & Light",
+          desc: "I am not a professional photographer, but I like to capture the present moment on a whim, as soon as a detail or a light seems beautiful to me.",
+          more: "Photos"
+        }
+      },
       footer: {
         marquee: ["DIGITAL DESIGN", "LP COMMUNICATION", "ART DIRECTION", "CREATIVE PORTFOLIO"],
         profile: {
@@ -793,6 +923,94 @@ const resources = {
         copied: "Email copied!",
         copyright: "© 2026 Tharsanan · Design · Development · Communication",
         back_to_top: "Back to top"
+      },
+      seo: {
+        home: {
+          title: "Creative Portfolio & Web Design",
+          desc: "Welcome to Tharsanan's portfolio. Discover my work in digital communication, web design, and graphic creation."
+        },
+        projects: {
+          title: "My Projects",
+          desc: "Discover my projects in digital communication, web design, and graphic design."
+        },
+        cv: {
+          title: "My CV",
+          desc: "View my professional career, education, and experiences in communication and web design."
+        },
+        skills: {
+          title: "My Skills",
+          desc: "Discover my technical and creative skills in web design, front-end development, and communication tools."
+        },
+        contact: {
+          title: "Contact",
+          desc: "Have a project in mind? Contact me for any apprenticeship or collaboration opportunities."
+        },
+        legal: {
+          title: "Legal Notice & GDPR",
+          desc: "Legal notices, terms of use, and privacy policy for Tharsanan's portfolio."
+        },
+        futsal: {
+          title: "Futsal Drancy Project",
+          desc: "Case study: Visual communication redesign and graphic creation for the Futsal Drancy association."
+        },
+        alda: {
+          title: "ALDA Project",
+          desc: "Case study: Communication materials and visual identity design for the ALDA project."
+        },
+        sans_bavures: {
+          title: "Sans Bavures Project",
+          desc: "Case study: Art direction and visual creation for the Sans Bavures project."
+        },
+        bts_com: {
+          title: "BTS Communication Project",
+          desc: "Case study: Projects and coursework completed during the BTS Communication degree."
+        },
+        perso: {
+          title: "Personal Projects",
+          desc: "Selection of my personal creative projects, graphic and artistic experiments."
+        },
+        ux: {
+          title: "UX/UI Projects",
+          desc: "Discover my user experience (UX) and user interface (UI) case studies for web and mobile applications."
+        },
+        tharsh_studio: {
+          title: "Tharsh Studio Project",
+          desc: "Case study: Brand creation, complete visual identity, and digital assets for Tharsh Studio."
+        },
+        photo: {
+          title: "Photography",
+          desc: "Creative photo gallery: capturing the invisible, landscapes, portraits, and artistic expressions."
+        }
+      },
+      legal_page: {
+        tag: "Privacy & Terms",
+        title_start: "Legal",
+        title_end: "Notice & GDPR.",
+        subtitle: "Legal information and privacy policy for personal data protection.",
+        tabs: {
+          legal: "Legal Notice",
+          privacy: "Personal Data (GDPR)"
+        },
+        sections: {
+          editor_title: "1. Website Edition",
+          editor_desc: "Under Article 6 of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users of the website are informed of the identity of the various stakeholders involved in its creation and monitoring:\nOwner: Tharsanan Arulananthaselvam\nContact: tharsananarul@gmail.com\nHost: GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA).",
+          intellectual_title: "2. Intellectual Property",
+          intellectual_desc: "Tharsanan Arulananthaselvam owns the intellectual property rights or holds the user rights on all elements accessible on the website, including texts, images, graphics, logos, videos, icons, and sounds.\nAny reproduction, representation, modification, publication, adaptation of all or part of the elements of the site, by any means or process whatsoever, is prohibited without prior written consent.",
+          cookies_title: "3. Cookie Management",
+          cookies_desc: "Browsing the site may trigger the installation of cookie(s) on the user's computer. A cookie is a small file that records information relating to the navigation of a computer on a site. The data thus obtained is intended to facilitate subsequent navigation on the site and is also intended to allow various measurements of traffic.",
+          data_collect_title: "1. Personal Data Collection",
+          data_collect_desc: "On the website, personal data is only collected through the contact form (name, email address, telephone, subject, message). This data is collected only with your explicit consent when sending the form.",
+          data_use_title: "2. Data Usage",
+          data_use_desc: "The information you enter in the contact form is used exclusively to respond to your requests for projects, internships, apprenticeships, or collaborations. This data is never transmitted to third parties or used for commercial purposes.",
+          data_rights_title: "3. Your Rights (GDPR)",
+          data_rights_desc: "In accordance with European data protection regulations (GDPR), you have the right to access, rectify, port, and delete data concerning you. You can exercise this right at any time by sending an email to: tharsananarul@gmail.com."
+        }
+      },
+      cookie_banner: {
+        text: "This website uses cookies to improve your user experience and analyze traffic.",
+        accept: "Accept",
+        decline: "Decline",
+        more_info: "Learn more"
       },
       photo_page: {
         tag: "Gallery",

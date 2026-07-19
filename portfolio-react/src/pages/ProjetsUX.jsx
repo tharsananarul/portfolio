@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next'
 import MosaicGrid from '../components/MosaicGrid'
 import LazyImage from '../components/ui/LazyImage'
 import InteractiveString from '../components/ui/InteractiveString'
+import useSEO from '../hooks/useSEO'
 
 export default function ProjetsUX() {
   const { t } = useTranslation()
+  useSEO('seo.ux.title', 'seo.ux.desc')
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,

@@ -10,6 +10,7 @@ import Counter from '../components/Counter'
 import LazyImage from '../components/ui/LazyImage'
 import HeroBackground3D from '../components/HeroBackground3D'
 import HeroPhoto from '../components/HeroPhoto'
+import useSEO from '../hooks/useSEO'
 
 // HeroScene removed for creative portfolio layout
 
@@ -123,6 +124,7 @@ const StatCard = ({ number, label, suffix = "+", delay = 0 }) => {
 
 export default function Home() {
   const { t, i18n } = useTranslation()
+  useSEO('seo.home.title', 'seo.home.desc')
 
   const featuredProjects = [
     {

@@ -6,7 +6,7 @@ import { Float, Environment } from '@react-three/drei'
 
 function CarModel() {
   const baseUrl = import.meta.env.BASE_URL
-  const texture = useLoader(THREE.TextureLoader, `${baseUrl}images/bmw_m4.png`)
+  const texture = useLoader(THREE.TextureLoader, `${baseUrl}images/bmw_m4.webp`)
   const meshRef = useRef()
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
 

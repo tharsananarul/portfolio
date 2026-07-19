@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Magnetic from '../components/Magnetic'
 import PageHero from '../components/PageHero'
 import { useToast } from '../hooks/useToast'
+import useSEO from '../hooks/useSEO'
 
 // ── Custom Interactive Floating Input ────────────────────────────────────────
 function FloatingInput({ label, name, type = "text", required = false }) {
@@ -154,13 +155,39 @@ function ContactCard({ icon, label, val, href, copyable = false }) {
 // ── Contact Main Component ───────────────────────────────────────────────────
 export default function Contact() {
   const { t } = useTranslation()
+  useSEO('seo.contact.title', 'seo.contact.desc')
   const [status, setStatus] = useState('idle') // idle, sending, success, error
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
   const toast = useToast()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setStatus('sending')
     toast(t("contact_page.status.sending_toast"), "info")
+
+    const formData = new FormData(e.target)
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/tharsananarul@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        toast(t("contact_page.status.success"), "success")
+      } else {
+        setStatus('error')
+        toast(t("contact_page.status.error"), "error")
+      }
+    } catch (err) {
+      console.error("Form submission error", err)
+      setStatus('error')
+      toast(t("contact_page.status.error"), "error")
+    }
   }
 
   return (

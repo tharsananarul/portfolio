@@ -3,6 +3,8 @@ import './HeroPhoto.css';
 const HeroPhoto = ({ src, alt = 'Tharsanan' }) => {
   return (
     <div className="hero-photo-wrapper">
+      {/* Glow d'ambiance en arrière-plan */}
+      <div className="hero-photo-glow" aria-hidden="true" />
 
       {/* ① Anneau lumineux tournant */}
       <div className="hero-photo-ring" aria-hidden="true" />

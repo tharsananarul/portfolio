@@ -101,7 +101,7 @@ export default function Footer() {
         {/* 2. BENTO GRID SYSTEM */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 lg:gap-8 mb-16">
           {/* Card 1: Brand Info & Paris Time (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
               <div className="mb-4 flex items-center select-none">
                 <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
@@ -134,7 +134,7 @@ export default function Footer() {
           </div>
 
           {/* Card 2: Quick Navigation Sitemap (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">{t("footer.nav_title")}</p>
             <div className="flex flex-col gap-2 md:gap-3">
               {[
@@ -159,13 +159,13 @@ export default function Footer() {
           </div>
 
           {/* Card 3: Contact Details & Socials (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
               <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">{t("footer.contact_title")}</p>
               <div className="flex flex-col gap-2.5">
                 <button 
                   onClick={handleCopyEmail}
-                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group w-full text-left cursor-pointer"
+                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all group w-full text-left cursor-pointer"
                 >
                   <Mail size={15} className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate" />
                   <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white truncate">
@@ -175,7 +175,7 @@ export default function Footer() {
 
                 <a 
                   href="tel:0749878775" 
-                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group"
+                  className="flex items-center gap-3 p-2.5 md:p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all group"
                 >
                   <Phone size={15} className="text-sky-400 flex-shrink-0" />
                   <span className="text-[11px] md:text-xs font-mono text-white/80 group-hover:text-white">07 49 87 87 75</span>
@@ -193,7 +193,7 @@ export default function Footer() {
                   href={linkedinUrl} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-blue-500/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.03] hover:bg-blue-500/15 border border-white/10 hover:border-sky-400/40 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="LinkedIn"
                 >
                   <Linkedin size={15} />
@@ -202,7 +202,7 @@ export default function Footer() {
                   href="https://www.instagram.com/tharsh.studio/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-gradient-to-tr hover:from-yellow-500/10 hover:to-pink-500/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.03] hover:bg-gradient-to-tr hover:from-yellow-500/15 hover:to-pink-500/15 border border-white/10 hover:border-sky-400/40 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="Instagram"
                 >
                   <Instagram size={15} />
@@ -211,7 +211,7 @@ export default function Footer() {
                   href="https://github.com/tharsananarul" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.01] hover:bg-white/10 border border-white/5 hover:border-sky-400/50 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/[0.03] hover:bg-white/15 border border-white/10 hover:border-sky-400/40 text-sky-400 hover:text-white transition-all flex items-center justify-center cursor-pointer"
                   title="GitHub"
                 >
                   <Github size={15} />

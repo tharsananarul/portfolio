@@ -594,11 +594,11 @@ export default function Home() {
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium" style={{ textTransform: 'none' }}>
                     {i18n.language === 'fr' ? (
                       <>
-                        Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je vais commencer mon alternance à l'<span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">ASSOCIATION GAIA en tant que chargé de communication</span> pour la rentrée de septembre 2026.
+                        Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je suis à la recherche d'une <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">alternance en communication dans le secteur public</span> pour la rentrée de septembre 2026.
                       </>
                     ) : (
                       <>
-                        Admitted to the Professional Licence at UPEC to specialize in public interest communication, I will start my apprenticeship at <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">ASSOCIATION GAIA as a Communication Officer</span> for the start of the academic year in September 2026.
+                        Admitted to the Professional Licence at UPEC to specialize in public interest communication, I am seeking an <span className="text-white font-bold border-b border-[var(--color-creative-blue)]/50">apprenticeship in communication within the public sector</span> starting September 2026.
                       </>
                     )}
                   </p>

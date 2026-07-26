@@ -139,7 +139,7 @@ export default function CV() {
       {/* Main Content Section */}
       <section className="section-container relative z-10 -mt-4 md:-mt-8">
         {/* Download button */}
-        <div className="mt-12 mb-20 relative z-10">
+        <div className="mt-2 md:mt-4 mb-8 md:mb-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

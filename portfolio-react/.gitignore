@@ -28,8 +28,5 @@ scratch*.cjs
 print*.cjs
 *.cjs
 *-results.json
-*.png
-!portfolio-react/public/**/*.png
-!portfolio-react/public/*.png
-!images/**/*.png
-!images/*.png
+screenshot-*.png
+ss-*.png

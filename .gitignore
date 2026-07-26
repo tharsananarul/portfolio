@@ -17,10 +17,7 @@ portfolio-react/dist-ssr/
 portfolio-react/scratch*.cjs
 portfolio-react/print*.cjs
 portfolio-react/*.cjs
-portfolio-react/test_mobile.cjs
-portfolio-react/optimize-all-images.js
-portfolio-react/*results.json
-portfolio-react/*.png
+portfolio-react/scratch*.png
 portfolio-react/screenshot-*.png
 portfolio-react/ss-*.png
 portfolio-react/check-*.png

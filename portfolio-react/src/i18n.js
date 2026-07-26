@@ -60,7 +60,7 @@ const resources = {
         tag: "Ambition",
         title_start: "Mon Projet ",
         title_end: "Futur.",
-        desc: "Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je suis à la recherche d'une alternance en communication dans le secteur public pour la rentrée de septembre 2026.",
+        desc: "Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je serai alternant à l'Association Gaïa (La Courneuve) en tant que chargé de communication pour la rentrée de septembre 2026.",
         cv_btn: "Mon CV",
         linkedin_btn: "LinkedIn"
       },
@@ -119,6 +119,16 @@ const resources = {
           }
         },
         experiences: {
+          gaia: {
+            title: "Chargé de Communication (Alternance)",
+            company: "Association Gaïa",
+            type: "Alternance",
+            missions: [
+              "Élaboration et déploiement de la stratégie de communication globale de l'association.",
+              "Création de contenus digitaux et gestion des supports de communication interne et externe.",
+              "Organisation et promotion d'événements et d'actions d'intérêt général à La Courneuve."
+            ]
+          },
           futsal: {
             title: "Communication & Design Graphique",
             company: "Futsal Drancy",
@@ -321,7 +331,7 @@ const resources = {
         marquee: ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"],
         profile: {
           student: "Étudiant en Licence Pro Communication des collectivités et associations à l'UPEC.",
-          search: "À la recherche d'une alternance en communication dans le secteur public."
+          search: "Alternant en communication à l'Association Gaïa (La Courneuve)."
         },
         clock: "Paris, FR :",
         nav_title: "Navigation",
@@ -653,7 +663,7 @@ const resources = {
         tag: "Ambition",
         title_start: "My Future ",
         title_end: "Project.",
-        desc: "Admitted to the Professional Licence at UPEC to specialize in public interest communication, I am seeking an apprenticeship in communication within the public sector starting September 2026.",
+        desc: "Admitted to the Professional Licence at UPEC to specialize in public interest communication, I will be a Communication Officer apprentice at Association Gaïa (La Courneuve) starting September 2026.",
         cv_btn: "My CV",
         linkedin_btn: "LinkedIn"
       },
@@ -704,7 +714,6 @@ const resources = {
             title: "BUT Multimedia and Internet Careers",
             location: "IUT of Sénart-Fontainebleau · Sénart",
             desc: "Web development, UI/UX Design, audiovisual, and multimedia communication."
-          },
           sti2d: {
             title: "STI2D Baccalaureate",
             location: "Paul Le Rolland High School · Drancy",
@@ -712,6 +721,16 @@ const resources = {
           }
         },
         experiences: {
+          gaia: {
+            title: "Communication Officer (Apprenticeship)",
+            company: "Association Gaïa",
+            type: "Apprenticeship",
+            missions: [
+              "Development and deployment of the association's global communication strategy.",
+              "Digital content creation and management of internal and external communication media.",
+              "Organization and promotion of public interest events and initiatives in La Courneuve."
+            ]
+          },
           futsal: {
             title: "Communication & Graphic Design",
             company: "Futsal Drancy",
@@ -914,7 +933,7 @@ const resources = {
         marquee: ["DIGITAL DESIGN", "LP COMMUNICATION", "ART DIRECTION", "CREATIVE PORTFOLIO"],
         profile: {
           student: "LP Communication student at UPEC (Local Authorities & Associations).",
-          search: "Seeking an apprenticeship in communication within the public sector."
+          search: "Communication apprentice at Association Gaïa (La Courneuve)."
         },
         clock: "Paris, FR:",
         nav_title: "Navigation",

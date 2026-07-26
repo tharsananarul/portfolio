@@ -54,6 +54,15 @@ export default function CV() {
 
   const experiences = [
     {
+      period: "Sept. 2026 — Présent",
+      title: t("cv_page.experiences.gaia.title"),
+      company: t("cv_page.experiences.gaia.company"),
+      location: "La Courneuve",
+      type: t("cv_page.experiences.gaia.type"),
+      missions: t("cv_page.experiences.gaia.missions", { returnObjects: true }) || [],
+      logo: `${baseUrl}images/logos/gaia.png`
+    },
+    {
       period: "Sept. 2024 — Présent",
       title: t("cv_page.experiences.futsal.title"),
       company: t("cv_page.experiences.futsal.company"),
@@ -177,8 +186,8 @@ export default function CV() {
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
                       {item.logo && (
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/95 p-2 flex items-center justify-center shrink-0 shadow-md border border-white/20 group-hover:scale-105 transition-transform duration-300">
-                          <img src={item.logo} alt={item.title} className="max-w-full max-h-full object-contain" />
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
+                          <img src={item.logo} alt={item.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
                         </div>
                       )}
                     </div>
@@ -297,8 +306,8 @@ export default function CV() {
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
                       {item.logo && (
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/95 p-2 flex items-center justify-center shrink-0 shadow-md border border-white/20 group-hover:scale-105 transition-transform duration-300">
-                          <img src={item.logo} alt={item.company} className="max-w-full max-h-full object-contain" />
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
+                          <img src={item.logo} alt={item.company} className="max-w-full max-h-full object-contain drop-shadow-sm" />
                         </div>
                       )}
                     </div>

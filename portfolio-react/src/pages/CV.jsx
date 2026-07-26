@@ -137,23 +137,7 @@ export default function CV() {
       </div>
 
       {/* Main Content Section */}
-      <section className="section-container relative z-10 -mt-4 md:-mt-8">
-        {/* Download button */}
-        <div className="mt-2 md:mt-4 mb-8 md:mb-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            <Magnetic>
-              <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium-orange gap-3 group">
-                <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
-                {t("cv_page.download")}
-              </a>
-            </Magnetic>
-          </motion.div>
-        </div>
-
+      <section className="section-container relative z-10 pt-4 md:pt-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24">
           {/* EDUCATION */}
           <div className="space-y-16">
@@ -207,60 +191,78 @@ export default function CV() {
                 </motion.div>
               ))}
 
-              {/* Realistic 3D Flyer Preview at the bottom of Education */}
-              <div className="mt-16 relative flex justify-center md:justify-start perspective-[1500px]">
-                <motion.div
-                  initial={{ opacity: 0, rotateX: isMobile ? 0 : 45, rotateZ: isMobile ? 0 : -10, y: 100, scale: 0.8 }}
-                  whileInView={{ opacity: 1, rotateX: isMobile ? 0 : 25, rotateZ: isMobile ? 0 : -12, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 40,
-                    damping: 15,
-                    delay: 0.2
-                  }}
-                  className="relative group cursor-pointer"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  {/* Intense Outer Glow — Blue/Cyan */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[var(--color-creative-blue)] blur-[100px] opacity-20 group-hover:opacity-50 transition-all duration-700 -z-20 rounded-[2rem]" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#06b6d4] blur-[80px] opacity-10 group-hover:opacity-40 transition-all duration-700 -z-20 rounded-[2rem]" />
+              {/* Realistic 3D Flyer Preview & Download button */}
+              <div className="mt-16 relative flex flex-col items-center md:items-start gap-8">
+                <div className="perspective-[1500px]">
+                  <motion.div
+                    initial={{ opacity: 0, rotateX: isMobile ? 0 : 45, rotateZ: isMobile ? 0 : -10, y: 100, scale: 0.8 }}
+                    whileInView={{ opacity: 1, rotateX: isMobile ? 0 : 25, rotateZ: isMobile ? 0 : -12, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 40,
+                      damping: 15,
+                      delay: 0.2
+                    }}
+                    className="relative group cursor-pointer"
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    {/* Intense Outer Glow — Blue/Cyan */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[var(--color-creative-blue)] blur-[100px] opacity-20 group-hover:opacity-50 transition-all duration-700 -z-20 rounded-[2rem]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#06b6d4] blur-[80px] opacity-10 group-hover:opacity-40 transition-all duration-700 -z-20 rounded-[2rem]" />
 
-                  {/* Elegant Glass Backing - perfectly sized to the flyer */}
-                  <div className="absolute -inset-4 sm:-inset-8 -z-10 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] transform-gpu">
-                    {/* Decorative corner marks */}
-                    <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/20" />
-                    <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white/20" />
-                    <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white/20" />
-                    <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/20" />
-                    
-                    {/* Subtle internal glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-[#06b6d4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl" />
-                  </div>
-
-                  {/* Main CV Flyer Link */}
-                  <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
-                    {/* Shadow under the flyer */}
-                    <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[110%] h-12 bg-black/50 blur-3xl rounded-[100%] scale-x-110 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
-                    
-                    {/* The Flyer itself */}
-                    <div className="relative w-48 sm:w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
-                      <LazyImage 
-                        src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.webp`} 
-                        alt="CV Tharsanan Preview" 
-                        className="w-full h-auto"
-                      />
+                    {/* Elegant Glass Backing - perfectly sized to the flyer */}
+                    <div className="absolute -inset-4 sm:-inset-8 -z-10 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] transform-gpu">
+                      {/* Decorative corner marks */}
+                      <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/20" />
+                      <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white/20" />
+                      <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white/20" />
+                      <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/20" />
+                      
+                      {/* Subtle internal glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-[#06b6d4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl" />
                     </div>
 
-                    <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
-                      <div className="relative px-4 py-2">
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
-                        <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
-                          {t("cv_page.view_badge")}
-                        </span>
+                    {/* Main CV Flyer Link */}
+                    <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
+                      {/* Shadow under the flyer */}
+                      <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[110%] h-12 bg-black/50 blur-3xl rounded-[100%] scale-x-110 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
+                      
+                      {/* The Flyer itself */}
+                      <div className="relative w-48 sm:w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
+                        <LazyImage 
+                          src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.webp`} 
+                          alt="CV Tharsanan Preview" 
+                          className="w-full h-auto"
+                        />
                       </div>
-                    </div>
-                  </a>
+
+                      <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
+                        <div className="relative px-4 py-2">
+                          <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
+                          <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
+                            {t("cv_page.view_badge")}
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </motion.div>
+                </div>
+
+                {/* Download button positioned directly underneath 3D flyer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="pt-4 z-20"
+                >
+                  <Magnetic>
+                    <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium-orange gap-3 group shadow-xl">
+                      <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
+                      {t("cv_page.download")}
+                    </a>
+                  </Magnetic>
                 </motion.div>
               </div>
             </div>

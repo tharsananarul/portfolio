@@ -714,6 +714,7 @@ const resources = {
             title: "BUT Multimedia and Internet Careers",
             location: "IUT of Sénart-Fontainebleau · Sénart",
             desc: "Web development, UI/UX Design, audiovisual, and multimedia communication."
+          },
           sti2d: {
             title: "STI2D Baccalaureate",
             location: "Paul Le Rolland High School · Drancy",

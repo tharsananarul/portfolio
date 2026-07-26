@@ -237,9 +237,8 @@ export default function CV() {
                     </div>
 
                     <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
-                      <div className="relative px-4 py-2">
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
-                        <span className="relative text-[var(--color-creative-blue)] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
+                      <div className="relative px-4 py-2 bg-white rounded-lg shadow-2xl border border-white/40">
+                        <span className="relative text-[#060a18] font-black uppercase text-[10px] tracking-widest whitespace-nowrap">
                           {t("cv_page.view_badge")}
                         </span>
                       </div>

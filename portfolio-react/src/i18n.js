@@ -99,7 +99,7 @@ const resources = {
         education: {
           upec: {
             title: "Licence Professionnelle",
-            location: "Université Paris-Est Créteil (UPEC)",
+            location: "Université Paris-Est Créteil (UPEC) · Créteil",
             desc: "Licence professionnelle Chargé de communication des collectivités territoriales et des associations. Spécialisation dans la communication d'intérêt général, stratégies de communication publique et associative."
           },
           brel: {
@@ -109,7 +109,7 @@ const resources = {
           },
           mmi: {
             title: "BUT Métiers du Multimédia et de l'Internet",
-            location: "IUT de Sénart-Fontainebleau",
+            location: "IUT de Sénart-Fontainebleau · Sénart",
             desc: "Développement web, UI/UX Design, audiovisuel et communication multimédia."
           },
           sti2d: {
@@ -692,7 +692,7 @@ const resources = {
         education: {
           upec: {
             title: "Professional Licence",
-            location: "Université Paris-Est Créteil (UPEC)",
+            location: "Université Paris-Est Créteil (UPEC) · Créteil",
             desc: "Professional Licence in Communication for Local Authorities and Associations. Specializing in public interest, government, and non-profit organization communication."
           },
           brel: {
@@ -702,7 +702,7 @@ const resources = {
           },
           mmi: {
             title: "BUT Multimedia and Internet Careers",
-            location: "IUT of Sénart-Fontainebleau",
+            location: "IUT of Sénart-Fontainebleau · Sénart",
             desc: "Web development, UI/UX Design, audiovisual, and multimedia communication."
           },
           sti2d: {

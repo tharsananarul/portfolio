@@ -19,30 +19,36 @@ export default function CV() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  const baseUrl = import.meta.env.BASE_URL
+
   const education = [
     {
       period: "2026 — 2027",
       title: t("cv_page.education.upec.title"),
       location: t("cv_page.education.upec.location"),
-      desc: t("cv_page.education.upec.desc")
+      desc: t("cv_page.education.upec.desc"),
+      logo: `${baseUrl}images/logos/upec.svg`
     },
     {
       period: "2025 — 2026",
       title: t("cv_page.education.brel.title"),
       location: t("cv_page.education.brel.location"),
-      desc: t("cv_page.education.brel.desc")
+      desc: t("cv_page.education.brel.desc"),
+      logo: `${baseUrl}images/logos/jacques-brel.jpg`
     },
     {
       period: "2022 — 2024",
       title: t("cv_page.education.mmi.title"),
       location: t("cv_page.education.mmi.location"),
-      desc: t("cv_page.education.mmi.desc")
+      desc: t("cv_page.education.mmi.desc"),
+      logo: `${baseUrl}images/logos/iut-senart.webp`
     },
     {
       period: "2019 — 2022",
       title: t("cv_page.education.sti2d.title"),
       location: t("cv_page.education.sti2d.location"),
-      desc: t("cv_page.education.sti2d.desc")
+      desc: t("cv_page.education.sti2d.desc"),
+      logo: `${baseUrl}images/logos/paul-le-rolland.png`
     }
   ]
 
@@ -53,7 +59,8 @@ export default function CV() {
       company: t("cv_page.experiences.futsal.company"),
       location: "Drancy",
       type: t("cv_page.experiences.futsal.type"),
-      missions: t("cv_page.experiences.futsal.missions", { returnObjects: true }) || []
+      missions: t("cv_page.experiences.futsal.missions", { returnObjects: true }) || [],
+      logo: `${baseUrl}images/logos/drancy-futsal.png`
     },
     {
       period: "Août 2024 — Janvier 2026",
@@ -61,7 +68,8 @@ export default function CV() {
       company: t("cv_page.experiences.banque.company"),
       location: "Le Blanc-Mesnil",
       type: t("cv_page.experiences.banque.type"),
-      missions: t("cv_page.experiences.banque.missions", { returnObjects: true }) || []
+      missions: t("cv_page.experiences.banque.missions", { returnObjects: true }) || [],
+      logo: `${baseUrl}images/logos/banque-postale.webp`
     },
     {
       period: "Mars 2023 — Présent",
@@ -69,7 +77,8 @@ export default function CV() {
       company: t("cv_page.experiences.osi.company"),
       location: t("lng") === 'en' ? "Paris & Geneva" : "Paris & Genève",
       type: t("cv_page.experiences.osi.type"),
-      missions: t("cv_page.experiences.osi.missions", { returnObjects: true }) || []
+      missions: t("cv_page.experiences.osi.missions", { returnObjects: true }) || [],
+      logo: `${baseUrl}images/logos/osi.png`
     },
     {
       period: "Sept. 2023 — Présent",
@@ -77,7 +86,8 @@ export default function CV() {
       company: t("cv_page.experiences.parkours.company"),
       location: "Paris",
       type: t("cv_page.experiences.parkours.type"),
-      missions: t("cv_page.experiences.parkours.missions", { returnObjects: true }) || []
+      missions: t("cv_page.experiences.parkours.missions", { returnObjects: true }) || [],
+      logo: `${baseUrl}images/logos/parkours.png`
     }
   ]
 
@@ -166,8 +176,6 @@ export default function CV() {
                   <span className="relative text-[var(--color-creative-blue)]">{t("cv_page.education_title")}</span>
                 </span>
               </h2>
-            </motion.div>
- 
              <div className="space-y-6 md:space-y-8 relative">
                {education.map((item, i) => (
                  <motion.div 
@@ -176,17 +184,26 @@ export default function CV() {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                   className="glass-card p-5 md:p-6 group glow-card w-full min-w-0"
+                   className="glass-card p-5 md:p-6 group glow-card w-full min-w-0 flex flex-col justify-between"
                  >
-                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-2 block">{item.period}</span>
-                   <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-2 uppercase tracking-normal text-white leading-tight break-words">{item.title}</h3>
-                   <div className="flex items-center gap-2 text-white/50 text-[10px] md:text-sm mb-3 font-bold">
-                     <MapPin size={14} /> {item.location}
+                   <div>
+                     <div className="flex items-start justify-between gap-4 mb-3">
+                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
+                       {item.logo && (
+                         <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/95 p-2 flex items-center justify-center shrink-0 shadow-md border border-white/20 group-hover:scale-105 transition-transform duration-300">
+                           <img src={item.logo} alt={item.title} className="max-w-full max-h-full object-contain" />
+                         </div>
+                       )}
+                     </div>
+                     <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-2 uppercase tracking-normal text-white leading-tight break-words">{item.title}</h3>
+                     <div className="flex items-center gap-2 text-white/50 text-[10px] md:text-sm mb-3 font-bold">
+                       <MapPin size={14} /> {item.location}
+                     </div>
+                     <p className="text-white/60 text-xs md:text-sm leading-relaxed max-w-xl font-medium">{item.desc}</p>
                    </div>
-                   <p className="text-white/60 text-xs md:text-sm leading-relaxed max-w-xl font-medium">{item.desc}</p>
                  </motion.div>
                ))}
- 
+
                {/* Realistic 3D Flyer Preview at the bottom of Education */}
                <div className="mt-16 relative flex justify-center md:justify-start perspective-[1500px]">
                  <motion.div
@@ -205,7 +222,7 @@ export default function CV() {
                    {/* Intense Outer Glow — Blue/Cyan */}
                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[var(--color-creative-blue)] blur-[100px] opacity-20 group-hover:opacity-50 transition-all duration-700 -z-20 rounded-[2rem]" />
                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#06b6d4] blur-[80px] opacity-10 group-hover:opacity-40 transition-all duration-700 -z-20 rounded-[2rem]" />
- 
+
                    {/* Elegant Glass Backing - perfectly sized to the flyer */}
                    <div className="absolute -inset-4 sm:-inset-8 -z-10 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] transform-gpu">
                      {/* Decorative corner marks */}
@@ -217,7 +234,7 @@ export default function CV() {
                      {/* Subtle internal glow */}
                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-[#06b6d4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl" />
                    </div>
- 
+
                    {/* Main CV Flyer Link */}
                    <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
                      {/* Shadow under the flyer */}
@@ -231,7 +248,7 @@ export default function CV() {
                          className="w-full h-auto"
                        />
                      </div>
- 
+
                      <div className="absolute -top-10 -right-10 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 z-30">
                        <div className="relative px-4 py-2">
                          <div className="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl" />
@@ -245,7 +262,7 @@ export default function CV() {
                </div>
              </div>
            </div>
- 
+
            {/* EXPERIENCE */}
            <div className="relative w-full min-w-0">
              <div className="w-full mx-auto relative z-10">
@@ -281,7 +298,14 @@ export default function CV() {
                     transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="glass-card p-5 md:p-6 group glow-card w-full min-w-0"
                   >
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] mb-3 block">{item.period}</span>
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
+                      {item.logo && (
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/95 p-2 flex items-center justify-center shrink-0 shadow-md border border-white/20 group-hover:scale-105 transition-transform duration-300">
+                          <img src={item.logo} alt={item.company} className="max-w-full max-h-full object-contain" />
+                        </div>
+                      )}
+                    </div>
                     
                     <div className="mb-6">
                       <h3 className="text-sm sm:text-base md:text-[1.15rem] font-extrabold mb-3 uppercase tracking-normal text-white leading-tight break-words">{item.title}</h3>

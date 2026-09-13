@@ -60,7 +60,7 @@ const resources = {
         tag: "Ambition",
         title_start: "Mon Projet ",
         title_end: "Futur.",
-        desc: "Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je serai alternant à l'Association Gaïa (La Courneuve) en tant que chargé de communication pour la rentrée de septembre 2026.",
+        desc: "Admis en Licence Professionnelle à l'UPEC pour me spécialiser dans la communication d'intérêt général, je suis futur alternant en Licence Pro Com pour la rentrée de septembre 2026.",
         cv_btn: "Mon CV",
         linkedin_btn: "LinkedIn"
       },
@@ -331,7 +331,7 @@ const resources = {
         marquee: ["DESIGN DIGITAL", "LICENCE PRO COM", "DIRECTION ARTISTIQUE", "CREATIVE PORTFOLIO"],
         profile: {
           student: "Étudiant en Licence Pro Communication des collectivités et associations à l'UPEC.",
-          search: "Alternant en communication à l'Association Gaïa (La Courneuve)."
+          search: "Futur alternant en Licence Pro Com."
         },
         clock: "Paris, FR :",
         nav_title: "Navigation",
@@ -663,7 +663,7 @@ const resources = {
         tag: "Ambition",
         title_start: "My Future ",
         title_end: "Project.",
-        desc: "Admitted to the Professional Licence at UPEC to specialize in public interest communication, I will be a Communication Officer apprentice at Association Gaïa (La Courneuve) starting September 2026.",
+        desc: "Admitted to the Professional Licence at UPEC to specialize in public interest communication, I am a future apprentice in Professional Licence in Communication starting September 2026.",
         cv_btn: "My CV",
         linkedin_btn: "LinkedIn"
       },
@@ -934,7 +934,7 @@ const resources = {
         marquee: ["DIGITAL DESIGN", "LP COMMUNICATION", "ART DIRECTION", "CREATIVE PORTFOLIO"],
         profile: {
           student: "LP Communication student at UPEC (Local Authorities & Associations).",
-          search: "Communication apprentice at Association Gaïa (La Courneuve)."
+          search: "Future apprentice in Professional Licence in Communication."
         },
         clock: "Paris, FR:",
         nav_title: "Navigation",

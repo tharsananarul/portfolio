@@ -53,6 +53,8 @@ export default function CV() {
   ]
 
   const experiences = [
+    /* 
+    // Expérience chez Association Gaïa conservée de côté si besoin :
     {
       period: "Sept. 2026 — Présent",
       title: t("cv_page.experiences.gaia.title"),
@@ -62,6 +64,7 @@ export default function CV() {
       missions: t("cv_page.experiences.gaia.missions", { returnObjects: true }) || [],
       logo: `${baseUrl}images/logos/gaia.png`
     },
+    */
     {
       period: "Sept. 2024 — Présent",
       title: t("cv_page.experiences.futsal.title"),

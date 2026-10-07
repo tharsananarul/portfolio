@@ -235,14 +235,14 @@ export default function CV() {
                   </div>
 
                   {/* Main CV Flyer Link */}
-                  <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} target="_blank" rel="noreferrer" className="block relative">
+                  <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-alternance.pdf`} target="_blank" rel="noreferrer" className="block relative">
                     {/* Shadow under the flyer */}
                     <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[110%] h-12 bg-black/50 blur-3xl rounded-[100%] scale-x-110 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
                     
                     {/* The Flyer itself */}
                     <div className="relative w-48 sm:w-64 md:w-80 rounded-sm overflow-hidden border-[6px] border-white shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-4">
                       <LazyImage 
-                        src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-final.webp`} 
+                        src={`${import.meta.env.BASE_URL}images/cv/cv-tharsanan-alternance.png`}
                         alt="CV Tharsanan Preview" 
                         className="w-full h-auto"
                       />
@@ -260,7 +260,7 @@ export default function CV() {
                   {/* Download button tilted in 3D along with the flyer on PC */}
                   <div className="z-30 pt-2">
                     <Magnetic>
-                      <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-final.pdf`} download className="btn-premium-orange gap-3 group shadow-2xl">
+                      <a href={`${import.meta.env.BASE_URL}documents/cv-tharsanan-alternance.pdf`} download className="btn-premium-orange gap-3 group shadow-2xl">
                         <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
                         {t("cv_page.download")}
                       </a>

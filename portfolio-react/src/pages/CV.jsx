@@ -183,13 +183,13 @@ export default function CV() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="glass-card p-5 md:p-6 group glow-card w-full min-w-0 flex flex-col justify-between"
+                  className="glass-card p-4 sm:p-6 group glow-card w-full min-w-0 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
+                    <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3">
+                      <span className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
                       {item.logo && (
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl sm:rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
                           <img src={item.logo} alt={item.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
                         </div>
                       )}
@@ -304,12 +304,12 @@ export default function CV() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="glass-card p-5 md:p-6 group glow-card w-full min-w-0"
+                    className="glass-card p-4 sm:p-6 group glow-card w-full min-w-0"
                   >
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
+                    <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3">
+                      <span className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.2em] text-[var(--color-creative-blue)] block">{item.period}</span>
                       {item.logo && (
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl sm:rounded-2xl bg-white p-2 sm:p-2.5 flex items-center justify-center shrink-0 shadow-xl border border-white/40 group-hover:scale-105 transition-transform duration-300">
                           <img src={item.logo} alt={item.company} className="max-w-full max-h-full object-contain drop-shadow-sm" />
                         </div>
                       )}

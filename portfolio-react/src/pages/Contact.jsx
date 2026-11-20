@@ -118,7 +118,7 @@ function ContactCard({ icon, label, val, href, copyable = false }) {
   return (
     <Magnetic>
       <div 
-        className="flex items-center justify-between p-6 rounded-3xl bg-[#0d1225]/45 border border-white/10 hover:border-sky-400/30 hover:bg-[#0d1225]/60 transition-all duration-500 group shadow-lg hover:shadow-[0_10px_35px_rgba(14,165,233,0.06)] transform hover:-translate-y-1 relative overflow-hidden"
+        className="flex items-center justify-between p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0d1225]/45 border border-white/10 hover:border-sky-400/30 hover:bg-[#0d1225]/60 transition-all duration-500 group shadow-lg hover:shadow-[0_10px_35px_rgba(14,165,233,0.06)] transform hover:-translate-y-1 relative overflow-hidden"
       >
         {/* Glow backdrop behind icon */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-32 h-32 bg-sky-400/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -127,21 +127,21 @@ function ContactCard({ icon, label, val, href, copyable = false }) {
           href={href} 
           target={href.startsWith('http') ? "_blank" : "_self"} 
           rel="noreferrer" 
-          className="flex items-center gap-5 min-w-0 z-10 flex-grow cursor-pointer"
+          className="flex items-center gap-3 sm:gap-5 min-w-0 z-10 flex-grow cursor-pointer"
         >
-          <div className="shrink-0 p-4 rounded-2xl bg-white/5 border border-white/10 text-white/60 group-hover:bg-gradient-to-br group-hover:from-sky-400 group-hover:to-blue-600 group-hover:text-white group-hover:scale-105 group-hover:border-transparent transition-all duration-500 shadow-md">
+          <div className="shrink-0 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white/60 group-hover:bg-gradient-to-br group-hover:from-sky-400 group-hover:to-blue-600 group-hover:text-white group-hover:scale-105 group-hover:border-transparent transition-all duration-500 shadow-md">
             {icon}
           </div>
           <div className="min-w-0">
             <p className="text-[9px] text-white/30 font-black uppercase tracking-widest mb-1">{label}</p>
-            <p className="text-sm sm:text-base md:text-lg font-black text-white group-hover:text-sky-400 transition-colors tracking-tight truncate">{val}</p>
+            <p className="text-xs sm:text-base md:text-lg font-black text-white group-hover:text-sky-400 transition-colors tracking-tight truncate">{val}</p>
           </div>
         </a>
 
         {isCopyable && (
           <button 
             onClick={handleCopy}
-            className="z-20 shrink-0 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/50 hover:text-white transition-all duration-300 ml-4 relative cursor-pointer"
+            className="z-20 shrink-0 p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/50 hover:text-white transition-all duration-300 ml-2 sm:ml-4 relative cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
             title={t("contact_page.tooltip")}
           >
             {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}

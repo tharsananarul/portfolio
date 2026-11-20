@@ -99,9 +99,9 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4">
         {/* 2. BENTO GRID SYSTEM */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 mb-16">
           {/* Card 1: Brand Info & Paris Time (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
               <div className="mb-4 flex items-center select-none">
                 <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
@@ -134,7 +134,7 @@ export default function Footer() {
           </div>
 
           {/* Card 2: Quick Navigation Sitemap (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-3 font-mono">{t("footer.nav_title")}</p>
             <div className="flex flex-col gap-2 md:gap-3">
               {[
@@ -159,7 +159,7 @@ export default function Footer() {
           </div>
 
           {/* Card 3: Contact Details & Socials (Span 4) */}
-          <div className="md:col-span-4 p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
+          <div className="md:col-span-4 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#060a18]/80 backdrop-blur-md border border-white/10 hover:border-[#0ea5e9]/35 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[220px] md:min-h-[250px]">
             <div>
               <p className="text-white/30 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-mono">{t("footer.contact_title")}</p>
               <div className="flex flex-col gap-2.5">

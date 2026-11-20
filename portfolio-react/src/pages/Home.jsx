@@ -216,7 +216,7 @@ export default function Home() {
                   {t('hero.welcome')}
                 </h2>
               </div>
-              <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight uppercase whitespace-nowrap" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)' }}>
+              <h1 className="font-black animate-text-gradient leading-[0.95] tracking-tight uppercase break-words" style={{ fontSize: 'clamp(1.85rem, 8vw, 5rem)' }}>
                 THARSANAN
               </h1>
             </div>
@@ -273,7 +273,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="relative flex justify-center items-center h-[380px] sm:h-[480px] lg:h-[600px] order-1 lg:order-2 mt-4 lg:mt-0"
+            className="relative flex justify-center items-center min-h-[340px] sm:min-h-[460px] lg:min-h-[580px] order-1 lg:order-2 mt-4 lg:mt-0"
           >
             <div className="relative z-10">
               <HeroPhoto src={`${baseUrl}images/ma-photo/photo_heros_section_nobg.webp`} alt="Tharsanan" />
@@ -282,7 +282,7 @@ export default function Home() {
               <motion.div
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-6 -right-4 sm:-right-6 z-30 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[150px] sm:max-w-[190px] pointer-events-none"
+                className="absolute bottom-1 right-1 sm:-bottom-6 sm:-right-6 z-30 px-3 sm:px-4 py-2 sm:py-3 rounded-2xl bg-black/90 border-2 border-[var(--color-creative-blue)] shadow-[0_0_25px_rgba(14,165,233,0.45)] text-left flex flex-col gap-1 max-w-[140px] sm:max-w-[190px] pointer-events-none"
               >
                 <span className="text-[8px] sm:text-[10px] font-black text-white uppercase tracking-wider leading-tight">{t('hero.alternance')}</span>
                 <span className="text-[7.5px] sm:text-[9.5px] text-[var(--color-creative-blue)] font-black uppercase tracking-widest leading-none">{t('hero.date')}</span>
@@ -427,31 +427,31 @@ export default function Home() {
           </div>
 
           {/* Stats Row - Bento Grid Style */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16 relative">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-16 relative">
              <div className="absolute -top-6 left-6 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/60 font-black text-[9px] uppercase tracking-widest z-20">Analytics</div>
              
-             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
+             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-3.5 sm:p-5 md:p-8 rounded-2xl sm:rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={4} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.studies')}</span>
+                 <span className="relative text-3xl sm:text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={4} /></span>
+                 <span className="relative text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.studies')}</span>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-3.5 sm:p-5 md:p-8 rounded-2xl sm:rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={1} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.exp')}</span>
+                 <span className="relative text-3xl sm:text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={1} /></span>
+                 <span className="relative text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.exp')}</span>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group bg-[var(--color-creative-blue)]/10 backdrop-blur-2xl border border-[var(--color-creative-blue)]/20 hover:border-[var(--color-creative-blue)]/60 transition-all duration-500 p-3.5 sm:p-5 md:p-8 rounded-2xl sm:rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-creative-blue)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={6} /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.software')}</span>
+                 <span className="relative text-3xl sm:text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={6} /></span>
+                 <span className="relative text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-white/70 group-hover:text-white transition-colors">{t('about.stats.software')}</span>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-6 md:p-8 rounded-3xl text-center relative overflow-hidden">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="group bg-black/30 backdrop-blur-2xl border border-white/5 hover:border-white/20 transition-all duration-500 p-3.5 sm:p-5 md:p-8 rounded-2xl sm:rounded-3xl text-center relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <span className="relative text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={100} suffix="%" /></span>
-                 <span className="relative text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.passion')}</span>
+                 <span className="relative text-3xl sm:text-4xl md:text-5xl font-black text-white block mb-2 drop-shadow-md"><Counter to={100} suffix="%" /></span>
+                 <span className="relative text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-white/50 group-hover:text-[var(--color-creative-blue)] transition-colors">{t('about.stats.passion')}</span>
               </motion.div>
           </div>
         </div>
@@ -638,7 +638,7 @@ export default function Home() {
             <div className="relative group rounded-[3rem] overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-creative-blue)]/0 via-[var(--color-creative-blue)]/10 to-[var(--color-creative-blue)]/0 blur-2xl group-hover:opacity-100 opacity-50 transition-opacity duration-700 pointer-events-none" />
               
-              <div className="relative py-16 md:py-24 px-6 md:px-12 border border-white/10 bg-black/30 backdrop-blur-md rounded-[3rem]">
+              <div className="relative py-10 sm:py-16 md:py-24 px-4 sm:px-8 md:px-12 border border-white/10 bg-black/30 backdrop-blur-md rounded-3xl md:rounded-[3rem]">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] bg-[var(--color-creative-blue)]/10 blur-[120px] -z-10 pointer-events-none" />
                 
                 <p className="text-white/40 font-bold tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex justify-center items-center gap-4">
@@ -647,7 +647,7 @@ export default function Home() {
                   <span className="w-12 h-px bg-white/20" />
                 </p>
 
-                <h2 className="font-black mb-12 text-white tracking-tighter leading-[0.95] uppercase relative" style={{ fontSize: 'clamp(2rem, 7vw, 6rem)' }}>
+                <h2 className="font-black mb-12 text-white tracking-tighter leading-[0.95] uppercase relative" style={{ fontSize: 'clamp(1.75rem, 6.5vw, 5.5rem)' }}>
                   {t('home_cta.title')} <br />
                   <span className="editorial-title-outline text-[var(--color-creative-blue)] mt-4 inline-block -rotate-2 transform hover:rotate-0 transition-transform duration-500">{t('home_cta.highlight')}</span>
                   
@@ -655,11 +655,11 @@ export default function Home() {
                 </h2>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-4">
-                  <Link to="/contact" className="btn-premium-orange px-10 md:px-12 py-4 md:py-5 w-full sm:w-auto text-sm md:text-base group shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_50px_rgba(14,165,233,0.5)]">
+                  <Link to="/contact" className="btn-premium-orange px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 w-full sm:w-auto text-sm md:text-base group shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_50px_rgba(14,165,233,0.5)]">
                     {t('home_cta.btn')}
                     <ArrowRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
                   </Link>
-                  <a href="mailto:tharsananarul@gmail.com" className="px-8 md:px-10 py-4 md:py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 hover:border-white/20 transition-all text-sm md:text-base flex items-center justify-center gap-3 backdrop-blur-md w-full sm:w-auto group">
+                  <a href="mailto:tharsananarul@gmail.com" className="px-5 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 hover:border-white/20 transition-all text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 sm:gap-3 backdrop-blur-md w-full sm:w-auto group break-all sm:break-normal">
                     tharsananarul@gmail.com
                     <ArrowRight size={18} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-[var(--color-creative-blue)]" />
                   </a>

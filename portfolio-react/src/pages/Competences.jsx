@@ -104,7 +104,7 @@ export default function Competences() {
             <span className="text-[var(--color-creative-blue)] md:ml-3" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>{t("skills_page.software.highlighted")}</span>
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 relative">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-8 relative">
              <div className="absolute -top-10 -right-6 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 shadow-lg text-white font-black text-[10px] tracking-widest uppercase rotate-[-5deg] z-20 hidden lg:block">{t("skills_page.stickers.tools")}</div>
 
             {software.map((item, i) => (
@@ -114,18 +114,18 @@ export default function Competences() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.8 }}
-                className="glass-card p-4 md:p-6 group flex flex-col h-full glow-card w-full min-w-0"
+                className="glass-card p-3.5 sm:p-5 md:p-6 group flex flex-col h-full glow-card w-full min-w-0"
               >
-                <div className="flex items-center justify-between mb-6 md:mb-10">
+                <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-10">
                   <div 
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-xl md:text-2xl font-black shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center text-lg sm:text-xl md:text-2xl font-black shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
                     style={{ backgroundColor: item.color, color: 'white' }}
                   >
                     {item.abbr}
                   </div>
                 </div>
-                <h3 className="text-sm sm:text-base md:text-lg font-extrabold mb-2 md:mb-4 uppercase tracking-normal text-white leading-tight">{item.name}</h3>
-                <p className="text-white/50 text-xs md:text-base mb-6 md:mb-8 leading-relaxed font-medium">
+                <h3 className="text-xs sm:text-base md:text-lg font-extrabold mb-1.5 sm:mb-2 md:mb-4 uppercase tracking-normal text-white leading-tight">{item.name}</h3>
+                <p className="text-white/50 text-[11px] sm:text-xs md:text-base mb-4 sm:mb-6 md:mb-8 leading-relaxed font-medium">
                   {item.desc}
                 </p>
                 <div className="mt-auto">

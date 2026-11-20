@@ -155,13 +155,13 @@ export default function Navbar() {
           <div className="flex items-center gap-0.5 bg-white/5 border border-white/10 p-0.5 rounded-full backdrop-blur-md">
             <button 
               onClick={() => i18n.changeLanguage('fr')}
-              className={`px-2 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all uppercase ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+              className={`px-2.5 py-1 min-w-[32px] rounded-full text-[9px] font-black tracking-wider transition-all uppercase cursor-pointer ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
             >
               FR
             </button>
             <button 
               onClick={() => i18n.changeLanguage('en')}
-              className={`px-2 py-0.5 rounded-full text-[8.5px] font-black tracking-wider transition-all uppercase ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+              className={`px-2.5 py-1 min-w-[32px] rounded-full text-[9px] font-black tracking-wider transition-all uppercase cursor-pointer ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
             >
               EN
             </button>
@@ -190,13 +190,13 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden flex flex-col gap-2 p-2 z-[110] relative"
+          className="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 min-w-[44px] min-h-[44px] z-[110] relative rounded-full hover:bg-white/5 transition-colors cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-500 ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-white transition-all duration-500 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`block w-6 h-0.5 bg-white transition-all duration-500 ${isOpen ? 'opacity-0 scale-x-0' : ''}`} />
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-500 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-white transition-all duration-500 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </nav>
 
@@ -220,10 +220,10 @@ export default function Navbar() {
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               style={{ willChange: 'transform, opacity' }}
-              className="fixed top-20 left-4 right-4 z-[105] bg-[#071129]/95 backdrop-blur-xl border border-white/10 rounded-[2rem] shadow-[0_24px_50px_rgba(0,0,0,0.6)] flex flex-col md:hidden overflow-hidden max-h-[80vh]"
+              className="fixed top-20 left-4 right-4 z-[105] bg-[#071129]/95 backdrop-blur-xl border border-white/10 rounded-[2rem] shadow-[0_24px_50px_rgba(0,0,0,0.6)] flex flex-col md:hidden overflow-hidden max-h-[85vh]"
             >
               {/* Header inside floating Menu */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02] shrink-0">
                 <div className="flex items-center gap-2.5 py-1 select-none">
                   <div className="logo py-1 px-3 bg-white/5 border border-white/10 rounded-full font-heading font-black text-[10px] tracking-[0.2em] text-white uppercase select-none">
                     THARSANAN<span className="text-[var(--color-creative-blue)]">.</span>
@@ -231,29 +231,29 @@ export default function Navbar() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/80 hover:text-white transition-all transform hover:rotate-90 duration-300"
+                  className="p-2.5 min-w-[36px] min-h-[36px] flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/80 hover:text-white transition-all transform hover:rotate-90 duration-300 cursor-pointer"
                   aria-label="Close menu"
                 >
-                  <X size={14} />
+                  <X size={16} />
                 </button>
               </div>
 
               {/* Staggered Navigation Links */}
-              <div className="flex flex-col px-6 py-6 gap-4">
+              <div className="flex flex-col px-6 py-5 gap-3.5 overflow-y-auto flex-1 overscroll-contain">
                 <div className="flex justify-between items-center mb-1">
                   <p className="text-[9px] text-white/30 font-bold uppercase tracking-[0.3em]">Navigation</p>
                   
                   {/* Language switch on mobile */}
-                  <div className="flex items-center gap-0.5 bg-white/5 border border-white/10 p-0.5 rounded-full backdrop-blur-md">
+                  <div className="flex items-center gap-1 bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md">
                     <button 
                       onClick={() => i18n.changeLanguage('fr')}
-                      className={`px-2.5 py-1 rounded-full text-[8px] font-black tracking-wider transition-all uppercase ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                      className={`px-3 py-1 min-w-[34px] min-h-[28px] rounded-full text-[9px] font-black tracking-wider transition-all uppercase cursor-pointer ${i18n.language === 'fr' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
                     >
                       FR
                     </button>
                     <button 
                       onClick={() => i18n.changeLanguage('en')}
-                      className={`px-2.5 py-1 rounded-full text-[8px] font-black tracking-wider transition-all uppercase ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                      className={`px-3 py-1 min-w-[34px] min-h-[28px] rounded-full text-[9px] font-black tracking-wider transition-all uppercase cursor-pointer ${i18n.language === 'en' ? 'bg-[var(--color-creative-blue)] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
                     >
                       EN
                     </button>
